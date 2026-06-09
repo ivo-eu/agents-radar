@@ -183,7 +183,7 @@ export async function runWeeklyRollup(): Promise<void> {
 
   await generateRollupHighlights(zhContent, enContent, "ai-weekly", dateStr, 6);
 
-  if (digestRepo) {
+  if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
     const url = await createGitHubIssue(WEEKLY_REPORT.issueTitle(weekStr), zhContent, "weekly");
     console.log(`  Created weekly issue: ${url}`);
   }
@@ -277,7 +277,7 @@ export async function runMonthlyRollup(): Promise<void> {
 
   await generateRollupHighlights(zhContent, enContent, "ai-monthly", dateStr, 6);
 
-  if (digestRepo) {
+  if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
     const url = await createGitHubIssue(MONTHLY_REPORT.issueTitle(monthStr), zhContent, "monthly");
     console.log(`  Created monthly issue: ${url}`);
   }

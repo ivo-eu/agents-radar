@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>agents-radar</title>
-    <link>https://duanyytop.github.io/agents-radar</link>
+    <link>https://ivo-eu.github.io/agents-radar</link>
     <description>AI 开源生态每日简报 · Daily AI ecosystem digest</description>
     <language>zh-CN</language>
-    <atom:link href="https://duanyytop.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Tue, 09 Jun 2026 06:19:13 +0000</lastBuildDate>
+    <atom:link href="https://ivo-eu.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Tue, 09 Jun 2026 09:52:38 +0000</lastBuildDate>
     <item>
       <title>AI CLI 工具社区动态日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-cli</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-cli</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-cli</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-cli</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI CLI 工具社区动态日报 2026-06-09 生成时间: 2026-06-09 04:18 UTC | 覆盖工具: 9 个 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI Kimi Code CLI OpenCode Pi Qwen Code DeepSeek TUI Claude Code Skills 横向对比 好的，作为资深技术分析师，基于您提供的2026年6月9日各主流AI CLI工具的社区动态，我将为您呈现一份横向对比分析报告。 AI CLI 工具生态全景洞察：2026-06-09 核心洞察： 当前AI CLI工具生态正处于“从能用走向好用、从单打独斗走向协同”的关键转折期。社区不再满足于基础的代码生成，而是对稳定性、数据主权、模型中立性、以及复杂工作流编排提出了更高要求。各工具在满足这些核心需求的过程中，逐渐形成了差异化定位，但“可靠性”和“开发者体验”已成为所有工具的兵家必争之地。 1. 生态全景 当前AI CLI工具市场呈現 “百舸争流，各有千秋” 的繁荣态势。市场领导者（如Claude Code、O...</description>
       <content:encoded><![CDATA[<h1>AI CLI 工具社区动态日报 2026-06-09</h1>
@@ -1587,8 +1587,8 @@
     </item>
     <item>
       <title>AI CLI Tools Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-cli-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-cli-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-cli-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-cli-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI CLI Tools Community Digest 2026-06-09 Generated: 2026-06-09 04:18 UTC | Tools covered: 9 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI Kimi Code CLI OpenCode Pi Qwen Code DeepSeek TUI Claude Code Skills Cross-Tool Comparison Here is a cross-tool comparison report based on the provided community digest data. Cross-Tool Comparison Report: AI CLI Developer Tools Date: 2026-06-09 Analyst: Senior Technical Analyst, AI Developer Tools Ecosystem 1. Ecosystem Overview The AI CLI tools ecosys...</description>
       <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-06-09</h1>
@@ -2522,8 +2522,8 @@
     </item>
     <item>
       <title>AI Agents 生态日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-agents</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-agents</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-agents</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-agents</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw 生态日报 2026-06-09 Issues: 147 | PRs: 475 | 覆盖项目: 13 个 | 生成时间: 2026-06-09 04:18 UTC OpenClaw NanoBot Hermes Agent PicoClaw NanoClaw NullClaw IronClaw LobsterAI TinyClaw Moltis CoPaw ZeptoClaw ZeroClaw OpenClaw 项目深度报告 OpenClaw 项目动态日报 | 2026-06-09 1. 今日速览 过去24小时项目保持高度活跃：共处理 147 条 Issue（新开/活跃 83 条，关闭 64 条）及 475 条 PR（待合并 314 条，已合并/关闭 161 条），并发布 2 个 beta 版本。社区反馈集中在 升级后兼容性问题（OpenAI/ChatGPT、DeepSeek、Telegram 回归）与 会话状态异常（重复回复、内存泄露、SQLite 向量索引）上，维护者已快速响应多个 P1 级 Bug。同时，Windows 原生测试覆盖与 ACP 错误类型保留等基础设...</description>
       <content:encoded><![CDATA[<h1>OpenClaw 生态日报 2026-06-09</h1>
@@ -4140,8 +4140,8 @@
     </item>
     <item>
       <title>AI Agents Ecosystem Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-agents-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-agents-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-agents-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-agents-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw Ecosystem Digest 2026-06-09 Issues: 147 | PRs: 475 | Projects covered: 13 | Generated: 2026-06-09 04:18 UTC OpenClaw NanoBot Hermes Agent PicoClaw NanoClaw NullClaw IronClaw LobsterAI TinyClaw Moltis CoPaw ZeptoClaw ZeroClaw OpenClaw Deep Dive OpenClaw Project Digest — 2026-06-09 1. Today’s Overview OpenClaw remains highly active, with 147 issues (83 open, 64 closed) and 475 pull requests (314 open, 161 merged/closed) updated in the last 24 hours. Two new beta releases (v2026.6.5-beta.3...</description>
       <content:encoded><![CDATA[<h1>OpenClaw Ecosystem Digest 2026-06-09</h1>
@@ -5823,8 +5823,8 @@
     </item>
     <item>
       <title>AI 官方内容追踪报告 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-web</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-web</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-web</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-web</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI 官方内容追踪报告 2026-06-09 今日更新 | 新增内容: 1 篇 | 生成时间: 2026-06-09 04:18 UTC 数据来源: Anthropic: anthropic.com — 新增 1 篇（sitemap 共 375 条） OpenAI: openai.com — 新增 0 篇（sitemap 共 840 条） 好的，作为一名AI领域的深度内容分析师，我将基于您提供的今日增量更新内容，结合上下文，为您呈现一份详尽的《AI官方内容追踪报告》。 AI 官方内容追踪报告 (2026-06-09) 报告日期: 2026年6月9日 数据来源: Anthropic (claude.com / anthropic.com), OpenAI (openai.com) 分析师: AI 深度内容分析师 1. 今日速览 今日AI领域的主要动向来自Anthropic，其发布了一篇极具战略意义的研究博文，核心论点直指阻碍AI代理（Agent）在科学领域落地的关键瓶颈：数据基础设施。Anthropic通过生物学领域的案例证明，当前最强大的AI模型在未经适配的原始科研数据库面前表现不佳，...</description>
       <content:encoded><![CDATA[<h1>AI 官方内容追踪报告 2026-06-09</h1>
@@ -5931,8 +5931,8 @@
     </item>
     <item>
       <title>Official AI Content Report 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-web-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-web-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-web-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-web-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Official AI Content Report 2026-06-09 Today&amp;#39;s update | New content: 1 articles | Generated: 2026-06-09 04:18 UTC Sources: Anthropic: anthropic.com — 1 new articles (sitemap total: 375) OpenAI: openai.com — 0 new articles (sitemap total: 840) AI Official Content Tracking Report Date: June 9, 2026 Sources: Anthropic (claude.com / anthropic.com), OpenAI (openai.com) 1. Today&amp;#39;s Highlights Anthropic published a single but strategically significant research article today titled &amp;quot;Paving th...</description>
       <content:encoded><![CDATA[<h1>Official AI Content Report 2026-06-09</h1>
@@ -6010,8 +6010,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>AI 开源趋势日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-trending</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-trending</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-trending</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-trending</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI 开源趋势日报 2026-06-09 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-09 04:18 UTC AI 开源趋势日报（2026-06-09） 一、今日速览 今日 GitHub 热门趋势中，AI Agent 生态全面爆发：跨平台信息聚合技能 last30days-skill 单日斩获 3558 stars，向量索引工具 turbovec 日增 1729 stars，视觉工具 roboflow/supervision 日增 1288 stars，开源 Agent goose 日增 699 stars。Google 和 OpenAI 官方出手，分别发布 google/skills 和 plugins，加速 Agent 标准化。同时，本地 LLM 评测工具 whichllm 和 AI 记忆系统 MemPalace 的走红，反映出社区对可落地、可本地运行的 AI 基础设施的强烈需求。 二、各维度热门项目 🔧 AI 基础工具（框架、SDK、推理引擎、CLI） turbovec – ⭐0 (今日 +1729) ·...</description>
       <content:encoded><![CDATA[<h1>AI 开源趋势日报 2026-06-09</h1>
@@ -6085,8 +6085,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>AI Open Source Trends 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-trending-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-trending-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-trending-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-trending-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI Open Source Trends 2026-06-09 Sources: GitHub Trending + GitHub Search API | Generated: 2026-06-09 04:18 UTC AI Open Source Trends Report — 2026-06-09 1. Today&amp;#39;s Highlights Today&amp;#39;s GitHub trending data reveals a decisive shift toward agent skill marketplaces and personal AI infrastructure. The most explosive growth belongs to mvanhorn/last30days-skill (+3,558 stars), a single skill that synthesizes research across Reddit, X, YouTube, and Polmarket — signaling that the ecosystem is mat...</description>
       <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-06-09</h1>
@@ -6164,8 +6164,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>Hacker News AI 社区动态日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hn</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hn</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hn</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hn</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI 社区动态日报 2026-06-09 数据来源: Hacker News | 共 30 条 | 生成时间: 2026-06-09 04:18 UTC Hacker News AI 社区动态日报（2026-06-09） 今日速览 今日 HN 社区被 OpenAI 的两则重磅消息彻底引爆：秘密提交 S-1 启动 IPO 以及 计划对 ChatGPT 进行发布以来最大规模改版。同时 Anthropic 也动作频频，预告了 Claude Fable 5 新模型并发布 N-day 漏洞研究。安全方面，微软被黑事件波及 Claude 和 Gemini 用户，引发对 AI 供应链安全的讨论。整体情绪偏向兴奋与焦虑并存——投资者对 IPO 激动，但社区对商业化过快、安全风险、以及“AI 内容污染”等问题表达了强烈担忧。 热门新闻与讨论 🔬 模型与研究 Claude Fable 5链接: https://www.anthropic.com/news/claude-fable-5-mythos-5HN 讨论: https://news.ycombinator.com/item...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI 社区动态日报 2026-06-09</h1>
@@ -6236,8 +6236,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>Hacker News AI Community Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hn-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hn-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hn-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hn-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI Community Digest 2026-06-09 Source: Hacker News | 30 stories | Generated: 2026-06-09 04:18 UTC Here’s your Hacker News AI Community Digest for June 9, 2026. 1. Today&amp;#39;s Highlights OpenAI’s confidential S-1 filing for an IPO dominates the board with a score of 317 and 235 comments, sparking intense debate about the valuation, mission shift, and market timing of the leading AI lab. Rumors of a major ChatGPT overhaul (dubbed “Chat is dead”) add a second narrative layer, while a Mi...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-06-09</h1>
@@ -6309,8 +6309,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>Product Hunt AI 产品日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-ph</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-ph</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-ph</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-ph</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI 产品日报 2026-06-09 数据来源: Product Hunt | 共 11 个产品 | 生成时间: 2026-06-09 04:54 UTC Product Hunt AI 产品日报 — 2026年6月9日 今日速览 今日 Product Hunt 上 AI 相关产品发布共 11 个，但明确标注 AI 标签的产品占 7 个，头部效应明显：Google Labs 的个性化 AI 故事应用 Dreambeans 以 364 票断层领先，其次是 Job Postings API（243 票）主打数据服务。整体趋势上，AI 正加速渗透到个人内容生成、垂直行业自动化（税务、事实核查）和隐私优先的本地工具中。开发者和企业级 API 仍是最受欢迎的产品形态，而轻量级、即用型 AI 助手则靠新颖场景吸引早期用户。 热门产品 🤖 AI 智能体与助手 Caddie — 能说会卖的笔记助手 Product Hunt: https://www.producthunt.com/products/caddie-3?utm_campaign=producthunt-api&amp;...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI 产品日报 2026-06-09</h1>
@@ -6391,8 +6391,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>Product Hunt AI Products Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-ph-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-ph-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-ph-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-ph-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI Products Digest 2026-06-09 Source: Product Hunt | 11 products | Generated: 2026-06-09 04:54 UTC Product Hunt AI Products Digest — 2026-06-09 1. Today&amp;#39;s Highlights Today&amp;#39;s Product Hunt AI launches are led by Dreambeans from Google Labs (364 votes), a personalized AI story generator that taps into users&amp;#39; Google app data — signaling a major push by Big Tech into consumer-facing generative AI experiences. The second-most-voted AI product is the Job Postings API (243 votes...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI Products Digest 2026-06-09</h1>
@@ -6436,8 +6436,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>ArXiv AI 研究日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-arxiv</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-arxiv</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-arxiv</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-arxiv</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>ArXiv AI 研究日报 2026-06-09 数据来源: ArXiv (cs.AI, cs.CL, cs.LG) | 共 50 篇论文 | 生成时间: 2026-06-09 04:18 UTC ArXiv AI 研究日报（2026-06-09） 今日速览 LLM RL 训练迎来新洞见：多篇论文深入分析了 RLHF/PPO 中的散度正则化机制（#4），并揭示了代理奖励内部化（#34）是奖励黑客的前兆，为对齐安全提供了早期预警信号。 Transformer 理论取得紧界：论文 #29 严格刻画了深度 Transformer 的 VC 维度和样本复杂度，首次给出了近乎匹配的上下界，对模型可学习性具有奠基意义。 智能体评估全面升级：三个新型基准同时发布——统一的 VLM 游戏智能体评测平台 OmniGameArena（#1）、个性化手机智能体测试集 iOSWorld（#18），以及交互式空间推理基准 SpatialWorld（#49），推动智能体研究从单轮走向多轮动态交互。 模型编辑与权重操作工具迈入工程化：BrainSurgery（#36）提供了一个声明式、可复现的权重修改框架，使得模型...</description>
       <content:encoded><![CDATA[<h1>ArXiv AI 研究日报 2026-06-09</h1>
@@ -6520,8 +6520,8 @@ Laura Luebbert and team conducted a case study using NCBI Virus, a database used
     </item>
     <item>
       <title>ArXiv AI Research Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-arxiv-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-arxiv-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-arxiv-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-arxiv-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>ArXiv AI Research Digest 2026-06-09 Source: ArXiv (cs.AI, cs.CL, cs.LG) | 50 papers | Generated: 2026-06-09 04:18 UTC ArXiv AI Research Digest — 2026-06-09 Today&amp;#39;s Highlights Agentic AI systems dominate today&amp;#39;s submissions, with multiple papers addressing the critical gap between single-shot evaluation and real-world multi-turn, feedback-driven performance. Several studies reveal fundamental limitations in current alignment methods: RLHF provides only shallow behavioral masking while lea...</description>
       <content:encoded><![CDATA[<h1>ArXiv AI Research Digest 2026-06-09</h1>
@@ -6623,8 +6623,8 @@ Develops a data sovereignty-respecting synthesis methodology for Indigenous lang
     </item>
     <item>
       <title>Hugging Face 热门模型日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hf</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hf</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hf</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hf</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hugging Face 热门模型日报 2026-06-09 数据来源: Hugging Face Hub | 共 30 个模型 | 生成时间: 2026-06-09 04:18 UTC 好的，作为AI模型生态分析师，这是为您整理的2026年6月9日《Hugging Face热门模型日报》。 Hugging Face 热门模型日报 | 2026-06-09 1. 今日速览 今日Hugging Face榜首由DeepSeek-V4-Pro以压倒性优势占据，周点赞近5000，下载量超500万，标志着国内大模型在开源社区的统治力进一步加强。Gemma-4系列持续发力，Google不仅推出了12B的“any-to-any”全能模型，还带动了unsloth等社区的大量量化版本。多模态生成领域百花齐放，NVIDIA的LocateAnything、ByteDance的Bernini-R以及Ideogram的v4模型均受到高度关注，覆盖了从图像定位到视频生成的广泛场景。此外，视频生成赛道热度不减，SulphurAI的Sulphur-2-base作为LTX-2.3的量化版本周点赞超过1600，成为社区焦...</description>
       <content:encoded><![CDATA[<h1>Hugging Face 热门模型日报 2026-06-09</h1>
@@ -6772,8 +6772,8 @@ Develops a data sovereignty-respecting synthesis methodology for Indigenous lang
     </item>
     <item>
       <title>Hugging Face Trending Models Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hf-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-hf-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hf-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-hf-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hugging Face Trending Models Digest 2026-06-09 Source: Hugging Face Hub | 30 models | Generated: 2026-06-09 04:18 UTC Hugging Face Trending Models Digest — June 9, 2026 1. Today’s Highlights DeepSeek’s V4 family dominates the leaderboard with DeepSeek-V4-Pro (4,724 likes, 5.4M downloads) and V4-Flash (1,449 likes, 3.3M downloads) driving massive community engagement. Google’s Gemma 4 series is the highest-volume new release — both the base any-to-any 12B model and multiple quantized variants (by...</description>
       <content:encoded><![CDATA[<h1>Hugging Face Trending Models Digest 2026-06-09</h1>
@@ -6871,8 +6871,8 @@ Develops a data sovereignty-respecting synthesis methodology for Indigenous lang
     </item>
     <item>
       <title>技术社区 AI 动态日报 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-community</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-community</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>技术社区 AI 动态日报 2026-06-09 数据来源: Dev.to (30 篇) + Lobste.rs (10 条) | 生成时间: 2026-06-09 04:18 UTC 技术社区 AI 动态日报 — 2026年6月9日 今日速览 今日社区围绕AI的讨论主要集中在三个方向：一是AI Agent 的安全与可靠性，Dev.to 上出现多篇关于对抗性评估、RTT 漏洞利用以及 agent 错误复合的文章；二是工程实践的成本与选择，包括 GPU 服务商对比、LLM 输出格式的 token 经济分析、以及默认 eval 模型的切换；三是 AI 对开发者职业和代码所有权的冲击，一篇关于“12年经验被封装成 AI Skill 后遭裁员”的故事引发热议。Lobste.rs 则更侧重 AI 基础原理与研究论文，如《How LLMs Actually Work》和 Nature 上的行为传递研究，显示出社区对“理解 AI 本质”的持续兴趣。 Dev.to 精选 以下 10 篇文章在今日 Dev.to 上最具信息量和实际价值： My company packaged 12 years of my...</description>
       <content:encoded><![CDATA[<h1>技术社区 AI 动态日报 2026-06-09</h1>
@@ -6940,8 +6940,8 @@ Develops a data sovereignty-respecting synthesis methodology for Indigenous lang
     </item>
     <item>
       <title>Tech Community AI Digest 2026-06-09</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-09/ai-community-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-09/ai-community-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community-en</guid>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
       <description>Tech Community AI Digest 2026-06-09 Sources: Dev.to (30 articles) + Lobste.rs (10 stories) | Generated: 2026-06-09 04:18 UTC Here is the structured Tech Community AI Digest for June 9, 2026, based on the provided community data. Tech Community AI Digest — 2026-06-09 1. Today&amp;#39;s Highlights The AI conversation today is split between deep technical concerns and a growing sense of caution. On Dev.to, developers are wrestling with the brittleness of AI agents, sharing war stories about compound fa...</description>
       <content:encoded><![CDATA[<h1>Tech Community AI Digest 2026-06-09</h1>
@@ -7048,8 +7048,8 @@ Score: 2 | Comments: 1
     </item>
     <item>
       <title>AI CLI 工具社区动态日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-cli</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-cli</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-cli</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-cli</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI CLI 工具社区动态日报 2026-06-08 生成时间: 2026-06-08 00:29 UTC | 覆盖工具: 9 个 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI Kimi Code CLI OpenCode Pi Qwen Code DeepSeek TUI Claude Code Skills 横向对比 AI CLI 工具生态横向对比分析报告 | 2026-06-08 1. 生态全景 当前 AI CLI 工具生态呈现**&amp;quot;头部封闭、腰部分化、长尾活跃&amp;quot;格局：Claude Code 与 OpenAI Codex 凭借模型优势占据心智，但社区反馈闭环断裂、Windows 体验系统性落后；Google Gemini CLI 和 Qwen Code 以服务端/协议化能力为差异化突破口，前者押注 A2A 企业生态，后者通过 ACP 协议切入 IDE 基础设施层；开源侧 OpenCode、Pi、DeepSeek TUI 则以多模型聚合、安全沙箱、架构现代化为卖点，形成对商业工具的&amp;quot;功能追...</description>
       <content:encoded><![CDATA[<h1>AI CLI 工具社区动态日报 2026-06-08</h1>
@@ -9501,8 +9501,8 @@ Score: 2 | Comments: 1
     </item>
     <item>
       <title>AI CLI Tools Digest 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-cli-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-cli-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-cli-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-cli-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI CLI Tools Community Digest 2026-06-08 Generated: 2026-06-08 00:29 UTC | Tools covered: 9 Claude Code OpenAI Codex Gemini CLI GitHub Copilot CLI Kimi Code CLI OpenCode Pi Qwen Code DeepSeek TUI Claude Code Skills Cross-Tool Comparison AI CLI Tools Ecosystem Cross-Comparison Report June 8, 2026 Community Digest Analysis 1. Ecosystem Overview The AI CLI tools landscape has matured into a competitive multi-polar market with eight actively developed alternatives, yet stability and trust remain the...</description>
       <content:encoded><![CDATA[<h1>AI CLI Tools Community Digest 2026-06-08</h1>
@@ -11636,8 +11636,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>AI Agents 生态日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-agents</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-agents</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-agents</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-agents</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw 生态日报 2026-06-08 Issues: 296 | PRs: 500 | 覆盖项目: 13 个 | 生成时间: 2026-06-08 00:29 UTC OpenClaw NanoBot Hermes Agent PicoClaw NanoClaw NullClaw IronClaw LobsterAI TinyClaw Moltis CoPaw ZeptoClaw ZeroClaw OpenClaw 项目深度报告 OpenClaw 项目动态日报 | 2026-06-08 1. 今日速览 OpenClaw 今日保持极高活跃度：24小时内 Issues 更新 296 条（177 活跃/119 关闭）、PR 更新 500 条（374 待合并/126 已合并关闭），但零版本发布。社区讨论集中在消息投递可靠性、会话状态管理和多通道适配器稳定性三大主题。值得关注的是，P1 级 Bug 中多个涉及&amp;quot;消息丢失&amp;quot;和&amp;quot;会话状态损坏&amp;quot;的回归问题仍无修复 PR，而今日新增的 5 条 PR 聚焦 UI/CLI 体验优化，显示维护者在&amp;quot;...</description>
       <content:encoded><![CDATA[<h1>OpenClaw 生态日报 2026-06-08</h1>
@@ -15129,8 +15129,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>AI Agents Ecosystem Digest 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-agents-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-agents-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-agents-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-agents-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>OpenClaw Ecosystem Digest 2026-06-08 Issues: 296 | PRs: 500 | Projects covered: 13 | Generated: 2026-06-08 00:29 UTC OpenClaw NanoBot Hermes Agent PicoClaw NanoClaw NullClaw IronClaw LobsterAI TinyClaw Moltis CoPaw ZeptoClaw ZeroClaw OpenClaw Deep Dive OpenClaw Project Digest — 2026-06-08 1. Today&amp;#39;s Overview OpenClaw shows extremely high development velocity with 296 issues and 500 PRs touched in the last 24 hours—among the most active days in the project&amp;#39;s recent history. The open-to-cl...</description>
       <content:encoded><![CDATA[<h1>OpenClaw Ecosystem Digest 2026-06-08</h1>
@@ -18505,8 +18505,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>AI 开源趋势日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-trending</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-trending</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-trending</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-trending</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI 开源趋势日报 2026-06-08 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-08 00:29 UTC AI 开源趋势日报 | 2026-06-08 第一步：AI 相关性过滤 Trending 榜单筛选结果（排除非 AI 项目）： 排除项目 排除原因 TapXWorld/ChinaTextbook 教育资源 PDF 仓库，无 AI 技术 HunxByts/GhostTrack 定位追踪工具，与 AI 无关 refactoringhq/tolaria Markdown 知识库管理工具，通用效率工具 保留 12 个 AI/ML 相关项目，进入分类分析。 第二步：项目分类 🔧 AI 基础工具 opencv/opencv · ggml-org/llama.cpp · RyanCodrai/turbovec · openai/plugins · ollama/ollama · huggingface/transformers · vllm-project/vllm 🤖 AI 智能体/工作流 mvanhorn/la...</description>
       <content:encoded><![CDATA[<h1>AI 开源趋势日报 2026-06-08</h1>
@@ -18809,8 +18809,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>AI Open Source Trends 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-trending-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-trending-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-trending-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-trending-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>AI Open Source Trends 2026-06-08 Sources: GitHub Trending + GitHub Search API | Generated: 2026-06-08 00:29 UTC AI Open Source Trends Report — June 8, 2026 1. Today&amp;#39;s Highlights Today&amp;#39;s GitHub trending reveals an explosive surge in AI agent infrastructure, with three agent-related projects (NousResearch/hermes-agent, mvanhorn/last30days-skill, Leonxlnx/taste-skill) each gaining 1,100+ stars in a single day—unprecedented velocity for this category. A clear &amp;quot;skill economy&amp;quot; is eme...</description>
       <content:encoded><![CDATA[<h1>AI Open Source Trends 2026-06-08</h1>
@@ -19071,8 +19071,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Hacker News AI 社区动态日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hn</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hn</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hn</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hn</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI 社区动态日报 2026-06-08 数据来源: Hacker News | 共 30 条 | 生成时间: 2026-06-08 00:29 UTC Hacker News AI 社区动态日报 2026-06-08 | 过去 24 小时热门帖子精选 一、今日速览 今日 HN 社区围绕 AI 的讨论呈现**&amp;quot;工具实用主义&amp;quot;与&amp;quot;产业焦虑&amp;quot;并存的态势。Claude 生态成为绝对焦点——从 Jane Street 工程师用 Claude Code 替代 Figma 进行设计工作，到社区强烈呼吁 Anthropic 推出官方 Linux 桌面客户端，反映出 AI 编程助手已深度渗透开发 workflow。与此同时，AI 基础设施的成本与可持续性引发担忧：OpenAI/Anthropic 的巨额亏损、数据中心耗水量激增等话题热度攀升。社区情绪整体偏向务实批判**，对 LLM 公司的价值捕获模式提出质疑，同时对&amp;quot;AI 原生&amp;quot;概念保持审慎。 二、热门新闻与讨论 🔬 模型与研究 # 内容 数据 一句话解读 1 If...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI 社区动态日报 2026-06-08</h1>
@@ -19252,8 +19252,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Hacker News AI Community Digest 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hn-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hn-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hn-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hn-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hacker News AI Community Digest 2026-06-08 Source: Hacker News | 30 stories | Generated: 2026-06-08 00:29 UTC Hacker News AI Community Digest — June 8, 2026 1. Today&amp;#39;s Highlights The HN community is intensely focused on Claude&amp;#39;s ecosystem dominance today, with three of the top four posts centered on Anthropic&amp;#39;s product. The highest-scored post (438 points, 248 comments) is a passionate plea for official Linux desktop support, revealing frustration among developers who feel sidelined ...</description>
       <content:encoded><![CDATA[<h1>Hacker News AI Community Digest 2026-06-08</h1>
@@ -19445,8 +19445,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Product Hunt AI 产品日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-ph</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-ph</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-ph</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-ph</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI 产品日报 2026-06-08 数据来源: Product Hunt | 共 10 个产品 | 生成时间: 2026-06-08 00:29 UTC Product Hunt AI 产品日报 日期：2026-06-08 1. 今日速览 今日 Product Hunt AI 板块呈现明显的**&amp;quot;AI Agent + 垂直场景落地&amp;quot;趋势：头部产品 Manus 的 Shopify Connector 以 248 票领跑，显示对话式电商管理需求强劲；开发者工具占比最高，涵盖 issue 追踪、代码规范、部署监控等全链路；值得关注的是，AI 应用开始从通用聊天向可穿戴健康数据接入**（freddy.）、落地页诊断（Landing Page Roast）等细分场景渗透。同时，Ejentum 提出的&amp;quot;Reasoning Harness&amp;quot;概念和 Almanac Seed、Bleenk 代表的&amp;quot;写 spec 出应用&amp;quot;模式，反映出行业对 AI 可控性和意图工程的新探索。 2. 热门产品 🤖 AI 智能体与助手 产...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI 产品日报 2026-06-08</h1>
@@ -19596,8 +19596,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Product Hunt AI Products Digest 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-ph-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-ph-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-ph-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-ph-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Product Hunt AI Products Digest 2026-06-08 Source: Product Hunt | 10 products | Generated: 2026-06-08 00:29 UTC Product Hunt AI Products Digest — June 8, 2026 1. Today&amp;#39;s Highlights Today&amp;#39;s Product Hunt launches reveal a clear maturation in AI tooling: agentic commerce takes center stage with Manus Shopify Connector dominating votes (248), while wearable-AI integration emerges as a novel frontier via freddy. The standout trend is spec-to-code automation — Almanac Seed and Bleenk both prom...</description>
       <content:encoded><![CDATA[<h1>Product Hunt AI Products Digest 2026-06-08</h1>
@@ -19701,8 +19701,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Hugging Face 热门模型日报 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hf</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hf</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hf</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hf</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hugging Face 热门模型日报 2026-06-08 数据来源: Hugging Face Hub | 共 30 个模型 | 生成时间: 2026-06-08 00:29 UTC Hugging Face 热门模型日报 | 2026-06-08 今日速览 DeepSeek-V4-Pro 以 4,696 点赞和 550 万下载强势领跑，延续国产大模型的全球影响力。NVIDIA 今日霸榜态势明显，Cosmos3 系列覆盖图像、视频、超分辨率全链路，同时推出 LocateAnything-3B 视觉定位模型。Google Gemma-4 12B 系列借助 Unsloth 的 GGUF/QAT 量化生态快速渗透边缘部署场景。生成式 AI 持续向视频领域纵深，Sulphur-2-base 和 ByteDance Bernini-R 代表开源视频生成的新势力崛起。 热门模型 🧠 语言模型（LLM、对话模型、指令微调） 模型 作者 点赞 下载 一句话说明 deepseek-ai/DeepSeek-V4-Pro deepseek-ai 4,696 5,515,325 DeepSeek 新一代...</description>
       <content:encoded><![CDATA[<h1>Hugging Face 热门模型日报 2026-06-08</h1>
@@ -20007,8 +20007,8 @@ Until Section 2 is clarified (<a href="https://github.com/github/copilot-cli/iss
     </item>
     <item>
       <title>Hugging Face Trending Models Digest 2026-06-08</title>
-      <link>https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hf-en</link>
-      <guid isPermaLink="true">https://duanyytop.github.io/agents-radar/#2026-06-08/ai-hf-en</guid>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hf-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-08/ai-hf-en</guid>
       <pubDate>Mon, 08 Jun 2026 00:00:00 +0000</pubDate>
       <description>Hugging Face Trending Models Digest 2026-06-08 Source: Hugging Face Hub | 30 models | Generated: 2026-06-08 00:29 UTC Hugging Face Trending Models Digest — June 8, 2026 1. Today&amp;#39;s Highlights DeepSeek&amp;#39;s V4 series continues to dominate engagement with DeepSeek-V4-Pro amassing 4,696 likes and 5.5M downloads, cementing its position as the most impactful release this week. NVIDIA&amp;#39;s ecosystem expansion is remarkable, with seven models spanning vision, speech, video generation, and optimize...</description>
       <content:encoded><![CDATA[<h1>Hugging Face Trending Models Digest 2026-06-08</h1>

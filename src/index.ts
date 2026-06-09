@@ -470,7 +470,7 @@ async function main(): Promise<void> {
   console.log(`  Saved ${highlightsPath}`);
 
   // 6. Create GitHub issues for CLI + OpenClaw (zh + en)
-  if (digestRepo) {
+  if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
     for (const lang of ["zh", "en"] as const) {
       const cliUrl = await createGitHubIssue(
         CLI_ISSUE_TITLE(dateStr, lang),

@@ -21,7 +21,7 @@ A GitHub Actions workflow that runs every morning at 08:00 CST. It aggregates AI
 
 ## Web UI
 
-**[https://duanyytop.github.io/agents-radar](https://duanyytop.github.io/agents-radar)**
+**[https://ivo-eu.github.io/agents-radar](https://ivo-eu.github.io/agents-radar)**
 
 Browse all historical digests in a clean, dark-themed interface — no login required. Reports are rendered from the Markdown files in this repo via GitHub Pages.
 
@@ -44,7 +44,7 @@ Subscribe to get daily digest notifications pushed directly to your preferred pl
 
 ## RSS Feed
 
-**[https://duanyytop.github.io/agents-radar/feed.xml](https://duanyytop.github.io/agents-radar/feed.xml)**
+**[https://ivo-eu.github.io/agents-radar/feed.xml](https://ivo-eu.github.io/agents-radar/feed.xml)**
 
 Subscribe in any RSS reader (Feedly, Reeder, NewsBlur, etc.) to receive new digests automatically. The feed includes the latest 30 reports across all report types, updated daily alongside `manifest.json`.
 

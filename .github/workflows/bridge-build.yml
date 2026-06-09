@@ -1,0 +1,47 @@
+name: Build Radar Bridge
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "bridge/**"
+      - ".github/workflows/bridge-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bridge
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: bridge/go.mod
+          cache: false
+
+      - name: Test
+        run: go test ./...
+
+      - name: Build Intel macOS binary
+        env:
+          CGO_ENABLED: "0"
+          GOOS: darwin
+          GOARCH: amd64
+        run: go build -trimpath -ldflags="-s -w" -o radar-bridge ./cmd/radar-bridge
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-bridge-darwin-amd64
+          path: bridge/radar-bridge
+          if-no-files-found: error
+          retention-days: 30

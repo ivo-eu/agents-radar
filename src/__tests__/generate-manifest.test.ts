@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { toRfc822, escapeXml } from "../generate-manifest.ts";
+import { toRfc822, escapeXml, markdownToSearchText } from "../generate-manifest.ts";
 
 // ---------------------------------------------------------------------------
 // toRfc822
@@ -60,5 +60,18 @@ describe("escapeXml", () => {
 
   it("handles empty string", () => {
     expect(escapeXml("")).toBe("");
+  });
+});
+
+describe("markdownToSearchText", () => {
+  it("removes markdown syntax, URLs and code blocks", () => {
+    const result = markdownToSearchText(
+      "# Claude Code\n\n[Release](https://example.com/release) **Stable**\n\n```ts\nconst hidden = true;\n```",
+    );
+    expect(result).toBe("claude code release stable");
+  });
+
+  it("normalizes whitespace and preserves Chinese text", () => {
+    expect(markdownToSearchText("## 今日趋势\n\nAI   智能体")).toBe("今日趋势 ai 智能体");
   });
 });

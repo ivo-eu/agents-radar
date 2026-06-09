@@ -78,7 +78,7 @@ export async function saveWebReport(
 
       console.log(`  Saved ${saveFile(webContent, dateStr, fileName)}`);
 
-      if (digestRepo) {
+      if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
         const issueTitle = WEB_REPORT.issueTitle(dateStr, isFirstRun, lang);
         const webLabel = ISSUE_LABELS.web[lang];
         const webUrl = await createGitHubIssue(issueTitle, webContent, webLabel);
@@ -125,7 +125,7 @@ export async function saveTrendingReport(
 
   console.log(`  Saved ${saveFile(trendingContent, dateStr, fileName)}`);
 
-  if (digestRepo) {
+  if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
     const trendingTitle = TRENDING_REPORT.issueTitle(dateStr, lang);
     const trendingLabel = ISSUE_LABELS.trending[lang];
     const trendingUrl = await createGitHubIssue(trendingTitle, trendingContent, trendingLabel);
@@ -169,7 +169,7 @@ export async function saveHnReport(
 
     console.log(`  Saved ${saveFile(hnContent, dateStr, fileName)}`);
 
-    if (digestRepo) {
+    if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
       const hnTitle = HN_REPORT.issueTitle(dateStr, lang);
       const hnLabel = ISSUE_LABELS.hn[lang];
       const hnUrl = await createGitHubIssue(hnTitle, hnContent, hnLabel);
@@ -216,7 +216,7 @@ export async function savePhReport(
 
     console.log(`  Saved ${saveFile(phContent, dateStr, fileName)}`);
 
-    if (digestRepo) {
+    if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
       const phTitle = PH_REPORT.issueTitle(dateStr, lang);
       const phLabel = ISSUE_LABELS.ph[lang];
       const phUrl = await createGitHubIssue(phTitle, phContent, phLabel);
@@ -263,7 +263,7 @@ export async function saveArxivReport(
 
     console.log(`  Saved ${saveFile(content, dateStr, fileName)}`);
 
-    if (digestRepo) {
+    if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
       const title = ARXIV_REPORT.issueTitle(dateStr, lang);
       const label = ISSUE_LABELS.arxiv[lang];
       const url = await createGitHubIssue(title, content, label);
@@ -310,7 +310,7 @@ export async function saveHfReport(
 
     console.log(`  Saved ${saveFile(content, dateStr, fileName)}`);
 
-    if (digestRepo) {
+    if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
       const title = HF_REPORT.issueTitle(dateStr, lang);
       const label = ISSUE_LABELS.hf[lang];
       const url = await createGitHubIssue(title, content, label);
@@ -359,7 +359,7 @@ export async function saveCommunityReport(
 
     console.log(`  Saved ${saveFile(content, dateStr, fileName)}`);
 
-    if (digestRepo) {
+    if (digestRepo && process.env["PUBLISH_ISSUES"] === "true") {
       const title = COMMUNITY_REPORT.issueTitle(dateStr, lang);
       const label = ISSUE_LABELS.community[lang];
       const url = await createGitHubIssue(title, content, label);

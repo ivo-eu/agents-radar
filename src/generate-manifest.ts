@@ -1,12 +1,15 @@
 import fs from "fs";
+import crypto from "node:crypto";
 import path from "path";
 import { marked } from "marked";
 import { REPORT_LABELS } from "./i18n.ts";
 
 const DIGESTS_DIR = "digests";
 const MANIFEST_PATH = "manifest.json";
+const SYNC_MANIFEST_PATH = "sync-manifest.json";
+const SEARCH_INDEX_DIR = "search-index";
 const FEED_PATH = "feed.xml";
-const SITE_URL = "https://duanyytop.github.io/agents-radar";
+const SITE_URL = process.env["PAGES_URL"] ?? "https://ivo-eu.github.io/agents-radar";
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const REPORT_FILES = [
   "ai-cli",
@@ -44,6 +47,18 @@ interface Manifest {
   dates: DateEntry[];
 }
 
+interface SyncFile {
+  path: string;
+  size: number;
+  sha256: string;
+}
+
+interface SyncManifest {
+  version: number;
+  generated: string;
+  files: SyncFile[];
+}
+
 interface ReportContent {
   summary: string;
   fullHtml: string;
@@ -62,6 +77,79 @@ export function toRfc822(date: Date): string {
 
 export function escapeXml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+export function markdownToSearchText(markdown: string): string {
+  return markdown
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/https?:\/\/\S+/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_`~|[\]()-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function walkFiles(dir: string): string[] {
+  const files: string[] = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith(".")) continue;
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...walkFiles(fullPath));
+    } else if (entry.isFile()) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+function generateSyncManifest(generated: string): void {
+  const files = walkFiles(DIGESTS_DIR)
+    .map((filePath): SyncFile => {
+      const content = fs.readFileSync(filePath);
+      return {
+        path: path.relative(DIGESTS_DIR, filePath).split(path.sep).join("/"),
+        size: content.length,
+        sha256: crypto.createHash("sha256").update(content).digest("hex"),
+      };
+    })
+    .sort((a, b) => a.path.localeCompare(b.path));
+
+  const manifest: SyncManifest = { version: 1, generated, files };
+  fs.writeFileSync(SYNC_MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
+  console.log(`${SYNC_MANIFEST_PATH} updated: ${files.length} files`);
+}
+
+function generateSearchIndexes(entries: DateEntry[], generated: string): void {
+  fs.mkdirSync(SEARCH_INDEX_DIR, { recursive: true });
+  const months = new Map<string, Record<string, string>>();
+
+  for (const { date, reports } of entries) {
+    const month = date.slice(0, 7);
+    const monthEntries = months.get(month) ?? {};
+    const chunks = reports
+      .filter((report) => !report.endsWith("-en"))
+      .map((report) => {
+        const filePath = path.join(DIGESTS_DIR, date, `${report}.md`);
+        return fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf-8") : "";
+      });
+    monthEntries[date] = markdownToSearchText(chunks.join("\n"));
+    months.set(month, monthEntries);
+  }
+
+  const monthList = [...months.keys()].sort().reverse();
+  for (const month of monthList) {
+    fs.writeFileSync(
+      path.join(SEARCH_INDEX_DIR, `${month}.json`),
+      JSON.stringify({ generated, month, dates: months.get(month) }) + "\n",
+    );
+  }
+  fs.writeFileSync(
+    path.join(SEARCH_INDEX_DIR, "manifest.json"),
+    JSON.stringify({ generated, months: monthList }, null, 2) + "\n",
+  );
+  console.log(`${SEARCH_INDEX_DIR} updated: ${monthList.length} months`);
 }
 
 async function getReportContent(date: string, report: string): Promise<ReportContent> {
@@ -97,6 +185,7 @@ async function getReportContent(date: string, report: string): Promise<ReportCon
 }
 
 async function main(): Promise<void> {
+  const generated = new Date().toISOString();
   const entries = fs
     .readdirSync(DIGESTS_DIR)
     .filter((name) => DATE_RE.test(name) && fs.statSync(path.join(DIGESTS_DIR, name)).isDirectory())
@@ -109,12 +198,14 @@ async function main(): Promise<void> {
     .filter((e) => e.reports.length > 0);
 
   const manifest: Manifest = {
-    generated: new Date().toISOString(),
+    generated,
     dates: entries,
   };
 
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2) + "\n");
   console.log(`manifest.json updated: ${entries.length} dates`);
+  generateSyncManifest(generated);
+  generateSearchIndexes(entries, generated);
 
   // ── RSS Feed ──────────────────────────────────────────────────────────────────
 

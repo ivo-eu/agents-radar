@@ -8,12 +8,24 @@ on:
 
 permissions:
   contents: write
-  issues: write
+
+concurrency:
+  group: agents-radar-publish
+  cancel-in-progress: false
 
 jobs:
   weekly:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    env:
+      LLM_PROVIDER: openai
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+      OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+      OPENAI_STREAM: "true"
+      DIGEST_REPO: ${{ github.repository }}
+      PUBLISH_ISSUES: "false"
+      PAGES_URL: https://ivo-eu.github.io/agents-radar
 
     steps:
       - name: Checkout
@@ -34,10 +46,6 @@ jobs:
       - name: Run weekly rollup
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          DIGEST_REPO: ${{ github.repository }}
         run: pnpm weekly
 
       - name: Commit weekly report
@@ -59,9 +67,9 @@ jobs:
 
       - name: Commit manifest and feed
         run: |
-          git add manifest.json feed.xml
+          git add manifest.json sync-manifest.json feed.xml search-index/
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update manifest.json"
+            git commit -m "chore: update web indexes"
             git pull --rebase
             git push
           fi
@@ -70,5 +78,4 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '@agents_radar' }}
-          PAGES_URL: https://duanyytop.github.io/agents-radar
         run: pnpm notify

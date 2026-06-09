@@ -80,6 +80,8 @@
     .hdr-btn:hover { border-color: var(--accent); color: var(--accent); }
     .hdr-btn.icon-only { padding: 4px 7px; }
     .hdr-btn svg { display: block; }
+    .hdr-btn.connected { border-color: #2DA44E; color: #3FB950; }
+    .hdr-btn.busy { border-color: var(--accent); color: var(--accent); }
 
     /* ── Body ── */
     #body { display: flex; flex: 1; overflow: hidden; }
@@ -218,6 +220,27 @@
     .md details[open] summary::before { content: '▼'; }
     .md summary:hover { color: var(--text); }
     .md details > *:not(summary) { padding: 12px 14px; }
+    .favorite-link-btn, .favorite-block-btn {
+      border: 1px solid var(--border); background: var(--bg-side); color: var(--muted);
+      border-radius: 3px; cursor: pointer; font-family: 'Space Mono', monospace;
+      transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+    }
+    .favorite-link-btn {
+      margin-left: 5px; padding: 0 4px; font-size: 10px; vertical-align: 1px;
+    }
+    .favorite-block { position: relative; }
+    .favorite-block-btn {
+      position: absolute; right: -30px; top: 2px; padding: 1px 5px;
+      font-size: 10px; opacity: 0;
+    }
+    .favorite-block:hover > .favorite-block-btn { opacity: 1; }
+    .favorite-link-btn:hover, .favorite-block-btn:hover {
+      border-color: var(--accent); color: var(--accent);
+    }
+    .favorite-link-btn.saved, .favorite-block-btn.saved {
+      border-color: #2DA44E; color: #3FB950; opacity: 1;
+    }
+    .favorite-link-btn:disabled, .favorite-block-btn:disabled { cursor: default; }
 
     /* ── Mobile ── */
     #mob-toggle { display: none; }
@@ -228,6 +251,7 @@
       .hdr-join { display: none; }
       .hdr-icon { display: none; }
       #rssLink { display: none; }
+      #syncBtn { display: none; }
       body { overflow: auto; }
       #app { height: auto; min-height: 100vh; }
       #body { flex-direction: column; overflow: visible; }
@@ -249,6 +273,7 @@
       .side-label { margin-top: 8px; }
       #content { padding: 20px 16px 48px; }
       .md { font-size: 15px; }
+      .favorite-block-btn { right: 0; opacity: 0.8; }
     }
   </style>
 </head>
@@ -261,7 +286,7 @@
     </div>
     <div class="hdr-right">
       <div class="signal"></div>
-      <a class="hdr-btn icon-only" href="https://github.com/duanyytop/agents-radar" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+      <a class="hdr-btn icon-only" href="https://github.com/ivo-eu/agents-radar" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
         </svg>
@@ -269,6 +294,8 @@
       <a class="hdr-btn" href="https://t.me/agents_radar" target="_blank" rel="noopener noreferrer" title="Join Telegram"><span class="hdr-icon">✈</span><span class="hdr-join">Join</span>Telegram</a>
       <a class="hdr-btn" href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=478g7865-04a8-4fab-a7f8-23af85ba927b" target="_blank" rel="noopener noreferrer" title="Join Feishu Group"><span class="hdr-icon">◈</span><span class="hdr-join">Join</span>Feishu<span class="hdr-join">Group</span></a>
       <a id="rssLink" class="hdr-btn" href="./feed.xml" title="RSS Feed"><span class="hdr-icon">⊕</span>RSS</a>
+      <button id="syncBtn" class="hdr-btn" title="同步情报到 SecondBrain">SYNC</button>
+      <button id="bridgeBtn" class="hdr-btn" title="连接本地 SecondBrain">本机未连接</button>
       <button id="themeBtn" class="hdr-btn"><span class="hdr-icon">◐</span><span class="hdr-label">LIGHT</span></button>
     </div>
   </div>
@@ -359,19 +386,29 @@ function getHash() {
 
 // ── State ──
 let currentKey = null;
-let searchIndex = null;
-let searchReady = false;
+let manifestDates = [];
+const searchIndex = new Map();
+const loadedSearchMonths = new Set();
+let searchMonths = [];
+let searchGeneration = 0;
 let searchQuery = '';
 let searchDebounce = null;
+const BRIDGE_URL = 'http://127.0.0.1:4399';
+const BRIDGE_TOKEN_KEY = 'radar-bridge-token';
+let bridgeToken = localStorage.getItem(BRIDGE_TOKEN_KEY) || '';
+let bridgeConnected = false;
+let bridgeSyncing = false;
 
 const searchInput = document.getElementById('searchInput');
 const searchStatus = document.getElementById('searchStatus');
+const bridgeBtn = document.getElementById('bridgeBtn');
+const syncBtn = document.getElementById('syncBtn');
 
 function setSearchStatus(text) {
   searchStatus.textContent = text || '';
 }
 
-function applyDateSearch(query) {
+function applyDateSearch(query, loading = false) {
   const needle = query.trim().toLowerCase();
   let hits = 0;
 
@@ -379,7 +416,7 @@ function applyDateSearch(query) {
     const hdr = grp.querySelector('.date-hdr');
     if (!hdr) return;
 
-    if (!needle || !searchIndex) {
+    if (!needle) {
       hdr.classList.remove('search-hit');
       return;
     }
@@ -392,51 +429,263 @@ function applyDateSearch(query) {
 
   if (!needle) {
     setSearchStatus('');
-  } else if (!searchReady) {
-    setSearchStatus('正在建立索引…');
+  } else if (loading) {
+    setSearchStatus(`已匹配 ${hits} 天，正在加载更多月份…`);
   } else {
     setSearchStatus(`匹配 ${hits} 天`);
   }
 }
 
-async function buildSearchIndex(dates) {
-  const index = new Map();
-  await Promise.all(
-    dates.map(async ({ date, reports }) => {
-      const chunks = await Promise.all(
-        reports.map(async (report) => {
-          try {
-            const res = await fetch(`./digests/${date}/${report}.md`);
-            if (!res.ok) return '';
-            return await res.text();
-          } catch {
-            return '';
-          }
-        })
-      );
-      index.set(date, chunks.join('\n').toLowerCase());
-    })
-  );
-  return index;
+async function loadSearchManifest() {
+  if (searchMonths.length) return;
+  const res = await fetch('./search-index/manifest.json');
+  if (!res.ok) throw new Error('搜索索引清单不可用');
+  const data = await res.json();
+  searchMonths = data.months || [];
 }
 
-function initSearch(dates) {
-  searchReady = false;
-  setSearchStatus('索引准备中…');
-
-  buildSearchIndex(dates).then((index) => {
-    searchIndex = index;
-    searchReady = true;
-    applyDateSearch(searchQuery);
-    if (!searchQuery.trim()) setSearchStatus('');
-  });
+async function searchAllMonths(query, generation) {
+  const needle = query.trim().toLowerCase();
+  if (!needle) return;
+  try {
+    await loadSearchManifest();
+    for (const month of searchMonths) {
+      if (generation !== searchGeneration || !searchQuery.trim()) return;
+      if (!loadedSearchMonths.has(month)) {
+        applyDateSearch(needle, true);
+        const res = await fetch(`./search-index/${month}.json`);
+        if (res.ok) {
+          const data = await res.json();
+          Object.entries(data.dates || {}).forEach(([date, text]) => searchIndex.set(date, text));
+        }
+        loadedSearchMonths.add(month);
+      }
+      applyDateSearch(needle, loadedSearchMonths.size < searchMonths.length);
+    }
+    if (generation === searchGeneration) applyDateSearch(needle, false);
+  } catch (error) {
+    setSearchStatus(`搜索索引加载失败：${error.message}`);
+  }
 }
 
 searchInput.addEventListener('input', () => {
   searchQuery = searchInput.value;
+  searchGeneration += 1;
+  const generation = searchGeneration;
   clearTimeout(searchDebounce);
-  searchDebounce = setTimeout(() => applyDateSearch(searchQuery), 120);
+  if (!searchQuery.trim()) {
+    applyDateSearch('');
+    return;
+  }
+  applyDateSearch(searchQuery, true);
+  searchDebounce = setTimeout(() => searchAllMonths(searchQuery, generation), 180);
 });
+
+function consumeBridgeToken() {
+  const url = new URL(location.href);
+  const token = url.searchParams.get('bridge_token');
+  if (!token) return;
+  bridgeToken = token;
+  localStorage.setItem(BRIDGE_TOKEN_KEY, token);
+  url.searchParams.delete('bridge_token');
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
+}
+
+async function bridgeFetch(path, options = {}) {
+  if (!bridgeToken) throw new Error('本机尚未配对');
+  const headers = new Headers(options.headers || {});
+  headers.set('Authorization', `Bearer ${bridgeToken}`);
+  if (options.body) headers.set('Content-Type', 'application/json');
+  const res = await fetch(`${BRIDGE_URL}${path}`, { ...options, headers, mode: 'cors' });
+  if (res.status === 401) {
+    bridgeToken = '';
+    localStorage.removeItem(BRIDGE_TOKEN_KEY);
+    throw new Error('本机配对已失效');
+  }
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || `HTTP ${res.status}`);
+  }
+  return res.json();
+}
+
+function updateBridgeButtons(message) {
+  bridgeBtn.classList.toggle('connected', bridgeConnected);
+  bridgeBtn.textContent = bridgeConnected ? 'SecondBrain 已连接' : '本机未连接';
+  bridgeBtn.title = message || (bridgeConnected ? '本地 Bridge 已连接' : '点击连接本地 SecondBrain');
+  syncBtn.disabled = !bridgeConnected || bridgeSyncing;
+  syncBtn.classList.toggle('busy', bridgeSyncing);
+  syncBtn.textContent = bridgeSyncing ? '同步中…' : 'SYNC';
+}
+
+function connectBridge() {
+  const returnUrl = location.origin + location.pathname;
+  location.href = `${BRIDGE_URL}/pair?return=${encodeURIComponent(returnUrl)}`;
+}
+
+async function refreshBridgeStatus(triggerSync = false) {
+  if (!bridgeToken) {
+    bridgeConnected = false;
+    updateBridgeButtons();
+    return;
+  }
+  try {
+    const status = await bridgeFetch('/api/status');
+    bridgeConnected = true;
+    bridgeSyncing = !!status.syncing;
+    updateBridgeButtons(status.last_error || `上次同步：${status.last_sync || '尚未同步'}`);
+    if (triggerSync && !bridgeSyncing) void syncBridge(false);
+  } catch (error) {
+    bridgeConnected = false;
+    updateBridgeButtons(error.message);
+  }
+}
+
+async function syncBridge(showResult = true) {
+  if (!bridgeConnected) {
+    connectBridge();
+    return;
+  }
+  bridgeSyncing = true;
+  updateBridgeButtons();
+  try {
+    const result = await bridgeFetch('/api/sync', { method: 'POST' });
+    if (showResult) alert(`同步完成：新增或更新 ${result.updated} 个文件，跳过 ${result.skipped} 个文件。`);
+  } catch (error) {
+    if (showResult) alert(`同步失败：${error.message}`);
+  } finally {
+    bridgeSyncing = false;
+    updateBridgeButtons();
+  }
+}
+
+function currentSource() {
+  const [date = '', report = ''] = (currentKey || '').split('/');
+  return {
+    report_date: date,
+    report_type: report,
+    report_url: `${location.origin}${location.pathname}#${currentKey || ''}`,
+  };
+}
+
+function nearestSection(element) {
+  let cursor = element;
+  while (cursor) {
+    let sibling = cursor.previousElementSibling;
+    while (sibling) {
+      if (/^H[2-4]$/.test(sibling.tagName)) return sibling.textContent.trim();
+      sibling = sibling.previousElementSibling;
+    }
+    cursor = cursor.parentElement;
+    if (!cursor?.classList?.contains('md')) break;
+  }
+  return '';
+}
+
+function cleanExcerpt(element) {
+  const clone = element.cloneNode(true);
+  clone.querySelectorAll('.favorite-link-btn, .favorite-block-btn').forEach((node) => node.remove());
+  return clone.textContent.replace(/\s+/g, ' ').trim().slice(0, 1800);
+}
+
+function makeFavoriteButton(candidate, className) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = className;
+  button.textContent = '☆';
+  button.title = '收藏到 SecondBrain';
+  button._favoriteCandidate = candidate;
+  button.onclick = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (button.classList.contains('saved')) return;
+    if (!bridgeConnected) {
+      connectBridge();
+      return;
+    }
+    button.disabled = true;
+    button.textContent = '…';
+    try {
+      await bridgeFetch('/api/favorites', {
+        method: 'POST',
+        body: JSON.stringify(candidate),
+      });
+      button.classList.add('saved');
+      button.textContent = '★';
+      button.title = '已收藏';
+    } catch (error) {
+      button.textContent = '☆';
+      alert(`收藏失败：${error.message}`);
+    } finally {
+      button.disabled = button.classList.contains('saved');
+    }
+  };
+  return button;
+}
+
+async function refreshFavoriteStates(container) {
+  if (!bridgeConnected) return;
+  const buttons = [...container.querySelectorAll('.favorite-link-btn, .favorite-block-btn')];
+  if (!buttons.length) return;
+  try {
+    const result = await bridgeFetch('/api/favorites/check', {
+      method: 'POST',
+      body: JSON.stringify({ items: buttons.map((button) => button._favoriteCandidate) }),
+    });
+    (result.saved || []).forEach((saved, index) => {
+      if (!saved || !buttons[index]) return;
+      buttons[index].classList.add('saved');
+      buttons[index].textContent = '★';
+      buttons[index].title = '已收藏';
+      buttons[index].disabled = true;
+    });
+  } catch {
+    // Reading reports remains available when the local bridge is offline.
+  }
+}
+
+function enhanceFavorites() {
+  const container = document.querySelector('#content .md');
+  if (!container) return;
+  const source = currentSource();
+
+  container.querySelectorAll('a[href]').forEach((link) => {
+    const url = new URL(link.href, location.href);
+    if (!/^https?:$/.test(url.protocol)) return;
+    const context = link.closest('li, tr, p, blockquote') || link.parentElement;
+    const candidate = {
+      kind: 'link',
+      title: link.textContent.trim() || url.hostname,
+      url: url.href,
+      excerpt: context ? cleanExcerpt(context) : '',
+      section: nearestSection(context || link),
+      ...source,
+    };
+    link.after(makeFavoriteButton(candidate, 'favorite-link-btn'));
+  });
+
+  container.querySelectorAll('p, blockquote, li, tr').forEach((block) => {
+    if (block.closest('pre') || block.querySelector('.favorite-block-btn')) return;
+    const excerpt = cleanExcerpt(block);
+    if (excerpt.length < 24) return;
+    const section = nearestSection(block);
+    const candidate = {
+      kind: 'excerpt',
+      title: section || excerpt.slice(0, 60),
+      excerpt,
+      section,
+      ...source,
+    };
+    block.classList.add('favorite-block');
+    const target = block.tagName === 'TR' ? block.lastElementChild : block;
+    target?.appendChild(makeFavoriteButton(candidate, 'favorite-block-btn'));
+  });
+
+  void refreshFavoriteStates(container);
+}
+
+bridgeBtn.onclick = connectBridge;
+syncBtn.onclick = () => syncBridge(true);
 
 function setContent(html) {
   document.getElementById('content').innerHTML = html;
@@ -484,6 +733,7 @@ async function loadReport(date, report, push = true) {
     const raw = await res.text();
     const safe = renderMarkdown(raw);
     setContent(`<div class="md fade">${safe}</div>`);
+    enhanceFavorites();
   } catch (e) {
     setContent(`<div class="msg"><div class="msg-icon">⚠️</div><div>加载失败：${e.message}</div></div>`);
   }
@@ -604,14 +854,18 @@ window.addEventListener('popstate', () => {
 
 // ── Init ──
 (async () => {
+  consumeBridgeToken();
+  updateBridgeButtons();
+  await refreshBridgeStatus(true);
+
   try {
     const res = await fetch('./manifest.json');
     if (!res.ok) throw new Error('manifest.json not found');
     const { dates } = await res.json();
     if (!dates?.length) throw new Error('manifest is empty');
 
+    manifestDates = dates;
     buildNav(dates);
-    initSearch(dates);
 
     const hash = getHash();
     const first = dates[0];
