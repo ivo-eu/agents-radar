@@ -12,11 +12,12 @@ import { OpenAICompatibleProvider } from "./openai-compatible.ts";
 export class OpenAIProvider extends OpenAICompatibleProvider {
   readonly name = "openai";
 
-  constructor(opts?: { apiKey?: string; baseURL?: string; model?: string }) {
+  constructor(opts?: { apiKey?: string; baseURL?: string; model?: string; stream?: boolean }) {
     super({
       apiKey: opts?.apiKey ?? process.env["OPENAI_API_KEY"],
       baseURL: opts?.baseURL ?? process.env["OPENAI_BASE_URL"],
       model: opts?.model ?? process.env["OPENAI_MODEL"] ?? "gpt-4o",
+      stream: opts?.stream ?? process.env["OPENAI_STREAM"] === "true",
     });
   }
 }

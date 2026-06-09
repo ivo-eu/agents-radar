@@ -65,6 +65,18 @@ export function is429(err: unknown): boolean {
   return (err as { status?: number })?.status === 429 || String(err).includes("429");
 }
 
+export function isTransientNetworkError(err: unknown): boolean {
+  const error = err as { cause?: { code?: string } };
+  const code = error?.cause?.code ?? "";
+  const message = `${String(err)} ${String(error?.cause ?? "")}`;
+  return (
+    code === "UND_ERR_BODY_TIMEOUT" ||
+    code === "UND_ERR_CONNECT_TIMEOUT" ||
+    code === "ECONNRESET" ||
+    /terminated|fetch failed|socket hang up|timed? ?out/i.test(message)
+  );
+}
+
 function is403(err: unknown): boolean {
   return (err as { status?: number })?.status === 403 || String(err).includes("permission_error");
 }
@@ -76,11 +88,13 @@ export async function callLlm(prompt: string, maxTokens = LLM_TOKENS_DEFAULT): P
     try {
       return await provider.call(prompt, maxTokens);
     } catch (err) {
-      if (attempt < MAX_RETRIES && is429(err)) {
+      const retryable = is429(err) || isTransientNetworkError(err);
+      if (attempt < MAX_RETRIES && retryable) {
         releaseSlot();
         released = true;
         const wait = RETRY_BASE_MS * 2 ** attempt;
-        console.error(`[llm] 429 — retry ${attempt + 1}/${MAX_RETRIES} in ${wait / 1000}s...`);
+        const reason = is429(err) ? "429" : "network error";
+        console.error(`[llm] ${reason} — retry ${attempt + 1}/${MAX_RETRIES} in ${wait / 1000}s...`);
         await sleep(wait);
         continue;
       }

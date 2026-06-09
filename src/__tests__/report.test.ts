@@ -18,7 +18,7 @@ vi.mock("../providers/index.ts", async (importOriginal) => {
   };
 });
 
-import { is429, callLlm, saveFile, autoGenFooter } from "../report.ts";
+import { is429, isTransientNetworkError, callLlm, saveFile, autoGenFooter } from "../report.ts";
 
 // ---------------------------------------------------------------------------
 // is429
@@ -62,6 +62,19 @@ describe("is429", () => {
       headers: { "retry-after": "30" },
     });
     expect(is429(anthropicError)).toBe(true);
+  });
+});
+
+describe("isTransientNetworkError", () => {
+  it("detects undici body timeouts", () => {
+    const err = new Error("terminated", {
+      cause: Object.assign(new Error("Body Timeout Error"), { code: "UND_ERR_BODY_TIMEOUT" }),
+    });
+    expect(isTransientNetworkError(err)).toBe(true);
+  });
+
+  it("does not classify ordinary application errors as transient", () => {
+    expect(isTransientNetworkError(new Error("invalid request"))).toBe(false);
   });
 });
 
@@ -180,6 +193,20 @@ describe("callLlm", () => {
 
     const result = await promise;
     expect(result).toBe("success after retry");
+    expect(mockCall).toHaveBeenCalledTimes(2);
+  });
+
+  it("retries transient network errors", async () => {
+    const networkError = new Error("terminated", {
+      cause: Object.assign(new Error("Body Timeout Error"), { code: "UND_ERR_BODY_TIMEOUT" }),
+    });
+    mockCall.mockRejectedValueOnce(networkError);
+    mockCall.mockResolvedValueOnce("success after retry");
+
+    const promise = callLlm("prompt", 1024);
+    await vi.advanceTimersByTimeAsync(5_000);
+
+    await expect(promise).resolves.toBe("success after retry");
     expect(mockCall).toHaveBeenCalledTimes(2);
   });
 

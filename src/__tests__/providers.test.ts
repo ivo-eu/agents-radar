@@ -218,6 +218,26 @@ describe("OpenAIProvider", () => {
     });
   });
 
+  it("streams text when stream mode is enabled", async () => {
+    const mockCreate = await getOpenAIMockCreate();
+    mockCreate.mockResolvedValueOnce({
+      async *[Symbol.asyncIterator]() {
+        yield { choices: [{ delta: { content: "Hello " } }] };
+        yield { choices: [{ delta: { content: "stream" } }] };
+      },
+    });
+
+    const p = new OpenAIProvider({ apiKey: "k", model: "gpt-test", stream: true });
+    const result = await p.call("test prompt", 2048);
+    expect(result).toBe("Hello stream");
+    expect(mockCreate).toHaveBeenCalledWith({
+      model: "gpt-test",
+      max_completion_tokens: 2048,
+      messages: [{ role: "user", content: "test prompt" }],
+      stream: true,
+    });
+  });
+
   it("throws on empty response", async () => {
     const mockCreate = await getOpenAIMockCreate();
     mockCreate.mockResolvedValueOnce({
