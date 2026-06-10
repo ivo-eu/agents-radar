@@ -659,8 +659,8 @@ async function refreshFavoriteStates(container) {
         currentBatch[index].disabled = true;
       });
     }
-  } catch {
-    // Reading reports remains available when the local bridge is offline.
+  } catch (error) {
+    console.warn(`[favorites] state refresh failed: ${error.message}`);
   }
 }
 
