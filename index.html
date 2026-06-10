@@ -534,6 +534,8 @@ async function refreshBridgeStatus(triggerSync = false) {
     bridgeConnected = true;
     bridgeSyncing = !!status.syncing;
     updateBridgeButtons(status.last_error || `上次同步：${status.last_sync || '尚未同步'}`);
+    const container = document.querySelector('#content .md');
+    if (container) void refreshFavoriteStates(container);
     if (triggerSync && !bridgeSyncing) void syncBridge(false);
   } catch (error) {
     bridgeConnected = false;
