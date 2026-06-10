@@ -630,17 +630,35 @@ async function refreshFavoriteStates(container) {
   const buttons = [...container.querySelectorAll('.favorite-link-btn, .favorite-block-btn')];
   if (!buttons.length) return;
   try {
-    const result = await bridgeFetch('/api/favorites/check', {
-      method: 'POST',
-      body: JSON.stringify({ items: buttons.map((button) => button._favoriteCandidate) }),
-    });
-    (result.saved || []).forEach((saved, index) => {
-      if (!saved || !buttons[index]) return;
-      buttons[index].classList.add('saved');
-      buttons[index].textContent = '★';
-      buttons[index].title = '已收藏';
-      buttons[index].disabled = true;
-    });
+    const batches = [];
+    let batch = [];
+    let batchBytes = 16;
+    for (const button of buttons) {
+      const candidate = button._favoriteCandidate;
+      const candidateBytes = new TextEncoder().encode(JSON.stringify(candidate)).length + 1;
+      if (batch.length && batchBytes + candidateBytes > 192 * 1024) {
+        batches.push(batch);
+        batch = [];
+        batchBytes = 16;
+      }
+      batch.push(button);
+      batchBytes += candidateBytes;
+    }
+    if (batch.length) batches.push(batch);
+
+    for (const currentBatch of batches) {
+      const result = await bridgeFetch('/api/favorites/check', {
+        method: 'POST',
+        body: JSON.stringify({ items: currentBatch.map((button) => button._favoriteCandidate) }),
+      });
+      (result.saved || []).forEach((saved, index) => {
+        if (!saved || !currentBatch[index]) return;
+        currentBatch[index].classList.add('saved');
+        currentBatch[index].textContent = '★';
+        currentBatch[index].title = '已收藏';
+        currentBatch[index].disabled = true;
+      });
+    }
   } catch {
     // Reading reports remains available when the local bridge is offline.
   }
