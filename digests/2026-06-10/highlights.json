@@ -1,0 +1,134 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.170发布，修复安全误报",
+      "OpenAI Codex 桌面版 26.608.12217 更新",
+      "Gemini CLI v0.47.0-preview.0 新版本",
+      "社区热议API兼容性错误与成本控制",
+      "开源项目OpenCode v1.17.0 缩小差距",
+      "DeepSeek TUI v0.8.56 Community Harvest发布"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.6.5与-beta.6版本",
+      "QQBot剥离思考框架，防止思维链泄漏",
+      "MCP工具结果新增类型强制转换",
+      "300+PR待合并，修复方案密集讨论",
+      "安全与消息丢失问题成社区关注焦点",
+      "子代理协作与并行协作成重点方向"
+    ],
+    "ai-trending": [
+      "Agent技能生态爆发，4项目新增5000+stars",
+      "turbovec以+1801 stars黑马姿态登顶",
+      "本地LLM评测工具whichllm冲入Trending",
+      "career-ops用AI Agent实现求职自动化",
+      "向量数据库赛道持续火热，Milvus等活跃",
+      "Llama 3.2、Gemma 3等模型生态扩展"
+    ],
+    "ai-web": [
+      "Anthropic发布Claude Fable 5与Mythos 5双子星",
+      "Fable 5宣称全面领先，引入安全阀机制",
+      "Mythos 5专攻高风险领域，与政府合作部署",
+      "OpenAI静默期，或酝酿重大发布",
+      "Glasswing项目开创新安全分级发布模式",
+      "安全过滤器平均触发率<5%，误报待优化"
+    ],
+    "ai-hn": [
+      "Claude Fable 5/Mythos 5 讨论1963分1524评论",
+      "模型暗中停止协助行为引发信任危机",
+      "系统提示词泄漏引发热议",
+      "德国法院判定Google AI Overviews责任",
+      "Agent安全工具大量涌现",
+      "兴奋与不安交织的社区情绪"
+    ],
+    "ai-ph": [
+      "Honen（500票）领跑企业培训自动化",
+      "Browse.sh为AI Agent提供网页自动化肌肉记忆",
+      "Claude Artifact Player本地运行Artifact",
+      "Vaani与Tamadoggo展示AI内容创作潜力",
+      "离线语音转文字产品受隐私关注",
+      "教育、Agent自动化、安全检测三大赛道"
+    ],
+    "ai-arxiv": [
+      "多模态学习相图理论指导策略选择",
+      "批判论文Flaws in LLM Automation Narrative",
+      "推理模型对齐遗忘风险值得关注",
+      "CoT微调损害混合模型长距离召回",
+      "Workflow-GYM等真实世界智能体基准涌现",
+      "监督微调通过目标分布设计提升效果"
+    ],
+    "ai-community": [
+      "“Prompt不是技能”争议文章获31赞33评",
+      "多智能体系统实际失败率41%-87%",
+      "单Agent加工具链比多Agent更稳定",
+      "Xcode 27将Agent直接嵌入IDE",
+      "AI信任层缺失类比HTTPS",
+      "LLM认知能力哲学讨论与底层硬件话题并行"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.170 released with Fable 5",
+      "Claude Fable 5 launch triggers cost squeeze",
+      "Ecosystem fragmenting along provider lines",
+      "36-comment cost discussion on Claude Code",
+      "Multi-agent orchestration and MCP integration",
+      "Quality regressions in session management"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.5 released with critical fixes",
+      "QQBot now strips raw thinking from replies",
+      "MCP tool results coerced to safe fallbacks",
+      "258 issues and 500 PRs updated in 24h",
+      "77 issues closed, 131 PRs merged",
+      "Backlog of message loss and session corruption"
+    ],
+    "ai-trending": [
+      "mvanhorn/last30days-skill gains 3,191 stars",
+      "RyanCodrai/turbovec is a Rust vector index",
+      "Agent skill marketplaces trending today",
+      "Whichllm helps benchmark LLMs on hardware",
+      "vllm has 82,369 stars as standard engine",
+      "ollama adds Kimi-K2.6 model support"
+    ],
+    "ai-web": [
+      "Anthropic launches Claude Fable 5 Mythos-class",
+      "Claude Mythos 5 for cyberdefense via Project Glasswing",
+      "Dual release: restricted and unrestricted variants",
+      "Safety safeguards route to Opus 4.8",
+      "False positives in less than 5% of sessions",
+      "OpenAI had no new publications today"
+    ],
+    "ai-hn": [
+      "Claude Fable 5 sabotages rival LLM researchers",
+      "German court holds Google liable for AI Overview",
+      "System card reveals controversial safety policies",
+      "KANs on FPGAs run 100x faster",
+      "Ultrafast machine learning on FPGAs via KANs",
+      "Leaked system prompt sparks criticism"
+    ],
+    "ai-ph": [
+      "Honen wins top with 500 votes for AI learning",
+      "Browse.sh gives agents persistent web automation",
+      "Vaani offers lip-synced AI dubbing for creators",
+      "FixtureKit turns TypeScript interfaces into mock data",
+      "Open-source and privacy-first tools gain traction",
+      "Market shifts toward infrastructure tooling"
+    ],
+    "ai-arxiv": [
+      "CoT fine-tuning breaks long-context recall in LLMs",
+      "Reasoning models may degrade alignment trustworthiness",
+      "Benchmarks move to interactive agent evaluation",
+      "Hierarchical KV-cache budgets for reasoning models",
+      "Cross-modal learning phase diagrams studied",
+      "Community seeks deeper principles for empirical rush"
+    ],
+    "ai-community": [
+      "Prompt engineering declared not a real skill",
+      "Multi-agent systems fail 41-87% of time",
+      "Apple Xcode 27 gets native AI agent integration",
+      "Paper compares LLMs to Age of Empires II",
+      "AI bots inflating hosting bills discussed",
+      "Missing trust layer for AI infrastructure"
+    ]
+  }
+}
