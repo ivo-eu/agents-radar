@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "updated_at": "2026-06-11T07:56:57Z",
+  "items": [
+    {
+      "id": "0000000000000000000000000000000000000000000000000000000000000001",
+      "kind": "link",
+      "title": "Phase 2 端到端测试链接",
+      "url": "https://github.com/ivo-eu/agents-radar",
+      "site": "github.com",
+      "created_at": "2026-06-11T00:00:00Z",
+      "source": {
+        "date": "2026-06-10",
+        "report": "ai-trending",
+        "label": "GitHub AI 趋势"
+      }
+    }
+  ]
+}
