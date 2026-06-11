@@ -23,12 +23,18 @@ Phase 2 的 Bridge 部署与后端端到端链路已经实际跑通：
 
 已验证新增与软删两条路径均返回 `pushed: true`。
 
-但是 Phase 2 目前还不能标记为完整上线：
+同时，Phase 2 源码已于 2026-06-11 推送到 GitHub `master`：
 
-1. 正式 GitHub Pages 上尚未部署当前工作区的 Phase 2 前端代码。
+```text
+6c5feff feat: ship favorites phase 2
+```
+
+但是 Phase 2 目前还不能标记为完整验收完成：
+
+1. `master` 已收到 Phase 2 代码，但本轮未继续用 GitHub CLI 跟踪 Pages workflow 成功与否，因为 `gh` token 已失效；线上页面需在明天联调时再做一次实际验收。
 2. 第 10 节发现的 Vault 自愈和 `--repo-url` 两项问题已经修复，但第三轮复审又发现 1 个新的 P1：日报同步可能覆盖收藏同步刚写入的持久状态，详见第 11 节。
 
-建议实现 Agent 先修复第 11 节问题，再提交并发布 Phase 2 前端与 Bridge 源码。
+建议实现 Agent 先修复第 11 节问题，再做一次真实环境的并发/离线验收。
 
 ## 2. 实际部署结果
 
@@ -1020,22 +1026,19 @@ be47ceb favorites: sync (0 alive)
 
 ```text
 gh auth status
-→ ivo-eu 登录有效
-→ scopes: gist, read:org, repo, workflow
-
-gh api user
-→ 成功返回 ivo-eu
+→ Active account: true
+→ The token in default is invalid
 
 Bridge 专用 clone:
-git push --dry-run origin HEAD:master
-→ Everything up-to-date
+git push origin master
+→ 成功推送 6c5feff
 ```
 
 结论：
 
-- 当前 `gh` CLI token 没有失效。
-- Bridge 实际使用的 HTTPS + macOS `osxkeychain` Git 凭证也有效。
-- 两者是独立检查结果，当前都能正常访问 GitHub。
+- 当前 `gh` CLI token 已失效，因此不能继续依赖 GitHub CLI 查看 Actions、配 secret 或查询账号信息。
+- Bridge 实际使用的 HTTPS + macOS `osxkeychain` Git 凭证仍然有效，本轮已经用纯 `git push` 成功把 Phase 2 提交推到 GitHub。
+- 两者是独立链路；眼下“网站/Bridge 发版”不受阻，但“GitHub CLI 运维动作”需要重新登录。
 
 ### 11.7 给实现 Agent 的最新修复清单
 
