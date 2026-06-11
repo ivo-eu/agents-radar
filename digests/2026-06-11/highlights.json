@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.172发布，稳定性问题突出",
+      "OpenAI Codex推出Rust组件Alpha版",
+      "OpenCode v1.17.1紧急修复版本发布",
+      "CodeWhale品牌更名，迭代迅猛",
+      "GitHub Copilot CLI社区不满官方回应慢",
+      "Kimi Code CLI处于大规模修复期"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.6-beta.1发布，安全边界大幅收紧",
+      "修复会话状态丢失和模型覆盖持久化问题",
+      "PR积压396个，维护者审查压力巨大",
+      "社区提交320条Issues和500条PRs",
+      "多Discord机器人斜杠命令注册修复",
+      "安全与稳定性仍是核心矛盾"
+    ],
+    "ai-trending": [
+      "Agent Skills概念全面爆发，多个项目登榜",
+      "ollama以173k stars居本地模型工具之首",
+      "browser-use让AI代理操作浏览器，98k stars",
+      "mem0、claude-mem等记忆项目成热点",
+      "MoneyPrinterTurbo一键生成短视频",
+      "Dify整合RAG、Agent和工作流成企业首选"
+    ],
+    "ai-web": [
+      "Anthropic论证生物学Agent需确定性检索层",
+      "gget virus工具使准确率接近100%",
+      "OpenAI与Oracle Cloud战略合作应对算力",
+      "Anthropic强调系统可靠性大于模型能力",
+      "OpenAI谋求多云战略支撑下一代模型",
+      "两家公司差异化：Anthropic定义标准，OpenAI建基础设施"
+    ],
+    "ai-hn": [
+      "Claude Desktop每次启动生成1.8GB虚拟机",
+      "Claude Fable 5发布数小时内被越狱",
+      "AI Agent在Fedora系统失控引发担忧",
+      "Anthropic模型命名混乱遭社区调侃",
+      "OpenAI考虑大幅降价争夺用户",
+      "社区对Anthropic安全护栏不信任"
+    ],
+    "ai-ph": [
+      "agmsg解决AI编程Agent间复制粘贴问题",
+      "AgentOS企业级管理AI Agent工作空间",
+      "ZeroGPU提供AI推理高效计算层",
+      "Uiverse Design优化AI生成网站设计",
+      "BooBar将AI功能融入MacOS交互",
+      "开发者工具和Agent管理成为热门赛道"
+    ],
+    "ai-arxiv": [
+      "审计LLM训练中的递归模型依赖供应链",
+      "误导性医学上下文显著降低LLM判断力",
+      "可解释性分解后训练数据影响行为",
+      "DIRECT方法减少体感规划中的token浪费",
+      "ALIGNBEAM跨词表logit混合迁移对齐",
+      "Verifiable Environments递归组合提升推理"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro以4,762点赞登顶HF",
+      "NVIDIA推出5500亿参数MoE模型",
+      "Cohere发布代码专用小型MoE模型",
+      "JetBrains Mellum2-12B具备推理思考能力",
+      "sapientinc HRM-Text-1B垂直领域受捧",
+      "Ideogram-4-fp8量化版降低部署门槛"
+    ],
+    "ai-community": [
+      "AI Agent因无状态设计导致密钥管理器被滥用",
+      "监督式Vibe Coding讨论AI编码边界",
+      "MCP协议被深入实践和质疑",
+      "RAG系统测试方法论成热门话题",
+      "CLI over MCP实验对比浏览器自动化路径",
+      "LLM工作原理解释文章获高分讨论"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.172 ships recursive sub-agents",
+      "OpenAI Codex crash wave on macOS and Windows",
+      "Gemini CLI prioritizes enterprise hardening",
+      "GitHub Copilot CLI focuses on platform stability",
+      "OpenCode and CodeWhale prioritize rapid feature velocity",
+      "Communities demand better model compliance and cross-platform"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.6-beta.1 tightens security boundaries",
+      "320 issues and 500 PRs updated in last 24 hours",
+      "104 PRs merged or closed showing forward momentum",
+      "High-severity bugs: silent subagent failures, Discord leaks",
+      "Community faces meaningful stability challenges",
+      "Maintainer bottlenecks with needs-product-decision labels"
+    ],
+    "ai-trending": [
+      "Agent infrastructure and skill ecosystems dominate trends",
+      "Google's official 'google/skills' project trending",
+      "Community marketplace phuryn/pm-skills gains traction",
+      "mvanhorn/last30days-skill explodes +2,535 stars today",
+      "Roboflow/supervision computer vision update (+695 stars)",
+      "picollm shows expanding edge inference applications"
+    ],
+    "ai-web": [
+      "Anthropic: Biological databases must be redesigned for AI agents",
+      "Deterministic retrieval boosts accuracy to near-100%",
+      "OpenAI metadata page hints at Oracle cloud expansion",
+      "Anthropic research paper is an analytically rich signal",
+      "Tool augmentation improves agent reliability over raw model",
+      "OpenAI's Oracle connection suggests compute infrastructure expansion"
+    ],
+    "ai-hn": [
+      "Anthropic Fable series dominates HN with negative sentiment",
+      "Claude Desktop spawns 1.8GB Hyper-V VM on launch",
+      "Claude Fable 5 jailbroken to bypass new guardrails",
+      "Amazon Bedrock data-sharing requirement draws criticism",
+      "OpenAI price-war strategy reported by WSJ/Reuters",
+      "PRC-linked influence operations target US AI debates"
+    ],
+    "ai-ph": [
+      "VC Boom AI fundraising tool leads with 489 votes",
+      "ZeroGPU offers cost-efficient inference compute (346 votes)",
+      "Krisp Voice Translation API for real-time speech (266)",
+      "agmsg enables multi-agent communication (233 votes)",
+      "Kimi Work AI desktop for knowledge work (179 votes)",
+      "Four of top 14 releases are fully open-source"
+    ],
+    "ai-arxiv": [
+      "Reroute visual token routing reduces KV-cache memory costs",
+      "Anatomy of Post-Training: scalar reward encodes spurious correlations",
+      "FACTR 2: force-sensing without dedicated sensors",
+      "CHORUS: multi-embodiment robot collaboration",
+      "Impossibility of Eliciting Latent Knowledge challenges alignment",
+      "Redesign MoE routers with manifold power iteration"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro tops with 4.7K likes and 4M downloads",
+      "Nvidia Nemotron-3 Ultra 550B MoE model trends",
+      "Google Gemma-4 family appears in over a dozen entries",
+      "Nvidia LocateAnything-3B compact vision-language model",
+      "Audio generation models: Higgs Audio v3, Magenta Realtime 2",
+      "Community shows massive interest in next-gen reasoning"
+    ],
+    "ai-community": [
+      "Engineers question AI agent reliability and honesty",
+      "Agents lie about completion and forget context",
+      "Cost of running agents is rising",
+      "MCP-based tooling and telemetry suggested as fixes",
+      "Lobste.rs discusses hidden LLM behavioral traits",
+      "Philosophical debate: does it matter if AI works?"
+    ]
+  }
+}
