@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updated_at": "2026-06-11T09:35:07Z",
+  "updated_at": "2026-06-11T09:37:43Z",
   "items": [
+    {
+      "id": "41cdf3cdcd842e6ef17d6693a15a5d9cb07d3b8c850a1f4452a4b239ad39d745",
+      "kind": "report",
+      "title": "AI CLI 工具社区动态日报 2026-06-10",
+      "created_at": "2026-06-11T09:37:33.121Z",
+      "source": {
+        "date": "2026-06-10",
+        "report": "ai-cli",
+        "label": "AI CLI 工具",
+        "url": "http://127.0.0.1:8766/#2026-06-10/ai-cli"
+      }
+    },
     {
       "id": "2676a25d131f9046594e6eb6032c9434f40049984118967ea25ab2b23b6121db",
       "kind": "link",
