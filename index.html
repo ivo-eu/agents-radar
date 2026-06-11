@@ -220,27 +220,95 @@
     .md details[open] summary::before { content: '▼'; }
     .md summary:hover { color: var(--text); }
     .md details > *:not(summary) { padding: 12px 14px; }
-    .favorite-link-btn, .favorite-block-btn {
-      border: 1px solid var(--border); background: var(--bg-side); color: var(--muted);
-      border-radius: 3px; cursor: pointer; font-family: 'Space Mono', monospace;
-      transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+    /* ── Favorites: in-report markers ── */
+    .fav-report-btn {
+      border: none; background: none; cursor: pointer;
+      font-size: 19px; line-height: 1; color: var(--muted);
+      margin-left: 10px; vertical-align: 2px;
+      transition: color 0.15s, transform 0.15s;
     }
-    .favorite-link-btn {
-      margin-left: 5px; padding: 0 4px; font-size: 10px; vertical-align: 1px;
+    .fav-report-btn:hover { color: var(--accent); transform: scale(1.15); }
+    .fav-report-btn.saved { color: var(--accent); }
+    .md h1.fav-report-saved {
+      background: var(--accent-bg); border-left: 3px solid var(--accent);
+      padding: 6px 0 6px 14px; margin-left: -17px; border-radius: 0 4px 4px 0;
     }
-    .favorite-block { position: relative; }
-    .favorite-block-btn {
-      position: absolute; right: -30px; top: 2px; padding: 1px 5px;
-      font-size: 10px; opacity: 0;
+    .md a.fav-link-saved {
+      background: var(--accent-bg); text-decoration: underline dashed;
+      text-underline-offset: 3px; border-radius: 2px; padding: 0 2px;
     }
-    .favorite-block:hover > .favorite-block-btn { opacity: 1; }
-    .favorite-link-btn:hover, .favorite-block-btn:hover {
-      border-color: var(--accent); color: var(--accent);
+    .md .fav-block-saved {
+      background: var(--accent-bg); border-left: 2px solid var(--accent);
+      padding-left: 10px; border-radius: 0 3px 3px 0;
     }
-    .favorite-link-btn.saved, .favorite-block-btn.saved {
-      border-color: #2DA44E; color: #3FB950; opacity: 1;
+    @keyframes favflash {
+      0%, 100% { background: transparent; box-shadow: none; }
+      20%, 60% { background: var(--accent-bg); box-shadow: 0 0 0 5px var(--accent-bg); }
     }
-    .favorite-link-btn:disabled, .favorite-block-btn:disabled { cursor: default; }
+    .fav-flash { animation: favflash 1.6s ease; border-radius: 3px; }
+
+    /* floating bubble shared by link-hover and text-selection */
+    .fav-popover {
+      position: fixed; z-index: 200;
+      background: var(--bg-active); border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 4px; padding: 4px 10px;
+      font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.04em;
+      cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.4); white-space: nowrap;
+      user-select: none; opacity: 0; transform: translateY(3px); pointer-events: none;
+      transition: opacity 0.12s, transform 0.12s;
+    }
+    .fav-popover.show { opacity: 1; transform: none; pointer-events: auto; }
+    .fav-popover:hover { background: var(--accent); color: var(--bg); }
+
+    /* ── Sidebar: My Favorites ── */
+    .fav-nav-head {
+      display: flex; align-items: center; gap: 6px;
+      padding: 4px 16px 6px; font-size: 12px; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.04em;
+    }
+    .fav-nav { padding: 0 12px 6px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+    .fav-nav-btn {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; padding: 5px 10px; margin-bottom: 2px;
+      background: none; border: 1px solid transparent; border-radius: 4px;
+      text-align: left; cursor: pointer; font-family: inherit; font-size: 12px;
+      color: var(--muted); transition: color 0.1s, background 0.1s, border-color 0.1s;
+    }
+    .fav-nav-btn:hover { background: var(--bg-hover); color: var(--text); }
+    .fav-nav-btn.active { color: var(--accent); border-color: var(--accent); background: var(--accent-bg); }
+    .fav-count { font-size: 10px; color: var(--dim); min-width: 16px; text-align: right; }
+    .fav-nav-btn.active .fav-count { color: var(--accent); }
+
+    /* ── Favorites list view ── */
+    .fav-list-head { font-size: 21px; font-weight: 600; margin-bottom: 6px; font-family: 'Source Serif 4', serif; }
+    .fav-list-sub { font-size: 11px; color: var(--muted); margin-bottom: 22px; letter-spacing: 0.04em; font-family: 'Space Mono', monospace; }
+    .fav-group-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin: 26px 0 12px; font-family: 'Space Mono', monospace;
+    }
+    .fav-card {
+      border: 1px solid var(--border); border-radius: 6px; padding: 14px 16px;
+      margin-bottom: 12px; background: var(--bg-side); transition: border-color 0.15s;
+    }
+    .fav-card:hover { border-color: var(--dim); }
+    .fav-card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; display: flex; gap: 8px; align-items: baseline; }
+    .fav-badge {
+      flex-shrink: 0; font-family: 'Space Mono', monospace; font-size: 9px;
+      letter-spacing: 0.06em; padding: 2px 6px; border-radius: 3px;
+      background: var(--accent-bg); color: var(--accent); border: 1px solid var(--accent);
+    }
+    .fav-excerpt { font-size: 13px; color: var(--text); margin: 6px 0 10px; line-height: 1.6; }
+    .fav-meta { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; line-height: 1.7; }
+    .fav-actions { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .fav-action {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-family: 'Space Mono', monospace; font-size: 11px; color: var(--link);
+      letter-spacing: 0.04em; transition: color 0.1s;
+    }
+    .fav-action:hover { text-decoration: underline; }
+    .fav-action.danger { color: var(--muted); }
+    .fav-action.danger:hover { color: #f85149; }
+    .fav-empty { color: var(--muted); font-size: 13px; padding: 48px 0; text-align: center; }
 
     /* ── Mobile ── */
     #mob-toggle { display: none; }
@@ -273,7 +341,7 @@
       .side-label { margin-top: 8px; }
       #content { padding: 20px 16px 48px; }
       .md { font-size: 15px; }
-      .favorite-block-btn { right: 0; opacity: 0.8; }
+      .md h1.fav-report-saved { margin-left: 0; }
     }
   </style>
 </head>
@@ -305,6 +373,8 @@
       <div id="mob-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
         ☰ &nbsp;选择报告
       </div>
+      <div class="fav-nav-head">★ 我的收藏</div>
+      <div class="fav-nav" id="favNav"></div>
       <div class="side-label">REPORTS</div>
       <div class="search-wrap">
         <input id="searchInput" type="search" placeholder="搜索全文，如 Claude">
@@ -379,9 +449,33 @@ applyTheme(theme);
 themeBtn.onclick = () => applyTheme(theme === 'dark' ? 'light' : 'dark');
 
 // ── Routing ──
-function getHash() {
-  const [date, report] = location.hash.slice(1).split('/');
-  return /^\d{4}-\d{2}-\d{2}$/.test(date) && report ? { date, report } : null;
+function parseRoute() {
+  const [a, b] = location.hash.slice(1).split('/');
+  if (a === 'favorites') return { type: 'favorites', kind: FAV_KINDS.includes(b) ? b : 'all' };
+  if (/^\d{4}-\d{2}-\d{2}$/.test(a) && b) return { type: 'report', date: a, report: b };
+  return null;
+}
+function readFocus() {
+  const f = new URLSearchParams(location.search).get('focus');
+  if (f) pendingFocus = f;
+}
+function reportExists(date, report) {
+  return manifestDates.some((d) => d.date === date && d.reports.includes(report));
+}
+async function handleRoute() {
+  readFocus();
+  const route = parseRoute();
+  if (route?.type === 'favorites') { renderFavoritesView(route.kind); return; }
+  if (route?.type === 'report' && reportExists(route.date, route.report)) {
+    if (`${route.date}/${route.report}` === currentKey) applyPendingFocus();
+    else await loadReport(route.date, route.report, false);
+    return;
+  }
+  const first = manifestDates[0];
+  if (first?.reports?.length) {
+    history.replaceState(null, '', `#${first.date}/${first.reports[0]}`);
+    await loadReport(first.date, first.reports[0], false);
+  }
 }
 
 // ── State ──
@@ -398,6 +492,209 @@ const BRIDGE_TOKEN_KEY = 'radar-bridge-token';
 let bridgeToken = localStorage.getItem(BRIDGE_TOKEN_KEY) || '';
 let bridgeConnected = false;
 let bridgeSyncing = false;
+
+// ── Favorites state (Phase 1 bookmarks + Phase 2 sync) ──
+const FAV_KEY = 'radar-favorites';
+const FAV_HIDDEN_KEY = 'radar-favorites-hidden'; // legacy local tombstones (migrated to deleted_at)
+const FAV_SYNCED_KEY = 'radar-favorites-synced-at';
+const FAV_KINDS = ['report', 'link', 'excerpt'];
+const FAV_KIND_LABEL = { report: '整篇', link: '链接', excerpt: '段落' };
+// Single source of truth for "a favoritable block" — selection and decoration
+// MUST use the same selector so every excerpt block gets a resolvable anchor.
+const FAV_BLOCK_SELECTOR = 'p, blockquote, li, td, h2, h3, h4';
+const FAV_SYNC_DEBOUNCE = 5000;
+let favoriteStore = { version: 1, updated_at: '', items: [] };
+let favoriteIds = new Set(); // alive ids only (no deleted_at)
+let currentFavFilter = null; // null = report view; else 'all'|'report'|'link'|'excerpt'
+let pendingFocus = null;
+// Phase 2 sync: tombstones live in favoriteStore.items as items with deleted_at.
+let favSyncedAt = localStorage.getItem(FAV_SYNCED_KEY) || '';
+let favSyncing = false;
+let favSyncError = '';
+let favSyncTimer = null;
+
+// Items the user can still see — tombstones (deleted_at) excluded.
+function aliveItems() { return favoriteStore.items.filter((it) => !it.deleted_at); }
+
+function loadLocalFavorites() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(FAV_KEY) || 'null');
+    if (raw && Array.isArray(raw.items)) return raw;
+  } catch (_) { /* corrupt → ignore */ }
+  return { version: 1, updated_at: '', items: [] };
+}
+
+function loadHiddenFavorites() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(FAV_HIDDEN_KEY) || 'null');
+    if (Array.isArray(raw)) return raw;
+  } catch (_) { /* corrupt → ignore */ }
+  return [];
+}
+
+function persistFavorites() {
+  favoriteStore.updated_at = new Date().toISOString();
+  localStorage.setItem(FAV_KEY, JSON.stringify(favoriteStore));
+  favoriteIds = new Set(aliveItems().map((it) => it.id));
+}
+
+// ── merge engine (JS mirror of the Go Bridge mergeFavorites; see main.go) ──
+function favPreferNonEmpty(a, b) { return (a && String(a).trim()) ? a : b; }
+function favEarliest(a, b) { if (!a) return b || ''; if (!b) return a; return a < b ? a : b; }
+function favLatest(a, b) { return (a || '') > (b || '') ? (a || '') : (b || ''); }
+function mergeSource(a, b) {
+  a = a || {}; b = b || {};
+  return {
+    date: favPreferNonEmpty(b.date, a.date) || '',
+    report: favPreferNonEmpty(b.report, a.report) || '',
+    label: favPreferNonEmpty(b.label, a.label) || '',
+    url: favPreferNonEmpty(b.url, a.url) || '',
+    anchor: favPreferNonEmpty(b.anchor, a.anchor) || '',
+  };
+}
+// Combine two records of the same id; b is the newer fold input. created_at keeps
+// the earliest (stable sort key); revived_at keeps the latest re-favorite event;
+// life/death uses max(created_at, revived_at) vs max(deleted_at) so a stale
+// tombstone can't re-kill an item revived after it. Mirror of Go mergeTwo.
+function mergeItem(a, b) {
+  const out = { ...a };
+  out.kind = a.kind || b.kind || '';
+  for (const f of ['title', 'url', 'site', 'excerpt', 'section']) {
+    out[f] = favPreferNonEmpty(b[f], a[f]) || '';
+  }
+  out.source = mergeSource(a.source, b.source);
+  out.created_at = favEarliest(a.created_at, b.created_at);
+  out.revived_at = favLatest(a.revived_at, b.revived_at);
+  const delTime = favLatest(a.deleted_at, b.deleted_at);
+  const aliveTime = favLatest(favLatest(a.created_at, b.created_at), out.revived_at);
+  out.deleted_at = (delTime && (!aliveTime || aliveTime <= delTime)) ? delTime : '';
+  if (!out.revived_at) delete out.revived_at;
+  return out;
+}
+
+// Merge local bookmarks, legacy tombstones, and a published favorites.json.
+// Tombstones (deleted_at) are kept so cross-device removals do not resurrect.
+async function loadFavorites() {
+  const local = loadLocalFavorites();
+  const byId = new Map();
+  const fold = (it) => {
+    if (!it || !it.id) return;
+    byId.set(it.id, byId.has(it.id) ? mergeItem(byId.get(it.id), it) : it);
+  };
+  local.items.forEach(fold);
+  // Migrate legacy local-only tombstones to weak (epoch) deleted_at items, so a
+  // newer real re-add anywhere still overrides them.
+  loadHiddenFavorites().forEach((id) => {
+    if (typeof id === 'string') fold({ id, kind: '', created_at: '', deleted_at: '1970-01-01T00:00:01.000Z', source: {} });
+  });
+  try {
+    const res = await fetch('./favorites.json', { cache: 'no-store' });
+    if (res.ok) {
+      const remote = await res.json();
+      (remote.items || []).forEach(fold);
+    }
+  } catch (_) { /* not published yet / offline */ }
+  favoriteStore = { version: 1, updated_at: local.updated_at, items: [...byId.values()] };
+  favoriteIds = new Set(aliveItems().map((it) => it.id));
+}
+
+// ── Phase 2 sync client (debounced, seamless; SYNC button is a fallback) ──
+// Pending = any item whose latest activity (created/deleted) is newer than the
+// last successful push.
+function favLastActivity(it) {
+  // Newest of first-favorite / revive / delete — the item's latest local change.
+  return favLatest(favLatest(it.created_at, it.revived_at), it.deleted_at);
+}
+function pendingFavCount() {
+  return favoriteStore.items.filter((it) => {
+    const ts = favLastActivity(it);
+    return ts && ts > favSyncedAt;
+  }).length;
+}
+function scheduleFavSync() {
+  updateBridgeButtons();
+  if (!bridgeConnected) return; // stays pending; flushed on connect
+  clearTimeout(favSyncTimer);
+  favSyncTimer = setTimeout(() => void flushFavSync(false), FAV_SYNC_DEBOUNCE);
+}
+// Fold an authoritative server set onto the current store WITHOUT clobbering
+// edits the user made while the request was in flight: merge by id (mergeItem
+// keeps the newest event on each side), so an in-flight add/remove survives.
+function reconcileWithServer(serverItems) {
+  const byId = new Map();
+  const fold = (it) => {
+    if (!it || !it.id) return;
+    byId.set(it.id, byId.has(it.id) ? mergeItem(byId.get(it.id), it) : it);
+  };
+  serverItems.forEach(fold);          // authoritative base
+  favoriteStore.items.forEach(fold);  // current store may hold in-flight changes
+  favoriteStore.items = [...byId.values()];
+  localStorage.setItem(FAV_KEY, JSON.stringify(favoriteStore));
+  favoriteIds = new Set(aliveItems().map((it) => it.id));
+}
+async function flushFavSync(showResult = false) {
+  if (favSyncing || !bridgeConnected) return;
+  if (!showResult && !pendingFavCount()) return;
+  clearTimeout(favSyncTimer);
+  favSyncing = true; favSyncError = ''; updateBridgeButtons();
+  // Snapshot what we are about to confirm. The watermark is the newest activity
+  // IN THE SNAPSHOT; favSyncedAt may only advance to it — never to "now" — so any
+  // change made while the request is in flight stays pending and re-syncs.
+  const snapshot = favoriteStore.items.map((it) => ({ ...it }));
+  let ackWatermark = '';
+  for (const it of snapshot) ackWatermark = favLatest(ackWatermark, favLastActivity(it));
+  try {
+    const res = await bridgeFetch('/api/favorites/sync', {
+      method: 'POST',
+      body: JSON.stringify({ items: snapshot }),
+    });
+    if (Array.isArray(res.items)) reconcileWithServer(res.items);
+    // A sync is only fully done when BOTH products succeeded: GitHub push AND the
+    // SecondBrain markdown. A vault failure is a partial success — keep it pending
+    // (do NOT advance the watermark) so the auto-retry actually re-sends and heals.
+    const vaultFailed = res.pushed && res.vault_written === false;
+    if (res.pushed && !vaultFailed) {
+      // Advance only to the snapshot's watermark, not the response time.
+      favSyncedAt = favLatest(favSyncedAt, ackWatermark);
+      localStorage.setItem(FAV_SYNCED_KEY, favSyncedAt);
+      favSyncError = '';
+    } else if (vaultFailed) {
+      favSyncError = res.vault_error || 'SecondBrain 写入失败';
+    } else {
+      favSyncError = res.error || '待推送 GitHub';
+    }
+    renderFavNav();
+    if (currentFavFilter) renderFavoritesView(currentFavFilter, false);
+    if (showResult) {
+      if (vaultFailed) alert(`GitHub 已同步，但 SecondBrain 写入失败：${res.vault_error || ''}`);
+      else if (res.pushed) alert(`收藏已同步（${res.alive ?? aliveItems().length} 条）`);
+      else alert(`已合并到本机，待推送：${res.error || ''}`);
+    }
+  } catch (e) {
+    favSyncError = e.message;
+    if (showResult) alert(`收藏同步失败：${e.message}`);
+  } finally {
+    favSyncing = false;
+    updateBridgeButtons();
+    // If the user changed favorites while we were syncing, or push failed,
+    // schedule another flush. (Re-checks pending; no-op when fully synced.)
+    if (bridgeConnected && (pendingFavCount() || favSyncError)) {
+      clearTimeout(favSyncTimer);
+      favSyncTimer = setTimeout(() => void flushFavSync(false), favSyncError ? 30000 : FAV_SYNC_DEBOUNCE);
+    }
+  }
+}
+// Best-effort flush when the tab is hidden/closed (keepalive survives unload).
+function favSyncBeacon() {
+  if (!bridgeConnected || !bridgeToken || !pendingFavCount()) return;
+  try {
+    fetch(`${BRIDGE_URL}/api/favorites/sync`, {
+      method: 'POST', mode: 'cors', keepalive: true,
+      headers: { Authorization: `Bearer ${bridgeToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: favoriteStore.items }),
+    });
+  } catch (_) { /* best effort */ }
+}
 
 const searchInput = document.getElementById('searchInput');
 const searchStatus = document.getElementById('searchStatus');
@@ -511,11 +808,18 @@ async function bridgeFetch(path, options = {}) {
 
 function updateBridgeButtons(message) {
   bridgeBtn.classList.toggle('connected', bridgeConnected);
-  bridgeBtn.textContent = bridgeConnected ? 'SecondBrain 已连接' : '本机未连接';
-  bridgeBtn.title = message || (bridgeConnected ? '本地 Bridge 已连接' : '点击连接本地 SecondBrain');
-  syncBtn.disabled = !bridgeConnected || bridgeSyncing;
-  syncBtn.classList.toggle('busy', bridgeSyncing);
-  syncBtn.textContent = bridgeSyncing ? '同步中…' : 'SYNC';
+  const pending = pendingFavCount();
+  let label = bridgeConnected ? 'SecondBrain 已连接' : '本机未连接';
+  if (favSyncing) label += ' · 同步收藏中…';
+  else if (pending) label += ` · ${pending} 条待同步`;
+  bridgeBtn.textContent = label;
+  let title = message || (bridgeConnected ? '本地 Bridge 已连接' : '点击连接本地 SecondBrain');
+  if (favSyncError) title = `收藏未同步：${favSyncError}`;
+  else if (pending && !bridgeConnected) title = `${pending} 条收藏待同步，连接后自动上传`;
+  bridgeBtn.title = title;
+  syncBtn.disabled = !bridgeConnected || bridgeSyncing || favSyncing;
+  syncBtn.classList.toggle('busy', bridgeSyncing || favSyncing);
+  syncBtn.textContent = (bridgeSyncing || favSyncing) ? '同步中…' : 'SYNC';
 }
 
 function connectBridge() {
@@ -533,10 +837,16 @@ async function refreshBridgeStatus(triggerSync = false) {
     const status = await bridgeFetch('/api/status');
     bridgeConnected = true;
     bridgeSyncing = !!status.syncing;
+    // Adopt the Bridge-persisted favorites error (e.g. a prior vault-write failure)
+    // so the warning survives a page refresh. Don't clobber an in-flight local error.
+    if (!favSyncing && !favSyncError && status.favorites_error) {
+      favSyncError = status.favorites_error;
+    }
     updateBridgeButtons(status.last_error || `上次同步：${status.last_sync || '尚未同步'}`);
-    const container = document.querySelector('#content .md');
-    if (container) void refreshFavoriteStates(container);
     if (triggerSync && !bridgeSyncing) void syncBridge(false);
+    // pendingFavCount() stays > 0 after a vault failure (watermark not advanced),
+    // so this also drives the vault-write retry — no separate trigger needed.
+    if (pendingFavCount()) void flushFavSync(false);
   } catch (error) {
     bridgeConnected = false;
     updateBridgeButtons(error.message);
@@ -564,9 +874,10 @@ async function syncBridge(showResult = true) {
 function currentSource() {
   const [date = '', report = ''] = (currentKey || '').split('/');
   return {
-    report_date: date,
-    report_type: report,
-    report_url: `${location.origin}${location.pathname}#${currentKey || ''}`,
+    date,
+    report,
+    label: LABELS[report] || report,
+    url: `${location.origin}${location.pathname}#${currentKey || ''}`,
   };
 }
 
@@ -586,126 +897,450 @@ function nearestSection(element) {
 
 function cleanExcerpt(element) {
   const clone = element.cloneNode(true);
-  clone.querySelectorAll('.favorite-link-btn, .favorite-block-btn').forEach((node) => node.remove());
+  clone.querySelectorAll('.fav-report-btn').forEach((node) => node.remove());
   return clone.textContent.replace(/\s+/g, ' ').trim().slice(0, 1800);
 }
 
-function makeFavoriteButton(candidate, className) {
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = className;
-  button.textContent = '☆';
-  button.title = '收藏到 SecondBrain';
-  button._favoriteCandidate = candidate;
-  button.onclick = async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (button.classList.contains('saved')) return;
-    if (!bridgeConnected) {
-      connectBridge();
-      return;
-    }
-    button.disabled = true;
-    button.textContent = '…';
-    try {
-      await bridgeFetch('/api/favorites', {
-        method: 'POST',
-        body: JSON.stringify(candidate),
-      });
-      button.classList.add('saved');
-      button.textContent = '★';
-      button.title = '已收藏';
-    } catch (error) {
-      button.textContent = '☆';
-      alert(`收藏失败：${error.message}`);
-    } finally {
-      button.disabled = button.classList.contains('saved');
-    }
-  };
-  return button;
-}
-
-async function refreshFavoriteStates(container) {
-  if (!bridgeConnected) return;
-  const buttons = [...container.querySelectorAll('.favorite-link-btn, .favorite-block-btn')];
-  if (!buttons.length) return;
+// ── stable IDs: SHA-256 hex over canonical strings (must match Go Bridge) ──
+// Mirror of bridge normalizeFavoriteURL: lowercase scheme+host, drop fragment,
+// strip utm_*/ref/source params, stable-sort query, collapse root path "/" → "".
+// Go uses url.String() + url.Values.Encode(); we reproduce that byte-for-byte.
+function normalizeUrl(href) {
+  let u;
   try {
-    const batches = [];
-    let batch = [];
-    let batchBytes = 16;
-    for (const button of buttons) {
-      const candidate = button._favoriteCandidate;
-      const candidateBytes = new TextEncoder().encode(JSON.stringify(candidate)).length + 1;
-      if (batch.length && batchBytes + candidateBytes > 192 * 1024) {
-        batches.push(batch);
-        batch = [];
-        batchBytes = 16;
-      }
-      batch.push(button);
-      batchBytes += candidateBytes;
-    }
-    if (batch.length) batches.push(batch);
-
-    for (const currentBatch of batches) {
-      const result = await bridgeFetch('/api/favorites/check', {
-        method: 'POST',
-        body: JSON.stringify({ items: currentBatch.map((button) => button._favoriteCandidate) }),
-      });
-      (result.saved || []).forEach((saved, index) => {
-        if (!saved || !currentBatch[index]) return;
-        currentBatch[index].classList.add('saved');
-        currentBatch[index].textContent = '★';
-        currentBatch[index].title = '已收藏';
-        currentBatch[index].disabled = true;
-      });
-    }
-  } catch (error) {
-    console.warn(`[favorites] state refresh failed: ${error.message}`);
+    u = new URL((href || '').trim(), location.href);
+  } catch (_) {
+    return (href || '').trim();
   }
+  if (u.protocol !== 'http:' && u.protocol !== 'https:') return (href || '').trim();
+  u.protocol = u.protocol.toLowerCase();
+  u.hostname = u.hostname.toLowerCase();
+  u.hash = '';
+  for (const key of [...u.searchParams.keys()]) {
+    const lower = key.toLowerCase();
+    if (lower.startsWith('utm_') || lower === 'ref' || lower === 'source') {
+      u.searchParams.delete(key);
+    }
+  }
+  u.searchParams.sort();
+  // Go's url.Values.Encode() encodes spaces as '+' (same as URLSearchParams),
+  // but URLSearchParams also percent-encodes a handful of chars Go leaves raw.
+  const query = encodeGoQuery(u.searchParams);
+  let path = u.pathname;
+  if (path === '/') path = '';
+  return `${u.protocol}//${u.host}${path}${query ? '?' + query : ''}`;
 }
 
-function enhanceFavorites() {
+// Reproduce Go url.Values.Encode(): RFC3986-ish escaping where space→'+',
+// matching net/url.QueryEscape so JS and Go derive the same favorite ID.
+function encodeGoQuery(params) {
+  const parts = [];
+  for (const [k, v] of params) {
+    parts.push(goQueryEscape(k) + '=' + goQueryEscape(v));
+  }
+  return parts.join('&');
+}
+function goQueryEscape(s) {
+  let out = '';
+  for (const ch of s) {
+    if (/[A-Za-z0-9\-_.~]/.test(ch)) { out += ch; continue; }
+    if (ch === ' ') { out += '+'; continue; }
+    for (const byte of new TextEncoder().encode(ch)) {
+      out += '%' + byte.toString(16).toUpperCase().padStart(2, '0');
+    }
+  }
+  return out;
+}
+
+// Mirror of bridge normalizeText: collapse whitespace, trim, lowercase.
+// Used ONLY for ID hashing — never for display (it discards case).
+function normalizeText(text) {
+  return (text || '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+// Display/length helper: collapse whitespace + trim, but keep original case.
+function normalizeDisplayText(text) {
+  return (text || '').replace(/\s+/g, ' ').trim();
+}
+async function sha256Hex(input) {
+  const data = new TextEncoder().encode(input);
+  const buf = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+function favKeyString(kind, parts) {
+  if (kind === 'report') return `report\n${parts.date}\n${parts.report}`;
+  if (kind === 'link') return `link\n${normalizeUrl(parts.url)}`;
+  return `excerpt\n${parts.date}\n${parts.report}\n${normalizeText(parts.excerpt)}`;
+}
+function favId(kind, parts) {
+  return sha256Hex(favKeyString(kind, parts));
+}
+
+// Content-derived locator for the DOM block that contains an excerpt.
+// Independent of the user's selected sub-string, so the same block always
+// resolves to the same anchor across re-renders — used for highlight + jump-back.
+// (Local-only in Phase 1; lives under source.anchor.)
+function blockAnchorId(date, report, blockText) {
+  return sha256Hex(`block\n${date}\n${report}\n${normalizeText(blockText)}`);
+}
+
+function siteOf(href) {
+  try { return new URL(href, location.href).hostname; } catch (_) { return ''; }
+}
+
+// ── add / remove / toggle (localStorage + debounced Bridge sync) ──
+function addFavorite(item) {
+  const existing = favoriteStore.items.find((it) => it.id === item.id);
+  if (existing) {
+    if (!existing.deleted_at) return false; // already alive
+    // Revive a tombstone: refresh content, keep the original created_at (sort key),
+    // stamp revived_at = now so this re-favorite survives a stale remote tombstone.
+    const firstCreated = existing.created_at || item.created_at;
+    Object.assign(existing, item, {
+      created_at: firstCreated,
+      revived_at: new Date().toISOString(),
+      deleted_at: '',
+    });
+  } else {
+    favoriteStore.items.push(item);
+  }
+  persistFavorites();
+  renderFavNav();
+  if (currentFavFilter) renderFavoritesView(currentFavFilter, false);
+  scheduleFavSync();
+  return true;
+}
+function removeFavorite(id) {
+  // Soft-delete: keep a tombstone so the removal syncs and never resurrects.
+  const it = favoriteStore.items.find((x) => x.id === id);
+  if (it) it.deleted_at = new Date().toISOString();
+  persistFavorites();
+  renderFavNav();
+  scheduleFavSync();
+}
+function toggleFavorite(item) {
+  if (favoriteIds.has(item.id)) { removeFavorite(item.id); return false; }
+  addFavorite(item);
+  return true;
+}
+
+// ── popover (shared by link hover + text selection) ──
+let popover = null;
+let popoverShowTimer = null;
+let popoverHideTimer = null;
+function ensurePopover() {
+  if (popover) return popover;
+  popover = document.createElement('div');
+  popover.className = 'fav-popover';
+  popover.addEventListener('mousedown', (e) => e.preventDefault()); // keep text selection
+  popover.addEventListener('click', () => {
+    const action = popover._action;
+    hidePopover();
+    if (action) action();
+  });
+  popover.addEventListener('mouseenter', () => clearTimeout(popoverHideTimer));
+  popover.addEventListener('mouseleave', () => { popoverHideTimer = setTimeout(hidePopover, 140); });
+  document.body.appendChild(popover);
+  return popover;
+}
+function showPopover(x, y, text, action) {
+  ensurePopover();
+  popover.textContent = text;
+  popover._action = action;
+  popover.style.left = Math.max(8, Math.min(x, window.innerWidth - 120)) + 'px';
+  popover.style.top = Math.max(8, y) + 'px';
+  popover.classList.add('show');
+}
+function hidePopover() {
+  if (popover) { popover.classList.remove('show'); popover._action = null; }
+}
+
+// ── link favorite toggle ──
+function toggleLinkFavorite(link, id, url) {
+  const source = currentSource();
+  const context = link.closest('li, tr, td, p, blockquote') || link.parentElement;
+  const nowSaved = toggleFavorite({
+    id,
+    kind: 'link',
+    title: normalizeDisplayText(link.textContent) || siteOf(url),
+    url,
+    site: siteOf(url),
+    excerpt: context ? cleanExcerpt(context) : '',
+    section: nearestSection(context || link),
+    created_at: new Date().toISOString(),
+    source,
+  });
+  link.classList.toggle('fav-link-saved', nowSaved);
+}
+
+function bindLinkHover(link, id, url) {
+  link.addEventListener('mouseenter', () => {
+    clearTimeout(popoverHideTimer);
+    clearTimeout(popoverShowTimer);
+    popoverShowTimer = setTimeout(() => {
+      const r = link.getBoundingClientRect();
+      const saved = favoriteIds.has(id);
+      showPopover(r.left, r.top - 32, saved ? '取消收藏链接' : '收藏链接', () => toggleLinkFavorite(link, id, url));
+    }, 320);
+  });
+  link.addEventListener('mouseleave', () => {
+    clearTimeout(popoverShowTimer);
+    popoverHideTimer = setTimeout(() => { if (!popover?.matches(':hover')) hidePopover(); }, 160);
+  });
+}
+
+// ── text-selection → favorite the SELECTED TEXT, anchored to its block ──
+// Resolve the favoritable block that contains the current selection.
+function selectionBlock() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
+  let node = sel.getRangeAt(0).commonAncestorContainer;
+  if (node.nodeType === 3) node = node.parentElement;
+  if (!node || !node.closest) return null;
+  if (!node.closest('#content .md')) return null;
+  if (node.closest('pre')) return null;
+  return node.closest(FAV_BLOCK_SELECTOR) || null;
+}
+function setupSelectionFavorites() {
+  document.addEventListener('mouseup', (e) => {
+    if (popover && popover.contains(e.target)) return;
+    // Capture selection text + block SYNCHRONOUSLY — the async id() below and
+    // clicking the popover can clear the selection, so we must not re-read it.
+    const selectedText = normalizeDisplayText(window.getSelection()?.toString() || '');
+    const block = selectionBlock();
+    setTimeout(async () => {
+      if (!block || selectedText.length < 8) { hidePopover(); return; }
+      const source = currentSource();
+      const blockText = cleanExcerpt(block);
+      const id = await favId('excerpt', { date: source.date, report: source.report, excerpt: selectedText });
+      const anchor = await blockAnchorId(source.date, source.report, blockText);
+      const saved = favoriteIds.has(id);
+      // bubble at the cursor's upper-right
+      showPopover(e.clientX + 12, e.clientY - 34, saved ? '取消收藏段落' : '收藏段落', () => {
+        const section = nearestSection(block);
+        toggleFavorite({
+          id,
+          kind: 'excerpt',
+          title: section || selectedText.slice(0, 60),
+          excerpt: selectedText,
+          section,
+          created_at: new Date().toISOString(),
+          source: { ...source, anchor },
+        });
+        // Highlight the whole containing block while any excerpt still points at it.
+        block.dataset.favAnchor = anchor;
+        block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
+        window.getSelection()?.removeAllRanges();
+      });
+    }, 10);
+  });
+  document.addEventListener('mousedown', (e) => {
+    if (popover && !popover.contains(e.target)) hidePopover();
+  });
+  document.addEventListener('scroll', hidePopover, true);
+}
+
+// A block stays highlighted while ANY excerpt favorite points at its anchor.
+function blockHasSavedExcerpt(anchor) {
+  if (!anchor) return false;
+  return favoriteStore.items.some(
+    (it) => it.kind === 'excerpt' && !it.deleted_at && it.source?.anchor === anchor,
+  );
+}
+
+// ── decorate a freshly rendered report ──
+async function enhanceFavorites() {
   const container = document.querySelector('#content .md');
   if (!container) return;
   const source = currentSource();
 
-  container.querySelectorAll('a[href]').forEach((link) => {
-    const url = new URL(link.href, location.href);
-    if (!/^https?:$/.test(url.protocol)) return;
-    const context = link.closest('li, tr, p, blockquote') || link.parentElement;
-    const candidate = {
-      kind: 'link',
-      title: link.textContent.trim() || url.hostname,
-      url: url.href,
-      excerpt: context ? cleanExcerpt(context) : '',
-      section: nearestSection(context || link),
-      ...source,
+  // 1) whole-report star next to the first <h1>
+  const h1 = container.querySelector('h1');
+  if (h1 && !h1.querySelector('.fav-report-btn')) {
+    const id = await favId('report', source);
+    h1.dataset.favoriteId = id;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fav-report-btn';
+    const sync = () => {
+      const saved = favoriteIds.has(id);
+      btn.textContent = saved ? '★' : '☆';
+      btn.classList.toggle('saved', saved);
+      btn.title = saved ? '取消收藏整篇报告' : '收藏整篇报告';
+      h1.classList.toggle('fav-report-saved', saved);
     };
-    link.after(makeFavoriteButton(candidate, 'favorite-link-btn'));
-  });
-
-  container.querySelectorAll('p, blockquote, li, tr').forEach((block) => {
-    if (block.closest('pre') || block.querySelector('.favorite-block-btn')) return;
-    const excerpt = cleanExcerpt(block);
-    if (excerpt.length < 24) return;
-    const section = nearestSection(block);
-    const candidate = {
-      kind: 'excerpt',
-      title: section || excerpt.slice(0, 60),
-      excerpt,
-      section,
-      ...source,
+    btn.onclick = () => {
+      toggleFavorite({
+        id,
+        kind: 'report',
+        title: normalizeDisplayText(cleanExcerpt(h1)) || source.label,
+        excerpt: '',
+        section: '',
+        created_at: new Date().toISOString(),
+        source,
+      });
+      sync();
     };
-    block.classList.add('favorite-block');
-    const target = block.tagName === 'TR' ? block.lastElementChild : block;
-    target?.appendChild(makeFavoriteButton(candidate, 'favorite-block-btn'));
-  });
+    h1.appendChild(btn);
+    sync();
+  }
 
-  void refreshFavoriteStates(container);
+  // 2) links — highlight if saved + hover popover (no persistent star)
+  const links = [...container.querySelectorAll('a[href]')].filter((a) => {
+    try { return /^https?:$/.test(new URL(a.href, location.href).protocol); } catch (_) { return false; }
+  });
+  await Promise.all(links.map(async (link) => {
+    const url = new URL(link.href, location.href).href;
+    const id = await favId('link', { url });
+    link.dataset.favoriteId = id;
+    link.classList.toggle('fav-link-saved', favoriteIds.has(id));
+    bindLinkHover(link, id, url);
+  }));
+
+  // 3) blocks — stamp each with its content anchor; highlight when any saved
+  //    excerpt favorite points at that anchor (selection popover handles adding).
+  const blocks = [...container.querySelectorAll(FAV_BLOCK_SELECTOR)];
+  await Promise.all(blocks.map(async (block) => {
+    if (block.closest('pre')) return;
+    const blockText = cleanExcerpt(block);
+    if (blockText.length < 8) return;
+    const anchor = await blockAnchorId(source.date, source.report, blockText);
+    block.dataset.favAnchor = anchor;
+    block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
+  }));
 }
 
 bridgeBtn.onclick = connectBridge;
-syncBtn.onclick = () => syncBridge(true);
+syncBtn.onclick = () => { void syncBridge(true); void flushFavSync(true); };
+
+// ════════════════════════════════════════════════════════════
+//  Favorites: sidebar nav + list view + jump-back
+// ════════════════════════════════════════════════════════════
+function renderFavNav() {
+  const favNav = document.getElementById('favNav');
+  if (!favNav) return;
+  const counts = { all: 0, report: 0, link: 0, excerpt: 0 };
+  aliveItems().forEach((it) => { counts.all += 1; if (counts[it.kind] != null) counts[it.kind] += 1; });
+  const defs = [['all', '全部收藏'], ['report', '整篇报告'], ['link', '链接'], ['excerpt', '段落']];
+  favNav.innerHTML = '';
+  defs.forEach(([kind, label]) => {
+    const b = document.createElement('button');
+    b.className = 'fav-nav-btn' + (currentFavFilter === kind ? ' active' : '');
+    const name = document.createElement('span');
+    name.textContent = label;
+    const cnt = document.createElement('span');
+    cnt.className = 'fav-count';
+    cnt.textContent = counts[kind];
+    b.append(name, cnt);
+    b.onclick = () => { location.hash = kind === 'all' ? 'favorites' : `favorites/${kind}`; };
+    favNav.appendChild(b);
+  });
+}
+
+function favTimeGroup(iso) {
+  const d = new Date(iso);
+  const day = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const diff = Math.round((today - day) / 86400000);
+  if (diff <= 0) return '今天收藏';
+  if (diff === 1) return '昨天收藏';
+  if (diff === 2) return '前天收藏';
+  const p = (n) => String(n).padStart(2, '0');
+  return `${day.getFullYear()}-${p(day.getMonth() + 1)}-${p(day.getDate())} 收藏`;
+}
+function favFmtTime(iso) {
+  const d = new Date(iso);
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+function esc(s) {
+  return (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
+function renderFavoritesView(kind, scroll = true) {
+  currentFavFilter = kind;
+  currentKey = null;
+  document.querySelectorAll('.rpt-btn, .lang-btn').forEach((b) => b.classList.remove('active'));
+  document.querySelectorAll('.date-hdr.lit, .month-hdr.lit').forEach((h) => h.classList.remove('lit'));
+  renderFavNav();
+  document.getElementById('sidebar').classList.remove('open');
+
+  let items = aliveItems();
+  if (kind !== 'all') items = items.filter((it) => it.kind === kind);
+  items.sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+
+  const titleMap = { all: '全部收藏', report: '整篇报告', link: '链接收藏', excerpt: '段落摘录' };
+  const head = `<div class="fav-list-head">★ ${titleMap[kind] || '我的收藏'}</div>` +
+    `<div class="fav-list-sub">共 ${items.length} 条 · 按收藏时间倒序</div>`;
+
+  if (!items.length) {
+    setContent(`<div class="md fade">${head}<div class="fav-empty">还没有收藏。<br>在日报里收藏整篇报告（标题旁星标）、悬停链接或选中段落试试。</div></div>`);
+    if (scroll) document.getElementById('cwrap').scrollTop = 0;
+    return;
+  }
+
+  let html = `<div class="md fade">${head}`;
+  let lastLabel = null;
+  items.forEach((it) => {
+    const label = favTimeGroup(it.created_at);
+    if (label !== lastLabel) { html += `<div class="fav-group-label">${esc(label)}</div>`; lastLabel = label; }
+    const badge = FAV_KIND_LABEL[it.kind] || it.kind;
+    const srcDate = it.source?.date || '';
+    const srcLabel = it.source?.label || it.source?.report || '';
+    html += `<div class="fav-card" data-id="${esc(it.id)}">` +
+      `<div class="fav-card-title"><span class="fav-badge">${esc(badge)}</span><span>${esc(it.title)}</span></div>`;
+    if (it.kind === 'excerpt' && it.excerpt) html += `<div class="fav-excerpt">${esc(it.excerpt)}</div>`;
+    html += `<div class="fav-meta">来源：${esc(srcDate)}${srcLabel ? ' · ' + esc(srcLabel) : ''}` +
+      `<br>收藏时间：${esc(favFmtTime(it.created_at))}`;
+    if (it.kind === 'link' && it.site) html += `<br>网站：${esc(it.site)}`;
+    html += '</div><div class="fav-actions">' +
+      `<button class="fav-action" data-act="goto">${it.kind === 'report' ? '回到报告' : '回到原文'}</button>`;
+    if (it.kind === 'link' && it.url) html += '<button class="fav-action" data-act="open">打开外链</button>';
+    html += '<button class="fav-action danger" data-act="remove">取消收藏</button></div></div>';
+  });
+  html += '</div>';
+  setContent(html);
+  if (scroll) document.getElementById('cwrap').scrollTop = 0;
+
+  document.querySelectorAll('.fav-card').forEach((card) => {
+    const item = favoriteStore.items.find((it) => it.id === card.dataset.id);
+    if (!item) return;
+    card.querySelector('[data-act="goto"]')?.addEventListener('click', () => gotoFavorite(item));
+    card.querySelector('[data-act="open"]')?.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
+    card.querySelector('[data-act="remove"]')?.addEventListener('click', () => {
+      removeFavorite(item.id);
+      renderFavoritesView(currentFavFilter, false);
+    });
+  });
+}
+
+function gotoFavorite(item) {
+  const date = item.source?.date;
+  const report = item.source?.report;
+  if (!date || !report) return;
+  // Excerpts resolve via their block anchor (the excerpt id is never on the DOM);
+  // report/link resolve via the favorite id stamped as data-favorite-id.
+  const target = item.kind === 'excerpt' ? item.source?.anchor || item.id : item.id;
+  pendingFocus = target;
+  history.pushState(null, '', `${location.pathname}?focus=${encodeURIComponent(target)}#${date}/${report}`);
+  handleRoute();
+}
+
+function applyPendingFocus() {
+  const id = pendingFocus;
+  pendingFocus = null;
+  if (location.search) history.replaceState(null, '', location.pathname + location.hash);
+  if (!id) return;
+  // Match either a directly-stamped favorite id (report/link) or a block anchor (excerpt).
+  const sel = CSS.escape(id);
+  const el = document.querySelector(
+    `#content [data-favorite-id="${sel}"], #content [data-fav-anchor="${sel}"]`,
+  );
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  el.classList.add('fav-flash');
+  setTimeout(() => el.classList.remove('fav-flash'), 1700);
+}
 
 function setContent(html) {
   document.getElementById('content').innerHTML = html;
@@ -715,6 +1350,7 @@ async function loadReport(date, report, push = true) {
   const key = `${date}/${report}`;
   if (key === currentKey) return;
   currentKey = key;
+  if (currentFavFilter) { currentFavFilter = null; renderFavNav(); }
 
   if (push) history.pushState(null, '', `#${key}`);
 
@@ -753,7 +1389,8 @@ async function loadReport(date, report, push = true) {
     const raw = await res.text();
     const safe = renderMarkdown(raw);
     setContent(`<div class="md fade">${safe}</div>`);
-    enhanceFavorites();
+    await enhanceFavorites();
+    applyPendingFocus();
   } catch (e) {
     setContent(`<div class="msg"><div class="msg-icon">⚠️</div><div>加载失败：${e.message}</div></div>`);
   }
@@ -867,15 +1504,18 @@ function buildNav(dates) {
   });
 }
 
-window.addEventListener('popstate', () => {
-  const h = getHash();
-  if (h) loadReport(h.date, h.report, false);
-});
+window.addEventListener('popstate', () => { void handleRoute(); });
 
 // ── Init ──
 (async () => {
   consumeBridgeToken();
   updateBridgeButtons();
+  await loadFavorites();
+  renderFavNav();
+  setupSelectionFavorites();
+  // Flush pending favorites on tab hide / close (keepalive survives unload).
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') favSyncBeacon(); });
+  window.addEventListener('pagehide', favSyncBeacon);
   await refreshBridgeStatus(true);
 
   try {
@@ -886,16 +1526,7 @@ window.addEventListener('popstate', () => {
 
     manifestDates = dates;
     buildNav(dates);
-
-    const hash = getHash();
-    const first = dates[0];
-    if (hash && dates.find(d => d.date === hash.date && d.reports.includes(hash.report))) {
-      loadReport(hash.date, hash.report, false);
-    } else if (first?.reports?.length) {
-      const r0 = first.reports[0];
-      history.replaceState(null, '', `#${first.date}/${r0}`);
-      loadReport(first.date, r0, false);
-    }
+    await handleRoute();
   } catch (e) {
     document.getElementById('nav').innerHTML =
       '<div class="msg" style="height:80px;font-size:10px">⚠️ ' + e.message + '</div>';

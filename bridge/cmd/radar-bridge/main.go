@@ -19,6 +19,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"sort"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -36,20 +37,27 @@ var (
 	datePattern   = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
 	reportPattern = regexp.MustCompile(`^[a-z0-9-]+$`)
 	spacePattern  = regexp.MustCompile(`\s+`)
+	hex64Pattern  = regexp.MustCompile(`^[0-9a-f]{64}$`)
 )
 
 type Config struct {
 	VaultPath string `json:"vault_path"`
 	PagesURL  string `json:"pages_url"`
 	Listen    string `json:"listen"`
+	// RepoPath is a local clone of the agents-radar repo that Bridge owns and
+	// pushes favorites.json from. Optional: if empty, favorites sync is disabled
+	// and the endpoint returns a clear error so the website keeps items pending.
+	RepoPath string `json:"repo_path,omitempty"`
 }
 
 type State struct {
-	Token     string            `json:"token"`
-	LastSync string            `json:"last_sync,omitempty"`
-	LastError string           `json:"last_error,omitempty"`
-	Files     map[string]string `json:"files"`
-	Favorites map[string]string `json:"favorites"`
+	Token             string            `json:"token"`
+	LastSync          string            `json:"last_sync,omitempty"`
+	LastError         string            `json:"last_error,omitempty"`
+	Files             map[string]string `json:"files"`
+	Favorites         map[string]string `json:"favorites"` // legacy (Phase 1 per-file map); unused in Phase 2
+	FavoritesLastSync string            `json:"favorites_last_sync,omitempty"`
+	FavoritesError    string            `json:"favorites_error,omitempty"`
 }
 
 type SyncFile struct {
@@ -69,6 +77,8 @@ type SyncResult struct {
 	Skipped int `json:"skipped"`
 }
 
+// FavoriteCandidate is the legacy (Phase 1) per-item model. Retained only for
+// the cross-language ID contract tests; the live sync path uses FavoriteItem.
 type FavoriteCandidate struct {
 	Kind       string `json:"kind"`
 	Title      string `json:"title"`
@@ -80,6 +90,48 @@ type FavoriteCandidate struct {
 	ReportURL  string `json:"report_url"`
 }
 
+const favoritesFileName = "favorites.json"
+
+// FavoriteSource records where a favorite came from (the daily report) and the
+// anchor used for jump-back highlighting on the website.
+type FavoriteSource struct {
+	Date   string `json:"date"`
+	Report string `json:"report"`
+	Label  string `json:"label,omitempty"`
+	URL    string `json:"url,omitempty"`
+	Anchor string `json:"anchor,omitempty"`
+}
+
+// FavoriteItem is the Phase 2 unified model. The id is computed by the browser
+// (SHA-256, see index.html) and trusted here. A non-empty DeletedAt is a
+// tombstone so cross-device removals do not resurrect on the next merge.
+//
+// CreatedAt is the FIRST-favorite time and is used only for stable sorting.
+// RevivedAt records the most recent re-favorite (after a delete). Life/death is
+// decided by max(CreatedAt, RevivedAt) vs max(DeletedAt) — keeping the revive
+// event time means a stale tombstone from another device cannot re-kill an item
+// that was re-favorited after that tombstone. (See review §5.2.)
+type FavoriteItem struct {
+	ID        string         `json:"id"`
+	Kind      string         `json:"kind"`
+	Title     string         `json:"title,omitempty"`
+	URL       string         `json:"url,omitempty"`
+	Site      string         `json:"site,omitempty"`
+	Excerpt   string         `json:"excerpt,omitempty"`
+	Section   string         `json:"section,omitempty"`
+	CreatedAt string         `json:"created_at,omitempty"`
+	RevivedAt string         `json:"revived_at,omitempty"`
+	DeletedAt string         `json:"deleted_at,omitempty"`
+	Source    FavoriteSource `json:"source"`
+}
+
+// FavoritesFile is the on-disk / on-wire shape of favorites.json.
+type FavoritesFile struct {
+	Version   int            `json:"version"`
+	UpdatedAt string         `json:"updated_at"`
+	Items     []FavoriteItem `json:"items"`
+}
+
 type App struct {
 	config        Config
 	configPath    string
@@ -89,6 +141,7 @@ type App struct {
 	state         State
 	syncing       atomic.Bool
 	syncMu        sync.Mutex
+	favMu         sync.Mutex
 	allowedOrigin string
 }
 
@@ -176,6 +229,9 @@ func loadApp() (*App, error) {
 	if config.VaultPath == "" || config.PagesURL == "" {
 		return nil, errors.New("config requires vault_path and pages_url")
 	}
+	if config.RepoPath != "" {
+		config.RepoPath = filepath.Clean(config.RepoPath)
+	}
 	pagesURL, err := url.Parse(config.PagesURL)
 	if err != nil || pagesURL.Scheme != "https" || pagesURL.Host == "" {
 		return nil, errors.New("pages_url must be an absolute HTTPS URL")
@@ -226,6 +282,8 @@ func installCommand(args []string) error {
 	vault := flags.String("vault", "", "absolute SecondBrain vault path")
 	pagesURL := flags.String("pages-url", defaultPagesURL, "agents-radar Pages URL")
 	listen := flags.String("listen", defaultListen, "local listen address")
+	repoPath := flags.String("repo", "", "absolute path to an existing agents-radar clone Bridge may push from")
+	repoURL := flags.String("repo-url", "", "git URL to clone into a dedicated Bridge-owned agents-radar clone")
 	if err := flags.Parse(args); err != nil {
 		return err
 	}
@@ -248,24 +306,162 @@ func installCommand(args []string) error {
 	if err := os.MkdirAll(filepath.Join(dir, "logs"), 0o700); err != nil {
 		return err
 	}
+
+	resolvedRepo, err := resolveRepoPath(*repoPath, *repoURL, dir)
+	if err != nil {
+		return err
+	}
+
 	config := Config{
 		VaultPath: filepath.Clean(*vault),
 		PagesURL:  strings.TrimRight(*pagesURL, "/"),
 		Listen:    *listen,
+		RepoPath:  resolvedRepo,
 	}
 	if err := writeJSONAtomic(filepath.Join(dir, "config.json"), config, 0o600); err != nil {
 		return err
 	}
 
-	executable, err := os.Executable()
+	// Deploy the binary to a stable location and point LaunchAgents at THAT copy,
+	// not at wherever `install` happened to run from (e.g. a repo build product
+	// that later gets cleaned). See review §5.6.
+	stableBin, err := deployStableBinary(dir)
 	if err != nil {
 		return err
 	}
-	if err := installLaunchAgents(executable, dir); err != nil {
+	if err := installLaunchAgents(stableBin, dir); err != nil {
 		return err
 	}
 	fmt.Printf("Radar Bridge installed for %s\n", config.VaultPath)
+	fmt.Printf("Binary: %s\n", stableBin)
+	if config.RepoPath != "" {
+		fmt.Printf("Favorites sync repo: %s\n", config.RepoPath)
+		if origin, err := runGit(config.RepoPath, "remote", "get-url", "origin"); err == nil {
+			fmt.Printf("Favorites push origin: %s\n", strings.TrimSpace(origin))
+		}
+	} else {
+		fmt.Println("No --repo/--repo-url given: favorites sync to GitHub is disabled.")
+	}
 	return nil
+}
+
+// resolveRepoPath validates an existing clone (--repo) or clones one (--repo-url)
+// into a dedicated Bridge-owned directory. Returns "" when neither is given
+// (favorites sync stays disabled). The resulting path must be a git work tree
+// with an "origin" remote so Bridge can push favorites.json.
+func resolveRepoPath(repoPath, repoURL, supportDir string) (string, error) {
+	if repoPath != "" && repoURL != "" {
+		return "", errors.New("use either --repo or --repo-url, not both")
+	}
+	if repoPath != "" {
+		if !filepath.IsAbs(repoPath) {
+			return "", errors.New("--repo must be an absolute path")
+		}
+		clean := filepath.Clean(repoPath)
+		if err := assertRepoUsable(clean); err != nil {
+			return "", err
+		}
+		return clean, nil
+	}
+	if repoURL != "" {
+		dest := filepath.Join(supportDir, "agents-radar")
+		if _, err := os.Stat(filepath.Join(dest, ".git")); err == nil {
+			// Already cloned; reuse it — but make sure its origin matches the URL the
+			// user just passed, or we would silently keep pushing to the OLD repo.
+			if err := assertRepoUsable(dest); err != nil {
+				return "", err
+			}
+			existing, gerr := runGit(dest, "remote", "get-url", "origin")
+			if gerr != nil {
+				return "", fmt.Errorf("git remote get-url origin: %w: %s", gerr, strings.TrimSpace(existing))
+			}
+			if !sameGitURL(existing, repoURL) {
+				// Only adopt a new origin on a Bridge-owned clone; never silently
+				// rewrite the remote of a directory we cannot confirm we own.
+				if !repoIsOwned(dest) {
+					return "", fmt.Errorf("%s 已存在但不是 Bridge 专用 clone，且 origin（%s）与 --repo-url（%s）不一致；请手动删除该目录或确认后重试", dest, strings.TrimSpace(existing), repoURL)
+				}
+				if out, err := runGit(dest, "remote", "set-url", "origin", repoURL); err != nil {
+					return "", fmt.Errorf("更新 origin 到 %s 失败：%w: %s", repoURL, err, strings.TrimSpace(out))
+				}
+				fmt.Printf("已将专用 clone 的 origin 更新为 %s\n", repoURL)
+			}
+			if out, err := runGit(dest, "fetch", "origin"); err != nil {
+				return "", fmt.Errorf("git fetch in existing clone: %w: %s", err, out)
+			}
+			if err := markRepoOwned(dest); err != nil {
+				return "", err
+			}
+			return dest, nil
+		}
+		if out, err := runGit("", "clone", "--depth", "1", repoURL, dest); err != nil {
+			return "", fmt.Errorf("git clone failed: %w: %s", err, out)
+		}
+		if err := assertRepoUsable(dest); err != nil {
+			return "", err
+		}
+		// Mark this as a Bridge-owned clone: only owned clones may be hard-reset.
+		if err := markRepoOwned(dest); err != nil {
+			return "", err
+		}
+		return dest, nil
+	}
+	return "", nil
+}
+
+// sameGitURL compares two git remote URLs ignoring a trailing ".git", a trailing
+// slash, and surrounding whitespace — enough to tell "same repo" from "different
+// repo" for the origin-mismatch guard.
+func sameGitURL(a, b string) bool {
+	norm := func(s string) string {
+		s = strings.TrimSpace(s)
+		s = strings.TrimSuffix(s, "/")
+		s = strings.TrimSuffix(s, ".git")
+		return s
+	}
+	return norm(a) == norm(b)
+}
+
+func assertRepoUsable(path string) error {
+	info, err := os.Stat(filepath.Join(path, ".git"))
+	if err != nil || !(info.IsDir() || info.Mode().IsRegular()) {
+		return fmt.Errorf("not a git repository: %s", path)
+	}
+	if out, err := runGit(path, "remote", "get-url", "origin"); err != nil {
+		return fmt.Errorf("repo has no 'origin' remote: %s: %s", path, strings.TrimSpace(out))
+	}
+	return nil
+}
+
+// deployStableBinary copies the currently-running executable into
+// <supportDir>/bin/radar-bridge via atomic rename, so the LaunchAgent always
+// points at a Bridge-owned copy that survives cleaning the build dir. Returns
+// the stable path. A no-op (still atomic) when already running from there.
+func deployStableBinary(supportDir string) (string, error) {
+	src, err := os.Executable()
+	if err != nil {
+		return "", err
+	}
+	src, err = filepath.EvalSymlinks(src)
+	if err != nil {
+		return "", err
+	}
+	binDir := filepath.Join(supportDir, "bin")
+	if err := os.MkdirAll(binDir, 0o755); err != nil {
+		return "", err
+	}
+	dest := filepath.Join(binDir, "radar-bridge")
+	if resolved, derr := filepath.EvalSymlinks(dest); derr == nil && resolved == src {
+		return dest, nil // already running from the stable location
+	}
+	data, err := os.ReadFile(src)
+	if err != nil {
+		return "", fmt.Errorf("read current binary: %w", err)
+	}
+	if err := writeFileAtomic(dest, data, 0o755); err != nil {
+		return "", fmt.Errorf("install binary to %s: %w", dest, err)
+	}
+	return dest, nil
 }
 
 func installLaunchAgents(executable, dir string) error {
@@ -335,8 +531,8 @@ func (a *App) serve() error {
 	mux.HandleFunc("/pair", a.handlePair)
 	mux.HandleFunc("/api/status", a.auth(a.handleStatus))
 	mux.HandleFunc("/api/sync", a.auth(a.handleSync))
-	mux.HandleFunc("/api/favorites/check", a.auth(a.handleFavoriteCheck))
-	mux.HandleFunc("/api/favorites", a.auth(a.handleFavorite))
+	mux.HandleFunc("/api/favorites/sync", a.auth(a.handleFavoritesSync))
+	mux.HandleFunc("/api/favorites", a.auth(a.handleFavoritesGet))
 	handler := a.cors(mux)
 
 	go func() {
@@ -413,12 +609,14 @@ func (a *App) status() map[string]any {
 	a.mu.Lock()
 	defer a.mu.Unlock()
 	return map[string]any{
-		"connected":  true,
-		"syncing":    a.syncing.Load(),
-		"last_sync":  a.state.LastSync,
-		"last_error": a.state.LastError,
-		"files":      len(a.state.Files),
-		"favorites":  len(a.state.Favorites),
+		"connected":           true,
+		"syncing":             a.syncing.Load(),
+		"last_sync":           a.state.LastSync,
+		"last_error":          a.state.LastError,
+		"files":               len(a.state.Files),
+		"favorites_enabled":   a.config.RepoPath != "",
+		"favorites_last_sync": a.state.FavoritesLastSync,
+		"favorites_error":     a.state.FavoritesError,
 	}
 }
 
@@ -691,92 +889,555 @@ func (a *App) recordSyncError(err error) {
 	_ = a.saveState()
 }
 
-func (a *App) handleFavoriteCheck(w http.ResponseWriter, r *http.Request) {
+// handleFavoritesGet returns the repo's current favorites.json (empty when sync
+// is disabled or the file does not exist yet).
+func (a *App) handleFavoritesGet(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		writeError(w, http.StatusMethodNotAllowed, "GET required")
+		return
+	}
+	if a.config.RepoPath == "" {
+		writeJSON(w, http.StatusOK, FavoritesFile{Version: 1, Items: []FavoriteItem{}})
+		return
+	}
+	file, err := readFavoritesFile(filepath.Join(a.config.RepoPath, favoritesFileName))
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	writeJSON(w, http.StatusOK, file)
+}
+
+// handleFavoritesSync merges the website's full favorites set (alive + tombstones)
+// into the repo favorites.json, writes the Obsidian markdown, and pushes
+// favorites.json to origin/master. The browser id is trusted (validated 64-hex).
+func (a *App) handleFavoritesSync(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		writeError(w, http.StatusMethodNotAllowed, "POST required")
 		return
 	}
+	if a.config.RepoPath == "" {
+		writeError(w, http.StatusBadRequest, "收藏同步未启用：请先 radar-bridge install --repo-url <git地址>")
+		return
+	}
 	var request struct {
-		Items []FavoriteCandidate `json:"items"`
+		Items []FavoriteItem `json:"items"`
 	}
 	if err := decodeJSON(r, &request); err != nil {
 		writeError(w, http.StatusBadRequest, err.Error())
 		return
 	}
-	saved := make([]bool, len(request.Items))
+	incoming := validFavorites(request.Items)
+
+	a.favMu.Lock()
+	result := a.syncFavorites(incoming)
+	a.favMu.Unlock()
+
+	// A vault-write failure is a partial success: GitHub may have published, but the
+	// SecondBrain markdown is missing. Surface it as a persisted error so status()
+	// keeps reporting it and the front-end keeps the sync pending until it heals.
+	vaultFailed := result.pushed && !result.vaultWritten
 	a.mu.Lock()
-	for i, candidate := range request.Items {
-		id, err := favoriteID(candidate)
-		if err != nil {
-			continue
-		}
-		relative, ok := a.state.Favorites[id]
-		if !ok {
-			continue
-		}
-		_, err = os.Stat(filepath.Join(a.config.VaultPath, relative))
-		saved[i] = err == nil
+	switch {
+	case result.err != nil:
+		a.state.FavoritesError = result.err.Error()
+	case vaultFailed:
+		a.state.FavoritesLastSync = time.Now().Format(time.RFC3339)
+		a.state.FavoritesError = favVaultErrorText(result.vaultErr)
+	default:
+		a.state.FavoritesLastSync = time.Now().Format(time.RFC3339)
+		a.state.FavoritesError = ""
 	}
 	a.mu.Unlock()
-	writeJSON(w, http.StatusOK, map[string]any{"saved": saved})
+	_ = a.saveState()
+
+	resp := map[string]any{
+		"items":         result.items,
+		"total":         len(result.items),
+		"alive":         countAlive(result.items),
+		"pushed":        result.pushed,
+		"vault_written": result.vaultWritten,
+	}
+	if result.err != nil {
+		resp["error"] = result.err.Error()
+	}
+	if vaultFailed {
+		resp["vault_error"] = favVaultErrorText(result.vaultErr)
+	}
+	writeJSON(w, http.StatusOK, resp)
 }
 
-func (a *App) handleFavorite(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		writeError(w, http.StatusMethodNotAllowed, "POST required")
-		return
+func favVaultErrorText(detail string) string {
+	if strings.TrimSpace(detail) == "" {
+		return "SecondBrain 写入失败"
 	}
-	var candidate FavoriteCandidate
-	if err := decodeJSON(r, &candidate); err != nil {
-		writeError(w, http.StatusBadRequest, err.Error())
-		return
-	}
-	id, err := favoriteID(candidate)
-	if err != nil {
-		writeError(w, http.StatusBadRequest, err.Error())
-		return
+	return "SecondBrain 写入失败：" + detail
+}
+
+// favSyncResult is the outcome of one favorites sync. pushed = reached
+// origin/master; vaultWritten = the Obsidian markdown was written successfully.
+// Both products must succeed for a sync to be fully complete (technical doc:
+// "一次同步两份产物一起写"). vaultErr carries the markdown write error text even
+// when the GitHub push succeeded, so the API/front-end can surface and retry it.
+type favSyncResult struct {
+	items        []FavoriteItem
+	pushed       bool
+	vaultWritten bool
+	vaultErr     string
+	err          error
+}
+
+// syncFavorites aligns the dedicated clone to origin/master, merges incoming
+// items on top, writes favorites.json + the Obsidian md, then commits and pushes.
+// Returns the merged set, whether the push reached origin, and any error.
+//
+// The clone MUST be Bridge-owned: we refuse a working tree that is dirty with
+// anything other than favorites.json, and otherwise `git reset --hard
+// origin/master` to guarantee fast-forward pushes (no rebase conflicts).
+func (a *App) syncFavorites(incoming []FavoriteItem) favSyncResult {
+	repo := a.config.RepoPath
+	favPath := filepath.Join(repo, favoritesFileName)
+
+	if err := assertCleanExceptFavorites(repo); err != nil {
+		return favSyncResult{err: err}
 	}
 
-	a.mu.Lock()
-	if relative, ok := a.state.Favorites[id]; ok {
-		if _, statErr := os.Stat(filepath.Join(a.config.VaultPath, relative)); statErr == nil {
-			a.mu.Unlock()
-			writeJSON(w, http.StatusOK, map[string]any{"id": id, "path": relative, "created": false})
+	// writeProducts writes favorites.json + the Obsidian markdown for a merged set.
+	// A favorites.json write failure is fatal (returned as err). A markdown failure
+	// does NOT abort (GitHub may still publish) but is reported via vaultWritten +
+	// vaultErr so the API/front-end can flag the partial result and retry it.
+	writeProducts := func(merged []FavoriteItem) (vaultWritten bool, vaultErr string, fatal error) {
+		if err := writeFavoritesFile(favPath, merged); err != nil {
+			return false, "", err
+		}
+		if err := a.writeFavoritesMarkdown(merged); err != nil {
+			log.Printf("favorites: write markdown failed: %v", err)
+			return false, err.Error(), nil
+		}
+		return true, "", nil
+	}
+
+	if out, err := runGit(repo, "fetch", "origin", "master"); err != nil {
+		// Offline: merge against the local working file, write json+md, do not push.
+		log.Printf("favorites: git fetch failed (offline?): %v: %s", err, strings.TrimSpace(out))
+		base, rerr := readFavoritesItems(favPath)
+		if rerr != nil {
+			return favSyncResult{err: fmt.Errorf("读取本地 favorites.json 失败，已中止同步：%w", rerr)}
+		}
+		merged := mergeFavorites(base, incoming)
+		vaultWritten, vaultErr, werr := writeProducts(merged)
+		if werr != nil {
+			return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: werr}
+		}
+		return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: errors.New("离线：已写本地，待联网后自动推送")}
+	}
+
+	var merged []FavoriteItem
+	var vaultWritten bool
+	var vaultErr string
+	var lastErr error
+	for attempt := 0; attempt < 2; attempt++ {
+		if err := a.gitAlignToOrigin(repo); err != nil {
+			return favSyncResult{items: merged, err: err}
+		}
+		// Read the freshly-aligned baseline. A corrupt/unreadable file fails closed:
+		// abort rather than overwrite an existing library with just the incoming set.
+		base, rerr := readFavoritesItems(favPath)
+		if rerr != nil {
+			return favSyncResult{err: fmt.Errorf("读取远端 favorites.json 失败，已中止同步（避免覆盖）：%w", rerr)}
+		}
+		merged = mergeFavorites(base, incoming)
+		var werr error
+		if vaultWritten, vaultErr, werr = writeProducts(merged); werr != nil {
+			return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: werr}
+		}
+
+		if out, err := runGit(repo, "add", "--", favoritesFileName); err != nil {
+			return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: fmt.Errorf("git add: %w: %s", err, strings.TrimSpace(out))}
+		}
+		// Nothing staged vs origin/master → already in sync (md was still rewritten above).
+		if _, err := runGit(repo, "diff", "--cached", "--quiet", "--", favoritesFileName); err == nil {
+			return favSyncResult{items: merged, pushed: true, vaultWritten: vaultWritten, vaultErr: vaultErr}
+		}
+		msg := fmt.Sprintf("favorites: sync (%d alive)", countAlive(merged))
+		if out, err := runGit(repo, "commit", "-m", msg, "--", favoritesFileName); err != nil {
+			return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: fmt.Errorf("git commit: %w: %s", err, strings.TrimSpace(out))}
+		}
+		if out, err := runGit(repo, "push", "origin", "HEAD:master"); err == nil {
+			return favSyncResult{items: merged, pushed: true, vaultWritten: vaultWritten, vaultErr: vaultErr}
+		} else {
+			lastErr = fmt.Errorf("git push: %s", strings.TrimSpace(out))
+			log.Printf("favorites: push attempt %d failed: %s", attempt+1, strings.TrimSpace(out))
+			if out2, err2 := runGit(repo, "fetch", "origin", "master"); err2 != nil {
+				return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: fmt.Errorf("git fetch on retry: %w: %s", err2, strings.TrimSpace(out2))}
+			}
+			// next loop: gitAlignToOrigin drops our commit and re-merges on the new base.
+		}
+	}
+	return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: lastErr}
+}
+
+func runGit(dir string, args ...string) (string, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "git", args...)
+	if dir != "" {
+		cmd.Dir = dir
+	}
+	// Never block on interactive credential prompts (loopback daemon).
+	cmd.Env = append(os.Environ(), "GIT_TERMINAL_PROMPT=0")
+	out, err := cmd.CombinedOutput()
+	return string(out), err
+}
+
+// ownershipMarker lives inside .git/ (never committed, never in the work tree).
+// Its presence means this clone was created/adopted by Bridge specifically for
+// favorites sync, so destructive alignment (git reset --hard) is safe here.
+const ownershipMarker = "radar-bridge-owned"
+
+func ownershipMarkerPath(repo string) string {
+	return filepath.Join(repo, ".git", ownershipMarker)
+}
+func markRepoOwned(repo string) error {
+	gitDir := filepath.Join(repo, ".git")
+	// Only mark a real .git directory (skip submodule/.git-file edge cases).
+	if info, err := os.Stat(gitDir); err != nil || !info.IsDir() {
+		return nil
+	}
+	return os.WriteFile(ownershipMarkerPath(repo), []byte("favorites sync clone\n"), 0o600)
+}
+func repoIsOwned(repo string) bool {
+	_, err := os.Stat(ownershipMarkerPath(repo))
+	return err == nil
+}
+
+// gitAlignToOrigin brings the working tree to origin/master before merging.
+//
+//   - Bridge-owned clone (has ownership marker): `git reset --hard origin/master`
+//     is safe — Bridge created it solely for favorites, there is nothing to lose.
+//   - User-supplied --repo (no marker): NEVER reset --hard. We refuse unless the
+//     clone is on master with no commits ahead of origin/master, then fast-forward
+//     only. This protects a user who pointed --repo at their own working clone
+//     (feature branch, unpushed commits, etc. — see review §5.3).
+func (a *App) gitAlignToOrigin(repo string) error {
+	if repoIsOwned(repo) {
+		if out, err := runGit(repo, "reset", "--hard", "origin/master"); err != nil {
+			return fmt.Errorf("git reset: %w: %s", err, strings.TrimSpace(out))
+		}
+		return nil
+	}
+	// Unowned repo: only a safe fast-forward, no history rewrite.
+	branch, err := runGit(repo, "rev-parse", "--abbrev-ref", "HEAD")
+	if err != nil {
+		return fmt.Errorf("git rev-parse: %w: %s", err, strings.TrimSpace(branch))
+	}
+	if strings.TrimSpace(branch) != "master" {
+		return fmt.Errorf("仓库当前不在 master 分支（%s）；为保护你的工作区，已拒绝同步。请改用 Bridge 专用 clone（install --repo-url）", strings.TrimSpace(branch))
+	}
+	if ahead, _ := runGit(repo, "rev-list", "--count", "origin/master..HEAD"); strings.TrimSpace(ahead) != "0" {
+		return errors.New("本地 master 领先 origin/master（有未推送提交）；为保护你的提交，已拒绝同步。请改用 Bridge 专用 clone（install --repo-url）")
+	}
+	if out, err := runGit(repo, "merge", "--ff-only", "origin/master"); err != nil {
+		return fmt.Errorf("git merge --ff-only: %w: %s", err, strings.TrimSpace(out))
+	}
+	return nil
+}
+
+// assertCleanExceptFavorites refuses to run if the working tree has uncommitted
+// changes to anything other than favorites.json — protecting a user who points
+// --repo at their primary working clone instead of a dedicated one.
+func assertCleanExceptFavorites(repo string) error {
+	out, err := runGit(repo, "status", "--porcelain")
+	if err != nil {
+		return fmt.Errorf("git status failed: %w: %s", err, strings.TrimSpace(out))
+	}
+	for _, line := range strings.Split(out, "\n") {
+		line = strings.TrimRight(line, "\r")
+		if strings.TrimSpace(line) == "" {
+			continue
+		}
+		path := line
+		if len(line) > 3 {
+			path = line[3:]
+		}
+		if i := strings.Index(path, " -> "); i >= 0 {
+			path = path[i+4:]
+		}
+		path = strings.Trim(strings.TrimSpace(path), "\"")
+		if path != favoritesFileName {
+			return fmt.Errorf("仓库工作区有未提交改动（%s）；请用 Bridge 专用 clone（install --repo-url）", path)
+		}
+	}
+	return nil
+}
+
+func validFavorites(items []FavoriteItem) []FavoriteItem {
+	out := make([]FavoriteItem, 0, len(items))
+	for _, it := range items {
+		if !hex64Pattern.MatchString(it.ID) {
+			continue
+		}
+		if it.Kind != "report" && it.Kind != "link" && it.Kind != "excerpt" {
+			continue
+		}
+		if !datePattern.MatchString(it.Source.Date) || !reportPattern.MatchString(it.Source.Report) {
+			continue
+		}
+		out = append(out, it)
+	}
+	return out
+}
+
+func countAlive(items []FavoriteItem) int {
+	n := 0
+	for _, it := range items {
+		if it.DeletedAt == "" {
+			n++
+		}
+	}
+	return n
+}
+
+// mergeFavorites unions base and incoming by id (incoming folded last so it wins
+// content fields), keeps the earliest created_at, applies the tombstone/revive
+// rule, and sorts newest-first.
+func mergeFavorites(base, incoming []FavoriteItem) []FavoriteItem {
+	byID := map[string]FavoriteItem{}
+	order := []string{}
+	fold := func(it FavoriteItem) {
+		if it.ID == "" {
 			return
 		}
-		delete(a.state.Favorites, id)
+		existing, ok := byID[it.ID]
+		if !ok {
+			byID[it.ID] = it
+			order = append(order, it.ID)
+			return
+		}
+		byID[it.ID] = mergeTwo(existing, it)
 	}
-	a.mu.Unlock()
+	for _, it := range base {
+		fold(it)
+	}
+	for _, it := range incoming {
+		fold(it)
+	}
+	out := make([]FavoriteItem, 0, len(order))
+	for _, id := range order {
+		out = append(out, byID[id])
+	}
+	sortFavorites(out)
+	return out
+}
 
-	month := candidate.ReportDate[:7]
-	title := strings.TrimSpace(candidate.Title)
-	if title == "" {
-		title = "情报收藏"
+// mergeTwo combines two records of the same favorite id; b is the newer input.
+func mergeTwo(a, b FavoriteItem) FavoriteItem {
+	out := a
+	if out.Kind == "" {
+		out.Kind = b.Kind
 	}
-	filename := safeFilename(title) + "-" + id[:8] + ".md"
-	relative := filepath.Join("收藏", candidate.ReportDate[:4], month, filename)
-	dest, err := safeJoin(a.config.VaultPath, relative)
+	out.Title = preferNonEmpty(b.Title, a.Title)
+	out.URL = preferNonEmpty(b.URL, a.URL)
+	out.Site = preferNonEmpty(b.Site, a.Site)
+	out.Excerpt = preferNonEmpty(b.Excerpt, a.Excerpt)
+	out.Section = preferNonEmpty(b.Section, a.Section)
+	out.Source = mergeSource(a.Source, b.Source)
+
+	// created_at = earliest first-favorite (stable sort key).
+	out.CreatedAt = earliest(a.CreatedAt, b.CreatedAt)
+	// revived_at = most recent re-favorite event seen on either side.
+	out.RevivedAt = latest(a.RevivedAt, b.RevivedAt)
+	delTime := latest(a.DeletedAt, b.DeletedAt)
+	// Life/death uses the latest ADD-class event (first favorite OR revive). A
+	// revive after a delete keeps the item alive even when a stale tombstone is
+	// merged in later, because revived_at preserves that event time.
+	aliveTime := latest(latest(a.CreatedAt, b.CreatedAt), out.RevivedAt)
+	if delTime != "" && (aliveTime == "" || aliveTime <= delTime) {
+		out.DeletedAt = delTime // tombstone
+	} else {
+		out.DeletedAt = "" // alive: a (re-)favorite happened at/after the deletion
+	}
+	return out
+}
+
+func mergeSource(a, b FavoriteSource) FavoriteSource {
+	return FavoriteSource{
+		Date:   preferNonEmpty(b.Date, a.Date),
+		Report: preferNonEmpty(b.Report, a.Report),
+		Label:  preferNonEmpty(b.Label, a.Label),
+		URL:    preferNonEmpty(b.URL, a.URL),
+		Anchor: preferNonEmpty(b.Anchor, a.Anchor),
+	}
+}
+
+func sortFavorites(items []FavoriteItem) {
+	sort.SliceStable(items, func(i, j int) bool {
+		if items[i].CreatedAt != items[j].CreatedAt {
+			return items[i].CreatedAt > items[j].CreatedAt // newest first
+		}
+		return items[i].ID < items[j].ID
+	})
+}
+
+func preferNonEmpty(primary, fallback string) string {
+	if strings.TrimSpace(primary) != "" {
+		return primary
+	}
+	return fallback
+}
+func earliest(a, b string) string {
+	switch {
+	case a == "":
+		return b
+	case b == "":
+		return a
+	case a < b:
+		return a
+	default:
+		return b
+	}
+}
+func latest(a, b string) string {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func readFavoritesItems(path string) ([]FavoriteItem, error) {
+	f, err := readFavoritesFile(path)
 	if err != nil {
-		writeError(w, http.StatusBadRequest, err.Error())
-		return
+		return nil, err
+	}
+	return f.Items, nil
+}
+
+// readFavoritesFile reads favorites.json. A MISSING file is treated as an empty
+// library (first run). Any other read/parse error is returned so the caller can
+// fail closed — never silently overwriting an existing-but-unreadable library.
+func readFavoritesFile(path string) (FavoritesFile, error) {
+	data, err := os.ReadFile(path)
+	if errors.Is(err, os.ErrNotExist) {
+		return FavoritesFile{Version: 1, Items: []FavoriteItem{}}, nil
+	}
+	if err != nil {
+		return FavoritesFile{}, fmt.Errorf("read %s: %w", filepath.Base(path), err)
+	}
+	items, perr := parseFavorites(data)
+	if perr != nil {
+		return FavoritesFile{}, perr
+	}
+	return FavoritesFile{Version: 1, Items: items}, nil
+}
+
+// parseFavorites unmarshals favorites.json. An empty file is an empty library;
+// malformed JSON is a hard error (do NOT treat as empty, or a corrupt remote
+// file would be silently overwritten on the next sync).
+func parseFavorites(data []byte) ([]FavoriteItem, error) {
+	if len(strings.TrimSpace(string(data))) == 0 {
+		return []FavoriteItem{}, nil
+	}
+	var f FavoritesFile
+	if err := json.Unmarshal(data, &f); err != nil {
+		return nil, fmt.Errorf("favorites.json 解析失败（可能已损坏）：%w", err)
+	}
+	if f.Items == nil {
+		return []FavoriteItem{}, nil
+	}
+	return f.Items, nil
+}
+func writeFavoritesFile(path string, items []FavoriteItem) error {
+	if items == nil {
+		items = []FavoriteItem{}
+	}
+	file := FavoritesFile{Version: 1, UpdatedAt: time.Now().UTC().Format(time.RFC3339), Items: items}
+	return writeJSONAtomic(path, file, 0o644)
+}
+
+// ── Obsidian markdown: 收藏/AI情报收藏.md ──
+func (a *App) writeFavoritesMarkdown(items []FavoriteItem) error {
+	dest, err := safeJoin(a.config.VaultPath, filepath.Join("收藏", "AI情报收藏.md"))
+	if err != nil {
+		return err
 	}
 	if err := os.MkdirAll(filepath.Dir(dest), 0o755); err != nil {
-		writeError(w, http.StatusInternalServerError, err.Error())
-		return
+		return err
 	}
-	if err := writeFileAtomic(dest, []byte(renderFavorite(candidate, id)), 0o644); err != nil {
-		writeError(w, http.StatusInternalServerError, err.Error())
-		return
-	}
+	return writeFileAtomic(dest, []byte(renderFavoritesMarkdown(items, a.config.PagesURL)), 0o644)
+}
 
-	a.mu.Lock()
-	a.state.Favorites[id] = relative
-	a.mu.Unlock()
-	if err := a.saveState(); err != nil {
-		writeError(w, http.StatusInternalServerError, err.Error())
-		return
+func renderFavoritesMarkdown(items []FavoriteItem, pagesURL string) string {
+	alive := make([]FavoriteItem, 0, len(items))
+	for _, it := range items {
+		if it.DeletedAt == "" {
+			alive = append(alive, it)
+		}
 	}
-	writeJSON(w, http.StatusCreated, map[string]any{"id": id, "path": relative, "created": true})
+	sortFavorites(alive)
+
+	kindLabel := map[string]string{"report": "整篇", "link": "链接", "excerpt": "段落"}
+	var b strings.Builder
+	b.WriteString("# AI 情报收藏\n\n")
+	b.WriteString("> 由 Radar Bridge 自动生成，请勿手改。最后更新：")
+	b.WriteString(time.Now().Format("2006-01-02 15:04"))
+	b.WriteString("\n")
+
+	lastDay := ""
+	for _, it := range alive {
+		day := favDay(it.CreatedAt)
+		if day != lastDay {
+			b.WriteString("\n## " + day + "\n")
+			lastDay = day
+		}
+		label := kindLabel[it.Kind]
+		if label == "" {
+			label = it.Kind
+		}
+		b.WriteString("\n### [" + label + "] " + mdInline(it.Title) + "\n")
+		if it.Kind == "link" && it.Site != "" {
+			b.WriteString("- 网站：" + it.Site + "\n")
+		}
+		src := it.Source.Date
+		if it.Source.Label != "" {
+			src += " · " + it.Source.Label
+		}
+		b.WriteString("- 来源：" + src + "\n")
+		b.WriteString("- 回到 Radar：<" + radarFocusURL(pagesURL, it) + ">\n")
+		if it.Kind == "link" && it.URL != "" {
+			b.WriteString("- 原始链接：<" + it.URL + ">\n")
+		}
+		if strings.TrimSpace(it.Excerpt) != "" {
+			b.WriteString("\n> " + mdQuote(it.Excerpt) + "\n")
+		}
+	}
+	return b.String()
+}
+
+// favDay groups by the favorite's LOCAL calendar date (technical doc §3.6:
+// "created_at 当地日期"). A favorite saved just after midnight Shanghai time
+// must land on that local day, not the previous UTC day.
+func favDay(iso string) string {
+	t, err := time.Parse(time.RFC3339, iso)
+	if err != nil {
+		if len(iso) >= 10 {
+			return iso[:10]
+		}
+		return "未知日期"
+	}
+	return t.Local().Format("2006-01-02")
+}
+func radarFocusURL(pagesURL string, it FavoriteItem) string {
+	focus := it.ID
+	if it.Kind == "excerpt" && it.Source.Anchor != "" {
+		focus = it.Source.Anchor
+	}
+	return fmt.Sprintf("%s/?focus=%s#%s/%s", pagesURL, url.QueryEscape(focus), it.Source.Date, it.Source.Report)
+}
+func mdInline(s string) string {
+	return strings.TrimSpace(spacePattern.ReplaceAllString(s, " "))
+}
+func mdQuote(s string) string {
+	return strings.ReplaceAll(strings.TrimSpace(s), "\n", "\n> ")
 }
 
 func favoriteID(candidate FavoriteCandidate) (string, error) {
@@ -827,41 +1488,6 @@ func normalizeFavoriteURL(raw string) (string, error) {
 
 func normalizeText(value string) string {
 	return strings.ToLower(spacePattern.ReplaceAllString(strings.TrimSpace(value), " "))
-}
-
-func renderFavorite(candidate FavoriteCandidate, id string) string {
-	title := strings.TrimSpace(candidate.Title)
-	if title == "" {
-		title = "情报收藏"
-	}
-	sourceWiki := fmt.Sprintf("[[日报/AI情报/%s/%s|%s %s]]",
-		candidate.ReportDate, candidate.ReportType, candidate.ReportDate, candidate.ReportType)
-	var builder strings.Builder
-	builder.WriteString("---\n")
-	builder.WriteString("type: favorite\n")
-	builder.WriteString("status: unread\n")
-	builder.WriteString("favorite_kind: " + candidate.Kind + "\n")
-	builder.WriteString("favorite_id: " + id + "\n")
-	builder.WriteString("title: " + jsonString(title) + "\n")
-	if candidate.URL != "" {
-		builder.WriteString("url: " + jsonString(candidate.URL) + "\n")
-	}
-	builder.WriteString("source_report: " + jsonString(sourceWiki) + "\n")
-	builder.WriteString("report_date: " + candidate.ReportDate + "\n")
-	builder.WriteString("report_type: " + candidate.ReportType + "\n")
-	builder.WriteString("captured: " + time.Now().Format(time.RFC3339) + "\n")
-	builder.WriteString("tags:\n  - 收藏\n  - AI情报\n")
-	builder.WriteString("---\n\n# " + title + "\n\n")
-	if candidate.URL != "" {
-		builder.WriteString("原始链接：[" + title + "](" + candidate.URL + ")\n\n")
-	}
-	builder.WriteString("来源报告：" + sourceWiki + "\n\n")
-	if candidate.Section != "" {
-		builder.WriteString("来源章节：" + candidate.Section + "\n\n")
-	}
-	builder.WriteString("## 收藏时上下文\n\n" + strings.TrimSpace(candidate.Excerpt) + "\n\n")
-	builder.WriteString("## 我的笔记\n")
-	return builder.String()
 }
 
 func safeFilename(value string) string {
