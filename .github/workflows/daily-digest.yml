@@ -2,8 +2,9 @@ name: Daily Agents Radar
 
 on:
   schedule:
-    # 每天 00:00 UTC = 08:00 CST (UTC+8)
-    - cron: "0 0 * * *"
+    # 每天 00:17 UTC = 08:17 CST (UTC+8).
+    # Avoid the top-of-hour Actions scheduling peak, where runs can be delayed or dropped.
+    - cron: "17 0 * * *"
   workflow_dispatch:
 
 permissions:
