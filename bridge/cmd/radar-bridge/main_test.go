@@ -165,6 +165,23 @@ func TestExcerptFavoriteIDNormalizesWhitespace(t *testing.T) {
 const id64a = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 const id64b = "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
 
+// favMdPath is where the unified favorites note lands inside a test vault, kept in
+// sync with favoritesMarkdownRel (日报/AI情报/收藏/AI情报收藏.md).
+func favMdPath(vault string) string { return filepath.Join(vault, favoritesMarkdownRel) }
+
+// blockFavMarkdownWrite makes the markdown's parent dir a regular file so the
+// subsequent MkdirAll/write fails — used to exercise the vault-write-failure path.
+func blockFavMarkdownWrite(t *testing.T, vault string) {
+	t.Helper()
+	parent := filepath.Dir(favMdPath(vault)) // …/日报/AI情报/收藏
+	if err := os.MkdirAll(filepath.Dir(parent), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(parent, []byte("x"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+}
+
 func item(id, kind, created string) FavoriteItem {
 	return FavoriteItem{
 		ID: id, Kind: kind, CreatedAt: created,
@@ -275,7 +292,7 @@ func TestRenderFavoritesMarkdownGroupsAndSkipsTombstones(t *testing.T) {
 	items := []FavoriteItem{
 		{ID: id64a, Kind: "link", Title: "Cursor 新功能", Site: "github.com", URL: "https://github.com/x/y",
 			CreatedAt: "2026-06-10T15:42:00Z", Source: FavoriteSource{Date: "2026-06-10", Report: "ai-trending", Label: "GitHub AI 趋势"}},
-		{ID: id64b, Kind: "excerpt", Title: "Provider 兼容性", Excerpt: "关于 provider 兼容性的分析",
+		{ID: id64b, Kind: "excerpt", Title: "Provider 兼容性", Excerpt: "关于 provider 兼容性的分析", Section: "横向对比",
 			CreatedAt: "2026-06-09T10:00:00Z", Source: FavoriteSource{Date: "2026-06-09", Report: "ai-agents", Label: "AI Agents 生态", Anchor: id64a}},
 		{ID: "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", Kind: "report", Title: "Tombstoned",
 			CreatedAt: "2026-06-10T01:00:00Z", DeletedAt: "2026-06-10T02:00:00Z", Source: FavoriteSource{Date: "2026-06-10", Report: "ai-ph"}},
@@ -293,6 +310,9 @@ func TestRenderFavoritesMarkdownGroupsAndSkipsTombstones(t *testing.T) {
 		"### [段落] Provider 兼容性",
 		"?focus=" + id64a, // excerpt jump-back uses the block anchor
 		"https://github.com/x/y",
+		// review needs: each favorite also links into the vault report (Obsidian wikilink),
+		"- 在库内打开：[[日报/AI情报/2026-06-10/ai-trending]]",
+		"- 在库内打开：[[日报/AI情报/2026-06-09/ai-agents#横向对比]]", // excerpt carries a section anchor
 	} {
 		if !strings.Contains(md, want) {
 			t.Fatalf("markdown missing %q\n---\n%s", want, md)
@@ -301,6 +321,32 @@ func TestRenderFavoritesMarkdownGroupsAndSkipsTombstones(t *testing.T) {
 	// newest day must come first
 	if strings.Index(md, "## 2026-06-10") > strings.Index(md, "## 2026-06-09") {
 		t.Fatal("days must be newest-first")
+	}
+}
+
+func TestVaultReportLink(t *testing.T) {
+	link := vaultReportLink(FavoriteItem{Kind: "link", Source: FavoriteSource{Date: "2026-06-10", Report: "ai-cli"}})
+	if link != "[[日报/AI情报/2026-06-10/ai-cli]]" {
+		t.Fatalf("link favorite wikilink wrong: %q", link)
+	}
+	// excerpt with a section gets a heading anchor
+	ex := vaultReportLink(FavoriteItem{Kind: "excerpt", Section: "横向对比", Source: FavoriteSource{Date: "2026-06-09", Report: "ai-agents"}})
+	if ex != "[[日报/AI情报/2026-06-09/ai-agents#横向对比]]" {
+		t.Fatalf("excerpt wikilink with anchor wrong: %q", ex)
+	}
+	// excerpt without a section: no anchor
+	noSec := vaultReportLink(FavoriteItem{Kind: "excerpt", Source: FavoriteSource{Date: "2026-06-09", Report: "ai-agents"}})
+	if noSec != "[[日报/AI情报/2026-06-09/ai-agents]]" {
+		t.Fatalf("excerpt wikilink without section wrong: %q", noSec)
+	}
+	// section with wikilink-breaking characters is sanitized out
+	dirty := vaultReportLink(FavoriteItem{Kind: "excerpt", Section: "A [b] | c # d", Source: FavoriteSource{Date: "2026-06-09", Report: "ai-agents"}})
+	if dirty != "[[日报/AI情报/2026-06-09/ai-agents#A b c d]]" {
+		t.Fatalf("section anchor not sanitized: %q", dirty)
+	}
+	// incomplete source → no link
+	if got := vaultReportLink(FavoriteItem{Kind: "link", Source: FavoriteSource{Date: "2026-06-10"}}); got != "" {
+		t.Fatalf("incomplete source should yield no link, got %q", got)
 	}
 }
 
@@ -376,9 +422,8 @@ func TestSyncFavoritesWritesCommitsAndPushes(t *testing.T) {
 	if err != nil || !strings.Contains(out, id64a) {
 		t.Fatalf("favorites.json not pushed to origin: %v\n%s", err, out)
 	}
-	// Obsidian md written to the vault
-	md := filepath.Join(vault, "收藏", "AI情报收藏.md")
-	if _, err := os.Stat(md); err != nil {
+	// Obsidian md written to the vault (under the digest tree)
+	if _, err := os.Stat(favMdPath(vault)); err != nil {
 		t.Fatalf("收藏 md not written: %v", err)
 	}
 }
@@ -415,7 +460,7 @@ func TestSyncFavoritesOfflineWritesLocalNoPush(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(clone, favoritesFileName)); err != nil {
 		t.Fatalf("offline: favorites.json not written: %v", err)
 	}
-	if _, err := os.Stat(filepath.Join(vault, "收藏", "AI情报收藏.md")); err != nil {
+	if _, err := os.Stat(favMdPath(vault)); err != nil {
 		t.Fatalf("offline: md not written: %v", err)
 	}
 }
@@ -459,10 +504,7 @@ func TestParseFavoritesEmptyVsMalformed(t *testing.T) {
 // the sync still pushes to GitHub but reports vault_written=false.
 func TestSyncFavoritesReportsVaultWriteFailure(t *testing.T) {
 	app, _, vault := setupRepoFixture(t)
-	// Make the 收藏 target a regular FILE so MkdirAll/write fails.
-	if err := os.WriteFile(filepath.Join(vault, "收藏"), []byte("x"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	blockFavMarkdownWrite(t, vault)
 	res := app.syncFavorites([]FavoriteItem{item(id64a, "link", "2026-06-10T15:42:00Z")})
 	if res.err != nil {
 		t.Fatalf("git push should still succeed: %v", res.err)
@@ -486,9 +528,7 @@ func TestSyncFavoritesReportsVaultWriteFailure(t *testing.T) {
 func TestHandleFavoritesSyncPersistsVaultError(t *testing.T) {
 	app, _, vault := setupRepoFixture(t)
 	app.statePath = filepath.Join(t.TempDir(), "state.json")
-	if err := os.WriteFile(filepath.Join(vault, "收藏"), []byte("x"), 0o644); err != nil {
-		t.Fatal(err)
-	}
+	blockFavMarkdownWrite(t, vault)
 	body, _ := json.Marshal(map[string]any{"items": []FavoriteItem{item(id64a, "link", "2026-06-10T15:42:00Z")}})
 	req := httptest.NewRequest(http.MethodPost, "/api/favorites/sync", strings.NewReader(string(body)))
 	rec := httptest.NewRecorder()
@@ -676,5 +716,134 @@ func TestFavoritesJSONRoundTripsRevivedAt(t *testing.T) {
 	items, err := parseFavorites(data)
 	if err != nil || len(items) != 1 || items[0].RevivedAt != "2026-06-10T10:00:00Z" {
 		t.Fatalf("revived_at must round-trip, got %+v err=%v", items, err)
+	}
+}
+
+// Review §11.2: adopting a fresh disk state in the digest-sync path must refresh
+// only digest-owned fields and PRESERVE the in-memory favorites fields.
+func TestAdoptDigestStateKeepsFavoritesFields(t *testing.T) {
+	app := &App{}
+	// In-memory: favorites sync just recorded a vault failure + a fresh sync time.
+	app.state = State{
+		Token:             "in-memory-token",
+		FavoritesError:    "SecondBrain 写入失败：read-only",
+		FavoritesLastSync: "2026-06-11T09:00:00Z",
+	}
+	// Disk snapshot is older: digest fields populated, favorites fields empty.
+	disk := State{
+		Token:     "disk-token",
+		LastSync:  "2026-06-11T08:00:00Z",
+		LastError: "prev digest error",
+		Files:     map[string]string{"a.md": "sha"},
+		// FavoritesError / FavoritesLastSync intentionally empty (stale).
+	}
+	app.adoptDigestStateLocked(disk)
+
+	// Digest-owned fields adopted from disk.
+	if app.state.Token != "disk-token" || app.state.LastSync != "2026-06-11T08:00:00Z" ||
+		app.state.LastError != "prev digest error" || app.state.Files["a.md"] != "sha" {
+		t.Fatalf("digest fields not adopted from disk: %+v", app.state)
+	}
+	// Favorites-owned fields preserved from memory (NOT clobbered by the stale disk).
+	if app.state.FavoritesError != "SecondBrain 写入失败：read-only" {
+		t.Fatalf("FavoritesError was clobbered: %q", app.state.FavoritesError)
+	}
+	if app.state.FavoritesLastSync != "2026-06-11T09:00:00Z" {
+		t.Fatalf("FavoritesLastSync was clobbered: %q", app.state.FavoritesLastSync)
+	}
+}
+
+// Review §11.4: simulate the interleaving where a digest sync reads the old disk
+// state, a favorites sync then persists a vault error, and the digest sync later
+// adopts its (stale) snapshot + saves. The favorites error must survive in BOTH
+// memory and state.json — no stale-snapshot overwrite.
+func TestDigestSyncDoesNotClobberFavoritesError(t *testing.T) {
+	dir := t.TempDir()
+	app := &App{statePath: filepath.Join(dir, "state.json")}
+	app.state = State{Token: "t", Files: map[string]string{}}
+	if err := app.saveState(); err != nil {
+		t.Fatal(err)
+	}
+
+	// 1) Digest sync reads the (old, favorites-empty) disk snapshot.
+	var diskSnapshot State
+	if err := readJSON(app.statePath, &diskSnapshot); err != nil {
+		t.Fatal(err)
+	}
+
+	// 2) Favorites sync records a vault failure to memory + disk.
+	app.mu.Lock()
+	app.state.FavoritesError = "SecondBrain 写入失败：read-only"
+	app.state.FavoritesLastSync = "2026-06-11T09:00:00Z"
+	app.mu.Unlock()
+	if err := app.saveState(); err != nil {
+		t.Fatal(err)
+	}
+
+	// 3) Digest sync now adopts its stale snapshot and saves (the dangerous step).
+	app.mu.Lock()
+	app.adoptDigestStateLocked(diskSnapshot)
+	app.state.LastSync = "2026-06-11T09:01:00Z"
+	app.state.LastError = ""
+	app.mu.Unlock()
+	if err := app.saveState(); err != nil {
+		t.Fatal(err)
+	}
+
+	// Memory must still hold the favorites error.
+	if app.state.FavoritesError == "" {
+		t.Fatal("digest sync clobbered FavoritesError in memory")
+	}
+	// Disk must still hold it too.
+	var onDisk State
+	if err := readJSON(app.statePath, &onDisk); err != nil {
+		t.Fatal(err)
+	}
+	if onDisk.FavoritesError == "" {
+		t.Fatalf("digest sync clobbered FavoritesError on disk: %+v", onDisk)
+	}
+	if onDisk.LastSync != "2026-06-11T09:01:00Z" {
+		t.Fatalf("digest field should still be saved: %q", onDisk.LastSync)
+	}
+
+	// Reverse path: a digest sync holds a stale snapshot that STILL CARRIES the old
+	// error; meanwhile favorites sync succeeds and clears it. Adopting the stale
+	// snapshot must NOT resurrect the cleared error — in memory or on disk.
+	//
+	// Capture the stale snapshot WHILE the error is on disk (this is the crux the
+	// previous version missed: it reused the always-empty diskSnapshot).
+	var staleWithError State
+	if err := readJSON(app.statePath, &staleWithError); err != nil {
+		t.Fatal(err)
+	}
+	if staleWithError.FavoritesError == "" {
+		t.Fatal("test setup: stale snapshot must carry the old error")
+	}
+
+	// Favorites sync succeeds → clears the error in memory + disk.
+	app.mu.Lock()
+	app.state.FavoritesError = ""
+	app.mu.Unlock()
+	if err := app.saveState(); err != nil {
+		t.Fatal(err)
+	}
+
+	// Digest sync adopts its stale (error-bearing) snapshot and saves.
+	app.mu.Lock()
+	app.adoptDigestStateLocked(staleWithError)
+	app.state.LastSync = "2026-06-11T09:02:00Z"
+	app.mu.Unlock()
+	if err := app.saveState(); err != nil {
+		t.Fatal(err)
+	}
+	if app.state.FavoritesError != "" {
+		t.Fatalf("stale digest snapshot resurrected a cleared FavoritesError in memory: %q", app.state.FavoritesError)
+	}
+	var afterClear State
+	if err := readJSON(app.statePath, &afterClear); err != nil {
+		t.Fatal(err)
+	}
+	if afterClear.FavoritesError != "" {
+		t.Fatalf("stale digest snapshot resurrected a cleared FavoritesError on disk: %q", afterClear.FavoritesError)
 	}
 }

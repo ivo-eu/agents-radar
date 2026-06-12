@@ -43,7 +43,7 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
 
 - 返回 `{"pushed":true,"alive":1,"total":1,"items":[...]}`。
 - 专用 clone（及 GitHub）多一条 `favorites: sync (1 alive)` 提交，根目录有 `favorites.json`。
-- vault 出现 `收藏/AI情报收藏.md`，含该条目 + 回到 Radar 链接。
+- vault 出现 `日报/AI情报/收藏/AI情报收藏.md`，含该条目、回到 Radar 和在库内打开链接。
 - 等 GitHub Pages 重建（约 1 分钟）后，打开 https://ivo-eu.github.io/agents-radar/ 能读到收藏。
 
 ## 前端端到端
@@ -68,4 +68,4 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
 - 只监听 `127.0.0.1:4399`，CORS 仅放行 pages_url，pairing token 不变。
 - git 只 `add/commit/push` `favorites.json` 一个路径；工作区有其它未提交改动会**拒绝**操作。
 - favorites.json 公开，但内容全部来自已公开的日报，不引入新隐私。
-- 不读 vault 其它内容、不上传 vault 内容（只写 `收藏/AI情报收藏.md`）。
+- 不读 vault 其它内容、不上传 vault 内容（只写 `日报/AI情报/收藏/AI情报收藏.md`）。

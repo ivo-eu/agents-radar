@@ -233,10 +233,14 @@
       background: var(--accent-bg); border-left: 3px solid var(--accent);
       padding: 6px 0 6px 14px; margin-left: -17px; border-radius: 0 4px 4px 0;
     }
+    /* Saved link: subtle tinted chip with a small accent tick on the left —
+       no full-width underline (keeps long link text readable). */
     .md a.fav-link-saved {
-      background: var(--accent-bg); text-decoration: underline dashed;
-      text-underline-offset: 3px; border-radius: 2px; padding: 0 2px;
+      background: var(--accent-bg); border-radius: 3px;
+      padding: 0 4px 0 7px; text-decoration: none;
+      box-shadow: inset 2px 0 0 0 var(--accent);
     }
+    .md a.fav-link-saved:hover { text-decoration: underline; }
     .md .fav-block-saved {
       background: var(--accent-bg); border-left: 2px solid var(--accent);
       padding-left: 10px; border-radius: 0 3px 3px 0;

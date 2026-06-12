@@ -18,7 +18,7 @@ Phase 2 的 Bridge 部署与后端端到端链路已经实际跑通：
 → Bridge 专用 agents-radar clone
 → commit + push favorites.json
 → GitHub Pages 发布 favorites.json
-→ SecondBrain/收藏/AI情报收藏.md
+→ SecondBrain/日报/AI情报/收藏/AI情报收藏.md
 ```
 
 已验证新增与软删两条路径均返回 `pushed: true`。
@@ -29,12 +29,13 @@ Phase 2 的 Bridge 部署与后端端到端链路已经实际跑通：
 6c5feff feat: ship favorites phase 2
 ```
 
-但是 Phase 2 目前还不能标记为完整验收完成：
+Phase 2 当前可以标记为代码与本机部署验收完成：
 
-1. `master` 已收到 Phase 2 代码，但本轮未继续用 GitHub CLI 跟踪 Pages workflow 成功与否，因为 `gh` token 已失效；线上页面需在明天联调时再做一次实际验收。
-2. 第 10 节发现的 Vault 自愈和 `--repo-url` 两项问题已经修复，但第三轮复审又发现 1 个新的 P1：日报同步可能覆盖收藏同步刚写入的持久状态，详见第 11 节。
+1. 第 10 节发现的 Vault 自愈和 `--repo-url` 两项问题已经修复。
+2. 第 11 节的状态覆盖 P1 与反向测试缺口已经修复，最终构建已安装到当前运行的 Bridge。
+3. Phase 1 旧归档和导航已经清理，统一收藏文件已归入 `日报/AI情报/收藏/`。
 
-建议实现 Agent 先修复第 11 节问题，再做一次真实环境的并发/离线验收。
+仍可选做一次人为制造 Vault 写入失败的故障演练，但不再阻塞当前发布。
 
 ## 2. 实际部署结果
 
@@ -142,7 +143,7 @@ bdba45f favorites: sync (1 alive)
 - GitHub 远端 `master` 收到提交。
 - GitHub Pages 的 `/favorites.json` 返回 HTTP 200。
 - Pages 内容与专用 clone 中的 JSON 一致。
-- SecondBrain 生成 `收藏/AI情报收藏.md`。
+- SecondBrain 生成 `日报/AI情报/收藏/AI情报收藏.md`。
 - Markdown 包含网站、来源、回到 Radar 和原始链接。
 
 ### 3.2 软删清理
@@ -763,7 +764,7 @@ LaunchAgent 正常运行，并使用专用 clone。
 → 顶部显示 1 条待同步
 → 约 5 秒后自动同步
 → GitHub commit + push favorites.json
-→ SecondBrain/收藏/AI情报收藏.md 出现收藏
+→ SecondBrain/日报/AI情报/收藏/AI情报收藏.md 出现收藏
 → 网页取消收藏
 → 再次自动同步
 → favorites.json 写入墓碑
@@ -1048,3 +1049,208 @@ git push origin master
 4. 增加反向测试，验证已清除的旧错误不会被并发同步恢复。
 5. 重新运行前端测试、Go race/vet/build/cover。
 6. 修复后再做一次 Vault 失败 → 恢复 → 刷新页面的完整验收。
+
+### 11.8 修复落实记录（2026-06-12，第三轮）
+
+第 11.2 节的 P1（日报同步陈旧快照覆盖收藏状态）已修复，改动仅在 `bridge/cmd/radar-bridge/main.go` 与 `main_test.go`，前端未改。
+
+#### 修复（方案 A：状态字段所有权）
+
+- 把 `sync()` 里 `a.state = diskState` 的**整份替换**改为新增的 `adoptDigestStateLocked(disk)`：
+  - **只**从磁盘采纳日报链路拥有的字段：`Token` / `LastSync` / `LastError` / `Files`。
+  - **保留**内存中收藏链路拥有的字段：`FavoritesLastSync` / `FavoritesError`（及 legacy `Favorites`）——不从磁盘旧快照回写。
+- 由此明确了两条同步链路的状态所有权：日报同步（`syncMu`）只改日报字段，收藏同步（`favMu`）只改收藏字段；两者虽共用 `a.state` / `state.json`，但不再互相覆盖对方刚写入的字段。
+- 对称性已确认：`handleFavoritesSync` 本就只做字段级写入（`a.state.FavoritesError = …`），不整份替换 state，因此收藏链路也不会覆盖日报字段。
+
+#### 测试（驱动真实 helper，不止 `-race`）
+
+- `TestAdoptDigestStateKeepsFavoritesFields`：内存有新收藏字段 + 磁盘旧快照（收藏字段空），采纳后断言日报字段取自磁盘、收藏字段保留内存值。
+- `TestDigestSyncDoesNotClobberFavoritesError`：按 §11.4 交错顺序（日报读旧盘 → 收藏写 Vault 错误并落盘 → 日报采纳旧盘并 `saveState`）端到端验证内存**与** `state.json` 中 `FavoritesError` 均保留；并覆盖反向路径（收藏清除错误后，持旧快照的日报同步不得复活该错误）。
+- 这两个测试断言的是**最终状态字段不被陈旧快照覆盖**，而非仅 `go test -race` 通过（逻辑层覆盖，race detector 抓不到，因为访问都过 `a.mu`）。
+
+#### 本轮验证结果
+
+```text
+cd bridge && gofmt -l       干净
+cd bridge && go vet ./...   通过
+cd bridge && go build       成功
+cd bridge && go test -race  通过
+cd bridge && go test -cover 覆盖率 41.8%（原 40.9%）
+pnpm typecheck / lint / test  通过（前端未改，回归确认）
+```
+
+> 仍待（与代码无关）：真实环境 Vault 失败 → 恢复 → 刷新页面验收，并在该过程中并发触发一次日报同步，确认 `favorites_error` 不被清除。
+
+### 11.9 第四轮复审（2026-06-12）
+
+#### 结论
+
+第 11.2 节 P1 的**源码修复方向正确**：
+
+- 日报同步不再执行 `a.state = diskState`。
+- `adoptDigestStateLocked()` 只采纳日报字段，并保留当前内存中的收藏字段。
+- `saveState()` 在同一把 `a.mu` 内完成 JSON 序列化和原子替换，同一 Bridge 进程中的日报与收藏状态写入不会各自拿旧副本并行覆盖。
+
+但本轮仍有 1 个 P1 交付缺口和 1 个 P2 测试缺口。
+
+#### P1：修复尚未发布和部署，当前真实 Bridge 仍运行旧二进制
+
+本地修复后源码构建产物：
+
+```text
+/private/tmp/radar-bridge-phase2-review3
+构建时间：2026-06-12 11:04:40
+```
+
+当前 LaunchAgent 实际运行：
+
+```text
+program = /Users/dinsafer/Library/Application Support/RadarBridge/bin/radar-bridge
+state = running
+安装时间：2026-06-11 18:16:37
+```
+
+两份二进制 `cmp` 结果不同。GitHub `master` 最近的源码提交仍是：
+
+```text
+6c5feff feat: ship favorites phase 2
+2bcc4fc docs: refresh phase 2 deployment status
+```
+
+之后只有 `favorites: sync` 数据提交，未发现本轮并发状态修复的源码提交。
+
+影响：
+
+- 本地源码中的 P1 已修复，但当前正在运行的 Bridge 仍可能发生第 11.2 节的状态覆盖。
+- 重启 LaunchAgent 不够，必须先用新源码重新构建并执行 `install`，让稳定路径中的二进制被替换。
+- 修复源码和测试还需要提交、推送到 GitHub，避免下次从远端构建时退回旧实现。
+
+#### P2：反向回归测试没有真正使用“带旧错误的快照”
+
+位置：
+
+```text
+bridge/cmd/radar-bridge/main_test.go:770-781
+```
+
+测试注释声称覆盖：
+
+```text
+收藏同步成功清除旧 FavoritesError
+→ 日报同步持有一个仍带旧错误的磁盘快照
+→ 不得把旧错误复活
+```
+
+但实际传给 `adoptDigestStateLocked()` 的仍是测试最开始读取的 `diskSnapshot`，该快照的 `FavoritesError` 从始至终为空。因此当前测试只再次证明了“空值不会覆盖空值”，没有真正覆盖“旧错误不得复活”。
+
+建议修正：
+
+1. 在写入 Vault 错误并落盘后重新读取一份 `staleWithError`。
+2. 清除内存和磁盘中的 `FavoritesError`。
+3. 调用 `adoptDigestStateLocked(staleWithError)`。
+4. 再次 `saveState()`，同时断言内存与 `state.json` 中错误仍为空。
+
+该问题不改变当前实现正确性的判断，但会削弱后续重构时的回归保护。
+
+#### 本轮验证
+
+```text
+pnpm typecheck              通过
+pnpm lint                   通过
+pnpm test -- --run          15 文件 / 229 测试通过
+git diff --check            通过
+cd bridge && gofmt -l       干净
+cd bridge && go vet ./...   通过
+cd bridge && go build       通过
+cd bridge && go test -race  通过
+cd bridge && go test -cover 覆盖率 41.8%
+```
+
+#### 给实现 Agent 的收尾清单
+
+1. 修正反向测试，真正使用带旧 `FavoritesError` 的陈旧快照，并验证最终磁盘状态。
+2. 提交并推送 `main.go`、`main_test.go` 和本审查文档。
+3. 用最新源码重新构建并执行 `radar-bridge install`，替换稳定路径二进制。
+4. 重启 LaunchAgent，确认运行二进制与最新构建产物一致。
+5. 做一次 Vault 失败 + 日报并发同步 + Vault 恢复的真实环境验收。
+
+### 11.10 修复落实 + 收藏归位与库内跳转（2026-06-12，第四轮收尾）
+
+#### P2 反向测试（已修）
+
+- `TestDigestSyncDoesNotClobberFavoritesError` 的反向路径不再复用始终为空的 `diskSnapshot`：现在在「Vault 错误已落盘」时**重新读取一份 `staleWithError`**（其 `FavoritesError` 非空），再清除内存+磁盘错误，最后用 `staleWithError` 调 `adoptDigestStateLocked` 并断言内存与 `state.json` 中错误**仍为空**。
+- 已用「注入 bug 验证测试有效性」：临时让 `adoptDigestStateLocked` 采纳磁盘收藏字段后，该测试如期失败；恢复源码后通过。证明它真正覆盖「旧错误不得复活」，不再是「空覆盖空」。
+
+#### 用户需求 1：收藏笔记归入日报树（不再割裂）
+
+- `writeFavoritesMarkdown` 的目标路径由 `收藏/AI情报收藏.md`（vault 顶层）改为 **`日报/AI情报/收藏/AI情报收藏.md`**（新增 `favoritesMarkdownRel` 常量集中管理）。
+- 安全性：日报同步 `sync()` 只写 `sync-manifest.json` 列出的文件、从不删除其他文件，因此 `日报/AI情报/` 下并列的 `收藏/` 子目录不会被日报同步触碰。
+- 收藏笔记的内容与分组保持不变（按收藏日期分组）。
+
+#### 用户需求 2：收藏笔记内可跳回 vault 日报原文
+
+- 渲染新增一行 **`- 在库内打开：[[日报/AI情报/<date>/<report>]]`**（Obsidian 内部 wikilink），与既有「回到 Radar」网页链接并存。
+- 段落收藏带章节锚点：`[[日报/AI情报/<date>/<report>#<section>]]`；新增 `sanitizeHeading` 去掉 `[]|#^` 等会破坏 wikilink 的字符。
+- 新增 `vaultReportLink`/`sanitizeHeading` 及其单测，并扩展 `TestRenderFavoritesMarkdownGroupsAndSkipsTombstones` 断言两类 wikilink。
+
+#### 用户需求 2b：网页链接收藏高亮不再整段下划线
+
+- `.fav-link-saved` 由 `text-decoration: underline dashed`（整段虚线下划线，长链接很难看）改为**浅底 chip + 左侧 2px accent 内嵌竖条**（`box-shadow: inset 2px 0 0`），仅 hover 时才显示下划线。块/标题高亮不变。
+
+#### 本轮验证
+
+```text
+pnpm typecheck / lint / test    通过（15 文件 / 229 测试）
+cd bridge && gofmt -l           干净
+cd bridge && go vet ./...       通过
+cd bridge && go build           成功
+cd bridge && go test -race      通过
+cd bridge && go test -cover     覆盖率 42.6%
+```
+
+#### 当时仍需人工执行（完成情况见 §11.11）
+
+- 重新 `go build` + `radar-bridge install` 替换稳定路径二进制，重启 LaunchAgent，确认运行二进制 = 最新构建（已完成）。
+- `git commit` + `git push` 本轮 `main.go` / `main_test.go` / `index.html` / 本文档（本轮发布执行）。
+- 真实环境验收：Vault 失败 → 日报并发同步 → Vault 恢复；并在 Obsidian 中点击「在库内打开」确认能跳到日报原文。
+
+### 11.11 第五轮复审与 Phase 1 归档清理（2026-06-12）
+
+第五轮复审未发现新的功能阻断问题：
+
+- `staleWithError` 反向测试已真正覆盖“旧 Vault 错误不得复活”，并同时断言内存与 `state.json`。
+- 收藏 Markdown 已稳定写入 `日报/AI情报/收藏/AI情报收藏.md`。
+- 新文件已在真实 Vault 中生成；旧 `收藏/2026/` 仅剩空目录，没有需要迁移的历史条目。
+- Vault 中所有旧 `[[收藏首页]]` 导航已改为新的统一收藏笔记。
+
+本轮完成清理：
+
+- 删除 `SecondBrain/收藏/收藏首页.md`。
+- 删除空的 `SecondBrain/收藏/2026/` 及顶层空 `收藏/` 目录。
+- 删除仅服务 Phase 1 单条笔记模型、且已无引用的 `系统/Bases/收藏.base` 与 `系统/模板/收藏模板.md`。
+- 更新 `SecondBrain/首页.md`、`日报/AI情报/AI情报首页.md`、`系统/工作流/Radar情报与收藏.md` 的入口、数据流和安全说明。
+- 删除 Bridge `State.Favorites` 旧路径映射字段及初始化逻辑；旧 `state.json` 中该未知字段会被 JSON 解码忽略，不影响升级。
+- 保留 `FavoriteCandidate` 和旧 ID 归一化函数，仅用于浏览器/Go 的跨语言 ID 契约测试。
+- 技术实现、交接清单和重构计划中的输出路径统一更新为新位置。
+
+最终验证：
+
+```text
+pnpm typecheck              通过
+pnpm lint                   通过
+pnpm test -- --run          15 文件 / 229 测试通过
+git diff --check            通过
+cd bridge && gofmt -l       干净
+cd bridge && go vet ./...   通过
+cd bridge && go build       通过
+cd bridge && go test -race  通过
+cd bridge && go test -cover 覆盖率 42.7%
+```
+
+真实环境部署结果：
+
+- 最终构建产物已通过 `radar-bridge install` 写入稳定路径。
+- `/private/tmp/radar-bridge-phase2-final` 与稳定路径二进制 `cmp` 完全一致。
+- LaunchAgent `com.ivo.radar-bridge` 已重启并处于 `running`。
+- `GET /api/status` 返回 `connected=true`、`favorites_enabled=true`、`favorites_error=""`。
+- `GET /api/favorites` 正常返回现有 5 条墓碑；当前无 alive 收藏，因此统一 Markdown 只保留文件头，符合过滤墓碑的设计。

@@ -55,7 +55,6 @@ type State struct {
 	LastSync          string            `json:"last_sync,omitempty"`
 	LastError         string            `json:"last_error,omitempty"`
 	Files             map[string]string `json:"files"`
-	Favorites         map[string]string `json:"favorites"` // legacy (Phase 1 per-file map); unused in Phase 2
 	FavoritesLastSync string            `json:"favorites_last_sync,omitempty"`
 	FavoritesError    string            `json:"favorites_error,omitempty"`
 }
@@ -238,7 +237,7 @@ func loadApp() (*App, error) {
 	}
 	allowedOrigin := pagesURL.Scheme + "://" + pagesURL.Host
 
-	state := State{Files: map[string]string{}, Favorites: map[string]string{}}
+	state := State{Files: map[string]string{}}
 	if err := readJSON(statePath, &state); err != nil && !errors.Is(err, os.ErrNotExist) {
 		return nil, fmt.Errorf("read state: %w", err)
 	}
@@ -251,10 +250,6 @@ func loadApp() (*App, error) {
 	if state.Files == nil {
 		state.Files = map[string]string{}
 	}
-	if state.Favorites == nil {
-		state.Favorites = map[string]string{}
-	}
-
 	app := &App{
 		config:        config,
 		configPath:    configPath,
@@ -649,13 +644,7 @@ func (a *App) sync(ctx context.Context) (SyncResult, error) {
 	var diskState State
 	if err := readJSON(a.statePath, &diskState); err == nil {
 		a.mu.Lock()
-		a.state = diskState
-		if a.state.Files == nil {
-			a.state.Files = map[string]string{}
-		}
-		if a.state.Favorites == nil {
-			a.state.Favorites = map[string]string{}
-		}
+		a.adoptDigestStateLocked(diskState)
 		a.mu.Unlock()
 	}
 	a.syncing.Store(true)
@@ -765,6 +754,24 @@ func (a *App) sync(ctx context.Context) (SyncResult, error) {
 		return result, err
 	}
 	return result, nil
+}
+
+// adoptDigestStateLocked refreshes ONLY the fields the digest-sync path owns from
+// a freshly-read disk state, and preserves the favorites-sync fields currently in
+// memory. This prevents a digest sync (syncMu) from clobbering the FavoritesError /
+// FavoritesLastSync that a concurrent favorites sync (favMu) just wrote — the two
+// paths use different mutexes but share a.state / state.json (review §11.2).
+// Caller must hold a.mu.
+func (a *App) adoptDigestStateLocked(disk State) {
+	a.state.Token = disk.Token
+	a.state.LastSync = disk.LastSync
+	a.state.LastError = disk.LastError
+	a.state.Files = disk.Files
+	if a.state.Files == nil {
+		a.state.Files = map[string]string{}
+	}
+	// Favorites-owned fields (FavoritesLastSync and FavoritesError) are
+	// intentionally NOT taken from disk — the in-memory values are authoritative.
 }
 
 func (a *App) syncViaServer() (SyncResult, bool, error) {
@@ -1354,9 +1361,15 @@ func writeFavoritesFile(path string, items []FavoriteItem) error {
 	return writeJSONAtomic(path, file, 0o644)
 }
 
-// ── Obsidian markdown: 收藏/AI情报收藏.md ──
+// favoritesMarkdownRel is the vault-relative path of the unified favorites note.
+// It lives UNDER the digest tree (日报/AI情报/收藏/…) so favorites are not split
+// off from the daily reports they came from. Digest sync only writes the files
+// listed in sync-manifest.json, so this sibling 收藏/ folder is never touched by it.
+var favoritesMarkdownRel = filepath.Join("日报", "AI情报", "收藏", "AI情报收藏.md")
+
+// ── Obsidian markdown: 日报/AI情报/收藏/AI情报收藏.md ──
 func (a *App) writeFavoritesMarkdown(items []FavoriteItem) error {
-	dest, err := safeJoin(a.config.VaultPath, filepath.Join("收藏", "AI情报收藏.md"))
+	dest, err := safeJoin(a.config.VaultPath, favoritesMarkdownRel)
 	if err != nil {
 		return err
 	}
@@ -1403,6 +1416,9 @@ func renderFavoritesMarkdown(items []FavoriteItem, pagesURL string) string {
 		}
 		b.WriteString("- 来源：" + src + "\n")
 		b.WriteString("- 回到 Radar：<" + radarFocusURL(pagesURL, it) + ">\n")
+		if link := vaultReportLink(it); link != "" {
+			b.WriteString("- 在库内打开：" + link + "\n")
+		}
 		if it.Kind == "link" && it.URL != "" {
 			b.WriteString("- 原始链接：<" + it.URL + ">\n")
 		}
@@ -1432,6 +1448,31 @@ func radarFocusURL(pagesURL string, it FavoriteItem) string {
 		focus = it.Source.Anchor
 	}
 	return fmt.Sprintf("%s/?focus=%s#%s/%s", pagesURL, url.QueryEscape(focus), it.Source.Date, it.Source.Report)
+}
+
+// vaultReportLink builds an Obsidian wikilink to the favorite's source report in
+// this same vault (digest sync writes 日报/AI情报/<date>/<report>.md). For excerpt
+// favorites with a section, a heading anchor (#section) jumps near the passage.
+// Returns "" when the source is incomplete. Pipes/brackets in the section are
+// stripped because they would break wikilink syntax.
+func vaultReportLink(it FavoriteItem) string {
+	if it.Source.Date == "" || it.Source.Report == "" {
+		return ""
+	}
+	target := fmt.Sprintf("日报/AI情报/%s/%s", it.Source.Date, it.Source.Report)
+	if it.Kind == "excerpt" {
+		if section := sanitizeHeading(it.Section); section != "" {
+			target += "#" + section
+		}
+	}
+	return "[[" + target + "]]"
+}
+
+// sanitizeHeading makes a string safe to use as an Obsidian heading anchor inside
+// a wikilink: drop characters that break [[...#...]], then collapse whitespace.
+func sanitizeHeading(s string) string {
+	s = strings.NewReplacer("[", "", "]", "", "|", "", "#", "", "^", "").Replace(s)
+	return mdInline(s) // collapses runs of whitespace + trims
 }
 func mdInline(s string) string {
 	return strings.TrimSpace(spacePattern.ReplaceAllString(s, " "))
