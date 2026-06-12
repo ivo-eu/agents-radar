@@ -1,7 +1,19 @@
 {
   "version": 1,
-  "updated_at": "2026-06-12T02:50:33Z",
+  "updated_at": "2026-06-12T03:05:42Z",
   "items": [
+    {
+      "id": "8d7532a62f66791c943694ef114cb43ef9bfd45856c3f520a0027fbcee79016a",
+      "kind": "report",
+      "title": "AI CLI 工具社区动态日报 2026-06-11",
+      "created_at": "2026-06-12T03:05:32.353Z",
+      "source": {
+        "date": "2026-06-11",
+        "report": "ai-cli",
+        "label": "AI CLI 工具",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-11/ai-cli"
+      }
+    },
     {
       "id": "98cd1142fbbdf02123c857a147f8b794381d1b613dfd97370d7e28f0bcf2285c",
       "kind": "link",
