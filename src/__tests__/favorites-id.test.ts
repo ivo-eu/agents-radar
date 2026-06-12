@@ -62,11 +62,8 @@ beforeAll(async () => {
     "favId",
   ];
   const src =
-    names.map((n) => grabFunction(html, n)).join("\n\n") +
-    "\nexport { favId, normalizeUrl, normalizeText };";
-  const mod = await import(
-    "data:text/javascript," + encodeURIComponent(src)
-  );
+    names.map((n) => grabFunction(html, n)).join("\n\n") + "\nexport { favId, normalizeUrl, normalizeText };";
+  const mod = await import("data:text/javascript," + encodeURIComponent(src));
   favId = mod.favId;
   normalizeUrl = mod.normalizeUrl;
   normalizeText = mod.normalizeText;
@@ -132,12 +129,20 @@ describe("favorite ID is identical to the Go Bridge SHA-256", () => {
 
   it("excerpt normalizes whitespace before hashing", async () => {
     expect(
-      await favId("excerpt", { date: "2026-06-09", report: "ai-agents", excerpt: "Agent   memory\narchitecture" }),
+      await favId("excerpt", {
+        date: "2026-06-09",
+        report: "ai-agents",
+        excerpt: "Agent   memory\narchitecture",
+      }),
     ).toBe("ee7cf0e9715741daf27c0c223665e81871bd6354f3daa6c3e385e5d4f6334a6c");
   });
   it("excerpt lowercases before hashing", async () => {
     expect(
-      await favId("excerpt", { date: "2026-06-10", report: "ai-agents", excerpt: "Provider COMPATIBILITY Notes" }),
+      await favId("excerpt", {
+        date: "2026-06-10",
+        report: "ai-agents",
+        excerpt: "Provider COMPATIBILITY Notes",
+      }),
     ).toBe("87743bf98cbc5fc085e39d6088893760c46c584ae5d5a76f4b7e3f52deef6027");
   });
   it("excerpt handles unicode", async () => {

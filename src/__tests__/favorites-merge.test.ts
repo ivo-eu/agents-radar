@@ -85,7 +85,13 @@ describe("mergeItem matches the Go merge rules", () => {
   it("fills missing fields from the other side", () => {
     const out = mergeItem(
       { id: A, created_at: "2026-06-10T08:00:00Z", source: src },
-      { id: A, title: "Cursor", site: "github.com", created_at: "2026-06-10T08:00:00Z", source: { ...src, label: "HN" } },
+      {
+        id: A,
+        title: "Cursor",
+        site: "github.com",
+        created_at: "2026-06-10T08:00:00Z",
+        source: { ...src, label: "HN" },
+      },
     );
     expect(out.title).toBe("Cursor");
     expect(out.site).toBe("github.com");
@@ -101,8 +107,18 @@ describe("mergeItem matches the Go merge rules", () => {
   });
 
   it("revive after delete clears the tombstone and survives a stale one", () => {
-    const deleted = { id: A, created_at: "2026-06-10T08:00:00Z", deleted_at: "2026-06-10T09:00:00Z", source: src };
-    const revived = { id: A, created_at: "2026-06-10T08:00:00Z", revived_at: "2026-06-10T10:00:00Z", source: src };
+    const deleted = {
+      id: A,
+      created_at: "2026-06-10T08:00:00Z",
+      deleted_at: "2026-06-10T09:00:00Z",
+      source: src,
+    };
+    const revived = {
+      id: A,
+      created_at: "2026-06-10T08:00:00Z",
+      revived_at: "2026-06-10T10:00:00Z",
+      source: src,
+    };
     const live = mergeItem(deleted, revived);
     expect(live.deleted_at).toBeFalsy();
     expect(live.created_at).toBe("2026-06-10T08:00:00Z"); // sort key unchanged
@@ -116,7 +132,9 @@ describe("mergeItem matches the Go merge rules", () => {
 describe("in-flight reconcile keeps changes made during a sync (review §5.1)", () => {
   it("preserves an item added while the request was in flight", () => {
     // Snapshot sent to Bridge held only A; user added B mid-flight.
-    const serverReturned: FavItem[] = [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }];
+    const serverReturned: FavItem[] = [
+      { id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src },
+    ];
     const currentStore: FavItem[] = [
       { id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src },
       { id: B, kind: "link", created_at: "2026-06-10T08:05:00Z", source: src }, // in-flight add
@@ -128,16 +146,30 @@ describe("in-flight reconcile keeps changes made during a sync (review §5.1)", 
 
   it("preserves a delete made while the request was in flight", () => {
     // Server still thinks A is alive; user deleted it mid-flight.
-    const serverReturned: FavItem[] = [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }];
+    const serverReturned: FavItem[] = [
+      { id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src },
+    ];
     const currentStore: FavItem[] = [
-      { id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", deleted_at: "2026-06-10T08:05:00Z", source: src },
+      {
+        id: A,
+        kind: "link",
+        created_at: "2026-06-10T08:00:00Z",
+        deleted_at: "2026-06-10T08:05:00Z",
+        source: src,
+      },
     ];
     const merged = fold(serverReturned, currentStore);
     expect(merged.get(A)?.deleted_at).toBe("2026-06-10T08:05:00Z");
   });
 
   it("is order-independent (fold base-then-current == current-then-base for content)", () => {
-    const a: FavItem = { id: A, kind: "link", title: "from server", created_at: "2026-06-10T08:00:00Z", source: src };
+    const a: FavItem = {
+      id: A,
+      kind: "link",
+      title: "from server",
+      created_at: "2026-06-10T08:00:00Z",
+      source: src,
+    };
     const b: FavItem = { id: A, kind: "link", created_at: "2026-06-10T07:00:00Z", source: src };
     const m1 = mergeItem(a, b);
     const m2 = mergeItem(b, a);

@@ -65,7 +65,9 @@ function makeHarness(initialItems: FavItem[], responses: SyncResponse[]) {
   ];
   const body = pureNames.map((n) => grabFunction(html, n)).join("\n\n");
 
-  const store = { favoriteStore: { version: 1, updated_at: "", items: initialItems.map((it) => ({ ...it })) } };
+  const store = {
+    favoriteStore: { version: 1, updated_at: "", items: initialItems.map((it) => ({ ...it })) },
+  };
   const localData = new Map<string, string>();
   let fetchCalls = 0;
   let pendingTimer: (() => void) | null = null;
@@ -139,10 +141,7 @@ function runWithProxy(body: string, env: Record<string, unknown>, store: { favor
       },
     },
   );
-  const fn = new Function(
-    "scope",
-    `with(scope){ ${body}\n return { flushFavSync, pendingFavCount }; }`,
-  );
+  const fn = new Function("scope", `with(scope){ ${body}\n return { flushFavSync, pendingFavCount }; }`);
   return fn(scope) as {
     flushFavSync: (showResult?: boolean) => Promise<void>;
     pendingFavCount: () => number;
@@ -161,9 +160,18 @@ describe("vault-write failure keeps the sync pending and self-heals (review §10
       [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }],
       [
         // 1st sync: GitHub pushed, but SecondBrain markdown failed.
-        { items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }], pushed: true, vault_written: false, vault_error: "SecondBrain 写入失败：read-only" },
+        {
+          items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }],
+          pushed: true,
+          vault_written: false,
+          vault_error: "SecondBrain 写入失败：read-only",
+        },
         // 2nd sync (retry): both succeed.
-        { items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }], pushed: true, vault_written: true },
+        {
+          items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }],
+          pushed: true,
+          vault_written: true,
+        },
       ],
     );
     api = harness.run();
@@ -193,7 +201,13 @@ describe("clean sync advances the watermark and clears pending", () => {
   it("a fully successful sync leaves nothing pending", async () => {
     const h = makeHarness(
       [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }],
-      [{ items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }], pushed: true, vault_written: true }],
+      [
+        {
+          items: [{ id: A, kind: "link", created_at: "2026-06-10T08:00:00Z", source: src }],
+          pushed: true,
+          vault_written: true,
+        },
+      ],
     );
     const api = h.run();
     expect(api.pendingFavCount()).toBe(1);

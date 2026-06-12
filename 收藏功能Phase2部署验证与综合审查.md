@@ -985,6 +985,7 @@ FavoritesError
 ```text
 pnpm typecheck              通过
 pnpm lint                   通过
+pnpm format:check           通过
 pnpm test -- --run          15 文件 / 229 测试通过
 cd bridge && gofmt -l       干净
 cd bridge && go vet ./...   通过
@@ -1254,3 +1255,4 @@ cd bridge && go test -cover 覆盖率 42.7%
 - LaunchAgent `com.ivo.radar-bridge` 已重启并处于 `running`。
 - `GET /api/status` 返回 `connected=true`、`favorites_enabled=true`、`favorites_error=""`。
 - `GET /api/favorites` 正常返回现有 5 条墓碑；当前无 alive 收藏，因此统一 Markdown 只保留文件头，符合过滤墓碑的设计。
+- 首次推送后发现 CI 的 `format:check` 会检查 `src/`，三份收藏测试文件此前未经过 Prettier；已格式化并重新验证，避免 Phase 2 持续显示红色 CI。
