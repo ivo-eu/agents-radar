@@ -1,7 +1,21 @@
 {
   "version": 1,
-  "updated_at": "2026-06-12T03:08:24Z",
+  "updated_at": "2026-06-12T06:34:06Z",
   "items": [
+    {
+      "id": "36fffbe7862b45dcfa8b6d744f87faf25f063d14467e00c227d46b1e7973453d",
+      "kind": "excerpt",
+      "title": "Structured outputs vs JSON mode vs function calling vs raw t",
+      "excerpt": "Structured outputs vs JSON mode vs function calling vs raw text: the cost tradeoff explained 👍 1 · 💬 0 → 精悍的 Token 经济分析：结构化输出可将提取类任务响应减少 30-50%，但需要权衡延迟与精确度。",
+      "created_at": "2026-06-12T06:33:46.146Z",
+      "source": {
+        "date": "2026-06-09",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community",
+        "anchor": "01af0d77e9ecdc5077a2ddd2ea545f56cb6d6cbbd2906534c0983c5b0ee3fe5d"
+      }
+    },
     {
       "id": "8d7532a62f66791c943694ef114cb43ef9bfd45856c3f520a0027fbcee79016a",
       "kind": "report",
