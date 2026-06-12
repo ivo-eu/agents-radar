@@ -61,7 +61,7 @@ jobs:
             echo "No new digest files to commit"
           else
             DATE=$(date -u +%Y-%m-%d)
-            git commit -m "digest: ${DATE} daily digest"
+            HUSKY=0 git commit -m "digest: ${DATE} daily digest"
             git pull --rebase
             git push
           fi
@@ -73,7 +73,7 @@ jobs:
         run: |
           git add manifest.json sync-manifest.json feed.xml search-index/
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update web indexes"
+            HUSKY=0 git commit -m "chore: update web indexes"
             git pull --rebase
             git push
           fi

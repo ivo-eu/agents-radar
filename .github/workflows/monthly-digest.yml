@@ -57,7 +57,7 @@ jobs:
             echo "No monthly report to commit"
           else
             MONTH=$(date -u +%Y-%m)
-            git commit -m "digest: ${MONTH} monthly digest"
+            HUSKY=0 git commit -m "digest: ${MONTH} monthly digest"
             git pull --rebase
             git push
           fi
@@ -69,7 +69,7 @@ jobs:
         run: |
           git add manifest.json sync-manifest.json feed.xml search-index/
           if ! git diff --cached --quiet; then
-            git commit -m "chore: update web indexes"
+            HUSKY=0 git commit -m "chore: update web indexes"
             git pull --rebase
             git push
           fi
