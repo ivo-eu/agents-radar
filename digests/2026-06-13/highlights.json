@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "OpenAI Codex发布Rust CLI Alpha版本",
+      "Claude Code v2.1.176和v2.1.177修复发布",
+      "多智能体协作框架成行业焦点",
+      "Kimi Code CLI计费争议引热议",
+      "Pi v0.79.3版本发布更新",
+      "GitHub Copilot CLI v1.0.62-1/2发布"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.7-beta.1增强渠道一致性",
+      "v2026.6.6安全边界大幅收紧",
+      "DeepSeek Prompt Cache失效成高风险回归",
+      "memory_search元数据丢失引关注",
+      "Discord连接稳定性PR已合并",
+      "子代理生命周期修复获改进"
+    ],
+    "ai-trending": [
+      "agent-skills单日获2656颗星",
+      "obra/superpowers获1275星",
+      "LMCache推出最快KV Cache层",
+      "DeepSeek-V4-Pro登顶Hugging Face",
+      "医疗AI项目openmed获关注",
+      "端侧RAG方案LEANN节约97%存储"
+    ],
+    "ai-web": [
+      "Claude Fable5发布三天后被政府暂停",
+      "Anthropic与TCS合作进军受监管行业",
+      "美国公众调查显示AI失业担忧加剧",
+      "Anthropic发布首期公共记录结果",
+      "Mythos5因出口管制同步停服",
+      "安全护栏漏洞导致Fable5被紧急下架"
+    ],
+    "ai-hn": [
+      "Fable5暂停事件2319分登HN榜首",
+      "批量删除Claude聊天脚本获54分",
+      "BitBoard为AI Agent提供分析工作台",
+      "LLM在医学基准上超越专用模型",
+      "Fable5被禁前已被用于创作游戏",
+      "Anthropic研究LLM对N-day漏洞影响"
+    ],
+    "ai-ph": [
+      "Qursor获291票可指向UI元素辅助AI",
+      "Meet Warren 3.0语音财务规划获135票",
+      "Slack Data Agent不离开Slack查数据",
+      "Firma.dev电子签名API每信封仅3美分",
+      "Bob's CLI本地优先AI编程CLI发布",
+      "pleNx和Bob's CLI提及开源/GitHub"
+    ],
+    "ai-arxiv": [
+      "EvoArena提出记忆演化跟踪机制",
+      "HyperTool用宏工作流减少推理冗余",
+      "Beyond Commitment揭示CoT步骤因果",
+      "Agents-K1构建科学发现知识编排",
+      "SpatialClaw设计专用空间感知接口",
+      "DiffusionGemma实现1000 tokens/s"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro周点赞4803登顶",
+      "Gemma-4-12B-it下载超百万",
+      "NVIDIA LocateAnything-3B获1935赞",
+      "Google DiffusionGemma-26B发布",
+      "Ideogram 4 NF4量化版获高赞",
+      "OBLITERATUS推出Gemma去审查版"
+    ],
+    "ai-community": [
+      "Agent沙箱逃逸检测实践密集涌现",
+      "Claude Haiku实际成本比Gemini贵8.6倍",
+      "skillscore CLI可评分SKILL.md质量",
+      "DiffusionGemma改变推理经济学",
+      "Agent记忆存储架构设计引关注",
+      "Anthropic定位AI为基础设施引安全担忧"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "7 tools show 220+ issues updated in 24h",
+      "Multi-agent orchestration in every major tool",
+      "Terminal rendering fragile with non-Latin scripts",
+      "Model quality concerns eroding trust",
+      "Ecosystem splitting along provider lines",
+      "Users frustrated with token-based billing"
+    ],
+    "ai-agents": [
+      "OpenClaw: 147 issues, 500 PRs in 24h",
+      "Two new releases focus on security hardening",
+      "Community concerned about DeepSeek cache costs",
+      "RISC-V compatibility being actively addressed",
+      "Session-state bugs being fixed",
+      "Channel delivery improvements in v2026.6.7-beta.1"
+    ],
+    "ai-trending": [
+      "Agent skill frameworks get 1,200+ stars each",
+      "LMCache speeds LLM inference with KV-cache",
+      "Healthcare AI project openmed gets 515 stars",
+      "Multi-agent frameworks like agency-agents emerge",
+      "vllm and ollama remain dominant in infra",
+      "Firecrawl is foundational for agent data access"
+    ],
+    "ai-web": [
+      "US government suspends Claude Fable 5 and Mythos 5",
+      "Anthropic partners with Tata Consultancy Services",
+      "First large-scale public opinion survey released",
+      "Research on making Claude proficient in chemistry",
+      "Suspension cites national security concerns",
+      "Claude Fable 5 claimed state-of-the-art performance"
+    ],
+    "ai-hn": [
+      "US govt orders suspension of Claude Fable 5",
+      "Hacker News post reaches 2,319 points",
+      "Vibe-coded games built with Fable 5 appear",
+      "Paper reveals ghost personalities in LLMs",
+      "AI price war emerging in discussions",
+      "Mother sues OpenAI over ChatGPT and suicide"
+    ],
+    "ai-ph": [
+      "Qursor lets you point at UI for AI context",
+      "Bob's CLI is local-first AI coding without cloud",
+      "Meet Warren 3.0 voice-enabled financial planning",
+      "Slack Data Agent queries data within Slack",
+      "Firma.dev leads with 329 votes as API tool",
+      "Trend of practical, integration-first AI tools"
+    ],
+    "ai-arxiv": [
+      "EvoArena introduces dynamic agent environments",
+      "AgentBeats proposes standardized agent evaluation",
+      "Operad theory formalizes reasoning compositionality",
+      "Recursive Agent Harnesses merge production agents",
+      "HyperTool addresses granularity mismatch in LLMs",
+      "Valid Inference with Synthetic Data tackles validity"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro leads with 4,803 weekly likes",
+      "Nvidia's LocateAnything-3B vision model surges",
+      "Uncensored Qwen3.6-35B-A3B variant gains traction",
+      "Google's Gemma 4 family dominates fine-tunes",
+      "MoE architectures in nearly half of top models",
+      "Multimodal pipelines now dominate over text-only"
+    ],
+    "ai-community": [
+      "Cheaper model actually cost 8.6x more in test",
+      "DiffusionGemma achieves 1,000+ tokens per second",
+      "Pragmatic cost analysis for AI gateways",
+      "Community discusses agent memory management",
+      "Observability and security for long-running agents",
+      "Supply chain security paranoia in developer tools"
+    ]
+  }
+}
