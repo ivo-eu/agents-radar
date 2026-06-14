@@ -1,0 +1,110 @@
+{
+  "zh": {
+    "ai-cli": [
+      "OpenCode v1.17.6发布，社区活跃度极高",
+      "OpenAI Codex账户认证Issue获125👍热帖",
+      "Claude Code存在2个严重Bug被聚焦",
+      "GitHub Copilot CLI发布v1.0.62",
+      "DeepSeek TUI密集合并PR，包含安全修复",
+      "Qwen Code多个P1/P2问题待解决"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.6.8-beta.1版本",
+      "sessions.json OOM问题获修复",
+      "子Agent thinking参数失败PR待审查",
+      "社区230 issues和500 PRs刷新记录",
+      "GPT-5.5 Codex超时问题已关闭",
+      "Telegram频道支持富文本和可折叠引用"
+    ],
+    "ai-trending": [
+      "NVIDIA SkillSpector今日+804⭐成最大亮点",
+      "aisuite统一API接口上线，今日+127⭐",
+      "ollama以174k⭐支持最新模型本地运行",
+      "vllm 82k⭐推理引擎行业标准",
+      "AutoGPT 184k⭐开创自主Agent概念",
+      "browser-use持续火热，Agent浏览器自动化"
+    ],
+    "ai-hn": [
+      "Claude Fable/Mythos遭美国出口限制",
+      "OpenAI被多州检察长联合调查",
+      "Bastion工具为AI编程Agent提供隔离VM",
+      "Claude Fable 5 vs GPT-5.5评测引争议",
+      "Galdor Go语言Agent框架内置追踪",
+      "Anthropic展示Claude化学分子设计能力"
+    ],
+    "ai-ph": [
+      "Vercel Drop获403票，拖拽即部署",
+      "Kimi K2.7 Code编码模型紧随其后",
+      "Firecrawl Prometheus数据抓取Agent 214票",
+      "GameBrain API覆盖77.5万游戏数据库",
+      "CakewordAI语言学习工具获得好评",
+      "开发者工具和编码模型主导今日榜单"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro 4818👍307万下载登顶",
+      "NVIDIA LocateAnything-3B 1977👍",
+      "Google Gemma-4系列any-to-any架构",
+      "Cohere North-Mini-Code-1.0 MoE小模型",
+      "Qwen3.6系列社区魔改版大量衍生",
+      "Kimi K2.7-Code代码增强版562👍"
+    ],
+    "ai-community": [
+      "Claude Fable 5上线3天被下架引热议",
+      "Agent失败模式与工程实践热度飙升",
+      "DeepSeek+ChromaDB实现成本降65%",
+      "开源pgvector语义搜索无需API密钥",
+      "LLM谄媚行为量化研究成新关注点",
+      "Claude Code与Codex分工实战经验"
+    ]
+  },
+  "en": {
+    "ai-agents": [
+      "230 issues, 500 PRs in 24 hours",
+      "134 PRs merged or closed today",
+      "New beta v2026.6.8 released",
+      "Telegram and WhatsApp delivery improved",
+      "P0 gateway memory leak unresolved",
+      "Session compaction bugs reported"
+    ],
+    "ai-trending": [
+      "NVIDIA SkillSpector ⭐804 today",
+      "Kronos financial AI ⭐238 today",
+      "TradingAgents total ⭐85,996",
+      "andrewyng/aisuite ⭐127 today",
+      "mem0ai/mem0 ⭐58,521 total",
+      "claude-mem ⭐82,191 total"
+    ],
+    "ai-hn": [
+      "US govt cracks down on Anthropic models",
+      "Amazon CEO Andy Jassy involved",
+      "Claude fine-tuned as chemist",
+      "Fable 5 vs GPT-5.5 comparison",
+      "Fusion routing beats frontier models",
+      "OpenAI multi-state investigation"
+    ],
+    "ai-ph": [
+      "Vercel Drop gets 403 votes",
+      "Kimi K2.7 Code gets 301 votes",
+      "Prometheus by Firecrawl gets 214 votes",
+      "CakewordAI gets 182 votes",
+      "Prometheus uses forward deployed agent",
+      "CakewordAI offers camera-based learning"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro 4,818 likes, 3M downloads",
+      "Gemma 4 family ecosystem grows",
+      "DiffusionGemma 26B MoE model released",
+      "Uncensored fine-tunes surge in downloads",
+      "Qwen3.6-35B-A3B-Uncensored trending",
+      "Supergemma4-26b-uncensored popular"
+    ],
+    "ai-community": [
+      "Claude Fable 5 suspended by US government",
+      "Agent failure modes in production discussed",
+      "Claude Code vs Codex division of labor",
+      "Multi-agent simulation leads to wars",
+      "Grovel Index measures LLM sycophancy",
+      "Detailed timeline of Fable 5 launch"
+    ]
+  }
+}
