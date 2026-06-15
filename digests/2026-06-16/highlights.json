@@ -1,0 +1,22 @@
+{
+  "zh": {
+    "ai-weekly": [
+      "Anthropic发布Fable 5/Mythos 5，三天后遭出口管制",
+      "NVIDIA开源SkillSpector扫描AI Agent安全漏洞",
+      "Anthropic与TCS/DXC合作，加速企业级渗透",
+      "OpenAI秘密提交S-1启动IPO，并计划大幅改版",
+      "Claude Desktop每次启动生成1.8GB虚拟机引发批评",
+      "AI Agent技能市场爆发，GitHub涌现7个新项目"
+    ]
+  },
+  "en": {
+    "ai-weekly": [
+      "Claude Fable 5 launched, then shut down in 72 hours",
+      "US govt blocks foreign access to Anthropic's best models",
+      "Kimi Code CLI users revolt over speed limit pricing",
+      "Agent skills ecosystem gains 10,000 stars on GitHub",
+      "NVIDIA SkillSpector agent security scanner goes viral",
+      "Shift from single-agent to composable skill libraries"
+    ]
+  }
+}
