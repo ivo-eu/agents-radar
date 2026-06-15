@@ -1,7 +1,21 @@
 {
   "version": 1,
-  "updated_at": "2026-06-15T08:37:03Z",
+  "updated_at": "2026-06-15T09:10:33Z",
   "items": [
+    {
+      "id": "04d6b76f112d70c7c858a2523ce2ed83553d9c238f14a4d621791968d49ad9c0",
+      "kind": "excerpt",
+      "title": "通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系",
+      "excerpt": "通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系统化提升 AI 编码质量的开发团队。",
+      "created_at": "2026-06-15T09:10:25.882Z",
+      "source": {
+        "date": "2026-06-14",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-14/ai-community",
+        "anchor": "841618cac01d9a2d75285939047f26824449df0ee687957c171bf64bceca0e85"
+      }
+    },
     {
       "id": "0501d65a229f3f03ce857b04233ae3d7a86402783ed4dba748c45f91308691fe",
       "kind": "excerpt",
