@@ -1,7 +1,21 @@
 {
   "version": 1,
-  "updated_at": "2026-06-15T08:32:08Z",
+  "updated_at": "2026-06-15T08:37:03Z",
   "items": [
+    {
+      "id": "0501d65a229f3f03ce857b04233ae3d7a86402783ed4dba748c45f91308691fe",
+      "kind": "excerpt",
+      "title": "How to Keep AI Coding Agents from Hallucinating: A Guide to ",
+      "excerpt": "How to Keep AI Coding Agents from Hallucinating: A Guide to Harness Engineering 👍 0 | 💬 2 | ⏱ 3 min 价值点：提出“Harness 工程”方法，通过结构化代码库信息减少生成错误，参考了 Karpathy 的实践。",
+      "created_at": "2026-06-15T08:36:01.241Z",
+      "source": {
+        "date": "2026-06-15",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-15/ai-community",
+        "anchor": "934f32cb35aa3abbd98d6ec3a1a2bb942ff1ba5e19a3d20ad30f4b62969012ef"
+      }
+    },
     {
       "id": "d6fa1b629b4e579efc4f11acc5c3c0798447d293a0a79070e27eb6b976980cdc",
       "kind": "link",
@@ -10,6 +24,7 @@
       "site": "dev.to",
       "excerpt": "How to Keep AI Coding Agents from Hallucinating: A Guide to Harness Engineering👍 0 | 💬 2 | ⏱ 3 min价值点：提出“Harness 工程”方法，通过结构化代码库信息减少生成错误，参考了 Karpathy 的实践。",
       "created_at": "2026-06-15T08:31:47.742Z",
+      "deleted_at": "2026-06-15T08:36:06.225Z",
       "source": {
         "date": "2026-06-15",
         "report": "ai-community",
