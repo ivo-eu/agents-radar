@@ -1,9 +1,9 @@
-name: Daily Agents Radar
+name: Daily Agents Radar (Morning)
 
 on:
   schedule:
-    # 每天 00:17 UTC = 08:17 CST (UTC+8).
-    # Avoid the top-of-hour Actions scheduling peak, where runs can be delayed or dropped.
+    # GitHub cron uses UTC: 00:17 UTC = 08:17 Asia/Shanghai.
+    # This renamed workflow gets a fresh scheduler registration.
     - cron: "17 0 * * *"
   workflow_dispatch:
 
