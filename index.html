@@ -1424,6 +1424,16 @@ function removeExcerptsByAnchor(anchor) {
   });
 }
 
+// Re-sync the highlight class on every anchored block in the current report.
+// Used after un-favoriting: a multi-block excerpt (heading + list items) covers
+// sibling blocks, so toggling only the hovered block would leave the others lit
+// until the next full re-render.
+function refreshBlockHighlights() {
+  document.querySelectorAll('#content .md [data-fav-anchor]').forEach((b) => {
+    b.classList.toggle('fav-block-saved', blockHasSavedExcerpt(b.dataset.favAnchor));
+  });
+}
+
 // Hovering a highlighted block floats a "取消收藏段落" bubble (mirrors link-hover).
 // This is the only way to un-favorite a paragraph; selecting text only adds.
 function bindBlockUnfavoriteHover(block) {
@@ -1438,7 +1448,7 @@ function bindBlockUnfavoriteHover(block) {
       const r = block.getBoundingClientRect();
       showPopover(r.left, r.top - 32, '取消收藏段落', () => {
         removeExcerptsByAnchor(block.dataset.favAnchor);
-        block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(block.dataset.favAnchor));
+        refreshBlockHighlights(); // a multi-block excerpt covers sibling blocks too
       });
     }, 320);
   });
