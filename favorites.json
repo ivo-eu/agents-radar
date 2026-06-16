@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T09:55:31Z",
+  "updated_at": "2026-06-16T09:56:00Z",
   "items": [
     {
       "id": "eae6188f71fd9c9853826c6c767ee0cd8f28cb6db554c531e4e4fffca8ae487f",
@@ -161,14 +161,19 @@
       "id": "bf36187771137c55bcfa8b5c88e0284280bc9da0f5977fd8b20caa4c2446b787",
       "kind": "excerpt",
       "title": "Beyond the Hype: How Top Engineering Teams are Actually Usin",
-      "excerpt": "Beyond the Hype: How Top Engineering Teams are Actually Using AI... 👍 5 · 💬 0 → 现实中的 AI 采纳：顶级团队不是在追求“AI 取代”，而是将 AI 嵌入代码审查、文档生成和原型构建流程。",
+      "excerpt": "[Beyond the Hype: How Top Engineering Teams are Actually Using AI...](https://dev.to/talaamm/beyond-the-hype-how-top-engineering-teams-are-actually-using-ai-37) 👍 5 · 💬 0 → 现实中的 AI 采纳：顶级团队不是在追求“AI 取代”，而是将 AI 嵌入代码审查、文档生成和原型构建流程。",
       "created_at": "2026-06-12T06:33:53.962Z",
+      "revived_at": "2026-06-16T09:55:52.348Z",
       "source": {
         "date": "2026-06-09",
         "report": "ai-community",
         "label": "技术社区 AI",
         "url": "https://ivo-eu.github.io/agents-radar/#2026-06-09/ai-community",
-        "anchor": "48c5d7a47203b09b2c6da7b4490fffcfc615e43072b21465c2bd6005962eb3aa"
+        "anchor": "48c5d7a47203b09b2c6da7b4490fffcfc615e43072b21465c2bd6005962eb3aa",
+        "anchors": [
+          "48c5d7a47203b09b2c6da7b4490fffcfc615e43072b21465c2bd6005962eb3aa",
+          "48c5d7a47203b09b2c6da7b4490fffcfc615e43072b21465c2bd6005962eb3aa"
+        ]
       }
     },
     {
