@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T09:19:32Z",
+  "updated_at": "2026-06-16T09:19:59Z",
   "items": [
     {
       "id": "eae6188f71fd9c9853826c6c767ee0cd8f28cb6db554c531e4e4fffca8ae487f",
@@ -57,14 +57,13 @@
     {
       "id": "8e408f37b1bafe1d9b5a33786bf3165053e6742162b0daaafd10bf3cd4977fac",
       "kind": "excerpt",
-      "title": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "title": "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a 52k-star-repo-here-is-what-84100-looks-like-28cn)",
       "excerpt": "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.]([https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a) 52k-star-repo-here-is-what-84100-looks-like-28cn) 👍 6 | 💬 2 | ⏱ 5 min 价值：通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系统化提升 AI 编码质量的开发团队。",
-      "section": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "section": "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a 52k-star-repo-here-is-what-84100-looks-like-28cn)",
       "note": "https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a-52k-star-repo-here-is-what-84100-looks-like-28cn",
       "created_at": "2026-06-16T08:28:21.253Z",
-      "revived_at": "2026-06-16T08:58:39.942Z",
+      "revived_at": "2026-06-16T09:19:48.194Z",
       "edited_at": "2026-06-16T08:28:45.334Z",
-      "deleted_at": "2026-06-16T09:19:23.527Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
