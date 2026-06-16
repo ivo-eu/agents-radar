@@ -1,15 +1,14 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T08:43:36Z",
+  "updated_at": "2026-06-16T08:44:09Z",
   "items": [
     {
       "id": "04d6b76f112d70c7c858a2523ce2ed83553d9c238f14a4d621791968d49ad9c0",
       "kind": "excerpt",
       "title": "通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系",
       "excerpt": "通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系统化提升 AI 编码质量的开发团队。",
-      "note": "【验证测试】Bridge新版note字段已支持",
       "created_at": "2026-06-15T09:10:25.882Z",
-      "edited_at": "2026-06-16T08:45:00Z",
+      "edited_at": "2026-06-16T09:00:00Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
