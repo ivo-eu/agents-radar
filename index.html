@@ -1062,6 +1062,39 @@ function cleanExcerpt(element) {
   return clone.textContent.replace(/\s+/g, ' ').trim().slice(0, 1800);
 }
 
+// Serialize a DOM fragment to plain text while turning <a href> into Markdown
+// [text](url) so a favorited excerpt keeps its clickable links (both in the
+// vault note and in the web favorites view). Whitespace is collapsed like
+// cleanExcerpt; link text/URLs are preserved verbatim.
+function fragmentToMarkdown(fragment) {
+  let out = '';
+  const walk = (node) => {
+    if (node.nodeType === 3) { out += node.nodeValue; return; }
+    if (node.nodeType !== 1) return;
+    if (node.classList && node.classList.contains('fav-report-btn')) return;
+    if (node.tagName === 'A' && node.getAttribute('href')) {
+      const url = node.getAttribute('href');
+      const text = (node.textContent || '').replace(/\s+/g, ' ').trim();
+      out += `[${text || url}](${url})`;
+      return;
+    }
+    node.childNodes.forEach(walk);
+    if (node.tagName === 'BR') out += ' ';
+  };
+  fragment.childNodes.forEach(walk);
+  // Collapse whitespace, but keep the markdown-link brackets intact.
+  return out.replace(/\s+/g, ' ').trim().slice(0, 1800);
+}
+
+// Markdown-rich excerpt for the live selection: keeps <a> links, falls back to
+// plain text when the range carries no markup.
+function selectionExcerptMarkdown() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return '';
+  const md = fragmentToMarkdown(sel.getRangeAt(0).cloneContents());
+  return md || normalizeDisplayText(sel.toString());
+}
+
 // ── stable IDs: SHA-256 hex over canonical strings (must match Go Bridge) ──
 // Mirror of bridge normalizeFavoriteURL: lowercase scheme+host, drop fragment,
 // strip utm_*/ref/source params, stable-sort query, collapse root path "/" → "".
@@ -1260,22 +1293,37 @@ function bindLinkHover(link, id, url) {
 
 // ── text-selection → favorite the SELECTED TEXT, anchored to its block ──
 // Resolve the favoritable block that contains the current selection.
-function selectionBlock() {
-  const sel = window.getSelection();
-  if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
-  let node = sel.getRangeAt(0).commonAncestorContainer;
+// A selection that spans a <br> or crosses sibling blocks has its
+// commonAncestorContainer climb up to the <p> or even the .md <div>, where
+// .closest(FAV_BLOCK_SELECTOR) finds nothing. So we resolve the block from the
+// selection's START point (always inside a real block), then fall back to the
+// end point and finally the common ancestor.
+function blockFromNode(node) {
+  if (!node) return null;
   if (node.nodeType === 3) node = node.parentElement;
   if (!node || !node.closest) return null;
   if (!node.closest('#content .md')) return null;
   if (node.closest('pre')) return null;
   return node.closest(FAV_BLOCK_SELECTOR) || null;
 }
+function selectionBlock() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
+  const range = sel.getRangeAt(0);
+  return (
+    blockFromNode(range.startContainer) ||
+    blockFromNode(range.endContainer) ||
+    blockFromNode(range.commonAncestorContainer)
+  );
+}
 function setupSelectionFavorites() {
   document.addEventListener('mouseup', (e) => {
     if (popover && popover.contains(e.target)) return;
     // Capture selection text + block SYNCHRONOUSLY — clicking the popover can clear
-    // the selection, so we must not re-read it later.
+    // the selection, so we must not re-read it later. selectedText (plain) drives
+    // the stable ID/hash; excerptMarkdown keeps links for display + the vault note.
     const selectedText = normalizeDisplayText(window.getSelection()?.toString() || '');
+    const excerptMarkdown = selectionExcerptMarkdown();
     const block = selectionBlock();
     if (!block || selectedText.length < 2) { hidePopover(); return; }
     // Show the bubble IMMEDIATELY — defer the two sha256 hashes (favId/blockAnchorId)
@@ -1290,7 +1338,7 @@ function setupSelectionFavorites() {
         id,
         kind: 'excerpt',
         title: section || selectedText.slice(0, 60),
-        excerpt: selectedText,
+        excerpt: excerptMarkdown || selectedText,
         section,
         created_at: new Date().toISOString(),
         source: { ...source, anchor },
@@ -1435,6 +1483,16 @@ function esc(s) {
 function favSafeHttpUrl(url) {
   return /^https?:\/\//i.test(url || '') ? url : '';
 }
+// Escape HTML, then upgrade Markdown [text](url) into safe clickable anchors so
+// a favorited excerpt keeps its links in the favorites view. Runs AFTER esc(),
+// so the captured text/URL are already HTML-safe; only http(s) URLs become links.
+function escWithLinks(s) {
+  return esc(s).replace(
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+    (whole, text, url) =>
+      `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`,
+  );
+}
 // Does an item pass the live search/date/tag filters? (kind is applied at build.)
 function favItemMatches(it) {
   if (favSourceDateFilter && (it.source?.date || '') !== favSourceDateFilter) return false;
@@ -1512,7 +1570,7 @@ function renderFavoritesView(kind, scroll = true) {
       `<button class="fav-card-toggle" data-act="toggle">${expanded ? '收起' : '展开'}</button></div>`;
     // Always-visible one-line summary so the collapsed card still shows source + time.
     html += `<div class="fav-submeta">来源：${esc(srcDate)}${srcLabel ? ' · ' + esc(srcLabel) : ''} · 收藏 ${esc(favFmtTime(it.created_at))}</div>`;
-    if (it.excerpt) html += `<div class="fav-excerpt">${esc(it.excerpt)}</div>`;
+    if (it.excerpt) html += `<div class="fav-excerpt">${escWithLinks(it.excerpt)}</div>`;
     if (it.tags && it.tags.length) {
       html += '<div class="fav-card-tags">' + it.tags.map((t) => `<span class="fav-card-tag">#${esc(t)}</span>`).join('') + '</div>';
     }
