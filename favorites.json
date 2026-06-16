@@ -1,7 +1,86 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T08:44:09Z",
+  "updated_at": "2026-06-16T08:45:30Z",
   "items": [
+    {
+      "id": "6a9d57b81c4fd1a776f72fb2d3ab336ab4665696770af5cdd5b2299837e6085d",
+      "kind": "link",
+      "title": "The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "url": "https://dev.to/danio_dev/the-us-pulled-anthropics-most-powerful-model-for-foreign-users-and-two-open-models-that-cant-be-3ga8",
+      "site": "dev.to",
+      "excerpt": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "section": "1. The Most Powerful Model on the Market Got Pulled by the Government in 3 Days. Is It Real, or a Hype Bubble?",
+      "created_at": "2026-06-16T08:34:32.683Z",
+      "source": {
+        "date": "2026-06-14",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-14/ai-community"
+      }
+    },
+    {
+      "id": "f90624b895e585ee93edc111042432987175788694f2166f52a25a207efe308d",
+      "kind": "excerpt",
+      "title": "1. The Most Powerful Model on the Market Got Pulled by the Government in 3 Days. Is It Real, or a Hype Bubble?",
+      "excerpt": "2. [The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked](https://dev.to/danio_dev/the-us-pulled-anthropics-most-powerful-model-for-foreign-users-and-two-open-models-that-cant-be-3ga8) 👍 5 | 💬 1 | ⏱ 2 min 价值：对比闭源模型与开源模型在监管冲击下的不同命运，直接点出“不可撤销”的开源优势。",
+      "section": "1. The Most Powerful Model on the Market Got Pulled by the Government in 3 Days. Is It Real, or a Hype Bubble?",
+      "created_at": "2026-06-16T08:33:10.568Z",
+      "deleted_at": "2026-06-16T08:33:22.118Z",
+      "source": {
+        "date": "2026-06-14",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-14/ai-community",
+        "anchor": "c07940aa9e2b1b3ce8d7839cce2b8f26543ccabe56f4b0fd90d3abf72890cfdf"
+      }
+    },
+    {
+      "id": "8e408f37b1bafe1d9b5a33786bf3165053e6742162b0daaafd10bf3cd4977fac",
+      "kind": "excerpt",
+      "title": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "excerpt": "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.]([https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a) 52k-star-repo-here-is-what-84100-looks-like-28cn) 👍 6 | 💬 2 | ⏱ 5 min 价值：通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系统化提升 AI 编码质量的开发团队。",
+      "section": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
+      "note": "https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a-52k-star-repo-here-is-what-84100-looks-like-28cn",
+      "created_at": "2026-06-16T08:28:21.253Z",
+      "revived_at": "2026-06-16T08:30:07.760Z",
+      "edited_at": "2026-06-16T08:28:45.334Z",
+      "source": {
+        "date": "2026-06-14",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-14/ai-community",
+        "anchor": "a97a2d3e66c69a146ab69cfdffdb3bd4a4956b70764074a1797f5b8ffcde4865"
+      }
+    },
+    {
+      "id": "b43c4178925c7a69f10a8ac22e2c5e7ddad41d6727f9e81e1c250f6b32967f96",
+      "kind": "excerpt",
+      "title": "Dev.to 精选",
+      "excerpt": "1. Building a Chrome Extension to Make AI Use More Intentional 链接: [https://dev.to/javz/building-a-chrome-extension-to-make-ai-use-more-intentional-20k0](https://dev.to/javz/building-a-chrome-extension-to-make-ai-use-more-intentional-20k0) 👍 29 | 💬 6 核心价值：教你通过浏览器扩展主动控制 AI 调用时机，适合希望减少无意识使用 AI 的开发者。",
+      "section": "Dev.to 精选",
+      "created_at": "2026-06-16T08:27:28.789Z",
+      "deleted_at": "2026-06-16T08:27:42.987Z",
+      "source": {
+        "date": "2026-06-16",
+        "report": "ai-community",
+        "label": "技术社区 AI",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-16/ai-community",
+        "anchor": "4ccb3bb535cd3544b0a3f94b5bca0b3d2c19f2e06b6147bd9c8a1e968d6f4044"
+      }
+    },
+    {
+      "id": "288f68f1f1a7701b1ac8bd1dbd1af14b6d5fa596c94845d7c5561d89de05840e",
+      "kind": "report",
+      "title": "AI 工具生态周报 2026-W25",
+      "created_at": "2026-06-16T08:20:02.139Z",
+      "deleted_at": "2026-06-16T08:25:15.618Z",
+      "source": {
+        "date": "2026-06-16",
+        "report": "ai-weekly",
+        "label": "周报",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-16/ai-weekly"
+      }
+    },
     {
       "id": "04d6b76f112d70c7c858a2523ce2ed83553d9c238f14a4d621791968d49ad9c0",
       "kind": "excerpt",
@@ -9,6 +88,7 @@
       "excerpt": "通过静态评分分析 agent 技能仓库，揭示 C 级技能中的两个常见模式，并以少于 10 行代码即可修复，非常适合需要系统化提升 AI 编码质量的开发团队。",
       "created_at": "2026-06-15T09:10:25.882Z",
       "edited_at": "2026-06-16T09:00:00Z",
+      "deleted_at": "2026-06-16T08:28:38.551Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
