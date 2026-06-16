@@ -1,7 +1,25 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T08:46:54Z",
+  "updated_at": "2026-06-16T09:13:06Z",
   "items": [
+    {
+      "id": "eae6188f71fd9c9853826c6c767ee0cd8f28cb6db554c531e4e4fffca8ae487f",
+      "kind": "excerpt",
+      "title": "1. 生态全景",
+      "excerpt": "1. 生态全景 当前 AI CLI 开发工具正从“单模型对话助手”快速演进为“多 Agent 协作的编程基础设施”。各工具社区普遍关注 稳定性（挂起/崩溃/内存泄漏）、模型供应商生态扩展、跨平台兼容性（尤其 Windows/WSL）、安全与权限控制 四大主题。同时，MCP 协议集成与会话/记忆系统成为差异化竞争的关键模块。整体呈现“基础功能趋同、核心体验分化”的格局，行业竞争已从模型能力转向工程体验与平台开放性。",
+      "section": "1. 生态全景",
+      "created_at": "2026-06-16T09:02:05.705Z",
+      "source": {
+        "date": "2026-06-16",
+        "report": "ai-cli",
+        "label": "AI CLI 工具",
+        "url": "https://ivo-eu.github.io/agents-radar/#2026-06-16/ai-cli",
+        "anchor": "7c23bb7c1cac6caa23b8749980c0d9c130a81fe66cc68767a13a10af72b86a2e",
+        "anchors": [
+          "7c23bb7c1cac6caa23b8749980c0d9c130a81fe66cc68767a13a10af72b86a2e"
+        ]
+      }
+    },
     {
       "id": "6a9d57b81c4fd1a776f72fb2d3ab336ab4665696770af5cdd5b2299837e6085d",
       "kind": "link",
@@ -11,6 +29,7 @@
       "excerpt": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
       "section": "1. The Most Powerful Model on the Market Got Pulled by the Government in 3 Days. Is It Real, or a Hype Bubble?",
       "created_at": "2026-06-16T08:34:32.683Z",
+      "deleted_at": "2026-06-16T08:58:03.961Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
@@ -42,14 +61,19 @@
       "section": "2. The US pulled Anthropic's most powerful model for foreign users — and two open models that can't be revoked",
       "note": "https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a-52k-star-repo-here-is-what-84100-looks-like-28cn",
       "created_at": "2026-06-16T08:28:21.253Z",
-      "revived_at": "2026-06-16T08:30:07.760Z",
+      "revived_at": "2026-06-16T08:58:39.942Z",
       "edited_at": "2026-06-16T08:28:45.334Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
         "label": "技术社区 AI",
         "url": "https://ivo-eu.github.io/agents-radar/#2026-06-14/ai-community",
-        "anchor": "a97a2d3e66c69a146ab69cfdffdb3bd4a4956b70764074a1797f5b8ffcde4865"
+        "anchor": "a97a2d3e66c69a146ab69cfdffdb3bd4a4956b70764074a1797f5b8ffcde4865",
+        "anchors": [
+          "a97a2d3e66c69a146ab69cfdffdb3bd4a4956b70764074a1797f5b8ffcde4865",
+          "098484e3ed8903930629606a2e9bfd217e5b07511bf8fc3f3165c7bec9f61432",
+          "841618cac01d9a2d75285939047f26824449df0ee687957c171bf64bceca0e85"
+        ]
       }
     },
     {
