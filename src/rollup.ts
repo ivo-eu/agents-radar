@@ -51,7 +51,7 @@ function readDailyDigest(date: string): string | null {
 
 /** Read a weekly report file. Returns null if not found. */
 function readWeeklyDigest(date: string): string | null {
-  const p = path.join(DIGESTS_DIR, date, "ai-weekly.md");
+  const p = path.join(DIGESTS_DIR, "weekly", date, "ai-weekly.md");
   if (!fs.existsSync(p)) return null;
   const content = fs.readFileSync(p, "utf-8");
   return content.slice(0, 3000) + (content.length > 3000 ? "\n...[截断]" : "");
@@ -178,8 +178,8 @@ export async function runWeeklyRollup(): Promise<void> {
     enSummary +
     enFooter;
 
-  console.log(`  Saved ${saveFile(zhContent, dateStr, "ai-weekly.md")}`);
-  console.log(`  Saved ${saveFile(enContent, dateStr, "ai-weekly-en.md")}`);
+  console.log(`  Saved ${saveFile(zhContent, "weekly", dateStr, "ai-weekly.md")}`);
+  console.log(`  Saved ${saveFile(enContent, "weekly", dateStr, "ai-weekly-en.md")}`);
 
   await generateRollupHighlights(zhContent, enContent, "ai-weekly", dateStr, 6);
 
@@ -209,9 +209,11 @@ export async function runMonthlyRollup(): Promise<void> {
 
   const allDates = getDateDirs();
 
-  // Prefer weekly reports from the target month
+  // Prefer weekly reports from the target month (weekly reports live under digests/weekly/<date>/)
   const monthDates = allDates.filter((d) => d.startsWith(monthStr));
-  const weeklyDates = monthDates.filter((d) => fs.existsSync(path.join(DIGESTS_DIR, d, "ai-weekly.md")));
+  const weeklyDates = monthDates.filter((d) =>
+    fs.existsSync(path.join(DIGESTS_DIR, "weekly", d, "ai-weekly.md")),
+  );
 
   let sourceDigests: Record<string, string>;
   let sourceLabel: { zh: string; en: string };
@@ -272,8 +274,8 @@ export async function runMonthlyRollup(): Promise<void> {
     enSummary +
     enFooter;
 
-  console.log(`  Saved ${saveFile(zhContent, dateStr, "ai-monthly.md")}`);
-  console.log(`  Saved ${saveFile(enContent, dateStr, "ai-monthly-en.md")}`);
+  console.log(`  Saved ${saveFile(zhContent, "monthly", dateStr, "ai-monthly.md")}`);
+  console.log(`  Saved ${saveFile(enContent, "monthly", dateStr, "ai-monthly-en.md")}`);
 
   await generateRollupHighlights(zhContent, enContent, "ai-monthly", dateStr, 6);
 

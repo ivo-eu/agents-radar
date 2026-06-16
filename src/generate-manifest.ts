@@ -37,6 +37,22 @@ const REPORT_FILES = [
 ] as const;
 const MAX_FEED_ITEMS = 30;
 
+// Rollup reports live in their own subdirectories so the digests tree separates
+// daily / weekly / monthly. The hash route and manifest entries still use the
+// plain `<date>/<report>` key, so old links keep working — only the file path differs.
+export function reportSubdir(report: string): string {
+  if (report.startsWith("ai-weekly")) return "weekly";
+  if (report.startsWith("ai-monthly")) return "monthly";
+  return "";
+}
+
+export function reportFilePath(date: string, report: string): string {
+  const sub = reportSubdir(report);
+  return sub
+    ? path.join(DIGESTS_DIR, sub, date, `${report}.md`)
+    : path.join(DIGESTS_DIR, date, `${report}.md`);
+}
+
 interface DateEntry {
   date: string;
   reports: string[];
@@ -145,7 +161,7 @@ function generateSearchIndexes(entries: DateEntry[], generated: string): void {
     const chunks = reports
       .filter((report) => !report.endsWith("-en"))
       .map((report) => {
-        const filePath = path.join(DIGESTS_DIR, date, `${report}.md`);
+        const filePath = reportFilePath(date, report);
         return fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf-8") : "";
       });
     monthEntries[date] = markdownToSearchText(chunks.join("\n"));
@@ -167,7 +183,7 @@ function generateSearchIndexes(entries: DateEntry[], generated: string): void {
 }
 
 async function getReportContent(date: string, report: string): Promise<ReportContent> {
-  const filePath = path.join(DIGESTS_DIR, date, `${report}.md`);
+  const filePath = reportFilePath(date, report);
 
   try {
     const markdown = normalizeBrokenMarkdownLinks(fs.readFileSync(filePath, "utf-8"));
@@ -198,15 +214,26 @@ async function getReportContent(date: string, report: string): Promise<ReportCon
   }
 }
 
+/** Collect all digest dates from the daily root and the weekly/monthly subdirs. */
+function collectDates(): string[] {
+  const dates = new Set<string>();
+  const addDateDirs = (dir: string): void => {
+    if (!fs.existsSync(dir)) return;
+    for (const name of fs.readdirSync(dir)) {
+      if (DATE_RE.test(name) && fs.statSync(path.join(dir, name)).isDirectory()) dates.add(name);
+    }
+  };
+  addDateDirs(DIGESTS_DIR);
+  addDateDirs(path.join(DIGESTS_DIR, "weekly"));
+  addDateDirs(path.join(DIGESTS_DIR, "monthly"));
+  return [...dates].sort().reverse();
+}
+
 async function main(): Promise<void> {
   const generated = new Date().toISOString();
-  const entries = fs
-    .readdirSync(DIGESTS_DIR)
-    .filter((name) => DATE_RE.test(name) && fs.statSync(path.join(DIGESTS_DIR, name)).isDirectory())
-    .sort()
-    .reverse()
+  const entries = collectDates()
     .map((date) => {
-      const reports = REPORT_FILES.filter((r) => fs.existsSync(path.join(DIGESTS_DIR, date, `${r}.md`)));
+      const reports = REPORT_FILES.filter((r) => fs.existsSync(reportFilePath(date, r)));
       return { date, reports };
     })
     .filter((e) => e.reports.length > 0);

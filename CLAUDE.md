@@ -76,7 +76,16 @@ The pipeline runs in four sequential phases, each implemented as a named async f
 
 ## Report outputs
 
-Files written to `digests/YYYY-MM-DD/`:
+Daily reports are written to `digests/YYYY-MM-DD/`. Rollup reports live in their own
+subdirectories so the tree separates daily / weekly / monthly:
+
+- Weekly → `digests/weekly/YYYY-MM-DD/ai-weekly{,-en}.md` (dated on the Monday it ran)
+- Monthly → `digests/monthly/YYYY-MM-DD/ai-monthly{,-en}.md` (dated on the 1st)
+
+The manifest/feed/web routing still use the plain `<date>/<report>` key (e.g.
+`#2026-06-08/ai-weekly`), so old links keep working — only the file path differs.
+`reportFilePath()` in `src/generate-manifest.ts` and `reportPath()` in `index.html`
+map a report id to its directory; keep them in sync.
 
 | File | Label | Notes |
 |------|-------|-------|
@@ -85,6 +94,8 @@ Files written to `digests/YYYY-MM-DD/`:
 | `ai-web.md` | `web` | Skipped if no new sitemap content |
 | `ai-trending.md` | `trending` | Skipped if both data sources fail |
 | `ai-hn.md` | `hn` | Skipped if Algolia fetch fails |
+| `weekly/<date>/ai-weekly.md` | `weekly` | Weekly rollup (own subdir) |
+| `monthly/<date>/ai-monthly.md` | `monthly` | Monthly rollup (own subdir) |
 
 ## Tracked sources
 

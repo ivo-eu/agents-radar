@@ -113,6 +113,35 @@
       min-height: 14px; margin-top: 4px;
       font-size: 9px; letter-spacing: 0.04em; color: var(--dim);
     }
+    /* ── Top-level nav sections: 日报 / 周报 / 月报 ── */
+    .nav-section-hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 14px; cursor: pointer;
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.15s; user-select: none;
+    }
+    .nav-section-hdr:hover { color: var(--text); }
+    .nav-section + .nav-section { border-top: 1px solid var(--border); margin-top: 4px; }
+    .nav-section-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .nav-section.open > .nav-section-body { max-height: 99999px; }
+    .nav-section.open > .nav-section-hdr .arr { transform: rotate(90deg); }
+    .nav-section.open > .nav-section-hdr { color: var(--accent); }
+
+    /* ── Weekly / monthly month groups ── */
+    .wk-month-hdr {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 6px 14px 6px 22px; cursor: pointer;
+      font-size: 12px; font-weight: 700; color: var(--dim);
+      letter-spacing: 0.06em; transition: color 0.15s; user-select: none;
+    }
+    .wk-month-hdr:hover { color: var(--muted); }
+    .wk-month-hdr.lit { color: var(--accent); }
+    .wk-month-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .wk-month-group.open > .wk-month-body { max-height: 4000px; }
+    .wk-month-group.open > .wk-month-hdr .arr { transform: rotate(90deg); }
+    .wk-item { padding-left: 26px; }
+
     /* ── Month group ── */
     .month-hdr {
       display: flex; align-items: center; justify-content: space-between;
@@ -489,7 +518,22 @@ const LABELS = {
   'ai-hf-en':        'HF Trending Models',
   'ai-community':    '技术社区 AI',
   'ai-community-en': 'Tech Community AI',
+  'ai-weekly':       '周报',
+  'ai-weekly-en':    'Weekly Digest',
+  'ai-monthly':      '月报',
+  'ai-monthly-en':   'Monthly Digest',
 };
+
+// Rollup reports live in subdirectories (digests/weekly/<date>/, digests/monthly/<date>/),
+// but the hash route key stays `<date>/<report>` so old links keep working.
+function reportPath(date, report) {
+  if (report.startsWith('ai-weekly'))  return `./digests/weekly/${date}/${report}.md`;
+  if (report.startsWith('ai-monthly')) return `./digests/monthly/${date}/${report}.md`;
+  return `./digests/${date}/${report}.md`;
+}
+function isRollupReport(report) {
+  return report.startsWith('ai-weekly') || report.startsWith('ai-monthly');
+}
 
 // ── Theme ──
 const htmlEl = document.documentElement;
@@ -825,7 +869,8 @@ function applyDateSearch(query, loading = false) {
   const needle = query.trim().toLowerCase();
   let hits = 0;
 
-  document.querySelectorAll('.date-group').forEach((grp) => {
+  // Search only spans the daily section; weekly/monthly use their own per-week navigation.
+  document.querySelectorAll('.daily-section .date-group').forEach((grp) => {
     const hdr = grp.querySelector('.date-hdr');
     if (!hdr) return;
 
@@ -1410,7 +1455,7 @@ function renderFavoritesView(kind, scroll = true) {
   currentFavFilter = kind;
   currentKey = null;
   document.querySelectorAll('.rpt-btn, .lang-btn').forEach((b) => b.classList.remove('active'));
-  document.querySelectorAll('.date-hdr.lit, .month-hdr.lit').forEach((h) => h.classList.remove('lit'));
+  document.querySelectorAll('.date-hdr.lit, .month-hdr.lit, .wk-month-hdr.lit').forEach((h) => h.classList.remove('lit'));
   renderFavNav();
   document.getElementById('sidebar').classList.remove('open');
 
@@ -1641,6 +1686,21 @@ async function loadReport(date, report, push = true) {
     }
   });
 
+  // Rollup (weekly/monthly): highlight active row's month and expand its section
+  document.querySelectorAll('.wk-month-hdr').forEach(h => {
+    const mGrp = h.closest('.wk-month-group');
+    h.classList.toggle('lit', !!mGrp.querySelector('.lang-btn.active'));
+  });
+  if (isRollupReport(report)) {
+    const activeBtn = document.querySelector('.wk-item .lang-btn.active');
+    if (activeBtn) {
+      const sec = activeBtn.closest('.nav-section');
+      if (sec) sec.classList.add('open');
+      const wkMonth = activeBtn.closest('.wk-month-group');
+      if (wkMonth) wkMonth.classList.add('open');
+    }
+  }
+
   // Close mobile sidebar
   document.getElementById('sidebar').classList.remove('open');
 
@@ -1649,7 +1709,7 @@ async function loadReport(date, report, push = true) {
   cwrap.scrollTop = 0;
 
   try {
-    const res = await fetch(`./digests/${date}/${report}.md`);
+    const res = await fetch(reportPath(date, report));
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.text();
     const safe = renderMarkdown(raw);
@@ -1728,15 +1788,144 @@ function buildDateGroup(date, reports, isFirst) {
   return grp;
 }
 
+const ROLLUP_REPORTS = ['ai-weekly', 'ai-weekly-en', 'ai-monthly', 'ai-monthly-en'];
+
+// ISO week number for a Monday date string — mirrors toWeekStr() in src/rollup.ts.
+function isoWeek(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  dt.setUTCDate(dt.getUTCDate() + 4 - (dt.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+  return Math.ceil(((dt - yearStart) / 86400000 + 1) / 7);
+}
+
+// Weekly reports are stamped on the Monday they were generated; label shows the
+// ISO week plus the Mon–Sun range so each week is unambiguous.
+function weekLabel(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const sun = new Date(Date.UTC(y, m - 1, d + 6));
+  const mm = String(sun.getUTCMonth() + 1).padStart(2, '0');
+  const dd = String(sun.getUTCDate()).padStart(2, '0');
+  return `第 ${isoWeek(dateStr)} 周 · ${dateStr.slice(5)} ~ ${mm}-${dd}`;
+}
+
+function monthLabel(dateStr) {
+  // Monthly report dir is stamped on the 1st of the month *after* the covered month.
+  const [y, m] = dateStr.split('-').map(Number);
+  const prev = new Date(Date.UTC(y, m - 2, 1));
+  return `${prev.getUTCFullYear()}-${String(prev.getUTCMonth() + 1).padStart(2, '0')}`;
+}
+
+// One ZH/EN row for a rollup (weekly/monthly) entry. Reuses .lang-btn + dataset.key
+// so loadReport()'s highlight sync and favorites cleanup work unchanged.
+function buildRollupItem(date, reportKey, labelText) {
+  const row = document.createElement('div');
+  row.className = 'rpt-row wk-item';
+  row.dataset.date = date;
+
+  const label = document.createElement('span');
+  label.className = 'rpt-label';
+  label.textContent = labelText;
+  label.title = labelText;
+
+  const btns = document.createElement('div');
+  btns.className = 'lang-btns';
+  const enKey = reportKey + '-en';
+
+  const zhBtn = document.createElement('button');
+  zhBtn.className = 'lang-btn';
+  zhBtn.dataset.key = `${date}/${reportKey}`;
+  zhBtn.textContent = 'ZH';
+  zhBtn.onclick = () => loadReport(date, reportKey);
+
+  const enBtn = document.createElement('button');
+  enBtn.className = 'lang-btn';
+  enBtn.dataset.key = `${date}/${enKey}`;
+  enBtn.textContent = 'EN';
+  enBtn.onclick = () => loadReport(date, enKey);
+
+  btns.append(zhBtn, enBtn);
+  row.append(label, btns);
+  return row;
+}
+
+// A collapsible top-level section (周报 / 月报). Groups entries by month.
+function buildRollupSection(title, reportKey, dates, labelFn) {
+  const entries = dates.filter((e) => e.reports.includes(reportKey));
+  if (!entries.length) return null;
+
+  const section = document.createElement('div');
+  section.className = `nav-section ${reportKey === 'ai-weekly' ? 'weekly' : 'monthly'}-section`;
+
+  const sHdr = document.createElement('div');
+  sHdr.className = 'nav-section-hdr';
+  sHdr.append(document.createTextNode(title + ' '));
+  const sArr = document.createElement('span');
+  sArr.className = 'arr';
+  sArr.textContent = '▶';
+  sHdr.appendChild(sArr);
+  sHdr.onclick = () => section.classList.toggle('open');
+
+  const sBody = document.createElement('div');
+  sBody.className = 'nav-section-body';
+
+  const months = new Map();
+  entries.forEach((e) => {
+    const month = e.date.slice(0, 7);
+    if (!months.has(month)) months.set(month, []);
+    months.get(month).push(e);
+  });
+
+  months.forEach((monthEntries, month) => {
+    const mGrp = document.createElement('div');
+    mGrp.className = 'wk-month-group open';
+
+    const mHdr = document.createElement('div');
+    mHdr.className = 'wk-month-hdr';
+    mHdr.append(document.createTextNode(month + ' '));
+    const mArr = document.createElement('span');
+    mArr.className = 'arr';
+    mArr.textContent = '▶';
+    mHdr.appendChild(mArr);
+    mHdr.onclick = () => mGrp.classList.toggle('open');
+
+    const mBody = document.createElement('div');
+    mBody.className = 'wk-month-body';
+    monthEntries.forEach((e) => mBody.appendChild(buildRollupItem(e.date, reportKey, labelFn(e.date))));
+
+    mGrp.append(mHdr, mBody);
+    sBody.appendChild(mGrp);
+  });
+
+  section.append(sHdr, sBody);
+  return section;
+}
+
 function buildNav(dates) {
   const nav = document.getElementById('nav');
 
-  // Group dates by month (YYYY-MM)
+  // ── Daily section: existing month → day tree, with rollup reports filtered out ──
+  const daily = document.createElement('div');
+  daily.className = 'nav-section daily-section open';
+  const dHdr = document.createElement('div');
+  dHdr.className = 'nav-section-hdr';
+  dHdr.append(document.createTextNode('日报 '));
+  const dArr = document.createElement('span');
+  dArr.className = 'arr';
+  dArr.textContent = '▶';
+  dHdr.appendChild(dArr);
+  dHdr.onclick = () => daily.classList.toggle('open');
+  const dBody = document.createElement('div');
+  dBody.className = 'nav-section-body';
+
+  // Group dates by month (YYYY-MM), excluding rollup reports
   const months = new Map();
   dates.forEach((entry) => {
+    const reports = entry.reports.filter((r) => !ROLLUP_REPORTS.includes(r));
+    if (!reports.length) return; // skip days that only carry a weekly/monthly report
     const month = entry.date.slice(0, 7); // "2026-04"
     if (!months.has(month)) months.set(month, []);
-    months.get(month).push(entry);
+    months.get(month).push({ date: entry.date, reports });
   });
 
   let isFirstDate = true;
@@ -1764,9 +1953,17 @@ function buildNav(dates) {
     });
 
     mGrp.append(mHdr, mBody);
-    nav.appendChild(mGrp);
+    dBody.appendChild(mGrp);
     isFirstMonth = false;
   });
+  daily.append(dHdr, dBody);
+  nav.appendChild(daily);
+
+  // Weekly & Monthly sections (collapsed by default)
+  const weekly = buildRollupSection('周报', 'ai-weekly', dates, weekLabel);
+  if (weekly) nav.appendChild(weekly);
+  const monthly = buildRollupSection('月报', 'ai-monthly', dates, monthLabel);
+  if (monthly) nav.appendChild(monthly);
 }
 
 window.addEventListener('popstate', () => { void handleRoute(); });
