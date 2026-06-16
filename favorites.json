@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T09:13:06Z",
+  "updated_at": "2026-06-16T09:16:13Z",
   "items": [
     {
       "id": "eae6188f71fd9c9853826c6c767ee0cd8f28cb6db554c531e4e4fffca8ae487f",
@@ -16,7 +16,8 @@
         "url": "https://ivo-eu.github.io/agents-radar/#2026-06-16/ai-cli",
         "anchor": "7c23bb7c1cac6caa23b8749980c0d9c130a81fe66cc68767a13a10af72b86a2e",
         "anchors": [
-          "7c23bb7c1cac6caa23b8749980c0d9c130a81fe66cc68767a13a10af72b86a2e"
+          "7c23bb7c1cac6caa23b8749980c0d9c130a81fe66cc68767a13a10af72b86a2e",
+          "1377ba8568b6d106f79bf55804303da4aefe10ba514012ec7557ba0f37c466b0"
         ]
       }
     },
