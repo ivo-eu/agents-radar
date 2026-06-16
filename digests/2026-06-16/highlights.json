@@ -1,22 +1,142 @@
 {
   "zh": {
-    "ai-weekly": [
-      "Anthropic发布Fable 5/Mythos 5，三天后遭出口管制",
-      "NVIDIA开源SkillSpector扫描AI Agent安全漏洞",
-      "Anthropic与TCS/DXC合作，加速企业级渗透",
-      "OpenAI秘密提交S-1启动IPO，并计划大幅改版",
-      "Claude Desktop每次启动生成1.8GB虚拟机引发批评",
-      "AI Agent技能市场爆发，GitHub涌现7个新项目"
+    "ai-cli": [
+      "Claude Code v2.1.178发布，修复图片错误等稳定性问题",
+      "OpenAI Codex社区规模最大，每日Issue/PR远超其他",
+      "Kimi Code CLI活跃度低，仅4个Issue和2个PR",
+      "Agent稳定性挂起/崩溃成通病，多工具受影响",
+      "跨平台兼容性（Windows/WSL）成为社区关注重点",
+      "MCP协议集成与会话记忆系统是差异化竞争关键"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.8-beta.2发布，强化Telegram/WhatsApp渠道",
+      "今日Issue+PR近800条，项目高度活跃但积压严重",
+      "Issue关闭率仅5.4%，PR合并率18.4%，维护压力大",
+      "Feishu渠道消息分发崩溃问题获关键修复",
+      "社区讨论聚焦跨平台支持、会话状态管理与安全边界",
+      "Telegram渠道支持富文本表格、列表和块引用"
+    ],
+    "ai-trending": [
+      "NVIDIA开源SkillSpector安全扫描器，获1079+ stars",
+      "Agent-Reach零API费用接入社交媒体，单日增1100+ stars",
+      "计算机使用Agent基础设施cua进入热榜，获70 stars",
+      "ollama继续领跑，174k stars本地运行大模型",
+      "DeepSeek-V4-Pro登顶Hugging Face，4877赞293万下载",
+      "金融大模型Kronos与TradingAgents双双领跑垂直赛道"
+    ],
+    "ai-web": [
+      "Anthropic发布情感机制论文，揭示LLM内部神经元激活模式",
+      "发现情感表征类似人类情绪组织方式，塑造行为选择",
+      "化学家项目首秀：Claude学习解析核磁共振光谱",
+      "研究为AI安全对齐提供新工具，可实现精细行为控制",
+      "Anthropic首次系统性展示AI在硬科学领域的专家能力",
+      "OpenAI官网当日零更新，进入数据静默期"
+    ],
+    "ai-hn": [
+      "Anthropic多重危机刷屏：诉讼、白宫禁令、模型下线",
+      "微软因GitHub算力瓶颈转向AWS，引发基础设施担忧",
+      "OpenAI亏损激增8倍，商业模式可持续性遭热议",
+      "Claude Code for Visual Studio插件发布，支持原生diff",
+      "Spotlight工具实时可视化Claude Code/Codex内部行为",
+      "Ratchets：Rust弹性预算代码风格检查工具发布"
+    ],
+    "ai-ph": [
+      "Slashy邮件AI助手464票夺冠，全权处理邮件撰写回复",
+      "Memoriq为ChatGPT/Claude等提供统一隐私记忆",
+      "Taste Lab提出设计DNA提取概念，AI主导创意",
+      "Baroque从零开始AI设计完整产品，范式革新",
+      "Conan为LLM提供原生开发工具，生态成熟",
+      "Hive代理管理工具，从创意到PR全流程托管"
+    ],
+    "ai-arxiv": [
+      "发现LLM内部价值轴，表征当前轨迹正确性信心",
+      "ContextRL上下文感知强化学习提升长任务表现",
+      "ExpRL探索性强化学习优化稀疏奖励训练基础策略",
+      "DEEPRUBRIC证据树评分标准高效训练深度研究智能体",
+      "TokenPilot缓存高效KV管理，降低推理延迟",
+      "机器人领域探索几何感知动作模型和残差学习"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro霸榜：4867赞293万下载量",
+      "DiffusionGemma-26B-A4B-it多模态MoE紧随其后",
+      "NVIDIA LocateAnything-3B定位模型成黑马2062赞",
+      "微软FastContext-1.0-4B-SFT超长上下文模型",
+      "巴西政府Rio-3.5-Open-397B超大MoE多模态模型",
+      "google/gemma-4-12B-it获1038赞，下载超110万"
     ]
   },
   "en": {
-    "ai-weekly": [
-      "Claude Fable 5 launched, then shut down in 72 hours",
-      "US govt blocks foreign access to Anthropic's best models",
-      "Kimi Code CLI users revolt over speed limit pricing",
-      "Agent skills ecosystem gains 10,000 stars on GitHub",
-      "NVIDIA SkillSpector agent security scanner goes viral",
-      "Shift from single-agent to composable skill libraries"
+    "ai-cli": [
+      "MCP emerges as standard extension interface.",
+      "India billing request gets +443 upvotes.",
+      "Silent failures bug wasting credits reported.",
+      "TUI rendering regressions affect multiple tools.",
+      "Session continuity bugs persist across tools.",
+      "Claude Code #17432 reaches +443 upvotes."
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.8-beta.2 released today.",
+      "295 issues updated in 24 hours.",
+      "500 pull requests in the last day.",
+      "Telegram delivery improved with rich text.",
+      "WhatsApp channel delivery less brittle.",
+      "Session context bugs reported as critical."
+    ],
+    "ai-trending": [
+      "NVIDIA SkillSpector gains 1,079 stars today.",
+      "Agent-Reach offers zero API fees.",
+      "Kronos financial LLM appears on trending.",
+      "trycua/cua infrastructure for desktop agents.",
+      "hermes-agent reaches 194k total stars.",
+      "awesome-llm-apps at 114k total stars."
+    ],
+    "ai-web": [
+      "Claude Sonnet 4.5 reveals emotion concepts.",
+      "Anthropic publishes NMR spectra analysis.",
+      "OpenAI had no publications today.",
+      "Interpretability could unlock safer models.",
+      "Emotion representations shape downstream behavior.",
+      "Anthropic pushes into scientific verticals."
+    ],
+    "ai-hn": [
+      "Anthropic faces government blockade and lawsuits.",
+      "OpenAI loss expands to $34 billion.",
+      "Microsoft turns to AWS for GitHub capacity.",
+      "Claude Corps governance structure announced.",
+      "Fable 5 trained on reasoning traces.",
+      "Community debates AI business sustainability."
+    ],
+    "ai-ph": [
+      "Slashy tops with 464 votes for email AI.",
+      "Taste Lab clones website visual DNA.",
+      "Conan brings Claude Code to macOS native.",
+      "Memoriq offers privacy-preserving memory layer.",
+      "Web Researcher MCP cites real sources.",
+      "Products extend Claude's ecosystem stickiness."
+    ],
+    "ai-arxiv": [
+      "Value axis tracks model's strategy success.",
+      "Scalable circuit learning for LLM interpretability.",
+      "Low frame rate audio codec degradation probed.",
+      "Differential privacy fails against backdoors.",
+      "Context-aware RL improves model fine-tuning.",
+      "Exploratory RL enhances reasoning capabilities."
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro tops with 4.9k likes.",
+      "NVIDIA LocateAnything-3B for spatial understanding.",
+      "Qwen3.6 uncensored MoE gains 1.9k likes.",
+      "Microsoft FastContext-1.0 for ultra-long contexts.",
+      "Cohere North-Mini-Code compact MoE released.",
+      "Gemma-4 family spawns diverse fine-tunes."
+    ],
+    "ai-community": [
+      "Fable 5 taken down by government mandate.",
+      "Developers share pipeline failure post-mortems.",
+      "Shift from prompts to architectural patterns.",
+      "GraphRAG and MCP constrain hallucinations.",
+      "Lobste.rs debates private inference limits.",
+      "Trust remains a design problem for AI."
     ]
   }
 }
