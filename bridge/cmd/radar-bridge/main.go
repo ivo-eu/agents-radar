@@ -92,13 +92,17 @@ type FavoriteCandidate struct {
 const favoritesFileName = "favorites.json"
 
 // FavoriteSource records where a favorite came from (the daily report) and the
-// anchor used for jump-back highlighting on the website.
+// anchor used for jump-back highlighting on the website. Anchor is the primary
+// (first) block — the jump-back target. Anchors lists every block an excerpt
+// spans (heading + body) so all of them stay highlighted; Anchor is kept for
+// backward compatibility and is always Anchors[0] for multi-block excerpts.
 type FavoriteSource struct {
-	Date   string `json:"date"`
-	Report string `json:"report"`
-	Label  string `json:"label,omitempty"`
-	URL    string `json:"url,omitempty"`
-	Anchor string `json:"anchor,omitempty"`
+	Date    string   `json:"date"`
+	Report  string   `json:"report"`
+	Label   string   `json:"label,omitempty"`
+	URL     string   `json:"url,omitempty"`
+	Anchor  string   `json:"anchor,omitempty"`
+	Anchors []string `json:"anchors,omitempty"`
 }
 
 // FavoriteItem is the Phase 2 unified model. The id is computed by the browser
@@ -1347,12 +1351,17 @@ func mergeTwo(a, b FavoriteItem) FavoriteItem {
 }
 
 func mergeSource(a, b FavoriteSource) FavoriteSource {
+	anchors := b.Anchors
+	if len(anchors) == 0 {
+		anchors = a.Anchors
+	}
 	return FavoriteSource{
-		Date:   preferNonEmpty(b.Date, a.Date),
-		Report: preferNonEmpty(b.Report, a.Report),
-		Label:  preferNonEmpty(b.Label, a.Label),
-		URL:    preferNonEmpty(b.URL, a.URL),
-		Anchor: preferNonEmpty(b.Anchor, a.Anchor),
+		Date:    preferNonEmpty(b.Date, a.Date),
+		Report:  preferNonEmpty(b.Report, a.Report),
+		Label:   preferNonEmpty(b.Label, a.Label),
+		URL:     preferNonEmpty(b.URL, a.URL),
+		Anchor:  preferNonEmpty(b.Anchor, a.Anchor),
+		Anchors: anchors,
 	}
 }
 

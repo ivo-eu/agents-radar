@@ -690,13 +690,18 @@ function favEarliest(a, b) { if (!a) return b || ''; if (!b) return a; return a 
 function favLatest(a, b) { return (a || '') > (b || '') ? (a || '') : (b || ''); }
 function mergeSource(a, b) {
   a = a || {}; b = b || {};
-  return {
+  const out = {
     date: favPreferNonEmpty(b.date, a.date) || '',
     report: favPreferNonEmpty(b.report, a.report) || '',
     label: favPreferNonEmpty(b.label, a.label) || '',
     url: favPreferNonEmpty(b.url, a.url) || '',
     anchor: favPreferNonEmpty(b.anchor, a.anchor) || '',
   };
+  // anchors: every block a multi-block excerpt spans. Prefer the newer (b) list,
+  // fall back to a; omit when empty so it stays out of the JSON (matches Go).
+  const anchors = (b.anchors && b.anchors.length) ? b.anchors : a.anchors;
+  if (anchors && anchors.length) out.anchors = anchors;
+  return out;
 }
 // Combine two records of the same id; b is the newer fold input. created_at keeps
 // the earliest (stable sort key); revived_at keeps the latest re-favorite event;
@@ -1043,6 +1048,9 @@ function currentSource() {
 }
 
 function nearestSection(element) {
+  // If the block itself is a heading, it IS the section — don't climb to the
+  // PARENT heading (that turned an H4-anchored excerpt's title into the H3 above).
+  if (element && /^H[2-4]$/.test(element.tagName || '')) return element.textContent.trim();
   let cursor = element;
   while (cursor) {
     let sibling = cursor.previousElementSibling;
@@ -1316,6 +1324,20 @@ function selectionBlock() {
     blockFromNode(range.commonAncestorContainer)
   );
 }
+// Every favoritable block the selection touches, in document order. A selection
+// of "heading + body" crosses multiple blocks (h4, p, …) — we anchor & highlight
+// ALL of them, not just the start block. Falls back to [selectionBlock()].
+function selectionBlocks() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return [];
+  const range = sel.getRangeAt(0);
+  const container = document.querySelector('#content .md');
+  if (!container) return [selectionBlock()].filter(Boolean);
+  const blocks = [...container.querySelectorAll(FAV_BLOCK_SELECTOR)].filter(
+    (b) => !b.closest('pre') && range.intersectsNode(b),
+  );
+  return blocks.length ? blocks : [selectionBlock()].filter(Boolean);
+}
 function setupSelectionFavorites() {
   document.addEventListener('mouseup', (e) => {
     if (popover && popover.contains(e.target)) return;
@@ -1324,15 +1346,20 @@ function setupSelectionFavorites() {
     // the stable ID/hash; excerptMarkdown keeps links for display + the vault note.
     const selectedText = normalizeDisplayText(window.getSelection()?.toString() || '');
     const excerptMarkdown = selectionExcerptMarkdown();
-    const block = selectionBlock();
+    const blocks = selectionBlocks();
+    const block = blocks[0] || selectionBlock();
     if (!block || selectedText.length < 2) { hidePopover(); return; }
-    // Show the bubble IMMEDIATELY — defer the two sha256 hashes (favId/blockAnchorId)
+    // Show the bubble IMMEDIATELY — defer the sha256 hashes (favId/blockAnchorId)
     // to the click handler, since they're only needed when the user actually saves.
     showPopover(e.clientX + 12, e.clientY - 34, '收藏段落', async () => {
       const source = currentSource();
-      const blockText = cleanExcerpt(block);
+      // Anchor EVERY block the selection spans (heading + body), in order.
+      const anchors = await Promise.all(
+        blocks.map((b) => blockAnchorId(source.date, source.report, cleanExcerpt(b))),
+      );
+      const anchor = anchors[0]; // primary anchor = first block (jump-back target)
       const id = await favId('excerpt', { date: source.date, report: source.report, excerpt: selectedText });
-      const anchor = await blockAnchorId(source.date, source.report, blockText);
+      // Title = heading the selection starts under (or the selection itself).
       const section = nearestSection(block);
       toggleFavorite({
         id,
@@ -1341,11 +1368,13 @@ function setupSelectionFavorites() {
         excerpt: excerptMarkdown || selectedText,
         section,
         created_at: new Date().toISOString(),
-        source: { ...source, anchor },
+        source: { ...source, anchor, anchors },
       });
-      // Highlight the whole containing block while any excerpt still points at it.
-      block.dataset.favAnchor = anchor;
-      block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
+      // Highlight EVERY spanned block while any excerpt still covers it.
+      blocks.forEach((b, i) => {
+        b.dataset.favAnchor = anchors[i];
+        b.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchors[i]));
+      });
       window.getSelection()?.removeAllRanges();
     }, true); // sticky: survive mouseleave; only selectionchange/click dismisses it
   });
@@ -1362,12 +1391,16 @@ function setupSelectionFavorites() {
   });
 }
 
-// A block stays highlighted while ANY excerpt favorite points at its anchor.
+// A block stays highlighted while ANY excerpt favorite covers its anchor.
+// Excerpts may span multiple blocks: source.anchors lists every covered block;
+// fall back to the single source.anchor for legacy items saved before that.
 function blockHasSavedExcerpt(anchor) {
   if (!anchor) return false;
-  return favoriteStore.items.some(
-    (it) => it.kind === 'excerpt' && !it.deleted_at && it.source?.anchor === anchor,
-  );
+  return favoriteStore.items.some((it) => {
+    if (it.kind !== 'excerpt' || it.deleted_at) return false;
+    const anchors = it.source?.anchors;
+    return anchors ? anchors.includes(anchor) : it.source?.anchor === anchor;
+  });
 }
 
 // ── decorate a freshly rendered report ──
@@ -1425,7 +1458,11 @@ async function enhanceFavorites() {
   await Promise.all(blocks.map(async (block) => {
     if (block.closest('pre')) return;
     const blockText = cleanExcerpt(block);
-    if (blockText.length < 8) return;
+    // Headings can anchor an excerpt (heading + body span), so don't skip short
+    // ones; only skip tiny non-heading noise blocks.
+    const isHeading = /^H[2-4]$/.test(block.tagName);
+    if (!isHeading && blockText.length < 8) return;
+    if (!blockText) return;
     const anchor = await blockAnchorId(source.date, source.report, blockText);
     block.dataset.favAnchor = anchor;
     block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
