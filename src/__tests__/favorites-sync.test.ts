@@ -55,6 +55,8 @@ function makeHarness(initialItems: FavItem[], responses: SyncResponse[]) {
     "favPreferNonEmpty",
     "favEarliest",
     "favLatest",
+    "favTagsNoteKey",
+    "favKeyGreaterEq",
     "mergeSource",
     "mergeItem",
     "aliveItems",
@@ -63,7 +65,9 @@ function makeHarness(initialItems: FavItem[], responses: SyncResponse[]) {
     "reconcileWithServer",
     "flushFavSync",
   ];
-  const body = pureNames.map((n) => grabFunction(html, n)).join("\n\n");
+  // favKeyGreaterEq depends on a module-level favTextEncoder const (not a function).
+  const body =
+    "const favTextEncoder = new TextEncoder();\n" + pureNames.map((n) => grabFunction(html, n)).join("\n\n");
 
   const store = {
     favoriteStore: { version: 1, updated_at: "", items: initialItems.map((it) => ({ ...it })) },

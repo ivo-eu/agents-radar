@@ -312,6 +312,49 @@
     .fav-action:hover { text-decoration: underline; }
     .fav-action.danger { color: var(--muted); }
     .fav-action.danger:hover { color: #f85149; }
+    /* Phase 3: header filters */
+    .fav-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 12px; }
+    .fav-filters input[type="search"], .fav-filters select {
+      height: 28px; padding: 0 9px; border: 1px solid var(--border); border-radius: 4px;
+      background: var(--bg); color: var(--text); font-family: 'Space Mono', monospace; font-size: 11px;
+    }
+    .fav-filters input[type="search"] { flex: 1; min-width: 160px; }
+    .fav-filters input:focus, .fav-filters select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-bg); }
+    .fav-tagbar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; align-items: center; }
+    .fav-tag {
+      font-family: 'Space Mono', monospace; font-size: 10px; padding: 2px 8px; border-radius: 10px;
+      border: 1px solid var(--dim); color: var(--muted); cursor: pointer; background: none;
+      transition: border-color 0.1s, color 0.1s, background 0.1s;
+    }
+    .fav-tag:hover { border-color: var(--muted); color: var(--text); }
+    .fav-tag.active { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+    .fav-tag-clear { font-size: 10px; color: var(--dim); cursor: pointer; margin-left: 4px; background: none; border: none; font-family: 'Space Mono', monospace; }
+    .fav-tag-clear:hover { color: var(--accent); }
+    /* Phase 3: card collapse/expand + tags/note/edit */
+    .fav-card-title a { color: var(--link); text-decoration: none; }
+    .fav-card-title a:hover { text-decoration: underline; }
+    .fav-card-toggle {
+      margin-left: auto; flex-shrink: 0; background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 11px; font-family: 'Space Mono', monospace;
+    }
+    .fav-card-toggle:hover { color: var(--accent); }
+    .fav-submeta { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; margin-bottom: 6px; }
+    .fav-card:not(.expanded) { cursor: pointer; }
+    .fav-card:not(.expanded) .fav-excerpt {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .fav-card:not(.expanded) .fav-detail { display: none; }
+    .fav-card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
+    .fav-card-tag { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--accent); background: var(--accent-bg); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 7px; }
+    .fav-note { font-size: 12px; color: var(--muted); border-left: 2px solid var(--dim); padding-left: 10px; margin: 8px 0; white-space: pre-wrap; }
+    .fav-edit { margin: 10px 0; display: none; flex-direction: column; gap: 6px; }
+    .fav-card.editing .fav-edit { display: flex; }
+    .fav-edit input, .fav-edit textarea {
+      border: 1px solid var(--border); border-radius: 4px; background: var(--bg); color: var(--text);
+      font-family: 'Space Mono', monospace; font-size: 12px; padding: 5px 8px;
+    }
+    .fav-edit textarea { min-height: 56px; resize: vertical; }
+    .fav-edit input:focus, .fav-edit textarea:focus { outline: none; border-color: var(--accent); }
     .fav-empty { color: var(--muted); font-size: 13px; padding: 48px 0; text-align: center; }
 
     /* ── Mobile ── */
@@ -405,8 +448,22 @@ DOMPurify.addHook('uponSanitizeElement', (node, data) => {
   }
 });
 
+function joinBrokenMarkdownUrl(head, tail) {
+  const suffix = tail.trim().replace(/\s+/g, '-');
+  if (!suffix) return head;
+  const needsJoiner = !/[/-]$/.test(head) && !/^[/?#&=._~-]/.test(suffix);
+  return `${head}${needsJoiner ? '-' : ''}${suffix}`;
+}
+
+function normalizeBrokenMarkdownLinks(raw) {
+  return raw.replace(
+    /\[([^\]\n]+)\]\(\[(https?:\/\/[^\]\s]+)\]\(\2\)\s+([^)\n]+)\)/g,
+    (_, title, head, tail) => `[${title}](${joinBrokenMarkdownUrl(head, tail)})`,
+  );
+}
+
 function renderMarkdown(raw) {
-  const html = marked.parse(raw);
+  const html = marked.parse(normalizeBrokenMarkdownLinks(raw));
   return DOMPurify.sanitize(html, {
     ADD_TAGS: ['details', 'summary'],
     ADD_ATTR: ['open'],
@@ -516,9 +573,50 @@ let favSyncedAt = localStorage.getItem(FAV_SYNCED_KEY) || '';
 let favSyncing = false;
 let favSyncError = '';
 let favSyncTimer = null;
+// Phase 3 favorites-view filters + per-card expand state (in-memory).
+let favSearchQuery = '';
+let favSourceDateFilter = '';
+let favTagFilter = new Set();   // multi-select; an item must contain ALL selected tags (AND)
+let favExpanded = new Set();    // ids of expanded cards
 
 // Items the user can still see — tombstones (deleted_at) excluded.
 function aliveItems() { return favoriteStore.items.filter((it) => !it.deleted_at); }
+
+// Tie-break key for equal edited_at (mirror of Go tagsNoteKey, byte-for-byte).
+// The \x01 separator matches Go's; comparison MUST use UTF-8 byte order
+// (favKeyGreaterEq), not JS's default UTF-16 compare.
+function favTagsNoteKey(it) { return ((it && it.tags) || []).join('\n') + '\x01' + ((it && it.note) || ''); }
+
+// Compare two strings by UTF-8 byte order → true when a >= b. Mirrors Go's
+// string >= (UTF-8 bytes). JS's own >= compares UTF-16 code units, which
+// disagrees with Go for non-BMP chars (emoji vs U+FFFF), so the LWW tie-break
+// must encode to UTF-8 first or the two ends pick different winners.
+const favTextEncoder = new TextEncoder();
+function favKeyGreaterEq(a, b) {
+  const ab = favTextEncoder.encode(a || ''), bb = favTextEncoder.encode(b || '');
+  const n = Math.min(ab.length, bb.length);
+  for (let i = 0; i < n; i++) {
+    if (ab[i] !== bb[i]) return ab[i] > bb[i];
+  }
+  return ab.length >= bb.length;
+}
+
+// Parse a tags input string ("#a, b  c") → clean unique tag array.
+function parseTagsInput(str) {
+  const seen = new Set();
+  const out = [];
+  for (let t of String(str || '').split(/[,\s]+/)) {
+    t = t.replace(/^#+/, '').trim();
+    if (!t) continue;
+    const cp = [...t]; // count by Unicode code point (mirror Go rune cap of 32)
+    if (cp.length > 32) t = cp.slice(0, 32).join('');
+    if (seen.has(t)) continue;
+    seen.add(t);
+    out.push(t);
+    if (out.length >= 20) break;
+  }
+  return out;
+}
 
 function loadLocalFavorites() {
   try {
@@ -567,6 +665,20 @@ function mergeItem(a, b) {
     out[f] = favPreferNonEmpty(b[f], a[f]) || '';
   }
   out.source = mergeSource(a.source, b.source);
+  // tags/note: field-level last-writer-wins by edited_at (whole tag set replaced).
+  // On a tie, pick the side whose key is greater in UTF-8 byte order — deterministic
+  // AND order-independent, so browser-load and Bridge-sync agree even for non-ASCII
+  // (favKeyGreaterEq matches Go's byte compare; plain >= would diverge on emoji).
+  const ae = a.edited_at || '', be = b.edited_at || '';
+  let pick;
+  if (ae > be) pick = a;
+  else if (be > ae) pick = b;
+  else pick = favKeyGreaterEq(favTagsNoteKey(a), favTagsNoteKey(b)) ? a : b;
+  out.tags = pick.tags; out.note = pick.note;
+  out.edited_at = favLatest(a.edited_at, b.edited_at);
+  if (!out.edited_at) delete out.edited_at;
+  if (!out.tags || !out.tags.length) delete out.tags;
+  if (!out.note) delete out.note;
   out.created_at = favEarliest(a.created_at, b.created_at);
   out.revived_at = favLatest(a.revived_at, b.revived_at);
   const delTime = favLatest(a.deleted_at, b.deleted_at);
@@ -606,8 +718,8 @@ async function loadFavorites() {
 // Pending = any item whose latest activity (created/deleted) is newer than the
 // last successful push.
 function favLastActivity(it) {
-  // Newest of first-favorite / revive / delete — the item's latest local change.
-  return favLatest(favLatest(it.created_at, it.revived_at), it.deleted_at);
+  // Newest of first-favorite / revive / edit / delete — the item's latest change.
+  return favLatest(favLatest(it.created_at, it.revived_at), favLatest(it.edited_at, it.deleted_at));
 }
 function pendingFavCount() {
   return favoriteStore.items.filter((it) => {
@@ -1042,20 +1154,29 @@ function ensurePopover() {
     if (action) action();
   });
   popover.addEventListener('mouseenter', () => clearTimeout(popoverHideTimer));
-  popover.addEventListener('mouseleave', () => { popoverHideTimer = setTimeout(hidePopover, 140); });
+  popover.addEventListener('mouseleave', () => {
+    // Selection bubbles stay until the selection collapses (handled by selectionchange);
+    // moving the mouse off them must NOT dismiss. Link-hover bubbles still auto-hide.
+    if (popover._sticky) return;
+    popoverHideTimer = setTimeout(hidePopover, 140);
+  });
   document.body.appendChild(popover);
   return popover;
 }
-function showPopover(x, y, text, action) {
+// sticky=true → bubble survives mouseleave (selection bubbles); the caller is
+// responsible for hiding it (e.g. on selectionchange collapse). Default false keeps
+// the original auto-hide behaviour for link-hover bubbles.
+function showPopover(x, y, text, action, sticky = false) {
   ensurePopover();
   popover.textContent = text;
   popover._action = action;
+  popover._sticky = sticky;
   popover.style.left = Math.max(8, Math.min(x, window.innerWidth - 120)) + 'px';
   popover.style.top = Math.max(8, y) + 'px';
   popover.classList.add('show');
 }
 function hidePopover() {
-  if (popover) { popover.classList.remove('show'); popover._action = null; }
+  if (popover) { popover.classList.remove('show'); popover._action = null; popover._sticky = false; }
 }
 
 // ── link favorite toggle ──
@@ -1107,40 +1228,45 @@ function selectionBlock() {
 function setupSelectionFavorites() {
   document.addEventListener('mouseup', (e) => {
     if (popover && popover.contains(e.target)) return;
-    // Capture selection text + block SYNCHRONOUSLY — the async id() below and
-    // clicking the popover can clear the selection, so we must not re-read it.
+    // Capture selection text + block SYNCHRONOUSLY — clicking the popover can clear
+    // the selection, so we must not re-read it later.
     const selectedText = normalizeDisplayText(window.getSelection()?.toString() || '');
     const block = selectionBlock();
-    setTimeout(async () => {
-      if (!block || selectedText.length < 8) { hidePopover(); return; }
+    if (!block || selectedText.length < 2) { hidePopover(); return; }
+    // Show the bubble IMMEDIATELY — defer the two sha256 hashes (favId/blockAnchorId)
+    // to the click handler, since they're only needed when the user actually saves.
+    showPopover(e.clientX + 12, e.clientY - 34, '收藏段落', async () => {
       const source = currentSource();
       const blockText = cleanExcerpt(block);
       const id = await favId('excerpt', { date: source.date, report: source.report, excerpt: selectedText });
       const anchor = await blockAnchorId(source.date, source.report, blockText);
-      const saved = favoriteIds.has(id);
-      // bubble at the cursor's upper-right
-      showPopover(e.clientX + 12, e.clientY - 34, saved ? '取消收藏段落' : '收藏段落', () => {
-        const section = nearestSection(block);
-        toggleFavorite({
-          id,
-          kind: 'excerpt',
-          title: section || selectedText.slice(0, 60),
-          excerpt: selectedText,
-          section,
-          created_at: new Date().toISOString(),
-          source: { ...source, anchor },
-        });
-        // Highlight the whole containing block while any excerpt still points at it.
-        block.dataset.favAnchor = anchor;
-        block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
-        window.getSelection()?.removeAllRanges();
+      const section = nearestSection(block);
+      toggleFavorite({
+        id,
+        kind: 'excerpt',
+        title: section || selectedText.slice(0, 60),
+        excerpt: selectedText,
+        section,
+        created_at: new Date().toISOString(),
+        source: { ...source, anchor },
       });
-    }, 10);
+      // Highlight the whole containing block while any excerpt still points at it.
+      block.dataset.favAnchor = anchor;
+      block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
+      window.getSelection()?.removeAllRanges();
+    }, true); // sticky: survive mouseleave; only selectionchange/click dismisses it
   });
-  document.addEventListener('mousedown', (e) => {
-    if (popover && !popover.contains(e.target)) hidePopover();
+  // Selection-driven hide: the bubble stays as long as the selection is alive, so
+  // scrolling or moving the mouse no longer dismisses it. Only hide once the
+  // selection collapses (user clicked elsewhere / started a new selection).
+  // Debounced to ignore the transient collapse that fires mid-drag while selecting.
+  let selectionHideTimer = null;
+  document.addEventListener('selectionchange', () => {
+    clearTimeout(selectionHideTimer);
+    selectionHideTimer = setTimeout(() => {
+      if (window.getSelection()?.isCollapsed) hidePopover();
+    }, 50);
   });
-  document.addEventListener('scroll', hidePopover, true);
 }
 
 // A block stays highlighted while ANY excerpt favorite points at its anchor.
@@ -1261,6 +1387,25 @@ function esc(s) {
   return (s || '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 }
 
+function favSafeHttpUrl(url) {
+  return /^https?:\/\//i.test(url || '') ? url : '';
+}
+// Does an item pass the live search/date/tag filters? (kind is applied at build.)
+function favItemMatches(it) {
+  if (favSourceDateFilter && (it.source?.date || '') !== favSourceDateFilter) return false;
+  if (favTagFilter.size) {
+    const tags = new Set(it.tags || []);
+    for (const t of favTagFilter) if (!tags.has(t)) return false;
+  }
+  const q = favSearchQuery.trim().toLowerCase();
+  if (q) {
+    const hay = [it.title, it.excerpt, it.site, it.note, it.source?.label, it.source?.date, ...(it.tags || [])]
+      .filter(Boolean).join(' ').toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
 function renderFavoritesView(kind, scroll = true) {
   currentFavFilter = kind;
   currentKey = null;
@@ -1275,7 +1420,7 @@ function renderFavoritesView(kind, scroll = true) {
 
   const titleMap = { all: '全部收藏', report: '整篇报告', link: '链接收藏', excerpt: '段落摘录' };
   const head = `<div class="fav-list-head">★ ${titleMap[kind] || '我的收藏'}</div>` +
-    `<div class="fav-list-sub">共 ${items.length} 条 · 按收藏时间倒序</div>`;
+    `<div class="fav-list-sub" id="favCount">共 ${items.length} 条 · 按收藏时间倒序</div>`;
 
   if (!items.length) {
     setContent(`<div class="md fade">${head}<div class="fav-empty">还没有收藏。<br>在日报里收藏整篇报告（标题旁星标）、悬停链接或选中段落试试。</div></div>`);
@@ -1283,7 +1428,27 @@ function renderFavoritesView(kind, scroll = true) {
     return;
   }
 
-  let html = `<div class="md fade">${head}`;
+  // Filter options come from ALL alive favorites (not the kind-filtered subset), so
+  // a value selected under one type stays visible and clearable under another (P2-3.1).
+  const all = aliveItems();
+  const dates = [...new Set(all.map((it) => it.source?.date).filter(Boolean))].sort((a, b) => b.localeCompare(a));
+  const allTags = [...new Set(all.flatMap((it) => it.tags || []))].sort();
+  const anyFilter = !!(favSearchQuery || favSourceDateFilter || favTagFilter.size);
+  let filters = '<div class="fav-filters">' +
+    `<input type="search" id="favSearch" placeholder="🔍 搜索收藏…" value="${esc(favSearchQuery)}">` +
+    '<select id="favDate"><option value="">全部来源日期</option>' +
+    dates.map((d) => `<option value="${esc(d)}"${d === favSourceDateFilter ? ' selected' : ''}>${esc(d)}</option>`).join('') +
+    '</select>' +
+    (anyFilter ? '<button class="fav-tag-clear" id="favClearAll">清除全部筛选</button>' : '') +
+    '</div>';
+  if (allTags.length) {
+    filters += '<div class="fav-tagbar">' +
+      allTags.map((t) => `<button class="fav-tag${favTagFilter.has(t) ? ' active' : ''}" data-tag="${esc(t)}">#${esc(t)}</button>`).join('') +
+      (favTagFilter.size ? '<button class="fav-tag-clear" id="favTagClear">清空标签</button>' : '') +
+      '</div>';
+  }
+
+  let html = `<div class="md fade">${head}${filters}`;
   let lastLabel = null;
   items.forEach((it) => {
     const label = favTimeGroup(it.created_at);
@@ -1291,31 +1456,127 @@ function renderFavoritesView(kind, scroll = true) {
     const badge = FAV_KIND_LABEL[it.kind] || it.kind;
     const srcDate = it.source?.date || '';
     const srcLabel = it.source?.label || it.source?.report || '';
-    html += `<div class="fav-card" data-id="${esc(it.id)}">` +
-      `<div class="fav-card-title"><span class="fav-badge">${esc(badge)}</span><span>${esc(it.title)}</span></div>`;
-    if (it.kind === 'excerpt' && it.excerpt) html += `<div class="fav-excerpt">${esc(it.excerpt)}</div>`;
-    html += `<div class="fav-meta">来源：${esc(srcDate)}${srcLabel ? ' · ' + esc(srcLabel) : ''}` +
-      `<br>收藏时间：${esc(favFmtTime(it.created_at))}`;
-    if (it.kind === 'link' && it.site) html += `<br>网站：${esc(it.site)}`;
-    html += '</div><div class="fav-actions">' +
+    const expanded = favExpanded.has(it.id);
+    const href = it.kind === 'link' ? favSafeHttpUrl(it.url) : '';
+    const titleHtml = href
+      ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(it.title)}</a>`
+      : `<span>${esc(it.title)}</span>`;
+
+    html += `<div class="fav-card${expanded ? ' expanded' : ''}" data-id="${esc(it.id)}">` +
+      `<div class="fav-card-title"><span class="fav-badge">${esc(badge)}</span>${titleHtml}` +
+      `<button class="fav-card-toggle" data-act="toggle">${expanded ? '收起' : '展开'}</button></div>`;
+    // Always-visible one-line summary so the collapsed card still shows source + time.
+    html += `<div class="fav-submeta">来源：${esc(srcDate)}${srcLabel ? ' · ' + esc(srcLabel) : ''} · 收藏 ${esc(favFmtTime(it.created_at))}</div>`;
+    if (it.excerpt) html += `<div class="fav-excerpt">${esc(it.excerpt)}</div>`;
+    if (it.tags && it.tags.length) {
+      html += '<div class="fav-card-tags">' + it.tags.map((t) => `<span class="fav-card-tag">#${esc(t)}</span>`).join('') + '</div>';
+    }
+    html += '<div class="fav-detail">';
+    if (it.kind === 'link' && it.site) html += `<div class="fav-meta">网站：${esc(it.site)}</div>`;
+    if (it.note) html += `<div class="fav-note">${esc(it.note)}</div>`;
+    html += '<div class="fav-edit">' +
+      `<input class="fav-edit-tags" placeholder="标签（空格或逗号分隔）" value="${esc((it.tags || []).join(' '))}">` +
+      `<textarea class="fav-edit-note" placeholder="备注…">${esc(it.note || '')}</textarea>` +
+      '<div class="fav-actions"><button class="fav-action" data-act="save">保存</button>' +
+      '<button class="fav-action" data-act="canceledit">取消</button></div></div>';
+    html += '<div class="fav-actions">' +
       `<button class="fav-action" data-act="goto">${it.kind === 'report' ? '回到报告' : '回到原文'}</button>`;
-    if (it.kind === 'link' && it.url) html += '<button class="fav-action" data-act="open">打开外链</button>';
-    html += '<button class="fav-action danger" data-act="remove">取消收藏</button></div></div>';
+    if (it.kind === 'link' && favSafeHttpUrl(it.url)) html += '<button class="fav-action" data-act="open">打开外链</button>';
+    html += '<button class="fav-action" data-act="edit">编辑</button>' +
+      '<button class="fav-action danger" data-act="remove">取消收藏</button></div>';
+    html += '</div></div>';
   });
+  html += '<div class="fav-empty" id="favNoMatch" style="display:none">没有匹配的收藏。<br><button class="fav-action" id="favClearFilters" style="margin-top:8px">清除全部筛选</button></div>';
   html += '</div>';
   setContent(html);
   if (scroll) document.getElementById('cwrap').scrollTop = 0;
 
+  const clearAllFilters = () => {
+    favSearchQuery = ''; favSourceDateFilter = ''; favTagFilter.clear();
+    renderFavoritesView(currentFavFilter, false);
+  };
+
+  // ── wire header filters (no rebuild on input → keeps focus) ──
+  const searchEl = document.getElementById('favSearch');
+  if (searchEl) searchEl.addEventListener('input', () => { favSearchQuery = searchEl.value; applyFavFilters(); });
+  document.getElementById('favDate')?.addEventListener('change', (e) => { favSourceDateFilter = e.target.value; applyFavFilters(); });
+  document.querySelectorAll('.fav-tag').forEach((chip) => chip.addEventListener('click', () => {
+    const t = chip.dataset.tag;
+    if (favTagFilter.has(t)) favTagFilter.delete(t); else favTagFilter.add(t);
+    renderFavoritesView(currentFavFilter, false); // rebuild to refresh chip active states
+  }));
+  document.getElementById('favTagClear')?.addEventListener('click', () => { favTagFilter.clear(); renderFavoritesView(currentFavFilter, false); });
+  document.getElementById('favClearAll')?.addEventListener('click', clearAllFilters);
+  document.getElementById('favClearFilters')?.addEventListener('click', clearAllFilters);
+
+  // ── wire cards ──
   document.querySelectorAll('.fav-card').forEach((card) => {
     const item = favoriteStore.items.find((it) => it.id === card.dataset.id);
     if (!item) return;
+    const toggle = () => {
+      const open = card.classList.toggle('expanded');
+      if (open) favExpanded.add(item.id); else favExpanded.delete(item.id);
+      card.querySelector('[data-act="toggle"]').textContent = open ? '收起' : '展开';
+    };
+    card.querySelector('[data-act="toggle"]')?.addEventListener('click', toggle);
+    // Click anywhere on a collapsed card to expand — but not on links/buttons/inputs
+    // or while selecting text.
+    card.addEventListener('click', (e) => {
+      if (card.classList.contains('expanded')) return;
+      if (e.target.closest('a, button, input, textarea, .fav-edit, .fav-tag')) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      toggle();
+    });
     card.querySelector('[data-act="goto"]')?.addEventListener('click', () => gotoFavorite(item));
     card.querySelector('[data-act="open"]')?.addEventListener('click', () => window.open(item.url, '_blank', 'noopener'));
+    card.querySelector('[data-act="edit"]')?.addEventListener('click', () => card.classList.add('editing'));
+    card.querySelector('[data-act="canceledit"]')?.addEventListener('click', () => card.classList.remove('editing'));
+    card.querySelector('[data-act="save"]')?.addEventListener('click', () => {
+      item.tags = parseTagsInput(card.querySelector('.fav-edit-tags').value);
+      // Truncate by Unicode code point (mirror Go rune semantics, not UTF-16 units).
+      item.note = [...card.querySelector('.fav-edit-note').value.trim()].slice(0, 2000).join('');
+      if (!item.tags.length) delete item.tags;
+      if (!item.note) delete item.note;
+      item.edited_at = new Date().toISOString();
+      persistFavorites();
+      renderFavNav();
+      scheduleFavSync();
+      favExpanded.add(item.id);
+      renderFavoritesView(currentFavFilter, false);
+    });
     card.querySelector('[data-act="remove"]')?.addEventListener('click', () => {
       removeFavorite(item.id);
       renderFavoritesView(currentFavFilter, false);
     });
   });
+
+  applyFavFilters();
+}
+
+// Show/hide already-rendered cards per the live filters, hide empty group labels,
+// and update the count — without rebuilding (so the search box keeps focus).
+function applyFavFilters() {
+  const container = document.querySelector('#content .md');
+  if (!container) return;
+  let visible = 0;
+  container.querySelectorAll('.fav-card').forEach((card) => {
+    const item = favoriteStore.items.find((it) => it.id === card.dataset.id);
+    const ok = item ? favItemMatches(item) : false;
+    card.style.display = ok ? '' : 'none';
+    if (ok) visible += 1;
+  });
+  // Hide a group label when every card under it is hidden.
+  container.querySelectorAll('.fav-group-label').forEach((label) => {
+    let anyVisible = false;
+    for (let n = label.nextElementSibling; n && !n.classList.contains('fav-group-label'); n = n.nextElementSibling) {
+      if (n.classList.contains('fav-card') && n.style.display !== 'none') { anyVisible = true; break; }
+    }
+    label.style.display = anyVisible ? '' : 'none';
+  });
+  const count = document.getElementById('favCount');
+  if (count) count.textContent = `共 ${visible} 条 · 按收藏时间倒序`;
+  const noMatch = document.getElementById('favNoMatch');
+  if (noMatch) noMatch.style.display = visible === 0 ? '' : 'none';
 }
 
 function gotoFavorite(item) {

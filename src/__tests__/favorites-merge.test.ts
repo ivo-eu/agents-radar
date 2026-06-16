@@ -49,8 +49,19 @@ function grabFunction(source: string, name: string): string {
 
 beforeAll(async () => {
   const html = readFileSync(INDEX_HTML, "utf8");
-  const names = ["favPreferNonEmpty", "favEarliest", "favLatest", "mergeSource", "mergeItem"];
-  const src = names.map((n) => grabFunction(html, n)).join("\n\n") + "\nexport { mergeItem };";
+  const names = [
+    "favPreferNonEmpty",
+    "favEarliest",
+    "favLatest",
+    "favTagsNoteKey",
+    "favKeyGreaterEq",
+    "mergeSource",
+    "mergeItem",
+  ];
+  const src =
+    "const favTextEncoder = new TextEncoder();\n" + // favKeyGreaterEq depends on this module-level const
+    names.map((n) => grabFunction(html, n)).join("\n\n") +
+    "\nexport { mergeItem };";
   const mod = await import("data:text/javascript," + encodeURIComponent(src));
   mergeItem = mod.mergeItem;
 });

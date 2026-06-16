@@ -111,15 +111,20 @@ type FavoriteSource struct {
 // event time means a stale tombstone from another device cannot re-kill an item
 // that was re-favorited after that tombstone. (See review §5.2.)
 type FavoriteItem struct {
-	ID        string         `json:"id"`
-	Kind      string         `json:"kind"`
-	Title     string         `json:"title,omitempty"`
-	URL       string         `json:"url,omitempty"`
-	Site      string         `json:"site,omitempty"`
-	Excerpt   string         `json:"excerpt,omitempty"`
-	Section   string         `json:"section,omitempty"`
-	CreatedAt string         `json:"created_at,omitempty"`
-	RevivedAt string         `json:"revived_at,omitempty"`
+	ID        string   `json:"id"`
+	Kind      string   `json:"kind"`
+	Title     string   `json:"title,omitempty"`
+	URL       string   `json:"url,omitempty"`
+	Site      string   `json:"site,omitempty"`
+	Excerpt   string   `json:"excerpt,omitempty"`
+	Section   string   `json:"section,omitempty"`
+	Tags      []string `json:"tags,omitempty"`
+	Note      string   `json:"note,omitempty"`
+	CreatedAt string   `json:"created_at,omitempty"`
+	RevivedAt string   `json:"revived_at,omitempty"`
+	// EditedAt is the last time tags/note were changed; used for field-level
+	// last-writer-wins so a stale device cannot overwrite newer tags/note.
+	EditedAt  string         `json:"edited_at,omitempty"`
 	DeletedAt string         `json:"deleted_at,omitempty"`
 	Source    FavoriteSource `json:"source"`
 }
@@ -1190,9 +1195,53 @@ func validFavorites(items []FavoriteItem) []FavoriteItem {
 		if !datePattern.MatchString(it.Source.Date) || !reportPattern.MatchString(it.Source.Report) {
 			continue
 		}
+		it.Tags = sanitizeTags(it.Tags)
+		it.Note = sanitizeNote(it.Note)
 		out = append(out, it)
 	}
 	return out
+}
+
+func sanitizeTags(tags []string) []string {
+	seen := map[string]bool{}
+	out := make([]string, 0, len(tags))
+	for _, t := range tags {
+		t = strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(t), "#"))
+		if t == "" {
+			continue
+		}
+		if r := []rune(t); len(r) > 32 {
+			t = string(r[:32])
+		}
+		if seen[t] {
+			continue
+		}
+		seen[t] = true
+		out = append(out, t)
+		if len(out) >= 20 {
+			break
+		}
+	}
+	if len(out) == 0 {
+		return nil
+	}
+	return out
+}
+
+func sanitizeNote(note string) string {
+	note = strings.TrimSpace(note)
+	if r := []rune(note); len(r) > 2000 {
+		note = string(r[:2000])
+	}
+	return note
+}
+
+func tagsLine(tags []string) string {
+	parts := make([]string, 0, len(tags))
+	for _, t := range tags {
+		parts = append(parts, "#"+t)
+	}
+	return strings.Join(parts, " ")
 }
 
 func countAlive(items []FavoriteItem) int {
@@ -1237,7 +1286,32 @@ func mergeFavorites(base, incoming []FavoriteItem) []FavoriteItem {
 	return out
 }
 
+// mergeTagsNote picks the tags+note from the side edited most recently (whole-set
+// replace). On an edited_at tie it is deterministic AND order-independent: keep
+// the side whose (tags+note) key is lexicographically greater, so a re-merge in
+// the opposite order (browser load vs Bridge sync) yields the same result and a
+// non-empty edit beats an empty one.
+func mergeTagsNote(a, b FavoriteItem) ([]string, string) {
+	if a.EditedAt > b.EditedAt {
+		return a.Tags, a.Note
+	}
+	if b.EditedAt > a.EditedAt {
+		return b.Tags, b.Note
+	}
+	if tagsNoteKey(a) >= tagsNoteKey(b) {
+		return a.Tags, a.Note
+	}
+	return b.Tags, b.Note
+}
+
+// tagsNoteKey is the tie-break key for equal edited_at. MUST mirror the JS
+// favTagsNoteKey in index.html byte-for-byte.
+func tagsNoteKey(it FavoriteItem) string {
+	return strings.Join(it.Tags, "\n") + "\x01" + it.Note
+}
+
 // mergeTwo combines two records of the same favorite id; b is the newer input.
+
 func mergeTwo(a, b FavoriteItem) FavoriteItem {
 	out := a
 	if out.Kind == "" {
@@ -1249,6 +1323,11 @@ func mergeTwo(a, b FavoriteItem) FavoriteItem {
 	out.Excerpt = preferNonEmpty(b.Excerpt, a.Excerpt)
 	out.Section = preferNonEmpty(b.Section, a.Section)
 	out.Source = mergeSource(a.Source, b.Source)
+
+	// tags/note are mutable → field-level last-writer-wins by edited_at, with the
+	// whole tag set replaced (never unioned, so a removed tag does not resurrect).
+	out.Tags, out.Note = mergeTagsNote(a, b)
+	out.EditedAt = latest(a.EditedAt, b.EditedAt)
 
 	// created_at = earliest first-favorite (stable sort key).
 	out.CreatedAt = earliest(a.CreatedAt, b.CreatedAt)
@@ -1421,6 +1500,12 @@ func renderFavoritesMarkdown(items []FavoriteItem, pagesURL string) string {
 		}
 		if it.Kind == "link" && it.URL != "" {
 			b.WriteString("- 原始链接：<" + it.URL + ">\n")
+		}
+		if len(it.Tags) > 0 {
+			b.WriteString("- 标签：" + tagsLine(it.Tags) + "\n")
+		}
+		if strings.TrimSpace(it.Note) != "" {
+			b.WriteString("- 备注：" + mdInline(it.Note) + "\n")
 		}
 		if strings.TrimSpace(it.Excerpt) != "" {
 			b.WriteString("\n> " + mdQuote(it.Excerpt) + "\n")

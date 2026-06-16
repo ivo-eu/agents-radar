@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { toRfc822, escapeXml, markdownToSearchText } from "../generate-manifest.ts";
+import {
+  toRfc822,
+  escapeXml,
+  markdownToSearchText,
+  normalizeBrokenMarkdownLinks,
+} from "../generate-manifest.ts";
 
 // ---------------------------------------------------------------------------
 // toRfc822
@@ -73,5 +78,16 @@ describe("markdownToSearchText", () => {
 
   it("normalizes whitespace and preserves Chinese text", () => {
     expect(markdownToSearchText("## 今日趋势\n\nAI   智能体")).toBe("今日趋势 ai 智能体");
+  });
+});
+
+describe("normalizeBrokenMarkdownLinks", () => {
+  it("repairs nested markdown links whose URL slug was split into text", () => {
+    const markdown =
+      "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.]([https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a) 52k-star-repo-here-is-what-84100-looks-like-28cn)";
+
+    expect(normalizeBrokenMarkdownLinks(markdown)).toBe(
+      "3. [I Pointed a Skill Linter at a 52k-Star Repo. Here Is What 84/100 Looks Like.](https://dev.to/sayed_ali_alkamel/i-pointed-a-skill-linter-at-a-52k-star-repo-here-is-what-84100-looks-like-28cn)",
+    );
   });
 });

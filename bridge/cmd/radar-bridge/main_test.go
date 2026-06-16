@@ -278,6 +278,143 @@ func TestMergeRevivePersistsAgainstStaleTombstone(t *testing.T) {
 	}
 }
 
+func TestMergeTagsNoteLastWriterWins(t *testing.T) {
+	a := item(id64a, "link", "2026-06-10T08:00:00Z")
+	a.Tags = []string{"x"}
+	a.Note = "old"
+	a.EditedAt = "2026-06-11T08:00:00Z"
+	b := item(id64a, "link", "2026-06-10T08:00:00Z")
+	b.Tags = []string{"y", "z"}
+	b.Note = "new"
+	b.EditedAt = "2026-06-11T09:00:00Z" // newer edit
+
+	m := mergeFavorites([]FavoriteItem{a}, []FavoriteItem{b})[0]
+	if len(m.Tags) != 2 || m.Tags[0] != "y" || m.Tags[1] != "z" || m.Note != "new" {
+		t.Fatalf("later edit should win whole tags+note: %+v", m)
+	}
+	// order independence
+	m2 := mergeFavorites([]FavoriteItem{b}, []FavoriteItem{a})[0]
+	if len(m2.Tags) != 2 || m2.Note != "new" {
+		t.Fatalf("tags/note LWW must be order-independent: %+v", m2)
+	}
+}
+
+func TestMergeTagsNoteTieIsDeterministicAndCommutative(t *testing.T) {
+	// Same edited_at, different content → must pick the SAME side regardless of order.
+	a := item(id64a, "link", "2026-06-10T08:00:00Z")
+	a.Tags = []string{"a"}
+	a.Note = "AA"
+	a.EditedAt = "2026-06-11T09:00:00Z"
+	b := item(id64a, "link", "2026-06-10T08:00:00Z")
+	b.Tags = []string{"b", "c"}
+	b.Note = "BB"
+	b.EditedAt = "2026-06-11T09:00:00Z"
+	ab := mergeFavorites([]FavoriteItem{a}, []FavoriteItem{b})[0]
+	ba := mergeFavorites([]FavoriteItem{b}, []FavoriteItem{a})[0]
+	if ab.Note != ba.Note || strings.Join(ab.Tags, ",") != strings.Join(ba.Tags, ",") {
+		t.Fatalf("tie must be order-independent: %+v vs %+v", ab, ba)
+	}
+	// Key("b\nc\x01BB") > Key("a\x01AA") → b wins both directions.
+	if ab.Note != "BB" {
+		t.Fatalf("tie should deterministically pick the greater key: %+v", ab)
+	}
+	// Non-empty beats empty on a tie with no edited_at.
+	c := item(id64a, "link", "2026-06-10T08:00:00Z")
+	c.Tags = []string{"keep"}
+	d := item(id64a, "link", "2026-06-10T08:00:00Z")
+	if got := mergeFavorites([]FavoriteItem{d}, []FavoriteItem{c})[0]; len(got.Tags) != 1 {
+		t.Fatalf("non-empty tags should win an empty tie: %+v", got)
+	}
+
+	// P2-6.2: tie-break compares UTF-8 bytes, so "😀" (F0 9F 98 80) beats "￿"/U+FFFF
+	// (EF BF BF). The website test (favorites-phase3.test.ts) asserts the SAME winner;
+	// if either side's compare drifts to code-point/UTF-16 order, the two diverge.
+	e := item(id64a, "link", "2026-06-10T08:00:00Z")
+	e.Tags = []string{"😀"}
+	e.EditedAt = "2026-06-15T08:00:00Z"
+	f := item(id64a, "link", "2026-06-10T08:00:00Z")
+	f.Tags = []string{"￿"}
+	f.EditedAt = "2026-06-15T08:00:00Z"
+	ef := mergeFavorites([]FavoriteItem{e}, []FavoriteItem{f})[0]
+	fe := mergeFavorites([]FavoriteItem{f}, []FavoriteItem{e})[0]
+	if len(ef.Tags) != 1 || ef.Tags[0] != "😀" || len(fe.Tags) != 1 || fe.Tags[0] != "😀" {
+		t.Fatalf("non-ASCII tie must pick 😀 (UTF-8 byte order) both directions: %+v vs %+v", ef, fe)
+	}
+}
+
+func TestSanitizeBoundaries(t *testing.T) {
+	// Single tag capped at 32 runes (not bytes/UTF-16) — use a non-BMP rune.
+	long := sanitizeTags([]string{strings.Repeat("😀", 40)})
+	if len([]rune(long[0])) != 32 {
+		t.Fatalf("tag should cap at 32 runes, got %d", len([]rune(long[0])))
+	}
+	// Note capped at 2000 runes.
+	note := sanitizeNote(strings.Repeat("好", 2500))
+	if len([]rune(note)) != 2000 {
+		t.Fatalf("note should cap at 2000 runes, got %d", len([]rune(note)))
+	}
+}
+
+func TestMergeTagsNoUnion(t *testing.T) {
+	a := item(id64a, "link", "2026-06-10T08:00:00Z")
+	a.Tags = []string{"a", "b"}
+	a.EditedAt = "2026-06-11T08:00:00Z"
+	b := item(id64a, "link", "2026-06-10T08:00:00Z")
+	b.Tags = []string{"a"} // removed "b"
+	b.EditedAt = "2026-06-11T09:00:00Z"
+	m := mergeFavorites([]FavoriteItem{a}, []FavoriteItem{b})[0]
+	if len(m.Tags) != 1 || m.Tags[0] != "a" {
+		t.Fatalf("removed tag must not resurrect via union: %+v", m.Tags)
+	}
+}
+
+func TestSanitizeTagsAndNote(t *testing.T) {
+	tags := sanitizeTags([]string{" #agent ", "agent", "", "  ", "MEMORY"})
+	if len(tags) != 2 || tags[0] != "agent" || tags[1] != "MEMORY" {
+		t.Fatalf("tags should trim/strip-#/dedupe: %+v", tags)
+	}
+	long := make([]string, 30)
+	for i := range long {
+		long[i] = string(rune('a' + i))
+	}
+	if len(sanitizeTags(long)) != 20 {
+		t.Fatal("tag count should cap at 20")
+	}
+	if sanitizeNote("  hi  ") != "hi" {
+		t.Fatal("note should trim")
+	}
+}
+
+func TestValidFavoritesSanitizesTags(t *testing.T) {
+	in := item(id64a, "link", "2026-06-10T08:00:00Z")
+	in.Tags = []string{"#x", "x", " y "}
+	got := validFavorites([]FavoriteItem{in})
+	if len(got) != 1 || len(got[0].Tags) != 2 || got[0].Tags[0] != "x" || got[0].Tags[1] != "y" {
+		t.Fatalf("validFavorites should sanitize tags: %+v", got)
+	}
+}
+
+func TestRenderFavoritesMarkdownIncludesTagsAndNote(t *testing.T) {
+	it := item(id64a, "link", "2026-06-10T15:42:00Z")
+	it.Title = "Cursor"
+	it.URL = "https://github.com/x/y"
+	it.Site = "github.com"
+	it.Tags = []string{"agent", "cli"}
+	it.Note = "值得回看"
+	md := renderFavoritesMarkdown([]FavoriteItem{it}, "https://ivo-eu.github.io/agents-radar")
+	for _, want := range []string{"- 标签：#agent #cli", "- 备注：值得回看"} {
+		if !strings.Contains(md, want) {
+			t.Fatalf("markdown missing %q\n---\n%s", want, md)
+		}
+	}
+	// no tags/note → no such lines
+	plain := item(id64b, "report", "2026-06-10T10:00:00Z")
+	md2 := renderFavoritesMarkdown([]FavoriteItem{plain}, "https://ivo-eu.github.io/agents-radar")
+	if strings.Contains(md2, "- 标签：") || strings.Contains(md2, "- 备注：") {
+		t.Fatal("empty tags/note must not render lines")
+	}
+}
+
 func TestMergeSortsNewestFirst(t *testing.T) {
 	merged := mergeFavorites(nil, []FavoriteItem{
 		item(id64a, "link", "2026-06-10T08:00:00Z"),

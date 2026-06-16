@@ -79,6 +79,20 @@ export function escapeXml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
+function joinBrokenMarkdownUrl(head: string, tail: string): string {
+  const suffix = tail.trim().replace(/\s+/g, "-");
+  if (!suffix) return head;
+  const needsJoiner = !/[/-]$/.test(head) && !/^[/?#&=._~-]/.test(suffix);
+  return `${head}${needsJoiner ? "-" : ""}${suffix}`;
+}
+
+export function normalizeBrokenMarkdownLinks(markdown: string): string {
+  return markdown.replace(
+    /\[([^\]\n]+)\]\(\[(https?:\/\/[^\]\s]+)\]\(\2\)\s+([^)\n]+)\)/g,
+    (_, title: string, head: string, tail: string) => `[${title}](${joinBrokenMarkdownUrl(head, tail)})`,
+  );
+}
+
 export function markdownToSearchText(markdown: string): string {
   return markdown
     .replace(/```[\s\S]*?```/g, " ")
@@ -156,7 +170,7 @@ async function getReportContent(date: string, report: string): Promise<ReportCon
   const filePath = path.join(DIGESTS_DIR, date, `${report}.md`);
 
   try {
-    const markdown = fs.readFileSync(filePath, "utf-8");
+    const markdown = normalizeBrokenMarkdownLinks(fs.readFileSync(filePath, "utf-8"));
     const html = await marked.parse(markdown, { async: false });
 
     // Extract summary text from original HTML (before CDATA escape)
