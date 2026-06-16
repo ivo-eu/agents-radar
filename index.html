@@ -1361,19 +1361,27 @@ function setupSelectionFavorites() {
       const id = await favId('excerpt', { date: source.date, report: source.report, excerpt: selectedText });
       // Title = heading the selection starts under (or the selection itself).
       const section = nearestSection(block);
-      toggleFavorite({
-        id,
-        kind: 'excerpt',
-        title: section || selectedText.slice(0, 60),
-        excerpt: excerptMarkdown || selectedText,
-        section,
-        created_at: new Date().toISOString(),
-        source: { ...source, anchor, anchors },
-      });
-      // Highlight EVERY spanned block while any excerpt still covers it.
+      // Selection only ADDS a favorite — removal is handled by hovering the
+      // highlighted block (see bindBlockUnfavoriteHover). Re-selecting an
+      // already-saved span is a no-op rather than toggling it off.
+      if (!favoriteIds.has(id)) {
+        addFavorite({
+          id,
+          kind: 'excerpt',
+          title: section || selectedText.slice(0, 60),
+          excerpt: excerptMarkdown || selectedText,
+          section,
+          created_at: new Date().toISOString(),
+          source: { ...source, anchor, anchors },
+        });
+      }
+      // Highlight EVERY spanned block while any excerpt still covers it, and bind
+      // the hover-to-unfavorite bubble so the just-saved block is removable without
+      // waiting for a re-render.
       blocks.forEach((b, i) => {
         b.dataset.favAnchor = anchors[i];
         b.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchors[i]));
+        bindBlockUnfavoriteHover(b);
       });
       window.getSelection()?.removeAllRanges();
     }, true); // sticky: survive mouseleave; only selectionchange/click dismisses it
@@ -1400,6 +1408,43 @@ function blockHasSavedExcerpt(anchor) {
     if (it.kind !== 'excerpt' || it.deleted_at) return false;
     const anchors = it.source?.anchors;
     return anchors ? anchors.includes(anchor) : it.source?.anchor === anchor;
+  });
+}
+
+// Remove EVERY excerpt favorite covering this block's anchor. An excerpt may span
+// several blocks (source.anchors), so a single anchor can belong to >1 favorite;
+// drop them all so the block stops being highlighted.
+function removeExcerptsByAnchor(anchor) {
+  if (!anchor) return;
+  favoriteStore.items.forEach((it) => {
+    if (it.kind !== 'excerpt' || it.deleted_at) return;
+    const anchors = it.source?.anchors;
+    const covers = anchors ? anchors.includes(anchor) : it.source?.anchor === anchor;
+    if (covers) removeFavorite(it.id);
+  });
+}
+
+// Hovering a highlighted block floats a "取消收藏段落" bubble (mirrors link-hover).
+// This is the only way to un-favorite a paragraph; selecting text only adds.
+function bindBlockUnfavoriteHover(block) {
+  if (block._favUnbind) return; // bind once per element across re-renders
+  block._favUnbind = true;
+  block.addEventListener('mouseenter', () => {
+    const anchor = block.dataset.favAnchor;
+    if (!anchor || !blockHasSavedExcerpt(anchor)) return; // not a saved block
+    clearTimeout(popoverHideTimer);
+    clearTimeout(popoverShowTimer);
+    popoverShowTimer = setTimeout(() => {
+      const r = block.getBoundingClientRect();
+      showPopover(r.left, r.top - 32, '取消收藏段落', () => {
+        removeExcerptsByAnchor(block.dataset.favAnchor);
+        block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(block.dataset.favAnchor));
+      });
+    }, 320);
+  });
+  block.addEventListener('mouseleave', () => {
+    clearTimeout(popoverShowTimer);
+    popoverHideTimer = setTimeout(() => { if (!popover?.matches(':hover')) hidePopover(); }, 160);
   });
 }
 
@@ -1466,6 +1511,7 @@ async function enhanceFavorites() {
     const anchor = await blockAnchorId(source.date, source.report, blockText);
     block.dataset.favAnchor = anchor;
     block.classList.toggle('fav-block-saved', blockHasSavedExcerpt(anchor));
+    bindBlockUnfavoriteHover(block); // hover a highlighted block → 取消收藏段落
   }));
 }
 
