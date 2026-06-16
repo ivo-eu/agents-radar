@@ -2,8 +2,10 @@ name: Weekly Agents Radar
 
 on:
   schedule:
-    # 每周一 01:00 UTC = 09:00 CST，日报运行后1小时
-    - cron: "0 1 * * 1"
+    # 周日 22:00 UTC = 周一 06:00 北京时间。
+    # 故意排在当天日报(07:17)之前运行：此时本周一的日报尚未生成，
+    # rollup 取最近 7 个日报目录必然是「上周一~上周日」的完整一周，绝不含当天，消除歧义。
+    - cron: "0 22 * * 0"
   workflow_dispatch:
 
 permissions:

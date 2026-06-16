@@ -1,10 +1,12 @@
-name: Daily Agents Radar (Morning)
+name: Daily Agents Radar
 
 on:
   schedule:
-    # GitHub cron uses UTC: 00:17 UTC = 08:17 Asia/Shanghai.
-    # This renamed workflow gets a fresh scheduler registration.
-    - cron: "17 0 * * *"
+    # 每天 23:17 UTC = 次日 07:17 北京时间 (UTC+8)。
+    # 日报最早跑,周报(08:17)、月报(09:17)依次在其后,以便汇总当天日报。
+    # 避开整点 Actions 调度高峰,减少被延迟/丢弃的概率。
+    # 重要:不要再重命名本文件——重命名会注销旧调度、注册新调度并丢失定时触发。
+    - cron: "17 23 * * *"
   workflow_dispatch:
 
 permissions:
