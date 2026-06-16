@@ -218,6 +218,45 @@ describe("OpenAIProvider", () => {
     });
   });
 
+  it(
+    "passes DeepSeek thinking mode when OPENAI_THINKING is disabled",
+    withEnv({ OPENAI_THINKING: "false" }, async () => {
+      const mockCreate = await getOpenAIMockCreate();
+      mockCreate.mockResolvedValueOnce({
+        choices: [{ message: { content: "Hello without thinking" } }],
+      });
+
+      const p = new OpenAIProvider({ apiKey: "k", model: "gpt-test" });
+      const result = await p.call("test prompt", 2048);
+      expect(result).toBe("Hello without thinking");
+      expect(mockCreate).toHaveBeenCalledWith({
+        model: "gpt-test",
+        max_completion_tokens: 2048,
+        messages: [{ role: "user", content: "test prompt" }],
+        thinking: { type: "disabled" },
+      });
+    }),
+  );
+
+  it(
+    "passes DeepSeek thinking mode when OPENAI_THINKING is enabled",
+    withEnv({ OPENAI_THINKING: "true" }, async () => {
+      const mockCreate = await getOpenAIMockCreate();
+      mockCreate.mockResolvedValueOnce({
+        choices: [{ message: { content: "Hello with thinking" } }],
+      });
+
+      const p = new OpenAIProvider({ apiKey: "k", model: "gpt-test" });
+      await p.call("test prompt", 2048);
+      expect(mockCreate).toHaveBeenCalledWith({
+        model: "gpt-test",
+        max_completion_tokens: 2048,
+        messages: [{ role: "user", content: "test prompt" }],
+        thinking: { type: "enabled" },
+      });
+    }),
+  );
+
   it("streams text when stream mode is enabled", async () => {
     const mockCreate = await getOpenAIMockCreate();
     mockCreate.mockResolvedValueOnce({
@@ -227,13 +266,14 @@ describe("OpenAIProvider", () => {
       },
     });
 
-    const p = new OpenAIProvider({ apiKey: "k", model: "gpt-test", stream: true });
+    const p = new OpenAIProvider({ apiKey: "k", model: "gpt-test", stream: true, thinking: "disabled" });
     const result = await p.call("test prompt", 2048);
     expect(result).toBe("Hello stream");
     expect(mockCreate).toHaveBeenCalledWith({
       model: "gpt-test",
       max_completion_tokens: 2048,
       messages: [{ role: "user", content: "test prompt" }],
+      thinking: { type: "disabled" },
       stream: true,
     });
   });
