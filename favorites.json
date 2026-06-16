@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-06-16T09:19:59Z",
+  "updated_at": "2026-06-16T09:36:40Z",
   "items": [
     {
       "id": "eae6188f71fd9c9853826c6c767ee0cd8f28cb6db554c531e4e4fffca8ae487f",
@@ -64,6 +64,7 @@
       "created_at": "2026-06-16T08:28:21.253Z",
       "revived_at": "2026-06-16T09:19:48.194Z",
       "edited_at": "2026-06-16T08:28:45.334Z",
+      "deleted_at": "2026-06-16T09:36:24.285Z",
       "source": {
         "date": "2026-06-14",
         "report": "ai-community",
