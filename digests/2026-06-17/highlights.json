@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code Opus 4.8模型质量成社区风暴中心",
+      "OpenAI Codex v0.141.0-alpha.3/4迭代快，Windows兼容性差",
+      "GitHub Copilot CLI 6月16日宕机余波未平",
+      "Pi v0.79.5/v0.79.6发布，专注Provider级配置",
+      "OpenCode多模型兼容性和随机挂起问题是焦点",
+      "Qwen Code构建流程故障成当日关注点"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.8增强Telegram与WhatsApp交付",
+      "子代理结果丢失、信号守护进程竞态问题仍待解",
+      "今日合并关闭90个PR，维护者积极清理积压",
+      "会话状态丢失与消息丢失类P1 Bug占比高",
+      "macOS审批数据迁移丢失问题已修复",
+      "网关拒绝保留关键字current/self/this修复"
+    ],
+    "ai-trending": [
+      "OpenBMB VoxCPM2无分词器TTS登顶今日Trending",
+      "阿里开源zvec轻量级进程内向量数据库，156 stars",
+      "ECC 81.8k、hermes-agent 195.5k热度不减",
+      "vllm 83k stars成LLM推理引擎标配",
+      "ollama 174k stars，一键运行本地大模型",
+      "AutoGPT 184.9k stars持续迭代自主Agent框架"
+    ],
+    "ai-web": [
+      "Anthropic研究：专业知识是AI协作价值差异核心杠杆",
+      "Claude Code用户调试时间占比下降近一半",
+      "Anthropic与TCS合作进军金融医疗等监管行业",
+      "Claude Code典型工作流：人负责规划，AI负责执行",
+      "非软件工程师用AI编码成功率与软件工程师持平",
+      "OpenAI今日仅有一条无法获取正文的元数据"
+    ],
+    "ai-hn": [
+      "Anthropic全系模型大规模报错引发政治禁令猜测",
+      "DeepSeek V4 Pro以Claude 5%成本实现接近性能",
+      "GLM-5.2开放权重发布，强调长程任务能力",
+      "OpenAI 2025年亏损34亿美元引盈利模式质疑",
+      "Memento自托管AI搜索+LLM知识库获社区好评",
+      "作者亲历AI检测误报，揭示算法不靠谱"
+    ],
+    "ai-ph": [
+      "Novu Connect 404票登顶，AI代理嵌入Slack/Teams",
+      "Kickbacks.ai将AI等待时间变现，脑洞商业模式",
+      "PandaProbe Cloud全托管AI Agent工程平台",
+      "Sulsaly专注中东北非区域AI销售线索挖掘",
+      "AEVS为AI Agent提供可验证执行证明",
+      "AI视频编辑工具在Premiere Pro找到精准场景"
+    ],
+    "ai-arxiv": [
+      "可变宽度Transformer打破固定层宽限制",
+      "循环世界模型首次用于长程模拟误差累积",
+      "VERITAS框架让机器人通过视觉自主策略修正",
+      "Stanford EDGAR数据集提供高质量长上下文资源",
+      "EvolveNav零样本目标导航引入自进化记忆",
+      "AI旅行代理会帮你订斗牛表演：新基准揭示偏见"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro登顶热度榜，下载量283万",
+      "Qwen3.6-35B-A3B高性价比MoE视觉模型下载336万",
+      "NVIDIA LocateAnything-3B交互式目标定位",
+      "Google Gemma-4-12B-it支持Any-to-Any多模态",
+      "MiniMax-M3多模态MoE视觉理解表现突出",
+      "Unsloth GGUF量化生态与热门新模型同步"
+    ],
+    "ai-community": [
+      "Fable 5模型一夜消失引发AI单点故障担忧",
+      "AI检测工具Sloan误报，作者被自家AI标记低质量",
+      "更强模型不等于更好AI伴侣，设计比智商重要",
+      "零依赖LLM聊天历史压缩方案流行",
+      "Siri私有推理仍不够隐私，端侧AI部署受批判",
+      "AI Economics for Dummies讽刺解构行业泡沫"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Opus 4.8 regressions affect Claude Code",
+      "MCP integration is now de facto standard",
+      "Windows support remains universal pain point",
+      "Agentic loops top reliability concern",
+      "Model compatibility fractures across tools",
+      "DeepSeek V4 parameter conflicts in Gemini"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.8 released",
+      "Telegram renders structured text",
+      "WhatsApp honors ACP bindings",
+      "197 issues updated in 24 hours",
+      "500 pull requests updated",
+      "Maintainer bandwidth may be strained"
+    ],
+    "ai-trending": [
+      "VoxCPM tokenizer‑free TTS +408 stars",
+      "zvec lightweight vector database +158 stars",
+      "Ollama supports Kimi‑K2.6, GLM‑5.1",
+      "Open WebUI reaches 141,904 stars",
+      "Firecrawl web-scraping API for agents",
+      "Browser-use makes websites accessible"
+    ],
+    "ai-web": [
+      "Anthropic studies 400,000 Claude Code sessions",
+      "TCS partnership brings Claude to regulated industries",
+      "Agentic coding reduces debugging time",
+      "Domain expertise gap is modest",
+      "OpenAI's 'Deployment Simulation' not analyzed",
+      "Claude deployed to 50,000 TCS employees"
+    ],
+    "ai-hn": [
+      "U.S. ban on Anthropic models sparks debate",
+      "OpenAI reports $21B loss on $13B revenue",
+      "DeepSeek V4 Pro at 5% Claude's cost",
+      "Wolfram Language Version 15 launched",
+      "GLM-5.2 generates excitement",
+      "Community skeptical of big-vendor narratives"
+    ],
+    "ai-ph": [
+      "Novu Connect ships agents into workflows",
+      "AutoEdit first Claude video editor for Premiere Pro",
+      "Wobo Tinder-like AI job hunting",
+      "Kickbacks.ai pays devs to wait for Claude Code",
+      "Open-source agent frameworks launched",
+      "Fonda AI co-founder remembers decisions"
+    ],
+    "ai-arxiv": [
+      "Looped World Models for deep computation",
+      "Fixed-Point Reasoners for reasoning",
+      "Variable-Width Transformers improve efficiency",
+      "Zone of Proximal Policy Optimization",
+      "Self-distillation boosts model performance",
+      "LLMs as autonomous cyber-defense agents"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro leads with 4,898 likes",
+      "MoE race: Qwen3.6-35B-A3B trending",
+      "Google's DiffusionGemma diffusion multimodal",
+      "Kimi-K2.7-Code efficient coding model",
+      "Cohere North-Mini-Code-1.0 compact MoE",
+      "Community quantization fever with GGUF variants"
+    ],
+    "ai-community": [
+      "Fable 5 crisis: U.S. government letter to Anthropic",
+      "AI detection false positives harm creators",
+      "BrowserAct handles anti-bot friction",
+      "Don't put context inside model memory",
+      "Siri's privacy limitations analyzed",
+      "LLM intelligence debate on Lobste.rs"
+    ]
+  }
+}
