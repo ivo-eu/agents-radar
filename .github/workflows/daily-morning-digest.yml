@@ -1,12 +1,10 @@
-name: Daily Agents Radar
+name: Daily Agents Radar (manual backup)
 
+# 此 workflow 仅保留手动触发(workflow_dispatch)作为补跑入口。
+# 它的定时已被移除:本 workflow 于 2026-06-15 改名重建,作为 fork 仓库的新 workflow,
+# 其 schedule 从未被 GitHub 触发过(实测 0 次)。日报的定时已改由 weekly-digest.yml
+# (Daily & Weekly Agents Radar,2026-06-09 创建的老 workflow,schedule 可靠)承载。
 on:
-  schedule:
-    # 每天 23:17 UTC = 次日 07:17 北京时间 (UTC+8)。
-    # 日报最早跑,周报(08:17)、月报(09:17)依次在其后,以便汇总当天日报。
-    # 避开整点 Actions 调度高峰,减少被延迟/丢弃的概率。
-    # 重要:不要再重命名本文件——重命名会注销旧调度、注册新调度并丢失定时触发。
-    - cron: "17 23 * * *"
   workflow_dispatch:
 
 permissions:

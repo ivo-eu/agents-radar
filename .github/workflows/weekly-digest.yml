@@ -1,12 +1,23 @@
-name: Weekly Agents Radar
+name: Daily & Weekly Agents Radar
 
+# 注意:本文件承载「日报」与「周报」两套定时。
+# 原因:本仓库是 fork,GitHub 只对 2026-06-09 前后创建的老 workflow 注册了可用的
+# schedule;2026-06-15 改名重建的独立 daily workflow 的 cron 从未被触发过(实测 0 次)。
+# 周报 workflow 自 06-09 起文件名未变、schedule 可靠,因此把日报定时并入此处复用其调度。
+# 切勿重命名本文件——重命名会注销旧调度、注册新调度并再次丢失定时触发。
 on:
   schedule:
-    # 周日 22:00 UTC = 周一 06:00 北京时间。
-    # 故意排在当天日报(07:17)之前运行：此时本周一的日报尚未生成，
-    # rollup 取最近 7 个日报目录必然是「上周一~上周日」的完整一周，绝不含当天，消除歧义。
+    # 日报:每天 23:17 UTC = 次日 07:17 北京时间。
+    - cron: "17 23 * * *"
+    # 周报:周日 22:00 UTC = 周一 06:00 北京时间(排在当天日报之前,汇总上周一~周日)。
     - cron: "0 22 * * 0"
   workflow_dispatch:
+    inputs:
+      job:
+        description: "手动触发要跑哪个"
+        type: choice
+        default: daily
+        options: [daily, weekly]
 
 permissions:
   contents: write
@@ -16,20 +27,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  weekly:
+  digest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # 日报增量约 1-2 分钟,首次抓取可能 20 分钟;周报约 2-3 分钟。取较大值。
+    timeout-minutes: 40
     env:
       LLM_PROVIDER: openai
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
       OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
       OPENAI_STREAM: "true"
+      PRODUCTHUNT_TOKEN: ${{ secrets.PRODUCTHUNT_TOKEN }}
       DIGEST_REPO: ${{ github.repository }}
       PUBLISH_ISSUES: "false"
       PAGES_URL: https://ivo-eu.github.io/agents-radar
-
     steps:
+      - name: Decide which digest to run
+        id: which
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+          DISPATCH_JOB: ${{ github.event.inputs.job }}
+        run: |
+          # 周报 cron 是 "0 22 * * 0";其余 schedule 一律按日报。手动触发看 input。
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "$SCHEDULE" = "0 22 * * 0" ]; then KIND=weekly; else KIND=daily; fi
+          else
+            KIND="${DISPATCH_JOB:-daily}"
+          fi
+          echo "kind=$KIND" >> "$GITHUB_OUTPUT"
+          echo "Running: $KIND"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -45,21 +72,32 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run daily digest
+        if: steps.which.outputs.kind == 'daily'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm start
+
       - name: Run weekly rollup
+        if: steps.which.outputs.kind == 'weekly'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm weekly
 
-      - name: Commit weekly report
+      - name: Commit digest files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add digests/
           if git diff --cached --quiet; then
-            echo "No weekly report to commit"
+            echo "No new digest files to commit"
           else
-            WEEK=$(date -u +%Y-W%V)
-            HUSKY=0 git commit -m "digest: ${WEEK} weekly digest"
+            if [ "${{ steps.which.outputs.kind }}" = "weekly" ]; then
+              MSG="digest: $(date -u +%Y-W%V) weekly digest"
+            else
+              MSG="digest: $(date -u +%Y-%m-%d) daily digest"
+            fi
+            HUSKY=0 git commit -m "$MSG"
             git pull --rebase
             git push
           fi
@@ -81,3 +119,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID || '@agents_radar' }}
         run: pnpm notify
+
+      - name: Send Feishu notification
+        if: steps.which.outputs.kind == 'daily'
+        env:
+          FEISHU_WEBHOOK_URLS: ${{ secrets.FEISHU_WEBHOOK_URLS }}
+        run: pnpm notify:feishu

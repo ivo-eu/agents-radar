@@ -1,5 +1,14 @@
 # CLAUDE.md
 
+## ⚠️ Tool-call tag syntax (read first)
+
+Every tool call MUST use the `antml:`-prefixed invoke/parameter tags. Emitting a
+bare `<invoke>` / `</invoke>` (no prefix) makes the runtime silently drop that turn —
+no tool runs, and the user sees it as the session "freezing". This has repeatedly
+disrupted sessions in this repo. Always write the prefixed form for both the opening
+and closing tags. When the previous turn appears to "stall", assume a missing-prefix
+tag and simply re-send the same call correctly.
+
 ## Project overview
 
 agents-radar is a daily digest generator for the AI open-source ecosystem. A GitHub Actions cron job runs at 00:00 UTC (08:00 CST) and produces bilingual (Chinese + English) reports committed as Markdown files. GitHub Issue publishing is opt-in through `PUBLISH_ISSUES=true`.
