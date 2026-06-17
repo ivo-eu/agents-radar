@@ -1075,11 +1075,29 @@ func (a *App) syncFavorites(incoming []FavoriteItem) favSyncResult {
 		if _, err := runGit(repo, "diff", "--cached", "--quiet", "--", favoritesFileName); err == nil {
 			return favSyncResult{items: merged, pushed: true, vaultWritten: vaultWritten, vaultErr: vaultErr}
 		}
-		msg := fmt.Sprintf("favorites: sync (%d alive)", countAlive(merged))
-		if out, err := runGit(repo, "commit", "-m", msg, "--", favoritesFileName); err != nil {
+		// Fold consecutive machine syncs into ONE commit: if origin/master's tip
+		// (== HEAD after align) is itself a favorites-only sync commit, amend it in
+		// place instead of stacking a new commit. This keeps the history from
+		// growing one commit per favorite. Amending the tip means rewriting an
+		// already-pushed commit, so we push with --force-with-lease, which aborts
+		// (and we retry) if the remote moved since our fetch — so we never clobber
+		// a human or daily-digest commit that landed in the meantime.
+		fold := tipIsFoldableFavSync(repo)
+		msg := fmt.Sprintf("%s (%d alive)", favSyncCommitPrefix, countAlive(merged))
+		commitArgs := []string{"commit", "-m", msg, "--", favoritesFileName}
+		if fold {
+			// --amend rewrites the tip; --only keeps the commit limited to staged
+			// favorites.json (HEAD is already at origin/master, nothing else staged).
+			commitArgs = []string{"commit", "--amend", "-m", msg, "--only", "--", favoritesFileName}
+		}
+		if out, err := runGit(repo, commitArgs...); err != nil {
 			return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: fmt.Errorf("git commit: %w: %s", err, strings.TrimSpace(out))}
 		}
-		if out, err := runGit(repo, "push", "origin", "HEAD:master"); err == nil {
+		pushArgs := []string{"push", "origin", "HEAD:master"}
+		if fold {
+			pushArgs = []string{"push", "--force-with-lease=master:origin/master", "origin", "HEAD:master"}
+		}
+		if out, err := runGit(repo, pushArgs...); err == nil {
 			return favSyncResult{items: merged, pushed: true, vaultWritten: vaultWritten, vaultErr: vaultErr}
 		} else {
 			lastErr = fmt.Errorf("git push: %s", strings.TrimSpace(out))
@@ -1087,7 +1105,8 @@ func (a *App) syncFavorites(incoming []FavoriteItem) favSyncResult {
 			if out2, err2 := runGit(repo, "fetch", "origin", "master"); err2 != nil {
 				return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: fmt.Errorf("git fetch on retry: %w: %s", err2, strings.TrimSpace(out2))}
 			}
-			// next loop: gitAlignToOrigin drops our commit and re-merges on the new base.
+			// next loop: gitAlignToOrigin drops our commit/amend and re-merges on the
+			// new base (and re-evaluates foldability against the new tip).
 		}
 	}
 	return favSyncResult{items: merged, vaultWritten: vaultWritten, vaultErr: vaultErr, err: lastErr}
@@ -1157,6 +1176,40 @@ func (a *App) gitAlignToOrigin(repo string) error {
 		return fmt.Errorf("git merge --ff-only: %w: %s", err, strings.TrimSpace(out))
 	}
 	return nil
+}
+
+// favSyncCommitPrefix marks machine-written favorites commits. The count suffix
+// ("(N alive)") varies, so we match on this stable prefix when deciding whether
+// the tip commit is one we may fold into.
+const favSyncCommitPrefix = "favorites: sync"
+
+// tipIsFoldableFavSync reports whether origin/master's tip is a machine-written
+// favorites commit that the next sync may amend instead of stacking onto. To be
+// foldable it must (1) carry the favorites-sync subject AND (2) touch nothing but
+// favorites.json. This keeps us from ever amending/force-pushing a human commit
+// or a daily-digest commit (which changes many files). After gitAlignToOrigin's
+// `reset --hard origin/master`, HEAD == origin/master, so we inspect HEAD.
+func tipIsFoldableFavSync(repo string) bool {
+	subject, err := runGit(repo, "log", "-1", "--format=%s")
+	if err != nil || !strings.HasPrefix(strings.TrimSpace(subject), favSyncCommitPrefix) {
+		return false
+	}
+	// Files changed by the tip commit (HEAD vs its parent). A root commit has no
+	// parent — treat that as not-foldable (never amend the very first commit).
+	files, err := runGit(repo, "diff", "--name-only", "HEAD~1", "HEAD")
+	if err != nil {
+		return false
+	}
+	for _, f := range strings.Split(strings.TrimSpace(files), "\n") {
+		f = strings.TrimSpace(f)
+		if f == "" {
+			continue
+		}
+		if f != favoritesFileName {
+			return false // tip touched something else — must not fold it
+		}
+	}
+	return true
 }
 
 // assertCleanExceptFavorites refuses to run if the working tree has uncommitted

@@ -565,6 +565,78 @@ func TestSyncFavoritesWritesCommitsAndPushes(t *testing.T) {
 	}
 }
 
+// countFavSyncCommits returns how many "favorites: sync" commits exist on
+// origin/master — used to assert that consecutive syncs fold into one.
+func countFavSyncCommits(t *testing.T, clone string) int {
+	t.Helper()
+	out, err := runGit(clone, "log", "origin/master", "--format=%s")
+	if err != nil {
+		t.Fatalf("git log: %v: %s", err, out)
+	}
+	n := 0
+	for _, line := range strings.Split(strings.TrimSpace(out), "\n") {
+		if strings.HasPrefix(strings.TrimSpace(line), favSyncCommitPrefix) {
+			n++
+		}
+	}
+	return n
+}
+
+func TestSyncFavoritesFoldsConsecutiveSyncs(t *testing.T) {
+	app, clone, _ := setupRepoFixture(t)
+
+	// First sync: one fav-sync commit on top of the seed.
+	if res := app.syncFavorites([]FavoriteItem{item(id64a, "link", "2026-06-10T15:42:00Z")}); res.err != nil || !res.pushed {
+		t.Fatalf("first sync failed: err=%v pushed=%v", res.err, res.pushed)
+	}
+	if n := countFavSyncCommits(t, clone); n != 1 {
+		t.Fatalf("after first sync want 1 fav-sync commit, got %d", n)
+	}
+
+	// Second sync: must AMEND the tip, not add a new commit → still exactly one.
+	if res := app.syncFavorites([]FavoriteItem{
+		item(id64a, "link", "2026-06-10T15:42:00Z"),
+		item(id64b, "excerpt", "2026-06-10T15:31:00Z"),
+	}); res.err != nil || !res.pushed {
+		t.Fatalf("second sync failed: err=%v pushed=%v", res.err, res.pushed)
+	}
+	if n := countFavSyncCommits(t, clone); n != 1 {
+		t.Fatalf("after second sync want folded into 1 fav-sync commit, got %d", n)
+	}
+	// The folded commit still carries both items.
+	out, err := runGit(clone, "show", "origin/master:"+favoritesFileName)
+	if err != nil || !strings.Contains(out, id64a) || !strings.Contains(out, id64b) {
+		t.Fatalf("folded favorites.json missing items: %v\n%s", err, out)
+	}
+	// Total commits = seed + exactly one fav-sync (proves no stacking).
+	all, err := runGit(clone, "rev-list", "--count", "origin/master")
+	if err != nil {
+		t.Fatalf("rev-list: %v: %s", err, all)
+	}
+	if got := strings.TrimSpace(all); got != "2" {
+		t.Fatalf("want 2 total commits (seed + 1 folded), got %s", got)
+	}
+}
+
+func TestSyncFavoritesDoesNotFoldOntoNonFavCommit(t *testing.T) {
+	app, clone, _ := setupRepoFixture(t)
+	// Tip is the seed commit (subject "seed", not a fav-sync) → must NOT amend it.
+	if res := app.syncFavorites([]FavoriteItem{item(id64a, "link", "2026-06-10T15:42:00Z")}); res.err != nil || !res.pushed {
+		t.Fatalf("sync failed: err=%v pushed=%v", res.err, res.pushed)
+	}
+	// Seed must survive untouched as its own commit beneath the new fav-sync commit.
+	all, err := runGit(clone, "rev-list", "--count", "origin/master")
+	if err != nil {
+		t.Fatalf("rev-list: %v: %s", err, all)
+	}
+	if got := strings.TrimSpace(all); got != "2" {
+		t.Fatalf("want 2 commits (seed + fav-sync), got %s — seed may have been amended", got)
+	}
+	if out, err := runGit(clone, "log", "origin/master", "--format=%s"); err != nil || !strings.Contains(out, "seed") {
+		t.Fatalf("seed commit lost: %v\n%s", err, out)
+	}
+}
+
 func TestSyncFavoritesRefusesDirtyWorkingTree(t *testing.T) {
 	app, clone, _ := setupRepoFixture(t)
 	if err := os.WriteFile(filepath.Join(clone, "unrelated.txt"), []byte("x"), 0o644); err != nil {
