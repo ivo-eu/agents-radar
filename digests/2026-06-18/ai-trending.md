@@ -1,85 +1,135 @@
 # AI 开源趋势日报 2026-06-18
 
-> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-18 03:18 UTC
+> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-18 03:43 UTC
 
 ---
 
-好的，作为一名专注于 AI 开源生态的技术分析师，根据您提供的 2026 年 6 月 18 日数据，我为您整理并分析如下《AI 开源趋势日报》。
+# AI 开源趋势日报 (2026-06-18)
+
+## 1. 今日速览
+今日 GitHub 热门涌现出一批 **Agent 基础设施**与**多模态应用**新星： 
+- `UI-TARS-desktop` 发布桌面级多模态 Agent 栈，字节跳动开源力作；
+- `codebase-memory-mcp` 以极低 Token 成本实现毫秒级代码知识图谱检索；
+- `Agent-Reach` 和 `OpenMontage` 分别打通互联网感知与全链路视频生成；
+- Google 的 `timesfm` 时间序列基础模型登榜，标志着预训练模型向序列预测领域加速渗透。社区注意力正快速从单一 LLM 调用转向 **Agent 技能编排**与**垂直领域知识基座**。
 
 ---
 
-### **AI 开源趋势日报 (2026-06-18)**
+## 2. 各维度热门项目
 
-#### **1. 今日速览**
+### 🔧 AI 基础工具（框架 · SDK · 推理引擎 · 开发工具）
 
-今日 GitHub 趋势显示出 **AI 智能体（Agent）生态的全面爆发**，尤其是围绕“Agent 技能”（Agentic Skills）和“Agent 感知”的工具链成为吸星主力。以 `Agent-Reach` 为代表的零成本互联网数据获取工具，以及 `superpowers` 和 `skills` 这类旨在定义 Agent 最佳实践与技能框架的项目，获得了社区的爆发性关注。同时，**大模型基础架构仍是基石**，Google 的时间序列基础模型 `timesfm` 与字节跳动的多模态 Agent 桌面端 `UI-TARS-desktop` 均表现出强劲势头，体现了研究界与产业界在模型能力与应用落地上双线并进的趋势。
+- **[continue](https://github.com/continuedev/continue)** – ⭐0（+49 today）  
+  开源编码 Agent，提供 IDE 内智能代码补全、重构和上下文感知能力，今日热度持续。
 
-#### **2. 各维度热门项目**
+- **[rlm](https://github.com/alexzhang13/rlm)** – ⭐0（+43 today）  
+  通用递归语言模型（RLM）推理库，支持多种沙箱环境，为高效循环推理提供即插即用实现。
 
-##### 🔧 AI 基础工具（框架、SDK、推理引擎、开发工具、CLI）
+- **[vllm](https://github.com/vllm-project/vllm)** – ⭐83,204  
+  高吞吐、低内存的 LLM 推理引擎，已是大模型部署的事实标准，社区持续贡献。
 
-- **[DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)** | ⭐0 (+371 today)
-  - **一句话说明**：高性能代码智能 MCP 服务器，通过将代码库持久化为知识图谱，实现毫秒级代码查询和推理，并大幅减少 Token 消耗，是 LLM  coding agent 的“外挂大脑”。
-- **[obra/superpowers](https://github.com/obra/superpowers)** | ⭐0 (+1129 today)
-  - **一句话说明**：一套开源的 Agentic 技能框架和软件开发方法论，旨在定义 Agent 如何高效工作、学习和演进，是 Agent 开发领域的“设计模式”库。
-- **[mattpocock/skills](https://github.com/mattpocock/skills)** | ⭐0 (+1523 today)
-  - **一句话说明**：来自知名 TypeScript 专家的实战级 `.claude` 技能配置集合，直接为 Claude Code 等 Agent 预设最佳工作流，是社区级 Agent Prompt 的最佳实践宝库。
-- **[alexzhang13/rlm](https://github.com/alexzhang13/rlm)** | ⭐0 (+43 today)
-  - **一句话说明**：递归语言模型（RLM）的通用即插即用推理库，支持多种沙盒环境，为研究和开发可进行多步推理的下一代语言模型提供了关键基础设施。
+- **[firecrawl](https://github.com/firecrawl/firecrawl)** – ⭐134,211  
+  大规模网页搜索、抓取与交互 API，为 Agent 提供实时互联网数据接入，今日仍为热门基础设施。
 
-##### 🤖 AI 智能体/工作流（Agent 框架、自动化、多智能体）
+### 🤖 AI 智能体/工作流（Agent 框架 · 自动化 · 多智能体）
 
-- **[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)** | ⭐0 (+1,161 today) / ⭐33,390 total
-  - **一句话说明**：为你的 AI Agent 装上“眼睛”，使其能通过一个 CLI 和零 API 费用，自由读取和搜索 Twitter、Reddit、YouTube 等主流互联网平台，彻底打破信息壁垒。
-- **[bytedance/UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop)** | ⭐0 (+150 today)
-  - **一句话说明**：字节跳动开源的多模态 AI Agent 桌面端堆栈，连接前沿 AI 模型与 Agent 基础设施，是探索 AI 原生操作系统交互范式的前沿项目。
-- **[calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)** | ⭐0 (+98 today)
-  - **一句话说明**：全球首个开源、智能体驱动的视频生产系统，拥有 12 条流水线、52 个工具和 500 多项 Agent 技能，将你的 AI 编程助手瞬间变为全功能视频工作室。
-- **[Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)** | ⭐185,005 total
-  - **一句话说明**：AI Agent 领域的“始祖级”项目，持续演进，愿景是让所有人都能使用和构建 AI，其生态是目前最广泛的 Agent 平台之一。
-- **[HKUDS/nanobot](https://github.com/HKUDS/nanobot)** | ⭐44,403 total
-  - **一句话说明**：轻量级开源 AI Agent，专注于集成你的工具、聊天和工作流，以其简洁高效的设计理念获得社区认可。
+- **[Agent-Reach](https://github.com/Panniantong/Agent-Reach)** – ⭐33,431（+1,161 today）  
+  零 API 费用的 Agent 互联网感知工具，支持搜索 Twitter、Reddit、Bilibili 等 6 大平台，一键 CLI 接入。
 
-##### 📦 AI 应用（具体应用产品、垂直场景解决方案）
+- **[obra/superpowers](https://github.com/obra/superpowers)** – ⭐0（+1,129 today）  
+  全新的 Agent 技能框架与软件开发方法论，强调可组合、可复用的技能模块。
 
-- **[continuedev/continue](https://github.com/continuedev/continue)** | ⭐0 (+49 today)
-  - **一句话说明**：最受开发者欢迎的开源编码 Agent 之一，深度集成 IDE，让 AI 辅助编程从“补全”走向“自主开发”。
-- **[RocketChat/Rocket.Chat](https://github.com/RocketChat/Rocket.Chat)** | ⭐0 (+22 today)
-  - **一句话说明**：虽然本身是安全通信平台，但其作为 AI 对话与工作流的“操作系统”潜力巨大，已集成多种 AI 能力和 Agent。
-- **[OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)** | ⭐77,581 total
-  - **一句话说明**：AI 驱动的软件开发助手，不仅修复 Bug，还能独立完成整个开发任务，代表了 AI Coding Agent 的最高水平之一。
+- **[continue](https://github.com/continuedev/continue)** – 同上，作为编码 Agent 亦属本类。
 
-##### 🧠 大模型/训练（模型权重、训练框架、微调工具）
+- **[UI-TARS-desktop](https://github.com/bytedance/UI-TARS-desktop)** – ⭐0（+150 today）  
+  字节跳动开源的多模态 AI Agent 桌面应用，集成视觉理解、任务规划与模型调用，打通 Agent 交互流程。
 
-- **[google-research/timesfm](https://github.com/google-research/timesfm)** | ⭐0 (+606 today)
-  - **一句话说明**：Google Research 开发的时序预测基础模型，将 LLM 范式成功应用于时间序列领域，为金融、供应链等场景提供了强大的预训练模型选择。
-- **[NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)** | ⭐196,290 total
-  - **一句话说明**：与 Agent 共同成长的模型，代表了社区对于“模型即 Agent”或“Agent 原生模型”这一前沿方向的探索和高度认可。
+- **[OpenMontage](https://github.com/calesthio/OpenMontage)** – ⭐0（+98 today）  
+  全球首个开源 Agent 视频生产系统，12 条流水线、52 个工具、500+ 技能，将编码助手变为视频工作室。
 
-##### 🔍 RAG/知识库（向量数据库、检索增强、知识管理）
+- **[skills](https://github.com/mattpocock/skills)** – ⭐0（+1,523 today）  
+  来自 Claude Code 目录的真实工程师技能集合，可直接导入 Agent 环境，代表 Agent 技能工程化趋势。
 
-- **[infiniflow/ragflow](https://github.com/infiniflow/ragflow)** | ⭐83,059 total
-  - **一句话说明**：将 RAG（检索增强生成）与 Agent 能力深度融合的引擎，为 LLM 提供了极其强大的上下文层，是构建企业级 AI 知识库的标杆项目。
-- **[Mintplex-Labs/anything-llm](https://github.com/Mintplex-Labs/anything-llm)** | ⭐61,752 total
-  - **一句话说明**：让用户拥有自己智能的“一切LLM”，提供本地优先、功能完备的 Agent 体验，涵盖文档管理、向量搜索和模型定制。
-- **[run-llama/llama_index](https://github.com/run-llama/llama_index)** | ⭐50,200 total
-  - **一句话说明**：文档 Agent 和 OCR 领域的领先框架，是连接大模型与私有数据的桥梁，已成为数据索引和检索领域的事实标准之一。
-- **[milvus-io/milvus](https://github.com/milvus-io/milvus)** | ⭐44,823 total
-  - **一句话说明**：高性能、云原生的向量数据库，为亿级向量 ANN 搜索而生，是大模型时代 AI 应用的“记忆体”基础设施标配。
+- **[OpenHands](https://github.com/OpenHands/OpenHands)** – ⭐77,586  
+  AI 驱动的软件开发框架，多智能体协作完成编码、测试与部署。
 
-#### **3. 趋势信号分析**
+- **[browser-use](https://github.com/browser-use/browser-use)** – ⭐99,349  
+  让 AI Agent 自动操控浏览器执行复杂网页任务，今日仍为高热度开源项目。
 
-今日数据揭示了 **“Agent 技能工程”正成为新的社区爆点**。与以往关注通用框架不同，`superpowers`、`skills` 和 `claude-mem` 等项目的爆红，标志着社区正从“如何构建一个 Agent”向“**如何构建一个优秀的 Agent**”转变。开发者不再满足于让 Agent 能工作，而是追求其工作的效率、质量和专业性。`Agent-Reach` 的巨大成功（+1161 stars）则表明，**打通 Agent 与外界的感知能力**是当前最急迫的需求之一，通过零成本、标准化的方式赋予 Agent “网络眼”的项目具备巨大潜力。
+### 📦 AI 应用（具体产品 · 垂直场景解决方案）
 
-值得注意的是，**时间序列基础模型** `timesfm` 的登榜，预示着 LLM 范式正快速向金融、气象、IoT 等垂直领域渗透。同时，**递归语言模型（RLM）** 工具库 `rlm` 的出现，虽今日增长不高，但揭示了学术界和工业界在解决 LLM 深度推理和规划能力上的新方向，是值得重点跟踪的技术栈。此外，字节跳动 `UI-TARS-desktop` 的持续活跃，也反映出 **多模态 Agent 正从概念走向桌面级应用**。
+- **[PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)** – ⭐82,859  
+  百度开源的 OCR 工具包，支持 100+ 语言，可将图片/PDF 转化为结构化数据，赋能 LLM 多模态输入。
 
-#### **4. 社区关注热点**
+- **[OpenBB](https://github.com/OpenBB-finance/OpenBB)** – ⭐69,353  
+  面向分析师与 AI Agent 的金融数据平台，提供统一的数据接口与回测能力。
 
-- **Agent 技能市场（Skill Marketplace）**：关注 **`obra/superpowers`** 和 **`mattpocock/skills`**。它们预示着一个新的生态：开发者像开发 App 一样开发 Agent 技能，并通过社区共享。这将是未来 Agent 能力分发的核心模式。
-- **Agent 感知层（Agent Perception）**：关注 **`Panniantong/Agent-Reach`**。它解决了 Agent 发展中“如何获取实时、多样的外部世界信息”的核心瓶颈。类似的“感知即服务”项目将成为 Agent 生态的重要基础设施。
-- **领域基础模型（Domain Foundation Models）**：关注 **`google-research/timesfm`**。它证明了 LLM 的成功经验可以被复制到其他数据模态。类似的时间序列、基因序列、三维点云等基础模型将成为各自领域的“操作系统”。
-- **下一代推理架构（Next-Gen Reasoning）**：关注 **`alexzhang13/rlm`**。递归语言模型是打破 Transformer 固定计算量限制、实现可控深度推理的前沿方向。这个库降低了研究门槛，可能会孵化出更强大的 AGI 模型。
-- **Agent 记忆持久化（Agent Memory）**：关注 **`thedotmack/claude-mem`**。让 Agent 拥有“长期记忆”是通往“自主”的关键一步。此项目通过自动捕获、压缩和注入上下文，为 Agent 提供了类似人类的情境记忆能力。
+- **[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)** – ⭐87,002  
+  多智能体 LLM 金融交易框架，将 Agent 应用于量化决策，近期热度飙升。
+
+- **[ScrapeGraphAI](https://github.com/ScrapeGraphAI/Scrapegraph-ai)** – ⭐27,307  
+  基于 AI 的智能爬虫，可自然语言驱动网页数据提取。
+
+- **[anything-llm](https://github.com/Mintplex-Labs/anything-llm)** – ⭐61,752  
+  本地优先的 AI 知识管理台，支持多模型、多文档索引，是个人化 Agent 工作站的经典选择。
+
+### 🧠 大模型/训练（模型权重 · 训练框架 · 微调工具）
+
+- **[timesfm](https://github.com/google-research/timesfm)** – ⭐0（+606 today）  
+  Google Research 的时间序列基础模型，预训练后可迁移至多种预测任务，代表 AI 从 NLP/CV 向时序领域的扩展。
+
+- **[transformers](https://github.com/huggingface/transformers)** – ⭐161,683  
+  业界标准模型库，今日仍为 AI 开发者最核心依赖。
+
+- **[vllm](https://github.com/vllm-project/vllm)** – 同上，高性能推理引擎。
+
+- **[open-compass](https://github.com/open-compass/opencompass)** – ⭐7,101  
+  开源 LLM 评测平台，支持 100+ 数据集，在模型迭代频繁的当下愈发重要。
+
+- **[tiny-llm](https://github.com/skyzh/tiny-llm)** – ⭐4,289  
+  面向 Apple Silicon 的 LLM 推理实践教学项目，帮助系统工程师理解推理服务原理。
+
+### 🔍 RAG/知识库（向量数据库 · 检索增强 · 知识管理）
+
+- **[langchain](https://github.com/langchain-ai/langchain)** – ⭐139,592  
+  Agent 工程平台，RAG 链路的核心编排库，社区生态极其活跃。
+
+- **[ragflow](https://github.com/infiniflow/ragflow)** – ⭐83,060  
+  结合 Agent 能力的 RAG 引擎，提供企业级上下文层，今日仍有大量关注。
+
+- **[mem0](https://github.com/mem0ai/mem0)** – ⭐58,811  
+  通用 Agent 记忆层，为跨会话上下文持久化提供自托管方案。
+
+- **[milvus](https://github.com/milvus-io/milvus)** – ⭐44,823  
+  高性能云原生向量数据库，RAG 系统的关键存储组件。
+
+- **[LanceDB](https://github.com/lancedb/lancedb)** – ⭐10,637  
+  嵌入式多模态检索库，面向 AI 应用的轻量级向量搜索。
+
+- **[cognee](https://github.com/topoteretes/cognee)** – ⭐17,889  
+  开源 Agent 记忆平台，通过知识图谱实现持久长期记忆。
+
+---
+
+## 3. 趋势信号分析
+
+今日数据呈现两个强烈信号：**Agent 技能工程化**和**多模态 Agent 落地加速**。  
+- `codebase-memory-mcp` 以极低 Token 消耗（99% fewer tokens）实现代码知识图谱检索，直击 Agent 上下文窗口瓶颈，社区爆发式增长（+371 stars/天）预示着 **MCP (Model Context Protocol) 基础设施**将快速成熟。  
+- `UI-TARS-desktop` 和 `OpenMontage` 的登榜，表明 Agent 正在从纯文本交互转向**视觉-动作闭环**，多模态 Agent 桌面应用与视频生成成为新风口。  
+- `timesfm` 的爆发（+606 stars/天）是 Google 在时间序列预测领域的开源动作，**基础模型向垂直领域（时序、金融、物理）扩展**趋势明显，这与近期大量行业大模型发布相呼应。  
+- 值得注意，`Agent-Reach` 以零 API 费用打通六大社交媒体，**降低 Agent 获取实时数据的门槛**，是推动 Agent 实用化的关键工程胜利。  
+
+总体来看，社区正从“调模型”转向“造智能体”——如何让 Agent 廉价、高效地感知环境、记忆上下文、调用工具，成为当前技术栈最活跃的增长点。
+
+---
+
+## 4. 社区关注热点
+
+- **🛠 MCP 协议生态爆发**：`codebase-memory-mcp` 仅用一日冲上 Trending，代码知识图谱 + 毫秒级检索的范式可能被广泛复制到文档、日志等领域。  
+- **📱 多模态 Agent 桌面应用**：`UI-TARS-desktop` 将视觉模型与 Agent 工作流集成，代表字节跳动在前沿 Agent 架构上的开源布局，值得跟踪其架构设计。  
+- **🎬 Agent 视频生产**：`OpenMontage` 将 AI 编码助手直接转化为视频工作室，结合 Agent 技能编排，可能重塑内容生产工具链。  
+- **⏳ 时间序列基础模型开源**：`timesfm` 的登榜暗示 Google 有意将预训练范式推广到非语言/视觉领域，开发者可关注其在金融、IoT 等场景的适用性。  
+- **🤖 Agent 技能市场雏形**：`skills` (mattpocock) 和 `superpowers` 均提供可复用的技能模块，这是 Agent 应用走向“组件化”的重要信号，未来可能出现类似 npm 的 Agent 技能市场。
 
 ---
 *本日报由 [agents-radar](https://github.com/ivo-eu/agents-radar) 自动生成。*

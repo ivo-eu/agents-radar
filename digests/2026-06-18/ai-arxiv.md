@@ -1,109 +1,81 @@
 # ArXiv AI 研究日报 2026-06-18
 
-> 数据来源: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | 共 50 篇论文 | 生成时间: 2026-06-18 03:18 UTC
+> 数据来源: [ArXiv](https://arxiv.org/) (cs.AI, cs.CL, cs.LG) | 共 50 篇论文 | 生成时间: 2026-06-18 03:43 UTC
 
 ---
 
-# ArXiv AI 研究日报（2026-06-18）
+# ArXiv AI 研究日报 (2026-06-18)
 
 ## 今日速览
 
-今日投稿聚焦于**推理模型的扩展与对齐**——块扩散语言模型首次被验证可用于长链推理（DreamReasoner-8B），GRPO的熵崩溃问题获得理论分析与改进（STARE）。**神经符号学习**迎来可微分类语义框架（NeSyCat Torch），为统一多种逻辑范式提供基础。**模型安全与遗忘**方面，选择性遗忘RLVR推理行为的方法（MAST）以及预训练阶段对齐（Beyond Safe Data）被提出。此外，**物理增强图神经网络**（P-K-GCN）在高保真超分辨率模拟中展现潜力，而**多智能体虚构博弈**（Multi-Agent Fictitious Play）提升了LLM策略决策能力。
+今日投稿揭示了几个关键趋势：**扩散模型正从图像生成向语言推理领域延伸**，DreamReasoner-8B 首次将块级扩散解码应用于长链思维推理，效果媲美自回归模型。**多智能体决策范式迎来新突破**，基于虚构博弈的 LLM 协作框架显著提升了复杂任务中的决策质量。**模型安全与遗忘机制成为焦点**，MAST 和预训练阶段对齐等研究深入探讨如何精确移除特定能力而不破坏整体性能。此外，**领域专用智能体（药物发现、企业数据、医疗诊断）和评估基准（幻灯片生成、深度伪造检测）密集涌现**，推动 AI 从通用走向务实落地。
 
 ## 重点论文
 
 ### 🧠 大语言模型（架构、训练、对齐、评估）
 
-1. **DreamReasoner-8B: Block-Size Curriculum Learning for Diffusion Reasoning Models**  
-   [http://arxiv.org/abs/2606.19257v1](http://arxiv.org/abs/2606.19257v1)  
-   *Zirui Wu, Lin Zheng, Jiacheng Ye et al.*  
-   **开源块扩散推理模型**，通过分块大小课程学习，首次证明块扩散LLM可扩展至长链推理任务，为高效推理提供新范式。
+- **[DreamReasoner-8B: Block-Size Curriculum Learning for Diffusion Reasoning Models](http://arxiv.org/abs/2606.19257v1)** — Zirui Wu, L. Zheng, J. Ye et al.  
+  首个面向长链推理的块扩散语言模型，通过渐进式块尺寸课程学习实现并行解码，推理性能与自回归模型持平。
 
-2. **Rethinking Reward Supervision: Rubric-Conditioned Self-Distillation**  
-   [http://arxiv.org/abs/2606.19327v1](http://arxiv.org/abs/2606.19327v1)  
-   *Siyi Gu, Jialin Chen, Sophia Zhou et al.*  
-   **规则条件自蒸馏**：用可得的评分标准（rubric）替代昂贵且可能有噪声的链式思维标注，通过蒸馏提升推理模型性能，减少对人工标注的依赖。
+- **[Rethinking Reward Supervision: Rubric-Conditioned Self-Distillation](http://arxiv.org/abs/2606.19327v1)** — Siyi Gu, J. Chen, S. Zhou et al.  
+  提出“评分规则条件自蒸馏”替代昂贵的人工 CoT 标注，用弱监督信号自提升推理模型，大幅降低后训练成本。
 
-3. **STARE: Surprisal-Guided Token-Level Advantage Reweighting for Policy Entropy Stability**  
-   [http://arxiv.org/abs/2606.19236v1](http://arxiv.org/abs/2606.19236v1)  
-   *Haipeng Luo, Qingfeng Sun, Songli Wu et al.*  
-   **解决GRPO策略熵崩溃**：通过惊奇度（surprisal）引导的Token级优势重加权，稳定策略熵，提升RLVR训练中LLM的推理多样性。
+- **[Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection](http://arxiv.org/abs/2606.19168v1)** — Jinhan Li, K. Tang, Y. Xu et al.  
+  将安全对齐推进到预训练阶段，通过“安全反思”机制在训练早期注入约束，而非仅靠过滤不安全数据。
 
-4. **MAST: Mechanism-Guided Selective Unlearning for RLVR-Induced Reasoning**  
-   [http://arxiv.org/abs/2606.19222v1](http://arxiv.org/abs/2606.19222v1)  
-   *Chenyu Zhou, Qiliang Jiang, Shuning Wu et al.*  
-   **机制对齐的选择性遗忘**：针对RLVR诱导的推理能力，仅微调少量参数即可遗忘特定行为，大幅降低对原有能力的附带损害。
-
-5. **Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection**  
-   [http://arxiv.org/abs/2606.19168v1](http://arxiv.org/abs/2606.19168v1)  
-   *Jinhan Li, Kexian Tang, Yihan Xu et al.*  
-   **预训练阶段安全对齐**：超越过滤不安全数据，引入定期安全反思机制，使LLM在预训练阶段就建立深层安全认知。
+- **[Does VLA Even Know the Basics? Measuring Commonsense and World Knowledge Retention in Vision-Language-Action Models](http://arxiv.org/abs/2606.19297v1)** — Nikita Kachaev, A. Moskalenko, M. Skripkin et al.  
+  首次系统评估 VLA 模型在机器人微调后遗忘常识与事实知识的程度，揭示多模态模型能力衰减的盲区。
 
 ### 🤖 智能体与推理（规划、工具使用、多智能体、思维链）
 
-6. **Enhancing Decision-Making with Large Language Models through Multi-Agent Fictitious Play**  
-   [http://arxiv.org/abs/2606.19308v1](http://arxiv.org/abs/2606.19308v1)  
-   *Leyang Shen, Yang Zhang, Xiaoyan Zhao et al.*  
-   **多智能体虚构博弈**：将博弈论中的虚构博弈引入LLM多智能体系统，提升在战略决策任务（如谈判、资源分配）中的表现，弥补传统分治范式的不足。
+- **[Enhancing Decision-Making with Large Language Models through Multi-Agent Fictitious Play](http://arxiv.org/abs/2606.19308v1)** — Leyang Shen, Y. Zhang, X. Zhao et al.  
+  将博弈论中的虚构动态引入多智能体 LLM，使各智能体在迭代中学习最优策略，在复杂决策任务上显著超越传统分工范式。
 
-7. **Data Intelligence Agents: Interpreting, Modeling, and Querying Enterprise Data via Autonomous Coding Agents**  
-   [http://arxiv.org/abs/2606.19319v1](http://arxiv.org/abs/2606.19319v1)  
-   *Anoushka Vyas, Aarushi Dhanuka, Sina Khoshfetrat Pakazad et al.*  
-   **数据智能体系统**：三个智能体（解释器、模式创建器、查询器）自主协作，实现企业数据的端到端集成与查询，减少人工重复工作。
+- **[Data Intelligence Agents: Interpreting, Modeling, and Querying Enterprise Data via Autonomous Coding Agents](http://arxiv.org/abs/2606.19319v1)** — Anoushka Vyas, A. Dhanuka, S. Khoshfetrat Pakazad et al.  
+  提出由三个自主编码智能体（解释器、模式生成器、查询器）组成的数据分析系统，自动化企业数据集成，减少人工交接损失。
+
+- **[TxBench-PP: Analyzing AI Agent Performance on Small-Molecule Preclinical Pharmacology](http://arxiv.org/abs/2606.19245v1)** — Hannah Le, R. Ramasamy, A. Urrutia et al.  
+  专为药物发现 AI 智能体设计的可验证基准（临床前药理学），覆盖分子属性预测、ADMET 等实际决策任务。
+
+- **[Structured Inference with Large Language Gibbs](http://arxiv.org/abs/2606.19264v1)** — Sanghyeok Choi, H. Gouk, E. S. Whitammer  
+  将 LLM 作为吉布斯采样的条件分布，实现对复杂结构化变量（如场景解析、逻辑关系）的概率推理，兼顾知识灵活性与数学严谨性。
 
 ### 🔧 方法与框架（新技术、基准测试、效率优化）
 
-8. **NeSyCat Torch: A Differentiable Tensor Implementation of Categorical Semantics for Neurosymbolic Learning**  
-   [http://arxiv.org/abs/2606.19279v1](http://arxiv.org/abs/2606.19279v1)  
-   *Daniel Romero Schellhorn, Till Mossakowski, Björn Gehrke et al.*  
-   **可微范畴语义框架**：将经典、模糊、概率、神经符号等多种语义统一在单一可微的张量实现下，为神经符号学习提供标准工具。
+- **[A Multi-Domain Benchmark for Detecting AI-Generated Text-Rich Images from GPT-Image-2](http://arxiv.org/abs/2606.19259v1)** — Yijin Wang, S. Wang, W. Zhang et al.  
+  首个多领域 AI 生成文本图像检测基准，覆盖票据、海报、截图等高风险场景，推动对抗伪造图像防御。
 
-9. **Explaining Attention with Program Synthesis**  
-   [http://arxiv.org/abs/2606.19317v1](http://arxiv.org/abs/2606.19317v1)  
-   *Amiri Hayes, Belinda Li, Jacob Andreas*  
-   **用程序合成解释注意力**：将注意力头近似为可执行程序，首次用符号化描述替代神经网络黑盒，为可解释性提供新路径。
+- **[X+Slides: Benchmarking Audience-Conditioned Slide Generation](http://arxiv.org/abs/2606.19256v1)** — Haodong Chen, X. Zhou, W. Zhou et al.  
+  提出面向听众需求的幻灯片生成基准，评估 LLM 能否根据专家 vs 学生等不同受众调整内容和深度。
 
-10. **Essential Subspace Merging for Multi-Task Learning**  
-    [http://arxiv.org/abs/2606.19164v1](http://arxiv.org/abs/2606.19164v1)  
-    *Longhua Li, Lei Qi, Xin Geng et al.*  
-    **关键子空间合并**：分析任务特定参数更新的输出偏移，提出仅在必要子空间合并权重，减少多任务干扰，提升模型合并效果。
+- **[Explaining Attention with Program Synthesis](http://arxiv.org/abs/2606.19317v1)** — Amiri Hayes, B. Li, J. Andreas  
+  用程序合成方法自动为注意力头生成可执行符号描述，首次将注意力机制解释转化为可验证的简单程序。
+
+- **[AGDN: Learning to Solve Traveling Salesman Problem with Anisotropic Graph Diffusion Network](http://arxiv.org/abs/2606.19185v1)** — Bolin Shen, Z. Huang, Z. Cao et al.  
+  提出各向异性图扩散网络求解 TSP，通过定向信息传播捕捉图结构局部模式，在规模泛化性上超越现有 GNN 方法。
 
 ### 📊 应用（垂直领域、多模态、代码生成）
 
-11. **Native Active Perception as Reasoning for Omni-Modal Understanding**  
-    [http://arxiv.org/abs/2606.19341v1](http://arxiv.org/abs/2606.19341v1)  
-    *Zhenghao Xing, Ruiyang Xu, Yuxuan Wang et al.*  
-    **主动感知推理**：变被动“全看”为主动选择关键帧，显著降低长视频理解的计算成本，同时保持高准确率。
+- **[Trade-offs in Medical LLM Adaptation: An Empirical Study in French QA](http://arxiv.org/abs/2606.19266v1)** — Ikram Belmadani, O. El Khettari, C. Ramisch et al.  
+  系统探索法语医疗问答中领域适应与语言适应的权衡，指出单纯微调可能损害语言多样性，为低资源医疗 LLM 提供实用指南。
 
-12. **OneCanvas: 3D Scene Understanding via Panoramic Reprojection**  
-    [http://arxiv.org/abs/2606.19253v1](http://arxiv.org/abs/2606.19253v1)  
-    *Bartłomiej Baranowski, Dave Zhenyu Chen, Matthias Nießner*  
-    **全景重投影3D场景理解**：无需复杂几何编码器，将多视角特征聚合到单一全景画布，实现高效且泛化性强的3D VLM。
+- **[OneCanvas: 3D Scene Understanding via Panoramic Reprojection](http://arxiv.org/abs/2606.19253v1)** — Bartłomiej Baranowski, D. Z. Chen, M. Nießner  
+  用全景重投影将多视图特征汇集到单一全景画布上，使任意 VLM 无需复杂几何编码器即可实现高质量 3D 场景理解。
 
-13. **P-K-GCN: Physics-augmented Koopman-enhanced Graph Convolutional Network for Deep Spatiotemporal Super-resolution**  
-    [http://arxiv.org/abs/2606.19303v1](http://arxiv.org/abs/2606.19303v1)  
-    *Xizhuo Zhang, Zekai Wang et al.*  
-    **物理增强图网络超分辨率**：结合Koopman算子与图卷积，将物理约束融入数据驱动模型，在流体、气候等时空动力学超分辨率任务上显著优于传统方法。
-
-14. **TxBench-PP: Analyzing AI Agent Performance on Small-Molecule Preclinical Pharmacology**  
-    [http://arxiv.org/abs/2606.19245v1](http://arxiv.org/abs/2606.19245v1)  
-    *Hannah Le, Ramesh Ramasamy, Alex Urrutia et al.*  
-    **AI药物发现基准**：首个针对小分子临床前药理学可验证基准，评估AI智能体在高保真药物研发决策中的表现，推动可信AI部署。
+- **[Forecasting what Matters: Decision-Focused RL for Controlled EV Charging with Unknown Departure Times](http://arxiv.org/abs/2606.19199v1)** — Giuseppe Gabriele, F. Pavirani, S. S. Karimi Madahi et al.  
+  将决策聚焦强化学习应用于电动汽车充电调度，在离开时间不确定条件下相比传统方法提升电网稳定性与用户满意度。
 
 ## 研究趋势信号
 
-从今日投稿中观察到两个新兴方向：**扩散模型向推理领域拓展**——继图像生成后，块扩散语言模型开始挑战长链推理（DreamReasoner-8B），有望带来推理加速与新型范式；**模型合并与遗忘的“手术刀”式技术**——从关键子空间合并（Essential Subspace Merging）到机制对齐选择性遗忘（MAST），研究者正尝试在保持模型原始能力的前提下进行精准的增删操作，这对大模型持续学习与安全治理至关重要。
+今日投稿中一个值得注意的新兴方向是 **“推理模型的扩散化与遗忘控制”**。DreamReasoner-8B 表明块扩散模型可以胜任链式推理，打破了自回归在推理任务中的垄断。与此同时，MAST 和预训练对齐等工作试图用细粒度的“机制引导”来精准移除或注入特定推理能力，这为模型的可控性打开新思路。另一个趋势是 **“领域智能体评估基准的涌现”**：药物发现（TxBench-PP）、法律（LOCUS）、医学 QA、幻灯片生成等垂直领域的可验证基准密集发布，预示 AI 智能体正在从演示走向可信部署。最后，**评估指标本身被重新审视**（AUC 误导、有效性-区分度权衡），说明社区对评价可靠性的重视上升到一个新高度。
 
 ## 值得精读
 
-1. **Explaining Attention with Program Synthesis**  
-   首次将注意力头翻译为可读程序，为黑箱神经网络提供了真正可理解的符号解释，是AI可解释性领域的重要突破。
+1. **[DreamReasoner-8B](http://arxiv.org/abs/2606.19257v1)** — 首次将扩散模型成功应用于长链推理，验证了非自回归架构在复杂数学和逻辑任务上的潜力，可能改变未来推理模型的设计范式。
 
-2. **NeSyCat Torch**  
-   统一了多种神经符号逻辑语义的微分实现，为融合符号推理与深度学习提供基础设施，有望成为该领域标准库。
+2. **[Explaining Attention with Program Synthesis](http://arxiv.org/abs/2606.19317v1)** — 用可执行程序解释注意力头，跳出了常见的相关性热力图，为深度网络提供真正可验证的符号解释，对可解释性研究具有方法论创新。
 
-3. **DreamReasoner-8B**  
-   公开了8B规模块扩散推理模型，验证了扩散架构在长链推理上的可行性，可激励更多基于扩散的推理模型研究。
+3. **[Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection](http://arxiv.org/abs/2606.19168v1)** — 把安全对齐从微调阶段前移至预训练，不仅思路新颖，而且实验表明能显著减少后训练阶段的安全退火现象，对 LLM 训练流程有直接影响。
 
 ---
 *本日报由 [agents-radar](https://github.com/ivo-eu/agents-radar) 自动生成。*

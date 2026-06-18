@@ -1,150 +1,150 @@
 {
   "zh": {
     "ai-cli": [
-      "Claude Code v2.1.181 发布，社区讨论计费透明度",
-      "OpenAI Codex 连发 3 个 Alpha 版本，活跃度最高",
-      "Gemini CLI 更新 v0.47.0 与 v0.48.0-preview.0",
-      "OpenCode v1.17.8 迭代，功能开发密集",
-      "Qwen Code v0.18.3 版本发布，社区关注度攀升",
-      "Kimi Code CLI 活跃度极低，尚处早期阶段"
+      "Claude Code计费争议单日评论超1400条",
+      "Gemini CLI发布v0.47.0+preview.0",
+      "OpenCode v1.17.8强化TPS透明与MCP兼容",
+      "Qwen Code v0.18.3修复多供应商冲突",
+      "Claude Code v2.1.181版本发布",
+      "社区情绪聚焦计费愤怒与远程控制不满"
     ],
     "ai-agents": [
-      "OpenClaw 24小时 200 Issues 500 PRs 极度活跃",
-      "安全与会话状态、消息丢失成今日核心关键词",
-      "PR #94366 修复 cron 空回复，提升自动化鲁棒性",
-      "PR #94397 让 Agent 能认知自身身份名称",
-      "PR #94398 暴露幂等键，增强消息去重可靠性",
-      "PR #92682 修复 Windows 非 UTF-8 文件乱码"
+      "OpenClaw日更新252 Issue、500 PR，合并率仅18.2%",
+      "修复Telegram Desktop引用回复问题(#94309)",
+      "引入AI驱动的PR审查自动修复流水线",
+      "修复TLS配置空字符串安全漏洞(#94054)",
+      "社区热议工具调用文本泄露(#25592)",
+      "待合并PR积压409条，核心维护成瓶颈"
     ],
     "ai-trending": [
-      "Agent-Reach 零成本获取互联网数据，今日+1161 星",
-      "superpowers 开源 Agent 技能框架，今日+1129 星",
-      "mattpocock/skills .claude 技能配置，今日+1523 星",
-      "bytedance/UI-TARS-desktop 多模态桌面端+150 星",
-      "OpenMontage 全球首个智能体视频生产系统+98 星",
-      "Google timesfm 时间序列基础模型登榜趋势"
+      "UI-TARS-desktop：字节跳动开源多模态AI Agent桌面应用",
+      "codebase-memory-mcp：毫秒级代码知识图谱检索",
+      "Agent-Reach零API费用，支持Twitter等六大平台",
+      "skills获1523 Star，来自Claude Code工程师技能",
+      "continue开源编码Agent持续受关注",
+      "vllm 83K Star，高吞吐LLM推理引擎"
     ],
     "ai-web": [
-      "Anthropic 开设首尔办公室，与韩国 MSIT 签 MOU",
-      "Anthropic 与 NNSA 开发核安全分类器，准确率 96%",
-      "Frontier Red Team 团队介绍页上线，安全战略升级",
-      "Claude Mythos Preview 网络安全能力评估发布",
-      "OpenAI 发布 Life Sci Bench 生命科学评估基准",
-      "Anthropic 首尔办事处布局亚洲 AI 生态系统"
+      "Anthropic开设首尔办公室，深化韩国AI生态合作",
+      "与NNSA合作开发核安全分类器，准确率96%",
+      "Frontier Red Team亮相：进攻性安全成核心叙事",
+      "评估Claude Mythos Preview网络安全能力",
+      "OpenAI发布Life Sci Bench，生命科学评估基准",
+      "Anthropic今日新增20篇内容，聚焦安全与亚太"
     ],
     "ai-hn": [
-      "OpenAI 年亏损超 210 亿美元，社区震惊",
-      "Anthropic 与特朗普政府政治角力成焦点",
-      "ChatGPT 图像生成器被曝可生成暴力色情内容",
-      "开源 AI CAD 项目 Adam (YC W25) 获 164 分",
-      "自托管 AI 代码审阅工具 Mira 获开发者关注",
-      "Noam Shazeer 从 Google 加入 OpenAI，人才流动"
+      "OpenAI巨额亏损引热议（344分）",
+      "Anthropic与特朗普政府冲突讨论（173分）",
+      "AI机器人实时推理对比获192分",
+      "Adam (YC W25)开源AI CAD获167分",
+      "Estonia为AI代理分配个人ID",
+      "Bernie Sanders主张公众直接持股AI公司"
     ],
     "ai-ph": [
-      "Goldfish Mac AI 副驾驶 610 票，模仿用户回复",
-      "Invoko 轻量级 Mac 助手 422 票，自动化操作",
-      "MakersClaw 406 票，AI 员工嵌入团队聊天",
-      "Edgee Turbo AI 编码 Agent 登榜热门前列",
-      "Zoona AI 客服自动化工具表现亮眼",
-      "MindReader 读脑实验产品成今日最大争议"
+      "Goldfish获612票：Option键AI助手",
+      "Invoko获422票：Mac菜单栏常驻AI助手",
+      "MakersClaw获406票：AI员工嵌入Slack等",
+      "Edgee Turbo Models开发者工具",
+      "多数新品带Vercel Day活动标签",
+      "MindReader v1用模拟fMRI读取思维"
     ],
     "ai-arxiv": [
-      "DreamReasoner-8B 块扩散推理模型开源发布",
-      "STARE 方法解决 GRPO 训练中的熵崩溃",
-      "MAST 实现 RLVR 推理行为的选择性遗忘",
-      "Beyond Safe Data 提出预训练阶段安全对齐",
-      "NeSyCat Torch 可微分类语义框架发布",
-      "P-K-GCN 物理增强图网络用于超分辨率模拟"
+      "DreamReasoner-8B：块扩散语言模型推理媲美自回归",
+      "多智能体虚构博弈框架提升复杂决策任务",
+      "MAST研究精确移除特定能力不破坏整体",
+      "专用智能体：药物发现、企业数据自动化",
+      "评估基准：幻灯片生成、深度伪造检测",
+      "扩散模型从图像生成向语言推理延伸"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro 获 4926 星，下载超 280 万",
-      "Qwen3.6-35B-A3B 2157 星，下载 368 万",
-      "NVIDIA LocateAnything-3B 视觉定位模型 2141 星",
-      "Google Gemma-4-12B-it 1072 星，any-to-any 架构",
-      "MiniMax-M3 多模态 MoE 模型 1066 星",
-      "GLM-5.2 MoE 对话模型获高质量社区关注"
+      "DeepSeek-V4-Pro获近5000点赞，最热开源LLM",
+      "Qwen3.6-35B-A3B下载量超368万，MoE视觉模型",
+      "Google Gemma-4-12B-it支持any-to-any多模态",
+      "NVIDIA LocateAnything-3B视觉定位获2141赞",
+      "GLM-5.2 MoE架构对话模型获1052点赞",
+      "Cohere North-Mini-Code-1.0代码专用小MoE"
     ],
     "ai-community": [
-      "AI agent 因上下文窗口膨胀变笨，社区热议",
-      "模块化指令架构可显著减少 token 消耗",
-      "FSM 模式实现 LLM 供应商降级切换",
-      "生产环境 LLM 评估管道应集成 CI/CD",
-      "MCP 服务器设计三原则：幂等、可观测、限流",
-      "多数 AI 代理在生产中失败，需正确架构模式"
+      "实测上下文窗口填满导致Agent变笨",
+      "MCP生产级设计：工具定义与故障恢复",
+      "前置验尸方法提前暴露AI陷阱",
+      "模块化指令架构大幅节省Token",
+      "LLM评估管线随每次部署运行",
+      "有限状态机实现精细供应商回退"
     ]
   },
   "en": {
     "ai-cli": [
-      "Claude Code and Codex top activity metrics",
-      "Remote control features differentiate tools",
-      "Multi-agent workspaces gain traction",
-      "Token transparency becomes shared goal",
-      "MCP ecosystem matures cross-tool",
-      "Supply chain security a key concern"
+      "Claude Code v2.1.181 released",
+      "OpenAI Codex 3 nightly Rust alphas",
+      "Gemini CLI v0.47.0 + v0.48.0-preview",
+      "DeepSeek TUI and Pi innovate on niches",
+      "Platform portability pain points: ARM64, Wayland",
+      "1,475 comments on Max plan bug for Claude Code"
     ],
     "ai-agents": [
-      "OpenClaw: 200 issues, 500 PRs today",
-      "High-severity bugs await maintainer review",
-      "PR pipeline merges many small fixes",
-      "No releases published today",
-      "Maintainer bandwidth a bottleneck",
-      "Community engagement high but backlog"
+      "OpenClaw: 252 issues, 500 PRs updated",
+      "91 PRs merged or closed today",
+      "Sandbox skill sync fallback fixed",
+      "PR review autofix pipeline + Windows daemon",
+      "Security hardening and session-state focus",
+      "No new releases published today"
     ],
     "ai-trending": [
-      "Agent-Reach +1,161 stars today",
-      "superpowers +1,129 stars trending hot",
-      "TimesFM from Google +606 stars",
-      "codebase-memory-mcp gains 371 stars",
-      "vllm at 83k stars for inference",
-      "ollama at 174k stars local LLMs"
+      "Agent-Reach gained 1,161 stars today",
+      "superpowers gained 1,129 stars",
+      "mattpocock/skills gained 1,523 stars",
+      "Google's TimesFM gained 606 stars",
+      "DeusData MCP server +371 stars",
+      "vllm 83k stars, ollama 174k stars"
     ],
     "ai-web": [
-      "Anthropic opens Seoul office",
-      "Partnerships with Korean AI ecosystem",
-      "Frontier Red Team publishes cyber research",
-      "Agentic Coding analyzed 400k sessions",
-      "Task value rose 25% over 7 months",
-      "OpenAI releases only two articles"
+      "Anthropic opens Seoul office, new partnerships",
+      "Frontier Red Team cybersecurity research released",
+      "Agentic Coding study: 400k Claude Code sessions",
+      "Task value rose ~25% over seven months",
+      "OpenAI published only 2 Life Sci Bench articles",
+      "Focus on Korean AI ecosystem and safety"
     ],
     "ai-hn": [
-      "OpenAI loses $21B annually",
-      "Anthropic employees accuse Trump admin",
-      "Six-year-old grudge cited for offline models",
-      "Robot sprinting on Claude vs Grok debated",
-      "ChatGPT image generator safety issues",
-      "Community debates AI sustainability"
+      "Anthropic employees accuse Trump administration",
+      "Trump grudge may explain Anthropic outage",
+      "OpenAI $21B losses leaked, sustainability debate",
+      "Claude vs Grok in robot sprint benchmark",
+      "Open-source AI CAD tool trending",
+      "Bernie Sanders proposes public ownership of AI"
     ],
     "ai-ph": [
-      "Goldfish leads with 610 votes",
-      "Invoko and MakersClaw follow",
-      "GitHits gives agents open-source access",
-      "Edgee Turbo Models for model routing",
-      "Vidrunner for AI YouTube publishing",
-      "MindReader uses simulated fMRI"
+      "Goldfish Mac assistant: 612 votes",
+      "Invoko Mac assistant: 422 votes",
+      "MakersClaw rounds out top 3 Mac AI",
+      "Edgee Turbo Models for AI coding agents",
+      "MindReader v1: fMRI to neuro-metrics",
+      "Vercel Day launches dominate today"
     ],
     "ai-arxiv": [
-      "Shift to diagnostic and corrective methods",
-      "STARE stabilizes policy entropy",
-      "Selective unlearning of reasoning behaviors",
-      "Program synthesis as interpretability tool",
-      "Scientific validation pipelines emerge",
-      "Field matures from creation to stewardship"
+      "Rubric-conditioned self-distillation for reasoning",
+      "STARE: surprisal-guided entropy stability",
+      "Diffusion-based reasoning models for theorem proving",
+      "Domain-specific AI: legal, medical, drug discovery",
+      "Program synthesis for attention explanation",
+      "Machine unlearning for deep and tree models"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro tops leaderboard",
-      "Qwen3.6 breaks download records",
-      "Nvidia LocateAnything-3B for spatial reasoning",
-      "Google diffusiongemma any-to-any",
-      "Unsloth GGUF quantizations popular",
-      "Uncensored fine-tunes on Qwen and Gemma"
+      "DeepSeek-V4-Pro: 4,926 likes, 2.8M downloads",
+      "Qwen3.6-35B-A3B: 3.7M downloads",
+      "Nvidia LocateAnything-3B: 2,141 likes",
+      "Google diffusiongemma-26B-A4B-it trending",
+      "Gemma-4-12B-it gains traction",
+      "Community GGUF quantizations surge"
     ],
     "ai-community": [
-      "Premortems catch agent failures early",
-      "Context window degradation measured",
+      "Context window decay blamed for agent dumber",
       "Modular instruction architecture reduces tokens",
-      "Can gzip be a language model debate",
-      "Apple Siri AI privacy concerns",
-      "Shift to building reliable systems around AI"
+      "Continuous eval pipelines for RAG in production",
+      "AI agent failure patterns in production",
+      "AI Economics satire on Lobste.rs",
+      "Private inference for Siri discussed"
     ]
   }
 }
