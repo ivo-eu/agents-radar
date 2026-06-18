@@ -1,150 +1,150 @@
 {
   "zh": {
     "ai-cli": [
-      "Claude Code计费争议单日评论超1400条",
-      "Gemini CLI发布v0.47.0+preview.0",
-      "OpenCode v1.17.8强化TPS透明与MCP兼容",
-      "Qwen Code v0.18.3修复多供应商冲突",
-      "Claude Code v2.1.181版本发布",
-      "社区情绪聚焦计费愤怒与远程控制不满"
+      "OpenCode v1.17.8 发布，优化 MCP 兼容性",
+      "Qwen Code v0.18.3 修复 OOM 和安全漏洞",
+      "Gemini CLI v0.48.0-preview 发布",
+      "DeepSeek TUI 更名为 CodeWhale",
+      "Claude Code v2.1.181 支持 XDG 规范",
+      "Pi 新增 GLM-5.2 模型支持"
     ],
     "ai-agents": [
-      "OpenClaw日更新252 Issue、500 PR，合并率仅18.2%",
-      "修复Telegram Desktop引用回复问题(#94309)",
-      "引入AI驱动的PR审查自动修复流水线",
-      "修复TLS配置空字符串安全漏洞(#94054)",
-      "社区热议工具调用文本泄露(#25592)",
-      "待合并PR积压409条，核心维护成瓶颈"
+      "OpenClaw 日增 289 Issues、500 PRs",
+      "PR 合并率仅 8.6%，审查压力巨大",
+      "Autofix 流水线与 Windows 守护进程合并",
+      "CLI 状态/探测路径回归修复完成",
+      "XMemo 云端内存插件引发社区兴趣",
+      "社区热点 #50090 推动 ClawHub 技能生态"
     ],
     "ai-trending": [
-      "UI-TARS-desktop：字节跳动开源多模态AI Agent桌面应用",
-      "codebase-memory-mcp：毫秒级代码知识图谱检索",
-      "Agent-Reach零API费用，支持Twitter等六大平台",
-      "skills获1523 Star，来自Claude Code工程师技能",
-      "continue开源编码Agent持续受关注",
-      "vllm 83K Star，高吞吐LLM推理引擎"
+      "DeusData/codebase-memory-mcp 日增 2308 stars",
+      "obra/superpowers 日增 1435 stars",
+      "Kilo-Org/kilocode 日增 1339 stars",
+      "alibaba/zvec 轻量进程内向量数据库走红",
+      "google-research/timesfm 时序基础模型受关注",
+      "DeepSeek-V4-Pro 登顶 Hugging Face 热门榜"
     ],
     "ai-web": [
-      "Anthropic开设首尔办公室，深化韩国AI生态合作",
-      "与NNSA合作开发核安全分类器，准确率96%",
-      "Frontier Red Team亮相：进攻性安全成核心叙事",
-      "评估Claude Mythos Preview网络安全能力",
-      "OpenAI发布Life Sci Bench，生命科学评估基准",
-      "Anthropic今日新增20篇内容，聚焦安全与亚太"
+      "Anthropic 在首尔设立办公室并签署政府 MOU",
+      "任命 KiYoung Choi 为韩国区代表董事",
+      "OpenAI 今日官网无任何增量更新",
+      "安全成为 Anthropic 全球扩张核心差异化",
+      "与韩国 AI 安全研究院共建韩语模型评估",
+      "Anthropic 加速构建本土 AI 生态系统"
     ],
     "ai-hn": [
-      "OpenAI巨额亏损引热议（344分）",
-      "Anthropic与特朗普政府冲突讨论（173分）",
-      "AI机器人实时推理对比获192分",
-      "Adam (YC W25)开源AI CAD获167分",
-      "Estonia为AI代理分配个人ID",
-      "Bernie Sanders主张公众直接持股AI公司"
+      "OpenAI 财务泄露：年亏损数十亿美元引发热议",
+      "Anthropic 与特朗普政府公开对峙 AI 安全",
+      "Noam Shazeer 确认加入 OpenAI 人才战升级",
+      "Launch HN: Adam 开源 AI CAD 工具获 192 分",
+      "Show HN: Mira 自托管 AI 代码审查工具上线",
+      "Unreal Engine 5.8 集成 MCP 服务器支持 AI 代理"
     ],
     "ai-ph": [
-      "Goldfish获612票：Option键AI助手",
-      "Invoko获422票：Mac菜单栏常驻AI助手",
-      "MakersClaw获406票：AI员工嵌入Slack等",
-      "Edgee Turbo Models开发者工具",
-      "多数新品带Vercel Day活动标签",
-      "MindReader v1用模拟fMRI读取思维"
+      "Swytchcode CLI 获 404 票，解决 Agent API 状态丢失",
+      "Daemons by Charlie Labs 234 票自动化 PR/Issue",
+      "memi 106 票，设计团队专属 AI 代理中枢",
+      "Deep Work Plan 112 票开源引导 Agent 深度工作",
+      "Tyto 预测语音 AI 在实际音频中的表现",
+      "Locus Founder 93 票，AI 代理构建并运营业务"
     ],
     "ai-arxiv": [
-      "DreamReasoner-8B：块扩散语言模型推理媲美自回归",
-      "多智能体虚构博弈框架提升复杂决策任务",
-      "MAST研究精确移除特定能力不破坏整体",
-      "专用智能体：药物发现、企业数据自动化",
-      "评估基准：幻灯片生成、深度伪造检测",
-      "扩散模型从图像生成向语言推理延伸"
+      "Rethinking Reward Supervision 提出自蒸馏方法",
+      "STARE 用惊喜度稳定策略熵防止坍缩",
+      "MAST 方法精准卸载 RLVR 推理而不损其他能力",
+      "Learning User Simulators 引入图灵奖励训练",
+      "Multi-Agent Fictitious Play 博弈论提升决策",
+      "Correct Yourself 探索自我纠正对信任的影响"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro获近5000点赞，最热开源LLM",
-      "Qwen3.6-35B-A3B下载量超368万，MoE视觉模型",
-      "Google Gemma-4-12B-it支持any-to-any多模态",
-      "NVIDIA LocateAnything-3B视觉定位获2141赞",
-      "GLM-5.2 MoE架构对话模型获1052点赞",
-      "Cohere North-Mini-Code-1.0代码专用小MoE"
+      "DeepSeek-V4-Pro 登顶，4935 赞 294 万下载",
+      "GLM-5.2 MoE 模型快速吸引关注",
+      "nvidia LocateAnything-3B 通用定位模型走红",
+      "Google diffusiongemma-26B 多模态生成模型发布",
+      "Cohere North-Mini-Code-1.0 高效代码模型",
+      "microsoft FastContext-1.0-4B 专注长上下文"
     ],
     "ai-community": [
-      "实测上下文窗口填满导致Agent变笨",
-      "MCP生产级设计：工具定义与故障恢复",
-      "前置验尸方法提前暴露AI陷阱",
-      "模块化指令架构大幅节省Token",
-      "LLM评估管线随每次部署运行",
-      "有限状态机实现精细供应商回退"
+      "用 premortems 提升 Claude/Codex 代码可靠性",
+      "人机协作拼图游戏 Tower Before Dusk 发布",
+      "Micro AI 代码审查解释搜索栏语义理解",
+      "MCP Server 设计三原则从生产实践总结",
+      "Stateful provider fallback 用 FSM 优雅降级",
+      "Gym Badges 道馆徽章类比代理工程技能树"
     ]
   },
   "en": {
     "ai-cli": [
       "Claude Code v2.1.181 released",
-      "OpenAI Codex 3 nightly Rust alphas",
-      "Gemini CLI v0.47.0 + v0.48.0-preview",
-      "DeepSeek TUI and Pi innovate on niches",
-      "Platform portability pain points: ARM64, Wayland",
-      "1,475 comments on Max plan bug for Claude Code"
+      "OpenCode sees blistering PR throughput",
+      "MCP integration a universal friction point",
+      "Kimi Code CLI activity is sparse",
+      "Enterprise tools invest in security scoping",
+      "Cross-tool consistency remains challenging"
     ],
     "ai-agents": [
-      "OpenClaw: 252 issues, 500 PRs updated",
-      "91 PRs merged or closed today",
-      "Sandbox skill sync fallback fixed",
-      "PR review autofix pipeline + Windows daemon",
-      "Security hardening and session-state focus",
-      "No new releases published today"
+      "289 issues, 500 PRs in 24 hours",
+      "Focus on bug stabilization, not features",
+      "DeepSeek prompt cache regression fix merged",
+      "12 issues closed, 43 PRs merged today",
+      "No new release; latest 2026.6.1",
+      "Maintainer team stretched thin"
     ],
     "ai-trending": [
-      "Agent-Reach gained 1,161 stars today",
-      "superpowers gained 1,129 stars",
-      "mattpocock/skills gained 1,523 stars",
-      "Google's TimesFM gained 606 stars",
-      "DeusData MCP server +371 stars",
-      "vllm 83k stars, ollama 174k stars"
+      "codebase-memory-mcp gains +2,308 stars",
+      "obra/superpowers agentic skills framework",
+      "Kilo: another agentic skills framework",
+      "Google's TimesFM time series model",
+      "Alibaba's zvec lightweight vector DB",
+      "Ollama reaches 174k total stars"
     ],
     "ai-web": [
-      "Anthropic opens Seoul office, new partnerships",
-      "Frontier Red Team cybersecurity research released",
-      "Agentic Coding study: 400k Claude Code sessions",
-      "Task value rose ~25% over seven months",
-      "OpenAI published only 2 Life Sci Bench articles",
-      "Focus on Korean AI ecosystem and safety"
+      "Anthropic opens Seoul office with Korea MOU",
+      "OpenAI published zero articles today",
+      "Sovereign-level AI safety collaboration",
+      "KiYoung Choi named Korea Representative",
+      "Focus on Korean language model safety",
+      "Enterprise partnerships across Korean AI"
     ],
     "ai-hn": [
-      "Anthropic employees accuse Trump administration",
-      "Trump grudge may explain Anthropic outage",
-      "OpenAI $21B losses leaked, sustainability debate",
-      "Claude vs Grok in robot sprint benchmark",
-      "Open-source AI CAD tool trending",
-      "Bernie Sanders proposes public ownership of AI"
+      "White House blocks Anthropic's Fable 5",
+      "OpenAI massive losses leaked on HN",
+      "Claude vs Grok safety debate flares",
+      "GLM-5.2 claimed best open-weight LLM",
+      "AI improves medicinal chemistry reaction",
+      "Noam Shazeer joins OpenAI"
     ],
     "ai-ph": [
-      "Goldfish Mac assistant: 612 votes",
-      "Invoko Mac assistant: 422 votes",
-      "MakersClaw rounds out top 3 Mac AI",
-      "Edgee Turbo Models for AI coding agents",
-      "MindReader v1: fMRI to neuro-metrics",
-      "Vercel Day launches dominate today"
+      "Autonomous agents become default in products",
+      "Framer 3.0 embeds agents in design",
+      "Daemons: 234 votes, GitHub integration",
+      "Swytchcode CLI solves state management",
+      "Deep Work Plan: context over models",
+      "Developer tools dominate top products"
     ],
     "ai-arxiv": [
-      "Rubric-conditioned self-distillation for reasoning",
-      "STARE: surprisal-guided entropy stability",
-      "Diffusion-based reasoning models for theorem proving",
-      "Domain-specific AI: legal, medical, drug discovery",
-      "Program synthesis for attention explanation",
-      "Machine unlearning for deep and tree models"
+      "Diffusion models for chain-of-thought reasoning",
+      "STARE prevents entropy collapse in RL",
+      "Fictitious play for multi-agent decision-making",
+      "Confidence calibration in medical segmentation",
+      "MAST: mechanism-guided selective unlearning",
+      "Benchmarks for AI agents in drug discovery"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro: 4,926 likes, 2.8M downloads",
-      "Qwen3.6-35B-A3B: 3.7M downloads",
-      "Nvidia LocateAnything-3B: 2,141 likes",
-      "Google diffusiongemma-26B-A4B-it trending",
-      "Gemma-4-12B-it gains traction",
-      "Community GGUF quantizations surge"
+      "DeepSeek-V4-Pro: 4,935 likes, 2.9M downloads",
+      "Gemma 4 models pass 500K downloads each",
+      "Uncensored fine-tunes surge on Qwen3.6",
+      "NVIDIA LocateAnything-3B multimodal model",
+      "GLM-5.2 gains 1,190 likes on Hub",
+      "Kimi-K2.7-Code trending for code tasks"
     ],
     "ai-community": [
-      "Context window decay blamed for agent dumber",
-      "Modular instruction architecture reduces tokens",
-      "Continuous eval pipelines for RAG in production",
-      "AI agent failure patterns in production",
-      "AI Economics satire on Lobste.rs",
-      "Private inference for Siri discussed"
+      "Premortems with Claude catch failures early",
+      "LLM eval pipeline runs on every deploy",
+      "MCP server design: surviving model failures",
+      "rsync disaster: AI not ready for infra",
+      "Can gzip be a language model? Debate",
+      "Apple Siri private inference limitations"
     ]
   }
 }

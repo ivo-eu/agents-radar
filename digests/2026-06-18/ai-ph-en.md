@@ -1,93 +1,132 @@
 # Product Hunt AI Products Digest 2026-06-18
 
-> Source: [Product Hunt](https://www.producthunt.com/) | 15 products | Generated: 2026-06-18 03:43 UTC
+> Source: [Product Hunt](https://www.producthunt.com/) | 12 products | Generated: 2026-06-18 12:31 UTC
 
 ---
 
-# Product Hunt AI Products Digest – 2026-06-18
+# Product Hunt AI Products Digest — June 18, 2026
 
-## 1. Today's Highlights
+## Today's Highlights
 
-Today’s Product Hunt is dominated by **Vercel Day** launches, with the top three spots all going to Mac-native AI assistants—**Goldfish**, **Invoko**, and **MakersClaw**—reflecting a strong appetite for lightweight, context-aware productivity tools that live on the user’s desktop. Developer tooling also surged, particularly around AI coding agents: **Edgee Turbo Models**, **GitHits**, **Glint**, and **agentbrowse** all help developers extend or monitor AI coding workflows. A wildcard entry, **MindReader v1** (simulated fMRI → neuro-metrics), shows the community’s willingness to upvote experimental concepts. The day’s clear signal: AI is becoming an ambient layer in everyday Mac use and a first-class citizen in the developer’s command line.
+Today marks a clear inflection point in the AI product landscape: **autonomous agents are no longer experimental—they are the default**. From design tools (Framer 3.0) to development workflows (Daemons, Swytchcode CLI) and even full business operations (Locus Founder), agents are being embedded directly into existing product experiences rather than shipped as standalone chatbots. The most significant trend is the rise of **agentic infrastructure**—products like Swytchcode CLI and Deep Work Plan are solving the hard problems of state management, API access, and task planning that make agents actually useful. Meanwhile, **developer tools dominate the top of the leaderboard**, with 4 of the top 6 products targeting engineers, signaling that the AI market is maturing from consumer novelty to professional-grade infrastructure.
 
-## 2. Top Products by Category
+---
+
+## Top Products by Category
 
 ### 🤖 AI Agents & Assistants
-- **[Goldfish](https://www.producthunt.com/products/goldfish-early-access?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Press Option. It knows your work and replies like you.”  
-  *612 votes, 188 comments*  
-  Problem: Writing responses that match your tone and context. Stands out by being a simple, always-on Mac prompt that learns your writing style across apps.  
-  [Website](https://www.producthunt.com/r/P4WFRWL26YL6CK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
 
-- **[Invoko](https://www.producthunt.com/products/invoko?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “A little hand on your Mac.”  
-  *422 votes, 91 comments*  
-  Problem: Reducing friction in everyday Mac tasks. Its strength is a minimal, always-available AI overlay that automates common workflows.  
-  [Website](https://www.producthunt.com/r/CKKHYA5Y262PSX?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Daemons by Charlie Labs** — Keep PRs, issues, CI, and docs moving with AI agents  
+Product Hunt: https://www.producthunt.com/products/daemons-by-charlie-labs?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/6N2SY23DZALOT6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 234 | Comments: 36  
+Solves the problem of **dev team bottleneck** by deploying persistent AI agents that autonomously triage PRs, manage issues, and maintain documentation, standing out for its deep integration with existing GitHub workflows rather than being a separate tool.
 
-- **[MakersClaw](https://www.producthunt.com/products/makersclaw?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Hire AI employees that live in your Slack, Teams, Telegram.”  
-  *406 votes, 57 comments*  
-  Problem: Delegating repetitive tasks without switching tools. Differentiated by embedding AI agents directly into messaging platforms, not as separate apps.  
-  [Website](https://www.producthunt.com/r/7T4D2IUJO2CB3U?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Deep Work Plan** — Models matter. Context matters more. Give your agent a plan.  
+Product Hunt: https://www.producthunt.com/products/deep-work-plan?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/TNPX5PAZNXT24I?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 112 | Comments: 11  
+An open-source framework that addresses the **agent context problem**—providing structured plans that dramatically improve LLM reasoning reliability, notable for its emphasis that "context matters more than model choice."
+
+**Locus Founder** — Text an AI agent and it builds + runs your business  
+Product Hunt: https://www.producthunt.com/products/locus-founder?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/5EPNMKHP73F6IK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 93 | Comments: 13  
+A no-code agent that **handles end-to-end business operations** (building product, managing customers, running workflows) from a single text interface, standing out as one of the most ambitious "agent-as-company" products to date.
+
+---
 
 ### 🛠️ Developer Tools
-- **[GitHits beta 0.9](https://www.producthunt.com/products/githits?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Give your AI coding agent access to open-source code.”  
-  *157 votes, 24 comments*  
-  Problem: AI coding agents lack context from existing open-source projects. GitHits bridges that by letting agents search and retrieve relevant OSS code.  
-  [Website](https://www.producthunt.com/r/MKOAUFLRC2WD5V?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
 
-- **[Glint](https://www.producthunt.com/products/glint-9?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Claude Code activity, right where you want it.”  
-  *101 votes, 12 comments*  
-  Problem: No visibility into Claude Code’s actions. Glint surfaces agent activity in the Mac menu bar, helping developers monitor and debug.  
-  [Website](https://www.producthunt.com/r/KNUFFPZKPUJI5O?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Swytchcode CLI** — Give agents reliable access to 2,000+ APIs w/ durable state  
+Product Hunt: https://www.producthunt.com/products/swytchcode?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/XGLQDUQRILY2VD?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 404 | Comments: 64  
+Solves the **API reliability problem for AI agents** by providing a CLI with durable state management across 2,000+ APIs, standing out for its high engagement (64 comments) and addressing the fundamental infrastructure gap that makes agents unreliable in production.
 
-- **[agentbrowse](https://www.producthunt.com/products/agentbrowse?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Give your AI coding agent the web as a command line.”  
-  *88 votes, 4 comments*  
-  Problem: Coding agents can’t fetch real-time web data. agentbrowse exposes web search and scraping as Unix-like pipes, deeply integrating with agent workflows.  
-  [Website](https://www.producthunt.com/r/BLZFXYRX6TUME2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Wolfram Language 15** — Computational language built for humans and AI agents  
+Product Hunt: https://www.producthunt.com/products/wolfram-mathematica?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/3NQNKLV5OK7622?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 95 | Comments: 1  
+A major update to the **computational language** that now treats AI agents as first-class users, enabling programmatic symbolic computation for agent workflows—a differentiator in bridging mathematical rigor with LLM-based reasoning.
+
+**Tyto by ai-coustics** — Audio insight that predicts voice AI performance  
+Product Hunt: https://www.producthunt.com/products/tyto?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/S35MFFM4CUKDUW?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 95 | Comments: 16  
+A developer tool that **predicts voice AI model performance** from raw audio before deployment, solving the costly problem of discovering issues post-production in voice interfaces.
+
+---
 
 ### 📊 AI Applications
-- **[Zoona AI](https://www.producthunt.com/products/sparrowdesk?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Automated support that learns from docs + past conversations.”  
-  *185 votes, 38 comments*  
-  Problem: Manual customer support doesn’t scale. Zoona personalizes answers by ingesting a company’s knowledge base and prior tickets.  
-  [Website](https://www.producthunt.com/r/NOKJBALHGBNUSR?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
 
-- **[Stride](https://www.producthunt.com/products/stride-10?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “The AI workspace that plans, designs and ships with you.”  
-  *137 votes, 22 comments*  
-  Problem: Fragmented project management. Stride combines planning, design, and deployment inside an AI-assisted workspace, reducing context-switching.  
-  [Website](https://www.producthunt.com/r/G5J5MQCMRAFBSI?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Quartz** — AI email client built for focus. Runs locally on your Mac  
+Product Hunt: https://www.producthunt.com/products/quartz-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/34MN5LM7CS4KI2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 234 | Comments: 65  
+A privacy-first email client that **uses on-device AI to reduce email overload**, distinguishing itself with local processing (no cloud) and the highest comment count (65) in today's top products.
 
-- **[Dirac](https://www.producthunt.com/products/dirac-3?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “The AI inbox that briefs founders every morning.”  
-  *120 votes, 29 comments*  
-  Problem: Information overload in email. Dirac summarizes threads, highlights action items, and delivers a daily briefing tailored to founders.  
-  [Website](https://www.producthunt.com/r/HR3TS5ETG3GBID?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+**Tapfree for Chrome** — Voice dictation that adapts to what’s on your screen  
+Product Hunt: https://www.producthunt.com/products/tapfree-for-android-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/JWZ6X5DYJU2KA2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 125 | Comments: 29  
+A Chrome extension for **context-aware voice dictation** that reads what's on screen to improve transcription accuracy, standing out by going beyond simple speech-to-text to understand UI context.
+
+**ClawEase** — An AI business operator that books appointments for SMBs.  
+Product Hunt: https://www.producthunt.com/products/clawease?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/5EIZXI5AMTEQZA?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 85 | Comments: 12  
+An AI agent that **automates appointment booking for small businesses**, competing in the crowded SMB vertical but differentiating with a "business operator" rather than just scheduler approach.
+
+---
 
 ### 🎨 Creative & Content
-- **[Vidrunner](https://www.producthunt.com/products/lasso-5?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Publish YouTube videos faster with AI.”  
-  *104 votes, 8 comments*  
-  Problem: Time-consuming video production workflows. Vidrunner automates editing, thumbnail generation, and metadata optimization for YouTube.  
-  [Website](https://www.producthunt.com/r/XW2HIETNMEUAVB?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
+
+**Framer 3.0** — With Agents, Branching, Community, and an all-new design  
+Product Hunt: https://www.producthunt.com/products/framer?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/64HL7FCICRJ4CQ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 482 | Comments: 21  
+The **#1 product of the day**—a major redesign of the popular website builder that embeds AI agents for design assistance, collaborative branching, and a community ecosystem, redefining what a design tool can be in the agent era.
+
+**memi** — The AI agent harness for product design teams  
+Product Hunt: https://www.producthunt.com/products/memoire?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/DEFEOZOV5TL4MK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 106 | Comments: 8  
+An SDK/harness that **gives product design teams AI agent capabilities** directly in their workflow, differentiating as a developer tool for designers rather than a standalone design app.
+
+---
 
 ### 🔧 Infrastructure & Models
-- **[Edgee Turbo Models](https://www.producthunt.com/products/edgee?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)** – “Use Claude Code with Kimi K2.7 Code, MiniMax M2.7, and more.”  
-  *192 votes, 34 comments*  
-  Problem: Lock-in to a single model. Edgee routes Claude Code requests to alternative models (Kimi, MiniMax) without changing your workflow, lowering cost and latency.  
-  [Website](https://www.producthunt.com/r/RA45EQ767HXQGH?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)
 
-## 3. Market Signal
+**Swytchcode CLI** (also listed under Developer Tools) serves as **agent infrastructure**—providing the durable state and API access layer that makes agent applications reliable.
 
-**Most crowded categories:** AI Agents & Assistants (3 products in top 5) and Developer Tools (6 total) dominate, indicating that the market’s immediate focus is on embedding AI into personal productivity and developer workflows. The **Vercel Day** banner likely amplified launches in those verticals.
+**Android 17** — Android becomes an intelligence system  
+Product Hunt: https://www.producthunt.com/products/android?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Website: https://www.producthunt.com/r/DPQ4UERYTICR5L?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29  
+Votes: 187 | Comments: 5  
+A major OS-level update that **transforms Android into an "intelligence system"** with built-in AI agent capabilities, standing out as platform-level infrastructure rather than a standalone product.
 
-**Innovative approaches:**  
-- **MindReader v1** (130 votes) is an outlier—using simulated fMRI data to produce “neuro-metrics” for UX research. While far from production, it signals growing interest in non-text interfaces for AI.  
-- **MakersClaw** positions AI agents as “employees” inside chat platforms, a pragmatic shift from standalone chatbots to integrated workforce augmentation.  
-- **Edgee Turbo Models** and **agentbrowse** both enhance existing AI coding agents (Claude Code) rather than replacing them, reflecting a trend toward composable tooling.
+---
 
-**Open-source versus closed-source:** Open-source projects are present but not dominant. **Chatwoot** (Voice Calls) and **MindReader** are open source; **GitHits**, **agentbrowse**, and **DevCleaner** appear to be open or freemium. The majority of top products (Goldfish, Invoko, MakersClaw, Stride, Dirac) are closed-source, suggesting that consumer-friendly AI assistants still lean proprietary.
+## Market Signal
 
-## 4. Worth Trying
+**Agent infrastructure is the new platform war.** Today's launches reveal a decisive shift: the most upvoted products (Swytchcode CLI, Daemons, Deep Work Plan) aren't agent applications—they're the plumbing to make agents work reliably. The **Developer Tools category is the most crowded**, with 4 of the top 6 products targeting engineers. This suggests the market is entering a "pickaxe and shovel" phase where foundational reliability (state management, API access, task planning) matters more than agent features.
 
-- **Edgee Turbo Models** – If you use Claude Code, Edgee lets you test and switch to cheaper/faster models (Kimi, MiniMax) with zero friction. A practical way to reduce API costs while keeping your agent workflow unchanged.
-- **GitHits beta 0.9** – For developers building AI coding agents, this tool provides a curated pipeline to open-source code repositories, making agents far more context-aware and reducing hallucinated code.
-- **agentbrowse** – A clever tool that turns the web into a Unix pipe for coding agents. Worth trying if your agent needs real-time data (docs, Stack Overflow, etc.) and you want to avoid brittle scraping.
+**Novel use cases emerge at the edges.** Locus Founder's "text-to-business" and ClawEase's appointment-booking agent represent a new wave of **vertical autonomous operators**—agents that don't just assist but execute entire business processes. Meanwhile, Framer 3.0's integration of agents into design tools signals that **horizontal platforms are absorbing agents as features** rather than standalone products.
+
+**Open-source is present but not dominant.** Deep Work Plan explicitly embraces open source (GitHub topic tagged), but the majority of today's top products are closed-source commercial offerings. The open-source angle is being used as a trust signal and adoption driver rather than a business model.
+
+**Privacy is a differentiator.** Quartz's "runs locally on your Mac" and Tapfree's on-device processing tap into growing user concerns about cloud AI, a trend that will likely intensify as agent adoption scales.
+
+---
+
+## Worth Trying
+
+1. **Swytchcode CLI** — If you're building agent-based applications, this is the infrastructure you've been missing. Reliable state management across 2,000+ APIs directly addresses the biggest failure mode of agent deployments. With 404 votes and 64 comments, the community engagement signals strong real-world utility.
+
+2. **Deep Work Plan** — An open-source framework that reframes the agent reasoning problem from "which model?" to "what context?" Practical for anyone building agents that need to handle complex, multi-step tasks without hallucinating or losing state.
+
+3. **Daemons by Charlie Labs** — For teams tired of manual PR review and issue triage, this product's deep GitHub integration makes it immediately useful. The agent approach (persistent, always-on) is a better fit for developer workflows than chat-based alternatives.
 
 ---
 *This digest is auto-generated by [agents-radar](https://github.com/ivo-eu/agents-radar).*
