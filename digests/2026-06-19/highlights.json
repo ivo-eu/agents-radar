@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.183版本发布",
+      "OpenAI Codex推出Rust alpha版",
+      "OpenCode社区最活跃，Bug密集",
+      "MCP协议成为各工具共性需求",
+      "Agent稳定性（卡死、无限递归）是痛点",
+      "Gemini CLI开发投入集中，PR进展快"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.6.9-beta.1",
+      "468个PR待处理，维护面临瓶颈",
+      "Telegram交付增强，支持富文本",
+      "修复Slack线程回复缓冲问题",
+      "会话状态迁移和内存搜索失败修复",
+      "社区热议核心稳定性问题"
+    ],
+    "ai-trending": [
+      "headroom日增3938 stars，token压缩率60-95%",
+      "agent-native新框架强调原生智能体",
+      "GLM-5声明从编码转向智能体工程",
+      "MCP协议实践落地，连接LLM与数据",
+      "Token效率工具爆发，成本优化成共识",
+      "多模态生成升级，LTX-2音视频生成"
+    ],
+    "ai-web": [
+      "Claude Code经济学研究：40万会话分析",
+      "Project Fetch二期：机器人速度快20倍",
+      "BioMysteryBench评估生物信息学能力",
+      "OpenAI推出ChatGPT企业支出控制",
+      "ChatGPT健康智能能力改进",
+      "人机分工：人类规划，Claude执行"
+    ],
+    "ai-hn": [
+      "桌面机器人研究平台获94分最高赞",
+      "GLM-5.2压缩84%体积保留82%性能",
+      "Anthropic暂停新模型引发热议",
+      "Noam Shazeer跳槽OpenAI",
+      "JPMorgan限制员工使用Anthropic",
+      "亚马逊员工因反对数据中心遭解雇"
+    ],
+    "ai-ph": [
+      "Elvin：主动发现任务并提前完成",
+      "Tabstack统一API替代爬虫，352票",
+      "Upstream：为人与Agent设计的收件箱",
+      "Genie Mentions用AI连接真实社交",
+      "D-ID视频生成获高关注",
+      "Locofy设计转代码降低开发门槛"
+    ],
+    "ai-arxiv": [
+      "DiffusionGemma可解释性评估发表",
+      "LedgerAgent实现策略合规工具调用",
+      "概率验证评测为AI代理提供安全方案",
+      "NRT-Bench多轮红队基准填补空白",
+      "隐式反馈对齐利用鼠标和眼动数据",
+      "Contagion Networks形式化偏差传播"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro登顶，4959点赞",
+      "Gemma-4系列爆发，多个微调版本",
+      "GLM-5.2获1445点赞，MoE-DSA架构",
+      "VibeThinker-3B专精数学推理",
+      "FastContext-1.0-4B支持长上下文",
+      "MiniMax-M3多模态视觉语言模型"
+    ],
+    "ai-community": [
+      "AI Agent会绕过开发者规则，需防御",
+      "MCP生态扩张：Python Server教程火热",
+      "中国AI模型成本低95%，引发经济学分析",
+      "RAG系统添加claim-checking防幻觉",
+      "AI摘要绑定原始证据，解决无源痛点",
+      "500行Node.js代理桥接IFTTT与MCP"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.183 released",
+      "143 👍 on hanging bug #26224",
+      "OpenAI Codex 604 👍 on Linux desktop",
+      "Kimi Code proxy fix for restricted envs",
+      "Pi and Qwen Code racing to add providers",
+      "8 major tools show high activity"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.9-beta.1 shipped",
+      "32 PRs merged in last 24 hours",
+      "P0/P1 bugs from v2026.6.1 stable",
+      "Telegram delivery now rich HTML",
+      "500 pull requests updated today",
+      "104 issues updated in 24h"
+    ],
+    "ai-trending": [
+      "headroom +3,938 stars today",
+      "Google TimesFM +1,516 stars",
+      "codebase-memory-mcp +1,055 stars",
+      "superpowers +1,113 stars",
+      "mem0 now at 58k⭐",
+      "graphify at 69k⭐ trending"
+    ],
+    "ai-web": [
+      "Claude Code expertise study on 400k sessions",
+      "Project Fetch: 20x faster than humans",
+      "BioMysteryBench bioinformatics benchmark",
+      "OpenAI enterprise spend controls metadata",
+      "Claude Opus 4.7 autonomous robotics leap",
+      "Anthropic: persistent returns to expertise"
+    ],
+    "ai-hn": [
+      "Robotics research setup guide (94 pts)",
+      "Amazon firing staff over data center limits",
+      "Pentagon using Grok AI for missile strikes",
+      "GLM-5.2 compresses 84% volume lossless",
+      "Vibe coding fulfillment debate (8 pts, 10 comments)",
+      "Top post: practical AI infrastructure"
+    ],
+    "ai-ph": [
+      "Upstream: inbox for humans and agents (617 votes)",
+      "Elvin: proactive AI completing work beforehand",
+      "Tabstack: agentic APIs for low-code",
+      "Retool: agentic governance tools",
+      "D-ID interactive video agents",
+      "Labs AI on-device TTS gaining traction"
+    ],
+    "ai-arxiv": [
+      "Certificate-bound authority for agents",
+      "DiffusionGemma reasoning transparency study",
+      "Optimal deterministic multicalibration proof",
+      "Multi-turn red-teaming benchmarks new",
+      "Attention over Lie groups novel architecture",
+      "Agentic symbolic search for PDEs"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro tops with 4,959 likes",
+      "NVIDIA LocateAnything-3B trending vision model",
+      "Google diffusiongemma-26B-A4B-it multimodal",
+      "Gemma-4-12B-it any-to-any pipeline",
+      "Unsloth GGUF quantizations for all models",
+      "Rise of uncensored Qwen3.6 fine-tunes"
+    ],
+    "ai-community": [
+      "Coding agents route around your rules",
+      "AI makes writing code, not engineering",
+      "Lost a week to AI-introduced bugs",
+      "Claude Code skill finds customers on Reddit",
+      "MCP standard for local tool connections",
+      "Chinese models 95% cheaper than US"
+    ]
+  }
+}
