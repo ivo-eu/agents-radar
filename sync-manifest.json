@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-18T12:39:12.298Z",
+  "generated": "2026-06-19T13:07:11.683Z",
   "files": [
     {
       "path": "2026-02-23/ai-cli.md",
@@ -8508,6 +8508,101 @@
       "sha256": "b9657206a1f75d23c114e621b20778152a20ae46425e779b142ffdc1a9222571"
     },
     {
+      "path": "2026-06-19/ai-agents-en.md",
+      "size": 90984,
+      "sha256": "7b6bf13fbd3e3e9952065da3a59cb35bb75d8f488621fe5f4252612edeba40e1"
+    },
+    {
+      "path": "2026-06-19/ai-agents.md",
+      "size": 92145,
+      "sha256": "be30844f5ee27f41c868ebdb2b2e790cad36b34d58b6f5b39a9e990c8ffae96d"
+    },
+    {
+      "path": "2026-06-19/ai-arxiv-en.md",
+      "size": 10371,
+      "sha256": "10019d712ea5087370f064b33754af23489033f8313cb583a764aae533bdf69c"
+    },
+    {
+      "path": "2026-06-19/ai-arxiv.md",
+      "size": 7186,
+      "sha256": "cf5ca4787b00d73cf9688af33a02f083d3fb1baa9de36777b52bad94ad1c6221"
+    },
+    {
+      "path": "2026-06-19/ai-cli-en.md",
+      "size": 89220,
+      "sha256": "838da3cc1ac1f5541ec5b94564cb6acdbc60e53fb28e8c5b2d5ca498affc5ffd"
+    },
+    {
+      "path": "2026-06-19/ai-cli.md",
+      "size": 98955,
+      "sha256": "99b2d134e30278a859c68b64d807bf2a8870be9a11a76fcf061ae62e594d1c23"
+    },
+    {
+      "path": "2026-06-19/ai-community-en.md",
+      "size": 4593,
+      "sha256": "5fe5842617cd7de0c546c0a8914e15eaf3fd99be69ecbc93c4178cfc55bee5d9"
+    },
+    {
+      "path": "2026-06-19/ai-community.md",
+      "size": 6687,
+      "sha256": "9b673d21f42423a74016ab71f731bf0799972faf51eab0560b658dc7808351df"
+    },
+    {
+      "path": "2026-06-19/ai-hf-en.md",
+      "size": 10331,
+      "sha256": "6774d5f144cc6f5aa43fa5b3023d69dd2b736c9543a2f8e2874b8d716a4d227e"
+    },
+    {
+      "path": "2026-06-19/ai-hf.md",
+      "size": 10549,
+      "sha256": "2ae46cbc1b9a0af670cd695d49391eced138ec94ee0dda2225a97044caa8920d"
+    },
+    {
+      "path": "2026-06-19/ai-hn-en.md",
+      "size": 10754,
+      "sha256": "250b7d48b0bf2d15a2181f9e171aa8f1a16f707b29d0c09376be162c98a62ade"
+    },
+    {
+      "path": "2026-06-19/ai-hn.md",
+      "size": 10101,
+      "sha256": "14765e332f107807d41519c1902344765c786101b36f74bb62e8a821a3d22c46"
+    },
+    {
+      "path": "2026-06-19/ai-ph-en.md",
+      "size": 11241,
+      "sha256": "b3008055dc5e9a8e663a5ca8615f60a1afbd0652a0886af47d1527bcfd572407"
+    },
+    {
+      "path": "2026-06-19/ai-ph.md",
+      "size": 5477,
+      "sha256": "cd1941f5adbb96bcd5a1d123a37969721b1ae8c4f8c601d251076d3ef1fb7a92"
+    },
+    {
+      "path": "2026-06-19/ai-trending-en.md",
+      "size": 11957,
+      "sha256": "b6e1d0fe1a81cb79182f6de64ddf06b7264d6bca139f1baffd73e30b5a934e7f"
+    },
+    {
+      "path": "2026-06-19/ai-trending.md",
+      "size": 10633,
+      "sha256": "a2006ab853d2b658d7a30ad11773169f7d7e0357107a8de7944f91de722ae097"
+    },
+    {
+      "path": "2026-06-19/ai-web-en.md",
+      "size": 13221,
+      "sha256": "91dc0ac7c418a5240171b87ec14aa935e7a590aa529f60c93d1a8c59388da23e"
+    },
+    {
+      "path": "2026-06-19/ai-web.md",
+      "size": 12777,
+      "sha256": "8eb15cf5faa173fc39dfb765cdc0dfcf1c1ea236640181b3e54ecbca7b8585e3"
+    },
+    {
+      "path": "2026-06-19/highlights.json",
+      "size": 5619,
+      "sha256": "8c39b6b376a282ac01990d17e94be8f1a02faf18141112618a460c5711ef193f"
+    },
+    {
       "path": "monthly/2026-04-01/ai-monthly-en.md",
       "size": 16785,
       "sha256": "8f0aa2dc06ec5396058e624a3e7224baffe11e123119ee41b0d0100adc74cd83"
@@ -8539,8 +8634,8 @@
     },
     {
       "path": "web-state.json",
-      "size": 109308,
-      "sha256": "1eace7c4ce4b5d5cb32ff83f66635f17843367b114dfa0a3065a4388d677ca65"
+      "size": 109605,
+      "sha256": "8b5899bdd92d2d8d5add86b8caad49e24472d422a55e8b441cc21988c92528f6"
     },
     {
       "path": "weekly/2026-03-09/ai-weekly-en.md",
