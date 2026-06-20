@@ -1,0 +1,134 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code API无响应问题社区反响强烈",
+      "OpenAI Codex回归Bug严重，MCP崩溃",
+      "Gemini CLI修复Auto Memory日志泄露",
+      "GitHub Copilot CLI新增worktree功能",
+      "OpenCode兼容Claude Code Hooks需求高",
+      "Qwen Code安全审计成主旋律"
+    ],
+    "ai-agents": [
+      "OpenClaw微信支持PR引发关注",
+      "DeepSeek V4 Pro模型生态扩展",
+      "关键消息丢失问题修复",
+      "Telegram TTS文本闪烁修复",
+      "文档完善提升配置安全性",
+      "问题诊断PR帮助维护"
+    ],
+    "ai-trending": [
+      "headroom日增4005 stars，压缩token",
+      "timesfm时序模型1510 stars",
+      "superpowers Agent技能框架1110 stars",
+      "AutoGPT持续霸榜185k stars",
+      "GLM-5新增480 stars引热议",
+      "vllm推理引擎83k stars成标配"
+    ],
+    "ai-hn": [
+      "AlphaFold诺奖得主John Jumper加入Anthropic",
+      "马斯克预测中国2026年达Fable 5级",
+      "GLM-5.2在代码任务超越Claude Opus 4.8",
+      "DFlash和Spec V2推测解码加速推理",
+      "Amazon因OpenAI合作放弃Sam Altman传记",
+      "LLMs Are Complicated Now深度剖析"
+    ],
+    "ai-ph": [
+      "Claude Code Artifacts以437票登顶",
+      "Zernio WhatsApp API获310票",
+      "Darkmoon自主渗透测试平台上线",
+      "Google推出Gemini驱动广告助手",
+      "Foglamp开源项目表现亮眼",
+      "API与MCP桥接成新热点"
+    ],
+    "ai-arxiv": [
+      "DiffusionGemma透明度评估揭示可解释性",
+      "混合合规示范学习危险模式",
+      "隐式反馈RLHF用鼠标眼动替代标注",
+      "偏见网络量化多智能体评估偏差",
+      "LedgerAgent结构化状态跟踪工具调用",
+      "分层恢复策略应对跨设备故障"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4 Pro登顶，4973点赞",
+      "GLM-5.2 MoE模型获1577点赞",
+      "VibeThinker-3B数学推理小模型477赞",
+      "FastContext-1.0-4B长上下文模型",
+      "MiniMax-M3多模态模型1141赞",
+      "GGUF量化版Qwen3.6下载量380万"
+    ],
+    "ai-community": [
+      "MCP协议规模化落地，20+教程涌现",
+      "Agent性能漂移检测方法受关注",
+      "AI降低编码门槛不降低工程复杂度",
+      "LLM黑箱可解释性挑战引共鸣",
+      "LLM网关实现路由回退语义缓存",
+      "KV缓存优化提升推理效率"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "OpenAI Codex v0.142.0-a.5/.6/.7 released",
+      "GitHub Copilot CLI v1.0.64-1 out",
+      "Agent reliability stalls plague all tools",
+      "OpenCode sees 50 PRs today",
+      "Claude Code top with 10 hot issues",
+      "Kimi Code CLI only 1 issue today"
+    ],
+    "ai-agents": [
+      "OpenClaw 116 issues, 481 open PRs",
+      "2026.5.28 stable has upgrade blockers",
+      "Bedrock provider regression #88707",
+      "GHCR Docker image stale config #88788",
+      "Community adoption across 7 platforms",
+      "No new releases published today"
+    ],
+    "ai-trending": [
+      "headroom compresses LLM inputs 60-95%",
+      "codebase-memory-mcp indexes 158 languages",
+      "GLM-5 signals shift to agentic engineering",
+      "TimesFM pushes time-series foundation models",
+      "Agent frameworks agent-native, superpowers hot",
+      "ollama remains top local LLM runner"
+    ],
+    "ai-hn": [
+      "Amazon drops Altman biopic amid OpenAI deal",
+      "John Jumper moves to Anthropic",
+      "Anthropic pauses token billing for Claude SDK",
+      "LLM complexity resonates with practitioners",
+      "Hackers use Claude in real breaches",
+      "Debate on corporate censorship vs pragmatism"
+    ],
+    "ai-ph": [
+      "Claude Code Artifacts leads with 437 votes",
+      "Google Ads launches Ask Ad Manager",
+      "API to MCP bridges any API to protocol",
+      "Zernio unifies WhatsApp for AI agents",
+      "Open-source security Darkmoon and Foglamp",
+      "Firecrawl Research Index for trust"
+    ],
+    "ai-arxiv": [
+      "DiffusionGemma lacks reasoning transparency",
+      "Mixed compliance can jailbreak LLMs",
+      "Lie-algebra attention redefines tokens",
+      "4-bit KV-cache compression for efficiency",
+      "Mouse and eye data leak user preferences",
+      "Agent safety benchmarks with red-teaming"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro nearly 5,000 weekly likes",
+      "Qwen3.6 uncensored tops 3.8M downloads",
+      "GLM-5.2 MoE from Zhipu AI trending",
+      "Gemma-4 fine-tuning ecosystem growing",
+      "VibeThinker-3B compact reasoning model",
+      "Community shift to Mixture-of-Experts"
+    ],
+    "ai-community": [
+      "AI agent reliability dominates Dev.to",
+      "Gzip as language model surprises Lobsters",
+      "Private AI for Global South emerging",
+      "MCP server readiness checklists maturing",
+      "Debate on AI-assisted speed vs craftsmanship",
+      "LLM gateways for routing and caching"
+    ]
+  }
+}
