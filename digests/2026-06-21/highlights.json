@@ -1,0 +1,118 @@
+{
+  "zh": {
+    "ai-cli": [
+      "OpenAI Codex GPT-5.5 成本暴涨 10 倍",
+      "OpenCode v1.17.9 发布，支持 MCP OAuth",
+      "Claude Code v2.1.185 发布，修复 GitHub Connector",
+      "Qwen Code 改进路径安全与 Windows 兼容",
+      "Pi v0.79.9 新增流式渲染与 vLLM 兼容",
+      "CodeWhale v0.8.63 修复 UI 冻结"
+    ],
+    "ai-agents": [
+      "OpenClaw 发布 v2026.6.10-beta.1 增强会话可靠性",
+      "OpenClaw v2026.6.9 静默迁移内存存储引发重嵌入问题",
+      "今日 PR 500 条，但 486 条待合并",
+      "Telegram 富文本换行与 HTML 格式修复",
+      "P1/P2 高优先级 Bug 集中，含数据丢失",
+      "子代理完成公告持久化与媒体索引对齐"
+    ],
+    "ai-trending": [
+      "headroom 今日暴涨 3,795 stars，压缩 token 60-95%",
+      "codebase-memory-mcp 今日 +1,271 stars，毫秒建图",
+      "OpenMontage 今日 +677，开源视频生产系统",
+      "vllm 累计 83,457 stars，生产级推理引擎",
+      "AutoGPT 累计 185,051 stars，自主 Agent 先驱",
+      "dify 累计 146,019 stars，可视化 Agent 工作流"
+    ],
+    "ai-hn": [
+      "Martin Fowler 可靠 agent 系统文章获 110 分",
+      "AlphaFold 科学家 John Jumper 跳槽 Anthropic",
+      "Codex 成本暴涨 10 倍，开发者大吐槽",
+      "Anthropic Project Fetch Phase Two 获 62 分",
+      "渗透测试模型获 83 分，引伦理争议",
+      "Persona.js 轻量 Agent UI 库获 10 分"
+    ],
+    "ai-ph": [
+      "WorkClaw 333 票，主动协作 AI 同事嵌入 Slack",
+      "Slackbot’s MCP Client 204 票，跨 20+ 应用",
+      "Mellum by JetBrains 解决 LLM 低延迟推理",
+      "pumaDB 轻量内存层提供 AI 代理持久记忆",
+      "Pixlie 110 票，可控文本/图像转视频",
+      "Are you in the Weights? 查询数据是否在训练集"
+    ],
+    "ai-hf": [
+      "DeepSeek V4 Pro 4,991 点赞，开源最强对话",
+      "GLM-5.2 1,736 点赞，MoE+DSA 稀疏架构",
+      "Gemma-4-12B-it 1,111 点赞，any-to-any 多模态",
+      "MiniMax-M3 1,167 点赞，第三代多模态模型",
+      "nvidia/LocateAnything-3B 2,227 点赞，定位模型",
+      "Kimi-K2.7-Code 938 点赞，代码多模态理解"
+    ],
+    "ai-community": [
+      "AI 幻觉与可靠性仍是核心议题",
+      "恶意 GitHub 仓库成 AI 依赖安全风险",
+      "Vibe Coding 被批忽略底层堆栈理解",
+      "本地 RAG 添加验证层，发现作者自身错误",
+      "函数调用降低幻觉，构建可靠 Agent 指南",
+      "反思 AI 辅助下人类判断力成为瓶颈"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.185 released",
+      "OpenAI Codex two alpha releases today",
+      "Gemini CLI no release today",
+      "GitHub Copilot CLI no updates",
+      "Agent reliability and MCP maturity key themes",
+      "Cross-platform parity issues for Windows"
+    ],
+    "ai-agents": [
+      "OpenClaw 124 issues and 500 PRs today",
+      "Two releases: v2026.6.10-beta.1 and v2026.6.9",
+      "P1 regression #95495 memory store relocation",
+      "120 open issues and 486 open PRs",
+      "Beta focuses on agent turn stability",
+      "Stable release improves Telegram delivery"
+    ],
+    "ai-trending": [
+      "headroom token compression library top trending",
+      "codebase-memory-mcp knowledge graph MCP server",
+      "ByteDance's deer-flow 72k total stars",
+      "System prompt leaks collection emerging",
+      "Skills-sharing repository standardizing prompts",
+      "vllm and ollama remain backbone tools"
+    ],
+    "ai-hn": [
+      "Claude Code vs Codex pricing and reliability debate",
+      "Show HN: Post-trained model for pen testing",
+      "Anthropic's Project Fetch phase two benchmark",
+      "SMPTE standards opening for AI-generated media",
+      "Community skeptical of 'Claude wrote this' fatigue",
+      "Show HN: Agent-oriented tooling surge"
+    ],
+    "ai-ph": [
+      "WorkClaw leads with 333 votes on Product Hunt",
+      "Slackbot's MCP Client for multi-app collaboration",
+      "JetBrains releases Mellum open-source model serving",
+      "pumaDB hosted memory layer for AI agents",
+      "Pixlie text-to-video with fine-grained control",
+      "Are you in the Weights? checks data in LLM training"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro 5k likes, 2.6M downloads",
+      "Google gemma-4-12B-it multimodal model trending",
+      "NVIDIA LocateAnything-3B vision-language grounding",
+      "Community GGUF fine-tunes with Qwen3.6 MoE",
+      "Microsoft FastContext-1.0-4B for ultra-long context",
+      "NVIDIA Nemotron 0.6B streaming ASR model"
+    ],
+    "ai-community": [
+      "ReAct prompting combines reasoning with tool use",
+      "LLM gateways for routing and semantic caching",
+      "Vibe coding risk: not understanding the stack",
+      "Building AI agents that don't hallucinate",
+      "Nature study: AI tools degrade developer skills",
+      "Gzip as a language model analysis on Lobste.rs"
+    ]
+  }
+}
