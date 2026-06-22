@@ -1,22 +1,134 @@
 {
   "zh": {
-    "ai-weekly": [
-      "OpenAI Codex因GPT-5.5成本暴涨10倍引发社区愤怒",
-      "Anthropic发布研究量化人类专家价值",
-      "GLM-5.2开源，接近Claude Opus 4.8能力",
-      "AlphaFold核心科学家John Jumper跳槽Anthropic",
-      "NVIDIA开源SkillSpector与headroom，Agent安全工具",
-      "Claude Code频繁更新，Agent挂起与成本可视化"
+    "ai-cli": [
+      "Claude Code权限与MCP问题高热度",
+      "OpenAI Codex成本飙升与日志写入bug",
+      "Gemini CLI Agent稳定性与子代理Bug",
+      "Kimi Code CLI发布v1.48.0",
+      "Pi发布v0.79.10修复安全与成本显示",
+      "Qwen Code安全标签伪造与工具无限循环"
+    ],
+    "ai-agents": [
+      "OpenClaw发布beta.2自动快速模式",
+      "PR积压443条待合并问题突出",
+      "P1级别的回归和Bug报告浮出水面",
+      "WebChat历史消息显示不全Bug修复",
+      "日志诊断回归恢复model-fetch信息",
+      "更可靠的模型路由提升调度稳定性"
+    ],
+    "ai-trending": [
+      "OpenMontage首个开源视频Agent系统+2935",
+      "palmier-pro AI原生编辑器+2462",
+      "codebase-memory-mcp首日+1186",
+      "deer-flow长时SuperAgent框架+736",
+      "daily_stock_analysis LLM股票分析+1560",
+      "Anthropic网络安全技能库817个技能"
+    ],
+    "ai-web": [
+      "Anthropic与盖茨基金会2亿美元合作",
+      "Claude Code经济学研究基于40万次会话",
+      "OpenAI安全与三星企业部署（推测）",
+      "Anthropic有益部署团队开发AI公共产品",
+      "研究：AI编码普惠化但技能红利依存",
+      "人机分工：人做规划，AI做执行"
+    ],
+    "ai-hn": [
+      "GLM-5.2成最强开源模型挑战Opus",
+      "OpenAI Codex日志bug写入TB级SSD",
+      "Show HN: Recall为Claude Code提供本地记忆",
+      "PMB本地优先记忆MCP服务器",
+      "社区对闭源厂商信任动摇",
+      "Anthropic和OpenAI接连服务故障"
+    ],
+    "ai-ph": [
+      "Agent 37 Cloud给客户配专属AI代理获407票",
+      "Grok for Word嵌入Word侧边栏获209票",
+      "Backgrind让AI代理操作任意应用获189票",
+      "Cloudback MCP Server管理备份138票",
+      "Plansera AI起草E-2签证计划书120票",
+      "Beacon AI预警依赖断裂风险15票"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro登顶周榜5006点赞",
+      "GLM-5.2 MoE架构性能强劲1973点赞",
+      "Gemma-4-12B-it多模态any-to-any",
+      "Kimi-K2.7-Code代码增强视觉模型",
+      "Cohere North-Mini-Code高效代码模型",
+      "Qwen3.6无审查版下载量超400万"
+    ],
+    "ai-community": [
+      "最小AI原则：警惕过度依赖AI",
+      "AI辅助编程演变史全景回顾",
+      "AI Gate交易揭示Agent过程正确结果失败",
+      "信任向量模型为Agent链提供类型化溯源",
+      "RAG幻觉排查实用案例，直接改进步骤",
+      "关于大会未来的长文引发39条激烈评论"
     ]
   },
   "en": {
-    "ai-weekly": [
-      "White House bans Anthropic Fable model",
-      "OpenAI leaks $3.4B annual loss",
-      "Noam Shazeer leaves Google for OpenAI",
-      "Codex costs jump 10× per token",
-      "GLM-5.2 open weights rival Opus 4.8",
-      "AlphaFold scientist joins Anthropic"
+    "ai-cli": [
+      "Claude Code has highest single-issue engagement.",
+      "Cost and usage transparency emerges as key concern.",
+      "Permission granularity and safety dominate discussions.",
+      "Ecosystem bifurcates into autonomous vs workflow tools.",
+      "No major releases, but active PR throughput seen.",
+      "Windows support and cross-platform stability improving."
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.10-beta.2 released with auto fast mode.",
+      "53 issues updated, 500 PRs processed in 24 hours.",
+      "Automatic fast mode for short conversational turns.",
+      "More reliable model routing with Zai provider improvements.",
+      "Session state and provider compatibility regressions reported.",
+      "P1 issues awaiting maintainer reviews and product decisions."
+    ],
+    "ai-trending": [
+      "OpenMontage gains +2,935 stars today for agentic video.",
+      "palmier-pro gets +2,462 stars for video production.",
+      "mattpocock/skills adds +2,051 stars as skills infrastructure.",
+      "codebase-memory-mcp adds +1,186 with 99% token savings.",
+      "deer-flow (+736) signals enterprise SuperAgent investment.",
+      "airllm runs 70B inference on single 4GB GPU."
+    ],
+    "ai-web": [
+      "Anthropic $200M partnership with Gates Foundation announced.",
+      "Claude Code sessions show debugging time halved in 7 months.",
+      "Task value rose ~25% across occupations.",
+      "OpenAI publishes Daybreak security initiative page.",
+      "OpenAI Samsung Electronics enterprise deployment case study.",
+      "Anthropic pivots to AI-for-good global health deployments."
+    ],
+    "ai-hn": [
+      "GLM 5.2 vs Opus comparison heats up with 371 points.",
+      "Community celebrates narrowing gap between open and closed models.",
+      "Codex logging bug may write TBs to local SSDs.",
+      "Claude Code extended thinking feature debated critically.",
+      "Open models trend accelerates, proprietary contracts questioned.",
+      "DeepSeek dominates Hugging Face with 5,006 weekly likes."
+    ],
+    "ai-ph": [
+      "Agent 37 Cloud leads with 407 votes for per-customer agents.",
+      "Grok by SpaceXAI for Word brings AI to Microsoft Word.",
+      "Backgrind runs AI agents over any app, even games.",
+      "Shift from chatbots to specialized embeddable agents.",
+      "Turnkey Hermes or OpenClaw agent deployment offered.",
+      "Developer tooling dominates today's Product Hunt launches."
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro leads with 5,006 likes and 2.4M downloads.",
+      "NVIDIA's LocateAnything-3B gets 2,283 likes for visual grounding.",
+      "Google gemma-4-12B-it gains 1,134 likes for any-to-any models.",
+      "diffusiongemma-26B-A4B-it gets 1,046 likes as hybrid.",
+      "GGUF quantizations of GLM-5.2, Qwen3.6 drive downloads.",
+      "Microsoft FastContext-1.0-4B-SFT optimized for long context."
+    ],
+    "ai-community": [
+      "Principle of Least AI article gets 30 reactions on Dev.to.",
+      "AI agent trading fails spectacularly despite passing checks.",
+      "Developer history of AI-assisted coding evolution shared.",
+      "Provenance-based trust models proposed for AI outputs.",
+      "Lobste.rs debates gzip as language model theoretically.",
+      "Security implications of agentic browsing discussed deeply."
     ]
   }
 }
