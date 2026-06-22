@@ -1,0 +1,22 @@
+{
+  "zh": {
+    "ai-weekly": [
+      "OpenAI Codex因GPT-5.5成本暴涨10倍引发社区愤怒",
+      "Anthropic发布研究量化人类专家价值",
+      "GLM-5.2开源，接近Claude Opus 4.8能力",
+      "AlphaFold核心科学家John Jumper跳槽Anthropic",
+      "NVIDIA开源SkillSpector与headroom，Agent安全工具",
+      "Claude Code频繁更新，Agent挂起与成本可视化"
+    ]
+  },
+  "en": {
+    "ai-weekly": [
+      "White House bans Anthropic Fable model",
+      "OpenAI leaks $3.4B annual loss",
+      "Noam Shazeer leaves Google for OpenAI",
+      "Codex costs jump 10× per token",
+      "GLM-5.2 open weights rival Opus 4.8",
+      "AlphaFold scientist joins Anthropic"
+    ]
+  }
+}
