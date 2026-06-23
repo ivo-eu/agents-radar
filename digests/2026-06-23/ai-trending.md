@@ -1,109 +1,149 @@
 # AI 开源趋势日报 2026-06-23
 
-> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-22 17:18 UTC
+> 数据来源: GitHub Trending + GitHub Search API | 生成时间: 2026-06-23 10:50 UTC
 
 ---
 
-## AI 开源趋势日报（2026-06-23）
+# AI 开源趋势日报 (2026-06-23)
 
-### 今日速览
-- **AI 视频创作工具集中爆发**：`OpenMontage`（首个开源智能体视频制作系统）和 `palmier-pro`（AI 原生 macOS 编辑器）分别以 **+2,935** 和 **+2,462** 的今日增长领跑，标志 AI 视频生成进入开源深水区。
-- **Agent 技能库和工具链成为新热点**：`Anthropic-Cybersecurity-Skills`（817 个结构化网络安全技能）、`mattpocock/skills`（工程师 Claude Code 技能集）、`garrytan/gstack`（CEO 工具集）均获大量关注，社区正为 AI Agent 注入“专业能力”。
-- **MCP 生态加速扩张**：`codebase-memory-mcp`（高性能代码知识图谱 MCP 服务器）首日即获 **+1,186** star，反映开发者对模型上下文协议的热情。
-- **长时任务 SuperAgent 框架受追捧**：字节开源的 `deer-flow` 再增 **+736** star，其“研究、编码、创造”一体的能力引发讨论。
-- **金融 AI 应用持续升温**：`daily_stock_analysis`（LLM 驱动股票分析）单日新增 **+1,560** star，结合实时新闻与决策看板的模式受到散户与量化群体关注。
+## 1. 今日速览
 
----
+今日 GitHub AI 开源社区呈现三大热点：**AI 视频生成/编辑工具**爆发式增长，`OpenMontage` 与 `palmier-pro` 单日分别获得近 3000 和 2500 星；**AI Agent 技能包与 MCP 生态**持续发酵，`mattpocock/skills`（+2051）和 `codebase-memory-mcp`（+1185）深受开发者青睐；**大模型推理轻量化**方向继续走热，`airllm` 以单 4GB GPU 运行 70B 模型引发关注。主题搜索中，`ollama`、`AutoGPT`、`langchain` 等经典项目依然保持极高活跃度，而 `browser-use`、`TradingAgents` 等新型 Agent 框架也快速积累星数。
 
-### 🔧 AI 基础工具（框架、SDK、推理引擎、CLI）
+## 2. 各维度热门项目
 
-| 项目 | Stars | 说明 |
-|------|-------|------|
-| [ollama/ollama](https://github.com/ollama/ollama) | ⭐174,729 | 一键运行 Kimi、DeepSeek、Qwen 等主流模型，本地推理首选 |
-| [vllm-project/vllm](https://github.com/vllm-project/vllm) | ⭐83,559 | 高吞吐、低延迟的 LLM 推理与服务引擎，生产环境标配 |
-| [huggingface/transformers](https://github.com/huggingface/transformers) | ⭐161,805 | 模型生态霸主，支持文本、视觉、音频等多模态 |
-| [langchain-ai/langchain](https://github.com/langchain-ai/langchain) | ⭐139,886 | Agent 工程平台，本周 Agent 化趋势进一步加强 |
-| [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | ⭐136,930 (+736 today) | AI Agent 的网页数据管道，搜索/抓取/交互一体 |
-| [bytedance/deer-flow](https://github.com/bytedance/deer-flow) | ⭐73,091 (+736 today) | 开源长时 SuperAgent 框架，集成沙箱、记忆、子 Agent |
-| [lyogavin/airllm](https://github.com/lyogavin/airllm) | ⭐4.5k (+453 today) | 单张 4GB GPU 运行 70B 模型，边缘推理新突破 |
-| [DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp) | ⭐1,186 today | 极速代码知识图谱 MCP 服务器，毫秒级索引 158 种语言 |
+### 🔧 AI 基础工具（框架、SDK、推理引擎、开发工具、CLI）
 
----
+- **[ollama/ollama](https://github.com/ollama/ollama)** ⭐174,774  
+  本地运行大模型的极简工具，现已支持 Kimi、GLM、MiniMax 等最新国产模型，是个人开发者上手 LLM 的首选。
 
-### 🤖 AI 智能体 / 工作流（Agent 框架、自动化、多智能体）
+- **[vllm-project/vllm](https://github.com/vllm-project/vllm)** ⭐83,619  
+  高性能 LLM 推理与服务引擎，PagedAttention 技术极大提升吞吐量，成为生产部署的主流选择。
 
-| 项目 | Stars | 说明 |
-|------|-------|------|
-| [Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | ⭐185,077 | 自主 Agent 鼻祖，持续迭代多任务规划能力 |
-| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | ⭐199,771 | “陪你成长的 Agent”，强调记忆与持续进化 |
-| [mattpocock/skills](https://github.com/mattpocock/skills) | ⭐2,051 today | 知名 TS 工程师出品的 Claude Code 技能集，一键导入 |
-| [garrytan/gstack](https://github.com/garrytan/gstack) | ⭐649 today | Garry Tan 的 23 个 Claude Code 工具，模拟 CEO/Designer/QA 角色 |
-| [mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) | ⭐957 today | 817 个标准化网络安全技能，覆盖 MITRE ATT&CK、NIST 等六大框架 |
-| [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit) | ⭐35,399 | React/RN/Slack 等前端 Agent UI 组件库，AG-UI 协议发起者 |
-| [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | ⭐67,870 | 从零构建类 Claude Code Agent，教程与轻量实现 |
+- **[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)** ⭐137,846 (+615 today)  
+  面向 AI Agent 的网页搜索与抓取 API，支持大规模结构化数据获取，今日热榜持续上升。
 
----
+- **[lyogavin/airllm](https://github.com/lyogavin/airllm)** ⭐0 (+193 today)  
+  在单张 4GB GPU 上运行 70B 大模型，通过内存优化和量化实现极低资源推理，重新定义边缘 AI 边界。
 
-### 📦 AI 应用（具体产品、垂直场景解决方案）
+- **[CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio)** ⭐47,702  
+  集成智能聊天、自治 Agent 和 300+ 助手的跨模型 AI 生产力套件，支持统一接入前沿 LLM。
 
-| 项目 | Stars | 说明 |
-|------|-------|------|
-| [calesthio/OpenMontage](https://github.com/calesthio/OpenMontage) | ⭐2,935 today | 世界首个开源智能体视频制作系统：12 流水线、52 工具、500+ 技能 |
-| [palmier-io/palmier-pro](https://github.com/palmier-io/palmier-pro) | ⭐2,462 today | macOS 原生 AI 视频编辑器，释放剪辑生产力 |
-| [jamiepine/voicebox](https://github.com/jamiepine/voicebox) | ⭐508 today | 开源 AI 语音工作室：克隆、听写、创作 |
-| [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) | ⭐369 today | 写 HTML 渲染视频，专为 AI Agent 设计的视频生成 |
-| [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis) | ⭐45,656 (+1,560 today) | LLM 驱动多市场股票分析：实时行情、新闻、决策看板 |
-| [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents) | ⭐87,978 | 多智能体金融交易框架，融合 LLM 与量化策略 |
-| [FlowiseAI/Flowise](https://github.com/FlowiseAI/Flowise) | ⭐53,902 | 可视化构建 AI Agent 和 RAG 应用，低代码首选 |
-| [jeecgboot/JeecgBoot](https://github.com/jeecgboot/JeecgBoot) | ⭐46,835 | AI 低代码平台，一句话生成页面/流程/表单，集成知识库与 MCP |
+- **[langchain-ai/langchain](https://github.com/langchain-ai/langchain)** ⭐139,963  
+  最流行的 LLM 应用开发框架，提供链式编排、Agent、工具调用等抽象，生态极为丰富。
 
----
+### 🤖 AI 智能体/工作流（Agent 框架、自动化、多智能体）
 
-### 🧠 大模型 / 训练（模型权重、训练框架、微调工具）
+- **[Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)** ⭐185,104  
+  自主 AI Agent 先驱，支持任务规划、互联网访问、代码执行，持续迭代至全功能 Agent 平台。
 
-| 项目 | Stars | 说明 |
-|------|-------|------|
-| [open-compass/opencompass](https://github.com/open-compass/opencompass) | ⭐7,112 | LLM 评测平台，支持 100+ 数据集，模型能力对比标准 |
-| [galilai-group/stable-pretraining](https://github.com/galilai-group/stable-pretraining) | ⭐266 | 可靠、可缩放的基础模型预训练库，专注稳定训练 |
-| [zjunlp/LightThinker](https://github.com/zjunlp/LightThinker) | ⭐164 | EMNLP 2025 论文：逐步推理压缩，降低思维链 token 开销 |
-| [0xPlaygrounds/rig](https://github.com/0xPlaygrounds/rig) | ⭐7,709 | Rust 生态 LLM 应用框架，模块化、高性能 |
-| [Mirrowel/LLM-API-Key-Proxy](https://github.com/Mirrowel/LLM-API-Key-Proxy) | ⭐511 | 通用 LLM 网关：单 API 对接多个模型提供商，负载均衡 |
+- **[bytedance/deer-flow](https://github.com/bytedance/deer-flow)** ⭐73,649 (+738 today)  
+  字节跳动开源的长期任务 SuperAgent，内置沙箱、记忆、工具和子 Agent 系统，可处理数分钟至数小时的复杂任务。
 
----
+- **[OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)** ⭐78,085  
+  AI 驱动的软件开发 Agent，能自主阅读代码、编写测试、提交 PR，大幅提升开发效率。
 
-### 🔍 RAG / 知识库（向量数据库、检索增强、知识管理）
+- **[browser-use/browser-use](https://github.com/browser-use/browser-use)** ⭐100,229  
+  让 AI Agent 像人一样操作浏览器，自动化在线任务，是 Web 自动化 Agent 领域的标杆项目。
 
-| 项目 | Stars | 说明 |
-|------|-------|------|
-| [infiniflow/ragflow](https://github.com/infiniflow/ragflow) | ⭐83,361 | 领先开源 RAG 引擎，融合 Agent 能力构建上下文层 |
-| [PaddlePaddle/PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) | ⭐83,290 | 将 PDF/图片转为结构化数据，支持 100+ 语言，RAG 数据预处理利器 |
-| [mem0ai/mem0](https://github.com/mem0ai/mem0) | ⭐59,135 | AI Agent 的通用记忆层，跨会话持久化 |
-| [safishamsi/graphify](https://github.com/safishamsi/graphify) | ⭐70,619 | 将代码/文档/图像等任何文件夹转化为可查询知识图谱 |
-| [milvus-io/milvus](https://github.com/milvus-io/milvus) | ⭐44,890 | 高性能云原生向量数据库，大规模 ANN 搜索标准 |
-| [qdrant/qdrant](https://github.com/qdrant/qdrant) | ⭐32,557 | Rust 写的高性能向量搜索引擎，支持过滤与云服务 |
-| [siyuan-note/siyuan](https://github.com/siyuan-note/siyuan) | ⭐44,555 | 隐私优先的知识管理工具，支持 AI 辅助笔记与知识图谱 |
+- **[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)** ⭐88,108  
+  基于多 Agent 的 LLM 金融交易框架，将大模型推理能力应用于量化策略与风险控制。
 
----
+- **[mattpocock/skills](https://github.com/mattpocock/skills)** ⭐0 (+2051 today)  
+  来自资深工程师的 Claude Code 技能包，涵盖 CEO、设计师、工程经理等 23 种角色工具，一键复用高效开发流程。
 
-### 趋势信号分析
+### 📦 AI 应用（具体应用产品、垂直场景解决方案）
 
-今天最强烈的信号是 **AI 视频创作全面开源化**。`OpenMontage` 将 500+ Agent 技能与 52 个工具编排成 12 条生产流水线，首次让 AI Coding Assistant 直接输出完整视频；`palmier-pro` 和 `hyperframes` 则从不同角度（macOS 原生应用、Agent 可调用的 HTML→视频引擎）补充了生态。这背后与近期多模态大模型的成熟（如视频理解/生成模型开源）高度相关。
+- **[calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)** ⭐0 (+2938 today)  
+  全球首个开源 Agentic 视频制作系统，集成 12 条管线、52 种工具、500+ 技能，可将 AI 编程助手转变为完整视频工作室。
 
-第二个趋势是 **Agent 技能标准化与复用**。`Anthropic-Cybersecurity-Skills` 首次将 800 多个安全技能映射到 6 个行业框架，`mattpocock/skills` 和 `garrytan/gstack` 则展示了顶级工程师如何打包自己的“角色工具集”。这表明社区开始从“造 Agent 框架”转向“造 Agent 能力库”。
+- **[palmier-io/palmier-pro](https://github.com/palmier-io/palmier-pro)** ⭐0 (+2463 today)  
+  专为 AI 打造的 macOS 视频编辑器，内置智能剪辑、特效生成等 AI 能力，定位专业创作者。
 
-第三个值得注意的信号是 **MCP 协议生态加速**。`codebase-memory-mcp` 作为纯 C 语言实现的 MCP 服务器，首日即达千星，与 `claude-mem`、`zilliztech/claude-context` 等项目共同推动“代码智能”成为 Agent 标配特性。字节开源的 `deer-flow` 也内置了消息网关，支持 MCP 协作。
+- **[jamiepine/voicebox](https://github.com/jamiepine/voicebox)** ⭐0 (+529 today)  
+  开源 AI 语音工作室，支持声音克隆、听写、创造，为内容创作者提供全栈语音工具。
 
-整体来看，今日热点与 **Anthropic Claude Code 生态**、**MCP 标准**、**长时 Agent** 紧密绑定。开发者的兴趣正从“让 Agent 能对话”转向“让 Agent 能交付专业成果”。
+- **[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)** ⭐0 (+395 today)  
+  写 HTML 即可渲染视频，专为 Agent 设计的视频生成工具，降低视频制作门槛。
 
----
+- **[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)** ⭐46,447 (+1557 today)  
+  LLM 驱动的多市场股票分析系统，整合行情、新闻、决策看板与自动推送，支持零成本定时运行。
 
-### 社区关注热点（值得重点跟进的 5 个方向）
+- **[garrytan/gstack](https://github.com/garrytan/gstack)** ⭐0 (+573 today)  
+  直接使用著名投资人 Garry Tan 的 Claude Code 配置，包含 23 个经过实战检验的角色工具。
 
-- **[codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)**：纯 C 语言、零依赖、158 语言支持、毫秒级代码知识图谱。如果你在开发 AI 代码助手或 MCP 服务，这个项目值得深入分析。
-- **[mattpocock/skills](https://github.com/mattpocock/skills)**：TypeScript 权威人物公开自己的 `.claude` 配置，包含完整工程师技能集。可作为团队标准化 Agent 技能的最佳参考。
-- **[OpenMontage](https://github.com/calesthio/OpenMontage)**：开源视频制作智能体，12 条流水线设计高度模块化，可用于快速搭建自动化视频内容生产管线。
-- **[bytedance/deer-flow](https://github.com/bytedance/deer-flow)**：字节跳动开源的 SuperAgent 框架，内置沙箱、记忆、工具、子 Agent，适合研究/开发需要长时间持续执行的复杂任务。
-- **[Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)**：首个大规模结构化 Agent 安全技能库，跨 20+ 平台，安全工程师可直接将其注入 Claude Code、Copilot 等工具。
+- **[mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)** ⭐0 (+956 today)  
+  817 个结构化网络安全技能，映射至 6 个主流框架，可被 Claude Code、Copilot、Cursor 等 20+ 平台调用，是 Agent 安全技能的标准化资源。
+
+### 🧠 大模型/训练（模型权重、训练框架、微调工具）
+
+- **[huggingface/transformers](https://github.com/huggingface/transformers)** ⭐161,832  
+  🤗 深度学习模型标准库，支持文本、视觉、音频等模态的推理与训练，生态核心。
+
+- **[tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)** ⭐195,844  
+  全球最广泛使用的机器学习框架，持续迭代，支持端侧与云端大规模训练。
+
+- **[pytorch/pytorch](https://github.com/pytorch/pytorch)** ⭐100,973  
+  动态神经网络的标杆框架，AI 研究的首选平台，与 HuggingFace 深度集成。
+
+- **[ultralytics/ultralytics](https://github.com/ultralytics/ultralytics)** ⭐58,714  
+  YOLOv8 及其后续版本，提供训练、推理、部署一站式解决方案，计算机视觉领域的事实标准。
+
+- **[open-compass/opencompass](https://github.com/open-compass/opencompass)** ⭐7,114  
+  大模型评测平台，支持 100+ 数据集和主流模型，为模型选型提供客观基准。
+
+- **[galilai-group/stable-pretraining](https://github.com/galilai-group/stable-pretraining)** ⭐266  
+  可靠、最小化的基座模型预训练库，专注于训练稳定性和可扩展性。
+
+- **[zjunlp/LightThinker](https://github.com/zjunlp/LightThinker)** ⭐164  
+  [EMNLP 2025] 轻量级推理压缩方法，逐步压缩思维链，降低推理成本，是高效推理的前沿探索。
+
+### 🔍 RAG/知识库（向量数据库、检索增强、知识管理）
+
+- **[infiniflow/ragflow](https://github.com/infiniflow/ragflow)** ⭐83,426  
+  领先的 RAG 引擎，融合 Agent 能力与上下文层，支持多种数据源和深度检索。
+
+- **[milvus-io/milvus](https://github.com/milvus-io/milvus)** ⭐44,910  
+  高性能云原生向量数据库，专为规模化的向量 ANN 搜索设计，是 AI 知识库基石。
+
+- **[qdrant/qdrant](https://github.com/qdrant/qdrant)** ⭐32,573  
+  高扩展性向量数据库，支持百万级向量近实时搜索，提供云端和自托管部署。
+
+- **[mem0ai/mem0](https://github.com/mem0ai/mem0)** ⭐59,203  
+  通用 AI 记忆层，为 Agent 提供跨会话持久化记忆，支持语义搜索和自动压缩。
+
+- **[DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)** ⭐0 (+1185 today)  
+  高性能代码智能 MCP 服务器，将代码库索引为持久知识图谱，毫秒级查询，支持 158 种语言，零依赖静态二进制。
+
+- **[safishamsi/graphify](https://github.com/safishamsi/graphify)** ⭐70,937  
+  将代码、SQL 模式、文档等任意文件夹转化为可查询的知识图谱，兼容多种 AI 编码助手，是代码理解的强力工具。
+
+- **[siyuan-note/siyuan](https://github.com/siyuan-note/siyuan)** ⭐44,569  
+  隐私优先、自托管的开源知识管理软件，融合 AI 搜索与笔记，适合个人和团队构建知识库。
+
+## 3. 趋势信号分析
+
+从今日热榜和主题搜索中可以提炼出以下关键趋势：
+
+1. **AI 视频与多模态创作工具井喷**：`OpenMontage` 和 `palmier-pro` 单日分别获近 3000 和 2500 星，加上 `hyperframes` 和 `voicebox`，表明社区对“用 AI 生成/编辑视频”的需求已从概念验证转向实用工具。这类工具往往与 Agent 结合（如 OpenMontage 定位为 Agent 视频工厂），暗示“AI Agent + 视频”将成为下一波内容生产范式。
+
+2. **Agent 技能包与 MCP 协议生态成熟**：`mattpocock/skills` (+2051)、`Anthropic-Cybersecurity-Skills` (+956)、`codebase-memory-mcp` (+1185) 等项目的爆红，说明开发者不再满足于单个 Agent 框架，而是追求**可复用的技能模块**和**标准化的工具集成协议**。MCP（Model Context Protocol）正在成为连接 Agent 与现实工具的“USB 接口”。
+
+3. **大模型推理持续向轻量化和边缘端倾斜**：`airllm` 以单 4GB GPU 运行 70B 模型，同时 `LightThinker` 提出压缩思维链技术，反映出在模型参数不断膨胀的背景下，社区对**低成本推理**的刚需依然强劲。这一方向可能催生更多量化、蒸馏、投机解码等创新工具。
+
+4. **金融 AI 应用热度回升**：`TradingAgents` 星数突破 88k，`daily_stock_analysis` 单日新增 1557 星，说明 LLM 在金融领域（量化交易、市场分析）的应用想象空间正在被更多开发者 validate。
+
+## 4. 社区关注热点
+
+- **OpenMontage**：首个开源 Agentic 视频制作系统，今天暴涨 2938 星。如果你关注 AI 生成视频的未来，这是必研究的项目。它展示了如何将多个 Agent 技能（脚本、分镜、渲染）编排成完整管线。
+
+- **mattpocock/skills**：来自知名 TypeScript 教育家，提供了 23 个可直接放入 `.claude` 目录的工具角色。对希望快速提升 Claude Code 工作效率的开发者而言，这是现成的“最佳实践”。
+
+- **codebase-memory-mcp**：C 语言编写的高性能 MCP 服务器，将代码库索引为知识图谱，毫秒级查询，且零依赖。它代表 MCP 工具链向“极致性能”演进的方向，适合大型代码库的 Agent 辅助开发。
+
+- **daily_stock_analysis**：LLM 驱动的多市场股票分析系统，单日 +1557 星。其“零成本定时运行”的设计理念降低了小型散户使用 AI 分析的门槛，值得关注其背后与 LLM 交互的 Prompt 工程技巧。
+
+- **airllm**：单 4GB GPU 运行 70B 模型，这对于资源受限的开发者和边缘设备意义重大。建议研究其使用的内存卸载和量化策略，可能启发更多类似优化方案。
 
 ---
 *本日报由 [agents-radar](https://github.com/ivo-eu/agents-radar) 自动生成。*

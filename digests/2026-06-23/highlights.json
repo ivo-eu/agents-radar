@@ -1,134 +1,150 @@
 {
   "zh": {
     "ai-cli": [
-      "Claude Code权限与MCP问题高热度",
-      "OpenAI Codex成本飙升与日志写入bug",
-      "Gemini CLI Agent稳定性与子代理Bug",
-      "Kimi Code CLI发布v1.48.0",
-      "Pi发布v0.79.10修复安全与成本显示",
-      "Qwen Code安全标签伪造与工具无限循环"
+      "Claude Code信任危机严重(#30519)",
+      "OpenAI Codex成本焦虑成最大热点",
+      "Gemini CLI聚焦核心稳定性问题",
+      "Kimi Code CLI关注YOLO模式与MCP路径",
+      "OpenCode付费用户不满情绪高涨",
+      "Pi连接稳定性与扩展兼容性成焦点"
     ],
     "ai-agents": [
-      "OpenClaw发布beta.2自动快速模式",
-      "PR积压443条待合并问题突出",
-      "P1级别的回归和Bug报告浮出水面",
-      "WebChat历史消息显示不全Bug修复",
-      "日志诊断回归恢复model-fetch信息",
-      "更可靠的模型路由提升调度稳定性"
+      "OpenClaw今日500条PR，416条待合并",
+      "修复会话状态恢复竞态条件(#89868)",
+      "ACP运行时兼容性成核心开发焦点",
+      "跨平台稳定性: Windows/WSL Bug修复",
+      "插件生态自愈: Telegram/Discord修复",
+      "#92201 Anthropic思考签名验证失败引热议"
     ],
     "ai-trending": [
-      "OpenMontage首个开源视频Agent系统+2935",
-      "palmier-pro AI原生编辑器+2462",
-      "codebase-memory-mcp首日+1186",
-      "deer-flow长时SuperAgent框架+736",
-      "daily_stock_analysis LLM股票分析+1560",
-      "Anthropic网络安全技能库817个技能"
+      "OpenMontage单日获近3000星",
+      "mattpocock/skills技能包+2051星",
+      "airllm: 4GB GPU运行70B模型",
+      "ollama 174k星，支持国产模型",
+      "deer-flow 73k星，字节跳动SuperAgent",
+      "browser-use 100k星，Web自动化标杆"
     ],
     "ai-web": [
-      "Anthropic与盖茨基金会2亿美元合作",
-      "Claude Code经济学研究基于40万次会话",
-      "OpenAI安全与三星企业部署（推测）",
-      "Anthropic有益部署团队开发AI公共产品",
-      "研究：AI编码普惠化但技能红利依存",
-      "人机分工：人做规划，AI做执行"
+      "Anthropic发布重磅经济学研究报告",
+      "专家指令驱动Claude完成更多工作",
+      "用户调试时间减少近一半",
+      "任务平均价值提升约25%",
+      "协作模式转向端到端智能体",
+      "OpenAI今日无增量更新"
     ],
     "ai-hn": [
-      "GLM-5.2成最强开源模型挑战Opus",
-      "OpenAI Codex日志bug写入TB级SSD",
-      "Show HN: Recall为Claude Code提供本地记忆",
-      "PMB本地优先记忆MCP服务器",
-      "社区对闭源厂商信任动摇",
-      "Anthropic和OpenAI接连服务故障"
+      "GLM-5.2本地运行412分登顶",
+      "Claude Code 'Extended Thinking'真实性争议",
+      "OpenAI DayBreak安全倡议遭调查",
+      "五眼联盟警告AI模型可推翻政府",
+      "AWS Lambda微虚拟机执行AI代码",
+      "PMB本地记忆工具基于MCP协议"
     ],
     "ai-ph": [
-      "Agent 37 Cloud给客户配专属AI代理获407票",
-      "Grok for Word嵌入Word侧边栏获209票",
-      "Backgrind让AI代理操作任意应用获189票",
-      "Cloudback MCP Server管理备份138票",
-      "Plansera AI起草E-2签证计划书120票",
-      "Beacon AI预警依赖断裂风险15票"
+      "AgentX 530票一键评估修复AI Agent",
+      "Skybridge MCP全栈开源框架",
+      "AirJelly 139票自组织第二大脑",
+      "Clawd 122票离线AI浏览器宠物",
+      "法律AI移动端获较高关注",
+      "AI设计工具开源产品涌现"
+    ],
+    "ai-arxiv": [
+      "Randomized YaRN提升长上下文推理",
+      "Tapered Language Models打破均匀深度",
+      "SVD-Surgeon最优低秩压缩LLM",
+      "LangMAP多语言分词适配框架",
+      "MAS-PromptBench多智能体提示优化",
+      "Causal Discovery与LLM结合新视角"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro登顶周榜5006点赞",
-      "GLM-5.2 MoE架构性能强劲1973点赞",
-      "Gemma-4-12B-it多模态any-to-any",
-      "Kimi-K2.7-Code代码增强视觉模型",
-      "Cohere North-Mini-Code高效代码模型",
-      "Qwen3.6无审查版下载量超400万"
+      "DeepSeek-V4-Pro 5021赞领跑",
+      "Google DiffusionGemma多模态生成",
+      "Gemma-4-12B-it any-to-any统一模型",
+      "NVIDIA LocateAnything-3B目标定位",
+      "MiniMax-M3多模态视觉语言",
+      "GLM-5.2 MoE架构社区高关注"
     ],
     "ai-community": [
-      "最小AI原则：警惕过度依赖AI",
-      "AI辅助编程演变史全景回顾",
-      "AI Gate交易揭示Agent过程正确结果失败",
-      "信任向量模型为Agent链提供类型化溯源",
-      "RAG幻觉排查实用案例，直接改进步骤",
-      "关于大会未来的长文引发39条激烈评论"
+      "AI Agent记忆丢失问题成社区焦点",
+      "提示工程转向多次迭代循环",
+      "信任作为向量而非标量被提出",
+      "AI 72小时发现300个WordPress零日",
+      "gzip能否作为语言模型引发争议",
+      "AI开发者求职市场技术产出错位"
     ]
   },
   "en": {
     "ai-cli": [
-      "Claude Code has highest single-issue engagement.",
-      "Cost and usage transparency emerges as key concern.",
-      "Permission granularity and safety dominate discussions.",
-      "Ecosystem bifurcates into autonomous vs workflow tools.",
-      "No major releases, but active PR throughput seen.",
-      "Windows support and cross-platform stability improving."
+      "200+ issues and 170+ PRs filed in one day",
+      "Cost unpredictability spikes per-token pricing",
+      "Security hardening: SSRF, permission model weaknesses",
+      "OpenAI Codex and CodeWhale lead PR throughput",
+      "Platform-first vs open-architecture divide emerging",
+      "Permission/authentication systems top community frustration"
     ],
     "ai-agents": [
-      "OpenClaw v2026.6.10-beta.2 released with auto fast mode.",
-      "53 issues updated, 500 PRs processed in 24 hours.",
-      "Automatic fast mode for short conversational turns.",
-      "More reliable model routing with Zai provider improvements.",
-      "Session state and provider compatibility regressions reported.",
-      "P1 issues awaiting maintainer reviews and product decisions."
+      "500 PRs updated, 84 merged/closed in 24h",
+      "No new releases; 2026.6.9 release stabilized",
+      "Bug #76729: Feishu replies disappearing after compaction",
+      "Session state integrity and runtime reliability debated",
+      "Maintainer queue under pressure with many pending decisions",
+      "Most PRs are bug fixes and internal improvements"
     ],
     "ai-trending": [
-      "OpenMontage gains +2,935 stars today for agentic video.",
-      "palmier-pro gets +2,462 stars for video production.",
-      "mattpocock/skills adds +2,051 stars as skills infrastructure.",
-      "codebase-memory-mcp adds +1,186 with 99% token savings.",
-      "deer-flow (+736) signals enterprise SuperAgent investment.",
-      "airllm runs 70B inference on single 4GB GPU."
+      "ByteDance's deer-flow reaches 73.6K stars",
+      "OpenMontage gains +2,938 stars today",
+      "Codebase-memory-mcp adds +1,185 stars",
+      "Agent skills movement: gstack, skills, Cybersecurity-Skills",
+      "Firecrawl 137.8K stars for web data extraction",
+      "Ollama 174.8K stars, now supports Kimi-K2.6, GLM-5.1"
     ],
     "ai-web": [
-      "Anthropic $200M partnership with Gates Foundation announced.",
-      "Claude Code sessions show debugging time halved in 7 months.",
-      "Task value rose ~25% across occupations.",
-      "OpenAI publishes Daybreak security initiative page.",
-      "OpenAI Samsung Electronics enterprise deployment case study.",
-      "Anthropic pivots to AI-for-good global health deployments."
+      "Anthropic publishes paper on agentic coding expertise",
+      "Analyzed ~400,000 Claude Code sessions",
+      "Experts achieve higher task success rates",
+      "25% increase in estimated value of coding tasks",
+      "Nearly 50% reduction in debugging time",
+      "Humans control 'what to do', AI handles 'how to do it'"
     ],
     "ai-hn": [
-      "GLM 5.2 vs Opus comparison heats up with 371 points.",
-      "Community celebrates narrowing gap between open and closed models.",
-      "Codex logging bug may write TBs to local SSDs.",
-      "Claude Code extended thinking feature debated critically.",
-      "Open models trend accelerates, proprietary contracts questioned.",
-      "DeepSeek dominates Hugging Face with 5,006 weekly likes."
+      "GLM-5.2 release tops HN with 412 points",
+      "Claude Code 'Extended Thinking' criticized as not authentic",
+      "OpenAI launches DayBreak with GPT-5.5-Cyber",
+      "Multistate probe and $1T valuation skepticism",
+      "Anthropic faces user bans and export control friction",
+      "Five Eyes warns AI could topple governments soon"
     ],
     "ai-ph": [
-      "Agent 37 Cloud leads with 407 votes for per-customer agents.",
-      "Grok by SpaceXAI for Word brings AI to Microsoft Word.",
-      "Backgrind runs AI agents over any app, even games.",
-      "Shift from chatbots to specialized embeddable agents.",
-      "Turnkey Hermes or OpenClaw agent deployment offered.",
-      "Developer tooling dominates today's Product Hunt launches."
+      "AgentX wins top with 530 votes for agent debugging",
+      "Skybridge: open-source framework for MCP apps",
+      "Cloudflare Temporary Accounts for agent deployments",
+      "uwait: 'get paid while AI thinks' model",
+      "co/core: cooperative local model network",
+      "Vertical AI apps and dev infrastructure dominate"
+    ],
+    "ai-arxiv": [
+      "Randomized YaRN improves long-context reasoning",
+      "Tapered Language Models: non-uniform layer allocation",
+      "On the Limits of Prompt-Conditioned Models",
+      "Rise of agentic systems and coordination benchmarks",
+      "Theoretical analysis of Muown's step-size decay",
+      "Multimodal reasoning: interleaved code, generative rewards"
     ],
     "ai-hf": [
-      "DeepSeek-V4-Pro leads with 5,006 likes and 2.4M downloads.",
-      "NVIDIA's LocateAnything-3B gets 2,283 likes for visual grounding.",
-      "Google gemma-4-12B-it gains 1,134 likes for any-to-any models.",
-      "diffusiongemma-26B-A4B-it gets 1,046 likes as hybrid.",
-      "GGUF quantizations of GLM-5.2, Qwen3.6 drive downloads.",
-      "Microsoft FastContext-1.0-4B-SFT optimized for long context."
+      "DeepSeek-V4-Pro tops with 5,021 likes",
+      "NVIDIA's LocateAnything-3B: 2,303 likes",
+      "GLM-5.2 family has three entries in top 30",
+      "VibeThinker-3B: lightweight reasoning at 3B",
+      "Microsoft FastContext-1.0-4B for 256K context",
+      "Aggressive quantization: GGUF, FP8 driving accessibility"
     ],
     "ai-community": [
-      "Principle of Least AI article gets 30 reactions on Dev.to.",
-      "AI agent trading fails spectacularly despite passing checks.",
-      "Developer history of AI-assisted coding evolution shared.",
-      "Provenance-based trust models proposed for AI outputs.",
-      "Lobste.rs debates gzip as language model theoretically.",
-      "Security implications of agentic browsing discussed deeply."
+      "Security implications of 'conflation' in AI systems",
+      "Real-world failures from agent workflows shared",
+      "Code generation considered 'solved' but agents hard",
+      "Knowledge graph unification across 46 repos",
+      "Typed provenance for agent chains discussed",
+      "Developer job market anxiety around AI skills"
     ]
   }
 }

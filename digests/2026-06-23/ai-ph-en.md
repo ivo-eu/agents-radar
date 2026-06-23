@@ -1,101 +1,98 @@
 # Product Hunt AI Products Digest 2026-06-23
 
-> Source: [Product Hunt](https://www.producthunt.com/) | 13 products | Generated: 2026-06-22 17:18 UTC
+> Source: [Product Hunt](https://www.producthunt.com/) | 16 products | Generated: 2026-06-23 10:50 UTC
 
 ---
 
-# Product Hunt AI Products Digest — 2026-06-23
+# Product Hunt AI Products Digest — June 23, 2026
 
-## Today's Highlights
+## Today’s Highlights
 
-Today's Product Hunt launches are dominated by **agentic infrastructure and developer tooling**. The standout is **Agent 37 Cloud** (407 votes), which lets companies deploy per-customer autonomous agents — a signal that personalized agent orchestration is entering the mainstream. **Grok by SpaceXAI for Word** (209 votes) brings AI writing assistance directly into Microsoft Word, while **Backgrind** (189 votes) pushes agent capabilities into a surprising new domain: running over any app, including games. The overall trend is a clear shift from generic chatbots toward **specialized, embeddable agents** that operate within existing workflows and environments.
+Today’s Product Hunt launches reveal a maturing AI ecosystem where **agent debugging, developer infrastructure, and vertical AI applications** dominate. AgentX (530 votes) leads by offering one-click evaluation and fixing of AI agents, signalling that operational reliability is becoming a priority. On the dev tools side, Skybridge (517 votes) provides a full-stack open-source framework for building MCP-based apps, while Cloudflare’s Temporary Accounts (176 votes) lowers friction for agent deployments. Notable innovations include uwait’s “get paid while AI thinks” model and co/core’s cooperative local model network — both hinting at new economic and infrastructure patterns for AI.
 
 ---
 
-## Top Products
+## Top Products by Category
 
 ### 🤖 AI Agents & Assistants
+- **AgentX** — Evaluate AI agent, pinpoint issues, and fix with one click.  
+  [Product Hunt](https://www.producthunt.com/products/agentx?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/MAKIXB6C4DMJG6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 530 · Comments: 173  
+  Solves the pain of debugging agent behavior by automatically detecting issues and applying fixes, setting a new standard for agent observability.
 
-**Agent 37 Cloud** — Give every customer their own Hermes or OpenClaw agent  
-🔗 [Product Hunt](https://www.producthunt.com/products/agent-37-38?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/G7ASKEML5CLFTD?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 407 | Comments: 42  
-Solves the challenge of scaling personalized AI agents per customer by offering turnkey Hermes or OpenClaw agents, distinguished by its infrastructure-as-a-service approach to agent deployment.
-
-**Backgrind** — Run your AI agents over any app, even games.  
-🔗 [Product Hunt](https://www.producthunt.com/products/backgrind?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/LXT3GGWXGWH6H4?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 189 | Comments: 14  
-Solves the problem of agents being locked to specific apps by enabling them to operate over any application window, including games, making it a novel cross-platform agent runtime.
-
----
+- **AirJelly** — Your Proactive, Self-Organizing Second Brain.  
+  [Product Hunt](https://www.producthunt.com/products/airjelly?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/PMQKFXXQ5WQB2C?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 139 · Comments: 11  
+  Combines proactive knowledge management with AI-driven self-organization, standing out as a “second brain” that doesn’t wait for user prompts.
 
 ### 🛠️ Developer Tools
+- **Skybridge** — The full-stack open source React framework for MCP Apps.  
+  [Product Hunt](https://www.producthunt.com/products/skybridge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/WYDUMMA2RJODS7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 517 · Comments: 161  
+  Provides a complete open-source stack for building Model Context Protocol (MCP) applications, dramatically simplifying cross-platform agent development.
 
-**Laguna by Poolside** — Foundation models for agentic coding and long-horizon work  
-🔗 [Product Hunt](https://www.producthunt.com/products/poolside?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/UWCINA5GZHP76J?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 157 | Comments: 7  
-Solves the need for models purpose-built for multi-step coding tasks by providing foundation models optimized for agentic coding and long-horizon software engineering workflows.
+- **Cloudflare Temporary Accounts** — Let agents deploy before signup.  
+  [Product Hunt](https://www.producthunt.com/products/cloudflare?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/WFEAPNZTIKAUTV?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 176 · Comments: 8  
+  Removes onboarding friction for developers by granting ephemeral accounts to AI agents, enabling zero‑friction testing and deployment on Cloudflare’s infrastructure.
 
-**Cloudback MCP Server** — Manage your backups from Claude, Cursor, and VS Code  
-🔗 [Product Hunt](https://www.producthunt.com/products/cloudback?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/DLNZ4A3NGRTL7U?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 138 | Comments: 22  
-Solves the pain of managing backups across developer workflows by integrating with AI coding assistants like Claude and Cursor via an MCP server, with strong community engagement as a differentiator.
-
----
+- **Selector Forge** — Browser extension for AI-generated resilient selectors.  
+  [Product Hunt](https://www.producthunt.com/products/selector-forge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/JB3WOBST7RHX4L?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 116 · Comments: 19  
+  Uses AI to generate robust CSS/XPath selectors that survive DOM changes, solving a persistent pain point for web scraping and automated testing.
 
 ### 📊 AI Applications
+- **HAQQ Legal AI on Mobile** — Bringing legal understanding to anyone with a phone.  
+  [Product Hunt](https://www.producthunt.com/products/haqq-mobile-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/ICAKRVUKEN25TG?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 303 · Comments: 18  
+  Democratizes legal advice by bringing AI‑powered legal analysis to mobile devices, making complex statutes accessible without a lawyer.
 
-**Grok by SpaceXAI for Word** — Draft, restructure & tighten wording from panel inside Word  
-🔗 [Product Hunt](https://www.producthunt.com/products/grok-by-spacexai-for-word?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/UWES5GXBNLEAZI?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 209 | Comments: 12  
-Solves the friction of switching between AI tools and document editors by embedding a full AI writing assistant panel directly inside Microsoft Word for drafting, restructuring, and tightening text.
-
-**Plansera AI** — E-2 visa business plans, drafted by an AI  
-🔗 [Product Hunt](https://www.producthunt.com/products/plansera-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/HPZMF2PNOBV76S?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 120 | Comments: 15  
-Solves the complexity and cost of E-2 visa business plan creation by automating the drafting process with AI tailored to immigration requirements, standing out as a highly verticalized legal SaaS product.
-
----
+- **uwait** — Get paid while AI thinks.  
+  [Product Hunt](https://www.producthunt.com/products/uwait?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/ET2VD6UMZ3BTIB?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 171 · Comments: 40  
+  Monetizes the latency of AI inference by serving ads or micro-tasks during processing time, creating an entirely new revenue stream for AI-powered apps.
 
 ### 🎨 Creative & Content
+- **Alai 2.0** — AI design partner for presentations, social posts, and more.  
+  [Product Hunt](https://www.producthunt.com/products/alai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/FXYXCM6UIMQ5YE?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 290 · Comments: 55  
+  Acts as a co‑designer that understands context and brand guidelines, generating slides, social media assets, and visual content that require minimal manual polish.
 
-**AlsonAI — Editor Mode** — AI-assisted storybooks, now with full creative control.  
-🔗 [Product Hunt](https://www.producthunt.com/products/alsonai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/PXD3PKD55NOLTC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 21 | Comments: 3  
-Solves the tension between AI generation and human authorship by introducing a full editor mode for AI-assisted storybooks, giving creators granular control over narrative output.
-
-**Mira Gold's Writing Forge™** — AI fiction that keeps continuity. One story, many forms.  
-🔗 [Product Hunt](https://www.producthunt.com/products/mira-gold-s-writing-forge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/JZ5FTWWTLWJXHZ?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 12 | Comments: 3  
-Solves the notorious AI fiction problem of narrative inconsistency by enforcing continuity across multiple story formats, a novel approach to long-form creative writing with AI.
-
----
+- **OnBrand by SlideSpeak** — Design context for AI agents.  
+  [Product Hunt](https://www.producthunt.com/products/onbrand-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/5XUO6E5A7ZZRXC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 108 · Comments: 10  
+  Provides a centralized place to define brand identity and design tokens that AI agents can consume, ensuring consistent output across automated creative workflows.
 
 ### 🔧 Infrastructure & Models
+- **AlgoFly AI** — The all-in-one place to build and deploy vision AI.  
+  [Product Hunt](https://www.producthunt.com/products/algofly-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/CNFAF6CYJHSC6J?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 95 · Comments: 7  
+  Unifies dataset management, model training, and deployment for computer vision, reducing the fragmented toolchain that plagues vision AI teams.
 
-**Kineforge AI/ML Model for Robotics** — Train robot brains without demos on one GPU  
-🔗 [Product Hunt](https://www.producthunt.com/products/kineforge-ai-ml-model-for-robotics?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/FNQV7KZAFBUUTK?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
-Votes: 9 | Comments: 1  
-Solves the high cost and data requirements of robotics model training by enabling single-GPU training without demonstration data, a significant efficiency breakthrough for robotics R&D.
+- **co/core** — An AI cooperative. Local models on spare macs.  
+  [Product Hunt](https://www.producthunt.com/products/co-core?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [Website](https://www.producthunt.com/r/DVMRPWCHMKQUVL?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+  Votes: 25 · Comments: 3  
+  Aggregates idle Mac hardware into a distributed network for running local AI models, offering a privacy‑first, cost‑effective alternative to cloud inference.
 
 ---
 
 ## Market Signal
 
-**Developer tools and AI agent infrastructure dominate** today's launches, accounting for over half of all products and the top three by votes. The most crowded category is **Developer Tools**, with five products spanning coding models (Laguna), backup management (Cloudback MCP Server), dependency monitoring (Beacon), and voice control (SpeakUp). This signals strong market demand for AI-integrated development workflows.
+Today’s launch cohort shows **developer tools and AI agents as the most crowded categories**, with 6 of the 16 products falling squarely into dev infrastructure or agent debugging. This signals that the AI market is shifting from “building models” to “operationalizing agents” — a trend reinforced by AgentX’s one‑click fix capability and Cloudflare’s ephemeral accounts for agent testing.
 
-A notable innovation is **Backgrind**, which extends agent capabilities beyond traditional apps into game environments — an unusual crossover between productivity and entertainment. **Plansera AI** highlights a growing trend of **hyper-vertical AI SaaS**, targeting a specific legal use case (E-2 visa plans) rather than generic document generation.
+**Innovative approaches** stand out: uwait flips the perception of AI latency by monetizing it, while co/core leverages unused consumer hardware for local model inference — both novel economic models. Clawd introduces a browser‑native, fully offline AI companion, emphasising privacy and edge computing.
 
-On the open-source front, **SpeakUp** (voice control for macOS) and **Kineforge** (robotics model) explicitly feature GitHub in their topics, suggesting a healthy open-source presence in developer tools and infrastructure. The remaining products appear closed-source or SaaS-oriented, maintaining the typical Product Hunt mix.
+The **open‑source versus closed‑source trend** leans heavily toward open source. Skybridge, Selector Forge, and co/core are all open‑source projects, reflecting developer demand for transparency and customization. Meanwhile, enterprise‑facing tools like AlgoFly and HAQQ remain closed, suggesting that open‑source momentum is strongest in horizontal infrastructure rather than vertical applications.
 
 ---
 
 ## Worth Trying
 
-1. **Cloudback MCP Server** — Directly integrates AI coding assistants (Claude, Cursor, VS Code) with backup management, a practical and immediately useful tool for any developer already using these tools daily. High community engagement (22 comments) indicates real demand.
+1. **Skybridge** — If you’re building any kind of agent‑enabled app, the full‑stack React framework for MCP is a game‑changer. It reduces boilerplate and standardises agent‑client communication, making it worth adopting early.
 
-2. **Backgrind** — The ability to run AI agents over *any* app, including games, is technically impressive and opens use cases for automation, testing, and accessibility that other agent frameworks cannot touch.
+2. **Selector Forge** — For developers who write web scraping scripts or automated browser tests, this extension’s AI‑generated selectors survive DOM changes and drastically reduce maintenance overhead.
 
-3. **Kineforge** — For developers in robotics or simulation, training models on a single GPU without demo data is a substantial cost and time saver. Open-source availability on GitHub makes it worth evaluating for research teams.
+3. **co/core** — A fascinating experiment in distributed inference. If you have spare Macs lying around, this is an excellent way to experiment with local model hosting and contribute to a privacy‑preserving AI network.
 
 ---
 *This digest is auto-generated by [agents-radar](https://github.com/ivo-eu/agents-radar).*

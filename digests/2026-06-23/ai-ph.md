@@ -1,119 +1,126 @@
 # Product Hunt AI 产品日报 2026-06-23
 
-> 数据来源: [Product Hunt](https://www.producthunt.com/) | 共 13 个产品 | 生成时间: 2026-06-22 17:18 UTC
+> 数据来源: [Product Hunt](https://www.producthunt.com/) | 共 16 个产品 | 生成时间: 2026-06-23 10:50 UTC
 
 ---
 
 # Product Hunt AI 产品日报（2026-06-23）
 
-## 今日速览
+## 📋 今日速览
 
-今日 Product Hunt 上共发布 13 款 AI 相关产品，**AI 智能体与助手类产品强势霸榜前三**，合计收获超 800 票，社区对自主 Agent 的热情依旧高涨。**开发者工具**依然最密集，MCP 服务器、代理编码模型、依赖预警等新工具层出不穷。**垂直场景应用**开始精准切分——从 E-2 签证商业计划书到房地产投资分析，AI 正加速“捡起”细分长尾需求。此外，**创意内容赛道**出现连续性小说、儿童故事书等差异化产品，但票数整体偏低，可能仍需时间验证。
+今日 Product Hunt 上 AI 相关产品发布活跃，**开发者工具**与**AI 智能体/助手**成为两大主力方向，占总发布量近 60%。亮点方面：**AgentX** 以 530 票夺冠，主打一键评估和修复 AI Agent，反映了市场对 Agent 可靠性的迫切需求；**Skybridge** 作为 MCP 应用的全栈开源框架紧随其后，预示着围绕模型上下文协议的生态正在成型。此外，法律 AI 移动端、AI 设计工具、自组织第二大脑等垂直场景产品也获得较高关注，**开源**成为多个高票产品的共同标签。
 
 ---
 
-## 热门产品
+## 🏆 热门产品
 
 ### 🤖 AI 智能体与助手
 
-**① Agent 37 Cloud** — 给每个客户配备专属 Hermes 或 OpenClaw 智能体  
-- Product Hunt：https://www.producthunt.com/products/agent-37-38  
-- 官网：https://www.producthunt.com/r/G7ASKEML5CLFTD  
-- 投票 407 | 评论 42  
-- 一句话：让企业为每个客户部署个性化 AI 代理，提供 Hermes（轻量）和 OpenClaw（强力）两种模式，主打私有化部署与高并发。
+**AgentX** — Evaluate AI agent, pinpoint issues, and fix with one click.  
+[Product Hunt](https://www.producthunt.com/products/agentx?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/MAKIXB6C4DMJG6?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 530 | 评论 173  
+一句话：针对 AI Agent 的“调试器”，让开发者快速定位并修复 Agent 行为问题，降低部署风险。
 
-**② Grok by SpaceXAI for Word** — 在 Word 侧边栏内完成草稿、重构与措辞收紧  
-- Product Hunt：https://www.producthunt.com/products/grok-by-spacexai-for-word  
-- 官网：https://www.producthunt.com/r/UWES5GXBNLEAZI  
-- 投票 209 | 评论 12  
-- 一句话：将 Grok 模型内嵌到 Microsoft Word，无需切换应用即可获得实时写作辅助，极大降低办公场景的 AI 使用门槛。
+**AirJelly** — Your Proactive, Self-Organizing Second Brain  
+[Product Hunt](https://www.producthunt.com/products/airjelly?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/PMQKFXXQ5WQB2C?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 139 | 评论 11  
+一句话：主动式、自组织的知识管理助手，无需手动整理，AI 自动组织信息。
 
-**③ Backgrind** — 在任何应用（包括游戏）上运行你的 AI 代理  
-- Product Hunt：https://www.producthunt.com/products/backgrind  
-- 官网：https://www.producthunt.com/r/LXT3GGWXGWH6H4  
-- 投票 189 | 评论 14  
-- 一句话：突破应用边界，让 AI 代理在后台操作任意桌面软件，甚至能自动玩游戏、操作复杂流程，是“通用 RPA + Agent”的创新尝试。
+**Clawd** — A context-aware browser mascot with 100% local offline AI  
+[Product Hunt](https://www.producthunt.com/products/clawd-the-context-aware-browser-pet?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/YMDF4CNQMIWJYC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 122 | 评论 17  
+一句话：完全离线的浏览器 AI 宠物，理解用户浏览上下文并本地运行，隐私友好。
 
 ---
 
 ### 🛠️ 开发者工具
 
-**④ Cloudback MCP Server** — 从 Claude、Cursor、VS Code 管理你的备份  
-- Product Hunt：https://www.producthunt.com/products/cloudback  
-- 官网：https://www.producthunt.com/r/DLNZ4A3NGRTL7U  
-- 投票 138 | 评论 22  
-- 一句话：基于 MCP（Model Context Protocol）将备份管理能力注入 AI 编码工具，开发者可在聊天中直接查询、创建或恢复云备份，简化运维。
+**Skybridge** — The full-stack open source React framework for MCP Apps  
+[Product Hunt](https://www.producthunt.com/products/skybridge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/WYDUMMA2RJODS7?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 517 | 评论 161  
+一句话：为 MCP（Model Context Protocol）应用打造的 React 全栈框架，开源且前后端一体，加速 AI 应用开发。
 
-**⑤ Beacon** — 在依赖断裂前先知先觉  
-- Product Hunt：https://www.producthunt.com/products/beacon-23  
-- 官网：https://www.producthunt.com/r/6ESQAUMPA3AO62  
-- 投票 15 | 评论 5  
-- 一句话：通过 AI 分析包依赖的版本变更、废弃风险，在 CI/CD 之前发出预警，防止“断链”事故，适合有严格依赖管理的团队。
+**Cloudflare Temporary Accounts** — Let agents deploy before signup  
+[Product Hunt](https://www.producthunt.com/products/cloudflare?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/WFEAPNZTIKAUTV?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 176 | 评论 8  
+一句话：允许 AI Agent 在无需用户注册前即可部署临时账户，降低集成门槛。
+
+**Selector Forge** — Browser extension for AI-generated resilient selectors  
+[Product Hunt](https://www.producthunt.com/products/selector-forge?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/JB3WOBST7RHX4L?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 116 | 评论 19  
+一句话：用 AI 生成稳定的 CSS/XPath 选择器，解决网页抓取和自动化中的元素定位脆弱问题。
+
+**Agentic Document Extraction** — Make the world's documents computable  
+[Product Hunt](https://www.producthunt.com/products/agentic-document-extraction?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/NRV6TH5TKJQAN5?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 101 | 评论 5  
+一句话：AI Agent 驱动的文档提取 API，将非结构化文档转化为可计算的结构化数据。
 
 ---
 
 ### 📊 AI 应用
 
-**⑥ Plansera AI** — 由 AI 起草 E-2 签证商业计划书  
-- Product Hunt：https://www.producthunt.com/products/plansera-ai  
-- 官网：https://www.producthunt.com/r/HPZMF2PNOBV76S  
-- 投票 120 | 评论 15  
-- 一句话：专为美国 E-2 投资者签证设计，AI 根据用户输入生成符合移民局格式的商业计划书，节省大量律师费与起草时间。
+**HAQQ Legal AI on Mobile** — Bringing legal understanding to anyone with a phone  
+[Product Hunt](https://www.producthunt.com/products/haqq-mobile-app?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/ICAKRVUKEN25TG?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 303 | 评论 18  
+一句话：移动端法律 AI，让普通用户用手机即可解答法律问题，降低专业咨询门槛。
 
-**⑦ Property Alpha** — 住宅房地产投资 AI 交易分析  
-- Product Hunt：https://www.producthunt.com/products/property-alpha  
-- 官网：https://www.producthunt.com/r/UFNIPOUOO4FOCU  
-- 投票 15 | 评论 12  
-- 一句话：输入房源信息，AI 自动计算 IRR、现金流、Cap Rate 等指标，并给出买入/卖出建议，让个人投资者快速做判断。
+**uwait** — Get paid while AI thinks  
+[Product Hunt](https://www.producthunt.com/products/uwait?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/ET2VD6UMZ3BTIB?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 171 | 评论 40  
+一句话：将 AI 推理等待时间货币化——用户同意在 AI 思考期间展示广告并获得报酬，首创“付费等待”模式。
+
+**LeadDelta 5.0: AI Warm Intros + AI Inbox** — AI that finds Warm Intro Paths and fixes your LinkedIn Inbox  
+[Product Hunt](https://www.producthunt.com/products/leaddelta?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/W7SEC4MTHQIUOE?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 56 | 评论 29  
+一句话：LinkedIn 销售加速器，AI 自动寻找暖介绍路径并整理收件箱，提升 B2B 转化效率。
 
 ---
 
 ### 🎨 创意与内容
 
-**⑧ AlsonAI（Editor Mode 上线）** — AI 辅助故事书，现在支持完全创意控制  
-- Product Hunt：https://www.producthunt.com/products/alsonai  
-- 官网：https://www.producthunt.com/r/PXD3PKD55NOLTC  
-- 投票 21 | 评论 3  
-- 一句话：儿童故事书生成工具新增“编辑器模式”，允许用户逐段修改 AI 生成的文字与插图，平衡效率与个性化。
+**Alai 2.0** — AI design partner for presentations, social posts, and more  
+[Product Hunt](https://www.producthunt.com/products/alai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/FXYXCM6UIMQ5YE?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 290 | 评论 55  
+一句话：AI 设计搭档，覆盖演示文稿、社交媒体帖子等，实现快速创意生成与风格统一。
 
-**⑨ Mira Gold's Writing Forge™** — 保持连贯性的 AI 小说创作，一个故事多种形式  
-- Product Hunt：https://www.producthunt.com/products/mira-gold-s-writing-forge  
-- 官网：https://www.producthunt.com/r/JZ5FTWWTLWJXHZ  
-- 投票 12 | 评论 3  
-- 一句话：基于长上下文模型，能跨章节维持角色设定、情节一致性，并可将同一故事输出为小说、剧本、漫画等多种体裁。
+**OnBrand by SlideSpeak** — Design context for AI agents  
+[Product Hunt](https://www.producthunt.com/products/onbrand-2?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/5XUO6E5A7ZZRXC?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 108 | 评论 10  
+一句话：为 AI 代理提供品牌设计上下文，确保输出的视觉内容符合企业品牌规范。
 
 ---
 
 ### 🔧 基础设施与模型
 
-**⑩ Laguna by Poolside** — 面向代理式编程和长周期工作的基础模型  
-- Product Hunt：https://www.producthunt.com/products/poolside  
-- 官网：https://www.producthunt.com/r/UWCINA5GZHP76J  
-- 投票 157 | 评论 7  
-- 一句话：专为“智能体式编码”设计，支持长时间、多步骤的软件开发任务（如重构、跨文件修改），是当前 Agent 类应用的后端模型竞争关键。
+**AlgoFly AI** — The all-in-one place to build and deploy vision AI  
+[Product Hunt](https://www.producthunt.com/products/algofly-ai?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/CNFAF6CYJHSC6J?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 95 | 评论 7  
+一句话：一站式视觉 AI 构建与部署平台，简化从数据标注到模型上线的全流程。
 
-**⑪ Kineforge AI/ML Model for Robotics** — 单 GPU 训练机器人“大脑”，无需演示数据  
-- Product Hunt：https://www.producthunt.com/products/kineforge-ai-ml-model-for-robotics  
-- 官网：https://www.producthunt.com/r/FNQV7KZAFBUUTK  
-- 投票 9 | 评论 1  
-- 一句话：面向机器人领域的轻量模型，可在消费级 GPU 上训练运动控制策略，降低机器人 AI 开发门槛。
+**co/core** — An AI cooperative. Local models on spare macs.  
+[Product Hunt](https://www.producthunt.com/products/co-core?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29) | [官网](https://www.producthunt.com/r/DVMRPWCHMKQUVL?utm_campaign=producthunt-api&utm_medium=api-v2&utm_source=Application%3A+%E5%91%A8%E6%8A%A5-workMac+%28ID%3A+287503%29)  
+投票 25 | 评论 3  
+一句话：利用闲置 Mac 组建去中心化 AI 算力网络，所有模型本地运行，强调隐私与协作。
 
 ---
 
-## 市场信号
+## 📈 市场信号
 
-- **智能体与助手类产品最密集**：前三名均为 Agent 相关产品，且 Agent 37 和 Backgrind 分别从“企业私有化部署”和“跨应用操作”两个角度切入，说明市场正从单一聊天机器人转向可执行任务的代理平台。  
-- **MCP 协议生态初现**：Cloudback MCP Server 借助 MCP 将传统 SaaS 功能（备份）无缝接入 AI 开发环境，预示“模型上下文协议”可能成为下一个标准化接口。  
-- **垂直场景精细度提升**：Plansera AI 锁定 E-2 签证写作，Property Alpha 聚焦住宅房产估值，此类“小而准”的工具在投票和评论中表现突出（尤其 Plansera 拿到 120 票），说明用户对解决真实痛点的垂直产品买单意愿高。  
-- **开源 vs 闭源**：今日 13 款产品中，SpeakUp（语音控制）和 Kineforge（机器人模型）标注了“Open Source”或“GitHub”，其余多为闭源 SaaS。开源产品票数偏低，但 Kineforge 概念新颖，需关注后续社区反响。
+**类别密集度**：今日发布以**开发者工具**（8 款）和**AI 智能体/助手**（4 款）为主导，合计占比 75%。其中 Agent 评估、MCP 框架、文档提取等工具性产品需求旺盛，反映出开发者社区正在密集构建 AI 应用的基础设施。**创意与内容**类仅 2 款且票数较高（Alai 2.0 和 OnBrand），说明设计领域的 AI 辅助仍有强需求。
+
+**创新思路**：**uwait** 的“付费等待AI思考”模式令人眼前一亮，将推理延迟转化为变现机会，可能催生新的 API 商业模式。**co/core** 尝试用去中心化方式聚合闲置本地算力，与主流的云端推理形成差异化。**Clawd** 的本地离线 AI 宠物则兼顾趣味性与隐私，暗示用户对轻量化、个性化的 AI 体验的偏好。
+
+**开源 vs 闭源**：高票产品中开源比例显著——Skybridge（开源）、Selector Forge（开源）、co/core（开源）均获得社区关注。Cloudflare 等商业产品也通过临时账户等开放策略降低使用门槛。整体来看，开发者对**可审计、可自部署**的 AI 工具更青睐，开源仍是获取早期用户的重要杠杆。
 
 ---
 
-## 值得试用
+## 🧪 值得试用
 
-1. **Backgrind** — 如果你需要自动化桌面操作（如测试、数据爬取、游戏挂机），它提供了一种“AI 代理 + 无 API”的泛用方案，试玩门槛低，想法大胆。  
-2. **Cloudback MCP Server** — 对使用 Claude/Cursor 的开发者来说，直接在聊天中管理云备份（如 AWS S3、Dropbox）能显著提升 DevOps 效率，MCP 生态还有很大扩展空间。  
-3. **Laguna by Poolside** — 如果你正在构建 AI 编码 Agent，Laguna 作为专为此场景训练的基础模型值得测试其长周期任务完成能力，刷新了此前基于通用模型的认知。
+1. **AgentX** — 如果你正在开发或运维 AI Agent，它是当前最直接的“Agent 调试器”，帮你在上线前定位幻觉、错误响应等问题，减少生产事故。
+
+2. **Skybridge** — MCP 正在成为 Agent 与工具交互的通用协议，Skybridge 提供了开箱即用的 React 全栈模板，适合想快速构建 MCP 应用的团队。
+
+3. **Cloudflare Temporary Accounts** — 让 AI Agent 在用户注册前即可创建临时账户，大幅降低集成摩擦。若你的产品需要 Agent 即时交互，这个功能值得体验。
 
 ---
 *本日报由 [agents-radar](https://github.com/ivo-eu/agents-radar) 自动生成。*

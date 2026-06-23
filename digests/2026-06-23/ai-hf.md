@@ -1,82 +1,168 @@
 # Hugging Face 热门模型日报 2026-06-23
 
-> 数据来源: [Hugging Face Hub](https://huggingface.co/) | 共 30 个模型 | 生成时间: 2026-06-22 17:18 UTC
+> 数据来源: [Hugging Face Hub](https://huggingface.co/) | 共 30 个模型 | 生成时间: 2026-06-23 10:50 UTC
 
 ---
 
-好的，作为 AI 模型生态分析师，为您呈上今日的《Hugging Face 热门模型日报》。
+# 🧠 Hugging Face 热门模型日报 —— 2026-06-23
+
+## 📰 今日速览
+
+本周 Hugging Face 热点由 **DeepSeek-V4-Pro** 领跑（5,021 赞），成为社区最受关注的通用语言模型。多模态与生成模型强势崛起，**Google DiffusionGemma**、**Gemma-4-12B-it** 以及 **NVIDIA LocateAnything-3B** 均获得高赞，标志着“统一感知+生成”架构走向主流。代码与数学专用模型持续细分，**Gemma-4-12B-Coder** 量化版本下载量破 45 万，**Kimi-K2.7-Code** 也跻身热门。社区量化活动异常活跃，GGUF 版本包揽近三分之一榜单，GLM-5.2、Qwen3.6、Qwythos 等均有多个量化分支。
 
 ---
 
-### 《Hugging Face 热门模型日报》— 2026-06-23
+## 🔥 热门模型
 
-#### 今日速览
+### 🧠 语言模型（LLM、对话、指令微调）
 
-今日 Hugging Face 生态呈现出三大核心趋势：**“巨头”回归与“社区”狂欢**。DeepSeek 发布下一代旗舰模型 **DeepSeek-V4-Pro**，以绝对优势登顶周榜，证明了顶级闭源竞争者的强大号召力。同时，NVIDIA 和 Google 分别推出了面向视障群体定位和多模态生成的创新模型 **LocateAnything-3B** 和 **DiffusionGemma-26B**，技术探索方向多元。社区方面，**Gemma 4** 和 **Qwen 3.6** 的量化版本（GGUF）持续霸榜，开发者对高性能本地部署的需求愈发强烈。此外，**GLM-5.2** 和 **MiniMax-M3** 等多模态模型家族也展现了强劲的上升势头。
+- **[DeepSeek-V4-Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)**  
+  作者：deepseek-ai | 👍 5,021 | 📥 2,245,489  
+  新一代旗舰对话模型，本周点赞冠军，延续 DeepSeek 在推理与生成上的前沿突破。
 
-#### 热门模型
+- **[zai-org/GLM-5.2](https://huggingface.co/zai-org/GLM-5.2)**  
+  作者：zai-org | 👍 2,097 | 📥 40,127  
+  智谱 GLM 系列最新 MoE 架构版本，支持对话与文本生成，社区关注度极高。
 
-##### 🧠 语言模型（LLM、对话模型、指令微调）
+- **[microsoft/FastContext-1.0-4B-SFT](https://huggingface.co/microsoft/FastContext-1.0-4B-SFT)**  
+  作者：microsoft | 👍 301 | 📥 4,391  
+  微软推出的快速上下文扩展模型，专为长序列任务优化，标签含 Explorer SubAgent。
 
-| 模型 | 作者 | 点赞 | 下载 | 一句话说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| [**DeepSeek-V4-Pro**](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro) | deepseek-ai | 5,006 | 2,421,858 | 新一代旗舰级对话模型，凭借卓越的综合性能成为今日最重磅的发布，是开源社区对标顶级闭源模型的标杆。 |
-| [**zai-org/GLM-5.2**](https://huggingface.co/zai-org/GLM-5.2) | zai-org | 1,973 | 33,589 | 智谱 AI 发布的 MoE 架构 GLM 系列最新模型，性能强劲，引发社区广泛关注。 |
-| [**google/gemma-4-12B-it**](https://huggingface.co/google/gemma-4-12B-it) | google | 1,134 | 1,912,198 | Google 的统一多模态 Gemma 4 指令版，支持“any-to-any”任务，是全能型模型。 |
-| [**MoonshotAI/Kimi-K2.7-Code**](https://huggingface.co/moonshotai/Kimi-K2.7-Code) | moonshotai | 957 | 412,778 | Moonshot AI 发布的代码增强版视觉语言模型，兼顾图像理解与代码生成，下载量巨大。 |
-| [**CohereLabs/North-Mini-Code-1.0**](https://huggingface.co/CohereLabs/North-Mini-Code-1.0) | CohereLabs | 478 | 21,078 | Cohere 推出的 MoE 小型代码模型，专注于高效代码生成与推理，性能优于同类尺寸模型。 |
-| [**HauhauCS/Qwen3.6-35B-A3B-Uncensored...**](https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive) | HauhauCS | 2,101 | 4,078,305 | 基于 Qwen3.6 的“无审查”MoE 微调版本，因极高的下载量（社区活跃度指标）和特色内容生成能力而备受争议与关注。 |
-| [**lordx64/Qwable-v1**](https://huggingface.co/lordx64/Qwable-v1) | lordx64 | 160 | 3,733 | 基于 Qwen3.5 MoE 架构的社区微调模型，探索了模型在新架构上的应用潜力。 |
-| [**Mia-AiLab/Qwable-3.6-27b**](https://huggingface.co/Mia-AiLab/Qwable-3.6-27b) | Mia-AiLab | 124 | 23,958 | 专注 Qwen3.6 系列的社区微调版本，提供 GGUF 等量化选项，便于本地部署。 |
-| [**poolside/Laguna-M.1**](https://huggingface.co/poolside/Laguna-M.1) | poolside | 90 | 2,707 | 专注软件工程场景的专有模型，展示了在特定领域（如代码生成）的深度定制能力。 |
+- **[poolside/Laguna-M.1](https://huggingface.co/poolside/Laguna-M.1)**  
+  作者：poolside | 👍 93 | 📥 2,787  
+  新晋开源语言模型，支持 vLLM 和 SGLang，旨在探索高效推理。
 
-##### 🎨 多模态与生成（图像、视频、音频、文本到X）
+---
 
-| 模型 | 作者 | 点赞 | 下载 | 一句话说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| [**nvidia/LocateAnything-3B**](https://huggingface.co/nvidia/LocateAnything-3B) | nvidia | 2,283 | 247,517 | NVIDIA 推出的“定位一切”模型，能够根据文本指令从图像中精准定位目标物体，场景理解能力突破。 |
-| [**MiniMaxAI/MiniMax-M3**](https://huggingface.co/MiniMaxAI/MiniMax-M3) | MiniMaxAI | 1,198 | 119,967 | MiniMax 的旗舰多模态模型，支持图像文本输入，在图文理解和生成任务上表现优异。 |
-| [**google/diffusiongemma-26B-A4B-it**](https://huggingface.co/google/diffusiongemma-26B-A4B-it) | google | 1,046 | 874,368 | Google 发布的扩散模型版 Gemma，利用激活参数仅 4B 的 MoE 架构实现高效的图像生成对话。 |
-| [**nvidia/nemotron-3.5-asr-streaming-0.6b**](https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b) | nvidia | 624 | 34,860 | NVIDIA 推出的超小型流式语音识别模型，专为低延迟、高效率的实时语音场景设计。 |
-| [**ostris/ideogram_4_turbotime_lora**](https://huggingface.co/ostris/ideogram_4_turbotime_lora) | ostris | 100 | 3,244 | 为 Ideogram 4 模型设计的 LoRA 微调模块，可大幅加速图像生成过程（Turbo Time）。 |
-| [**baidu/Unlimited-OCR**](https://huggingface.co/baidu/Unlimited-OCR) | baidu | 102 | 47 | 百度发布的无限制通用OCR模型，旨在应对各种复杂场景的文字识别，应用场景广泛。 |
-| [**Boogu/Boogu-Image-0.1-Edit**](https://huggingface.co/Boogu/Boogu-Image-0.1-Edit) | Boogu | 98 | 473 | 基于扩散模型的图像编辑工具，通过文本指令即可实现局部修改或风格转换。 |
+### 🎨 多模态与生成（图像、视频、音频、文本到X）
 
-##### 🔧 专用模型（代码、数学、推理、嵌入、OCR、ASR）
+- **[MiniMaxAI/MiniMax-M3](https://huggingface.co/MiniMaxAI/MiniMax-M3)**  
+  作者：MiniMaxAI | 👍 1,215 | 📥 131,057  
+  多模态视觉-语言模型，支持图像理解与文本输出，MiniMax 最新旗舰。
 
-| 模型 | 作者 | 点赞 | 下载 | 一句话说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| [**WeiboAI/VibeThinker-3B**](https://huggingface.co/WeiboAI/VibeThinker-3B) | WeiboAI | 599 | 32,385 | 专注数学推理的 3B 小模型，展示了在特定领域用小模型实现出色推理能力的可能性。 |
-| [**microsoft/FastContext-1.0-4B-SFT**](https://huggingface.co/microsoft/FastContext-1.0-4B-SFT) | microsoft | 284 | 3,498 | 微软推出的高效上下文处理模型，优化了长上下文场景下的推理速度与记忆能力。 |
-| [**LiquidAI/LFM2.5-Embedding-350M**](https://huggingface.co/LiquidAI/LFM2.5-Embedding-350M) | LiquidAI | 100 | 8,822 | Liquid AI 的新一代嵌入模型，专为语义相似度计算和检索增强生成（RAG）场景打造。 |
-| [**LiquidAI/LFM2.5-ColBERT-350M**](https://huggingface.co/LiquidAI/LFM2.5-ColBERT-350M) | LiquidAI | 76 | 2,202 | 基于 ColBERT 架构的嵌入模型，在信息检索任务上追求更精准的 token 级匹配。 |
-| [**empero-ai/Qwythos-9B-Claude-Mythos...**](https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M) | empero-ai | 110 | 842 | 社区基于 Qwen3.5 融合“Claude 风格”数据集微调的推理模型，体现了社区对模型行为的定制需求。 |
+- **[nvidia/LocateAnything-3B](https://huggingface.co/nvidia/LocateAnything-3B)**  
+  作者：nvidia | 👍 2,303 | 📥 274,025  
+  NVIDIA 发布的通用目标定位模型，可基于自然语言在图像中定位任意物体。
 
-##### 📦 微调与量化（社区微调、GGUF、AWQ）
+- **[google/diffusiongemma-26B-A4B-it](https://huggingface.co/google/diffusiongemma-26B-A4B-it)**  
+  作者：google | 👍 1,053 | 📥 948,996  
+  结合扩散模型与 Gemma 架构的生成式多模态模型，擅长图像与文本混合任务。
 
-| 模型 | 作者 | 点赞 | 下载 | 一句话说明 |
-| :--- | :--- | :--- | :--- | :--- |
-| [**yuxinlu1/gemma-4-12B-coder-fable5...-GGUF**](https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF) | yuxinlu1 | 2,147 | 414,734 | Gemma 4 代码模型的社区量化版，将强大的编码能力以 GGUF 格式带到本地，下载量断层领先。 |
-| [**yuxinlu1/gemma-4-12B-agentic...-GGUF**](https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF) | yuxinlu1 | 354 | 50,314 | Gemma 4 Agent 版本的 GGUF 量化版，面向终端代理场景，体现了 Agent 模型本地化的需求。 |
-| [**unsloth/GLM-5.2-GGUF**](https://huggingface.co/unsloth/GLM-5.2-GGUF) | unsloth | 243 | 41,846 | 知名量化工具 Unsloth 官方出品的 GLM-5.2 量化版，展示了社区对高效部署新模型的强烈需求。 |
-| [**zai-org/GLM-5.2-FP8**](https://huggingface.co/zai-org/GLM-5.2-FP8) | zai-org | 131 | 334,716 | 官方推出的 FP8 精度版本 GLM-5.2，兼顾模型性能与推理效率。 |
-| [**Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF**](https://huggingface.co/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF) | Jackrong | 280 | 214,630 | 集成多模态能力的 Qwen3.6 社区版 GGUF 量化模型，证明了社区对多功能“一体化”模型的偏好。 |
-| [**bytkim/Qwen3.6-27B-MTP-pi-tune-GGUF**](https://huggingface.co/bytkim/Qwen3.6-27B-MTP-pi-tune-GGUF) | bytkim | 104 | 52,774 | 使用多 Token 预测（MTP）技术训练的 Qwen3.6 量化版，探索了模型训练与推理的新范式。 |
-| [**empero-ai/Qwythos-9B-Claude-Mythos...-GGUF**](https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF) | empero-ai | 118 | 6,633 | 社区微调推理模型的 GGUF 版本，方便用户直接在本地使用 `llama.cpp` 等工具。 |
+- **[google/gemma-4-12B-it](https://huggingface.co/google/gemma-4-12B-it)**  
+  作者：google | 👍 1,147 | 📥 1,991,703  
+  任何到任何（any-to-any）的统一多模态模型，Gemma 4 系列最受瞩目的版本。
 
-#### 生态信号
+- **[datalab-to/lift](https://huggingface.co/datalab-to/lift)**  
+  作者：datalab-to | 👍 128 | 📥 3,216  
+  基于 Qwen3.5 的文档理解模型，支持 PDF 与图像上下文推理。
 
-- **模型家族三强争霸**：本周势头最旺的模型家族分别为 **DeepSeek V4**（旗舰回归）、**Gemma 4**（Google 官方 + 社区深度微调）和 **Qwen 3.6**（广泛的社区生态和量化版本）。GLM 家族紧随其后，展现了强大的生命力。
-- **开源权重依然是主流，但量化是刚需**：DeepSeek-V4 等官方模型依然以开源权重为主。然而，从下载量看，**GGUF 量化版** 模型的下载量远超原始权重模型，反映了开发者对本地化、高效率部署的极致追求。社区量化行动（如 yuxinlu1, unsloth）已成为模型生态中关键一环。
-- **Agent 与专用模型下沉**：NVIDIA 的 LocateAnything 和 Google 的 DiffusionGemma 代表了从指令跟随向“任务执行”的演进。同时，社区对 Gemma 4 Agent 版、代码版、数学版等 **专用化微调** 和 **量化** 模型的热情，标志着 AI 应用正从通用走向深入细分场景。
+- **[owensong/Inflect-Nano-v1](https://huggingface.co/owensong/Inflect-Nano-v1)**  
+  作者：owensong | 👍 171 | 📥 0  
+  超轻量级文本转语音（TTS）模型，适合边缘设备部署。
 
-#### 值得探索
+- **[Boogu/Boogu-Image-0.1-Edit](https://huggingface.co/Boogu/Boogu-Image-0.1-Edit)**  
+  作者：Boogu | 👍 105 | 📥 592  
+  基于 Diffusers 的图像编辑模型，支持中英文提示。
 
-1.  **DeepSeek-V4-Pro** (链接见上)：**最值得研究的模型**。作为周榜冠军，它代表了当前开源多模态语言模型的顶尖水平。建议深入研究其架构创新、训练数据规模及与闭源模型（如 GPT-5o）的对比评测，这对理解下一代 AI 模型发展至关重要。
+- **[ostris/ideogram_4_turbotime_lora](https://huggingface.co/ostris/ideogram_4_turbotime_lora)**  
+  作者：ostris | 👍 106 | 📥 3,672  
+  Ideogram 4 的 LoRA 微调版，加速文生图推理。
 
-2.  **nvidia/LocateAnything-3B** (链接见上)：**最值得尝试的交互模型**。“定位一切”的设计理念非常直观，可用于智能安防、辅助视障人士、图像标注等。其 3B 的参数量也预示着在边缘设备上部署的可能性，是探索空间智能的良好起点。
+- **[Comfy-Org/Boogu-Image](https://huggingface.co/Comfy-Org/Boogu-Image)**  
+  作者：Comfy-Org | 👍 80 | 📥 0  
+  ComfyUI 工作流形式的 Boogu 图像模型，便于节点化部署。
 
-3.  **LiquidAI/LFM2.5-Embedding-350M** (链接见上)：**最值得关注的嵌入模型**。在 RAG 已成为主流应用的今天，一个高效、高精度的嵌入模型是成功的关键。Liquid AI 的新系列值得与 Mistral Embed、E5 等模型做对比测试，其在小参数下的表现可能带来新的部署范式。
+- **[HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive](https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive)**  
+  作者：HauhauCS | 👍 2,129 | 📥 3,955,016  
+  社区去审查版 Qwen3.6 MoE 多模态模型，GGUF 量化，下载量极高。
+
+- **[lordx64/Qwable-v1](https://huggingface.co/lordx64/Qwable-v1)**  
+  作者：lordx64 | 👍 168 | 📥 4,547  
+  基于 Qwen3.5 MoE 的社区微调多模态模型，支持图像理解。
+
+---
+
+### 🔧 专用模型（代码、数学、医疗、嵌入、OCR、语音）
+
+- **[baidu/Unlimited-OCR](https://huggingface.co/baidu/Unlimited-OCR)**  
+  作者：baidu | 👍 314 | 📥 8,396  
+  百度推出的通用 OCR 模型，支持不限场景的文本识别。
+
+- **[nvidia/nemotron-3.5-asr-streaming-0.6b](https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b)**  
+  作者：nvidia | 👍 644 | 📥 41,050  
+  流式自动语音识别模型，支持缓存感知推理，适合实时场景。
+
+- **[WeiboAI/VibeThinker-3B](https://huggingface.co/WeiboAI/VibeThinker-3B)**  
+  作者：WeiboAI | 👍 632 | 📥 41,170  
+  专注于数学推理的 3B 模型，基于 Qwen2 微调，展示小模型在数学任务上的潜力。
+
+- **[moonshotai/Kimi-K2.7-Code](https://huggingface.co/moonshotai/Kimi-K2.7-Code)**  
+  作者：moonshotai | 👍 966 | 📥 447,920  
+  Kimi 系列代码专用版，支持多模态代码推理，压缩后体积更小。
+
+- **[CohereLabs/North-Mini-Code-1.0](https://huggingface.co/CohereLabs/North-Mini-Code-1.0)**  
+  作者：CohereLabs | 👍 484 | 📥 21,634  
+  Cohere 推出的轻量代码生成模型，MoE 结构，注重推理效率。
+
+- **[LiquidAI/LFM2.5-Embedding-350M](https://huggingface.co/LiquidAI/LFM2.5-Embedding-350M)**  
+  作者：LiquidAI | 👍 105 | 📥 10,117  
+  LFM2.5 系列的句子嵌入模型，适合语义检索和聚类。
+
+- **[LiquidAI/LFM2.5-ColBERT-350M](https://huggingface.co/LiquidAI/LFM2.5-ColBERT-350M)**  
+  作者：LiquidAI | 👍 83 | 📥 2,534  
+  基于 ColBERT 架构的稠密检索模型，兼顾效率与精度。
+
+---
+
+### 📦 微调与量化（GGUF、FP8、社区微调）
+
+- **[unsloth/GLM-5.2-GGUF](https://huggingface.co/unsloth/GLM-5.2-GGUF)**  
+  作者：unsloth | 👍 267 | 📥 55,820  
+  GLM-5.2 的官方 GGUF 量化版，借助 unsloth 工具链优化推理速度。
+
+- **[zai-org/GLM-5.2-FP8](https://huggingface.co/zai-org/GLM-5.2-FP8)**  
+  作者：zai-org | 👍 139 | 📥 395,290  
+  原厂自行量化的 FP8 版本，兼顾精度与显存占用。
+
+- **[yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF](https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF)**  
+  作者：yuxinlu1 | 👍 2,199 | 📥 456,117  
+  Gemma-4 代码模型的 GGUF 量化，下载量极高，社区首选代码专用量化版。
+
+- **[yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF](https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF)**  
+  作者：yuxinlu1 | 👍 407 | 📥 96,459  
+  Gemma-4 Agent 功能的精细量化版，专攻终端与代理场景。
+
+- **[empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF](https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF)**  
+  作者：empero-ai | 👍 153 | 📥 27,218  
+  基于 Qwen3.5 的推理增强模型，GGUF 量化后更易本地部署。
+
+- **[empero-ai/Qwythos-9B-Claude-Mythos-5-1M](https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M)**  
+  作者：empero-ai | 👍 149 | 📥 1,856  
+  同一模型的原始 safetensors 版，供需要完整精度的用户选用。
+
+- **[bytkim/Qwen3.6-27B-MTP-pi-tune-GGUF](https://huggingface.co/bytkim/Qwen3.6-27B-MTP-pi-tune-GGUF)**  
+  作者：bytkim | 👍 110 | 📥 65,765  
+  使用 pi-tune 技术微调 Qwen3.6 并量化为 GGUF，主打 MTP（multi-turn prompting）。
+
+- **[Mia-AiLab/Qwable-3.6-27b](https://huggingface.co/Mia-AiLab/Qwable-3.6-27b)**  
+  作者：Mia-AiLab | 👍 127 | 📥 24,935  
+  社区基于 Qwen3.6 微调的 27B 模型，同时提供 GGUF 与 safetensors 版本。
+
+---
+
+## 🌐 生态信号
+
+**模型家族竞争白热化**：DeepSeek-V4 以绝对优势领跑，但 **Qwen3.6** 与 **Gemma-4** 凭借丰富的社区衍生版本（代码、Agent、去审查）形成强大生态矩阵。**GLM-5.2** 的 MoE-DSA 架构也开始获得量化团队支持。**开源权重大幅碾压闭源**：本周 Top10 无一闭源模型，权重公开与合理许可（如 Apache-2.0）依然是社区爆款的基础。**量化活动创纪录**：GGUF 版本占据 1/3 榜单，且下载量往往超越原版——用户更愿直接使用“即开即用”的量化包。社区微调（Qwable、Qwythos）聚焦于**去除审查**和**推理增强**，表明定制化需求旺盛。
+
+---
+
+## 🔭 值得探索
+
+1. **[DeepSeek-V4-Pro](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro)** —— 本周最强通用语言模型，适合作为对话与推理基准，值得深入评估其长上下文与指令遵循能力。
+
+2. **[nvidia/LocateAnything-3B](https://huggingface.co/nvidia/LocateAnything-3B)** —— 开创性的“万物定位”范式，将自然语言与视觉 grounding 结合，对机器人、质检等场景有巨大潜力。
+
+3. **[HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive](https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive)** —— 尽管是去审查版，但它是 Qwen3.6 MoE 多模态能力的最佳量化演示，下载量接近 400 万，可体验大规模稀疏激活带来的效率红利。
 
 ---
 *本日报由 [agents-radar](https://github.com/ivo-eu/agents-radar) 自动生成。*

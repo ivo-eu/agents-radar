@@ -1,6 +1,6 @@
 # AI Open Source Trends 2026-06-23
 
-> Sources: GitHub Trending + GitHub Search API | Generated: 2026-06-22 17:18 UTC
+> Sources: GitHub Trending + GitHub Search API | Generated: 2026-06-23 10:50 UTC
 
 ---
 
@@ -8,165 +8,80 @@
 
 ## 1. Today's Highlights
 
-The open-source AI ecosystem is experiencing a major "agentic video" breakout: **OpenMontage** (+2,935 stars today) and **palmier-pro** (+2,462) are both pioneering agent-powered video production pipelines, while **heygen-com/hyperframes** (+369) bridges HTML rendering and agent-driven video creation. Simultaneously, the "skills as infrastructure" movement is accelerating — **mattpocock/skills** (+2,051) and **DeusData/codebase-memory-mcp** (+1,186) represent a new class of developer tooling that exports structured agent capabilities directly from developer workflows. ByteDance's **deer-flow** (+736) signals continued enterprise investment in long-horizon SuperAgent harnesses, and **ZhuLinsen/daily_stock_analysis** (+1,560) demonstrates fierce demand for LLM-powered financial analysis systems.
-
----
+The open-source AI ecosystem is experiencing an explosive shift toward **production-grade agent harnesses** and **persistent agent memory**, with three dominant themes emerging. ByteDance's **deer-flow** (73.6K total, +738 today) represents a new class of long-horizon "SuperAgent" that combines sandboxed execution, memory graphs, and subagent orchestration — signaling the maturation of agent frameworks beyond toy demos. Meanwhile, **OpenMontage** (+2,938 today) and **hyperframes** (+395 today) are pioneering the intersection of AI agents and video production, turning coding assistants into full studio pipelines. The MCP (Model Context Protocol) ecosystem continues to expand rapidly, with **codebase-memory-mcp** (+1,185 today) delivering sub-millisecond code intelligence and **claude-context** (MCP server for code search) gaining traction. Notably, the **agent skills** movement has gone mainstream — `garrytan/gstack` (+573 today), `mattpocock/skills` (+2,051 today), and `mukul975/Anthropic-Cybersecurity-Skills` (+956 today) represent a new paradigm of sharing opinionated, reusable agent configurations across 20+ platforms.
 
 ## 2. Top Projects by Category
 
-### 🔧 AI Infrastructure (Frameworks, Dev Tools, Inference Engines)
+### 🔧 AI Infrastructure (Frameworks, Inference, Dev Tools, MCP)
 
-- **[airllm](https://github.com/lyogavin/airllm)** — ⭐ ? (+453 today)  
-  Runs 70B LLM inference on a single 4GB GPU — critical for local/edge AI adoption.
-
-- **[codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)** — ⭐ ? (+1,186 today)  
-  High-performance MCP server that indexes entire codebases in milliseconds into a persistent knowledge graph, reducing LLM token consumption by 99%.
-
-- **[mattpocock/skills](https://github.com/mattpocock/skills)** — ⭐ ? (+2,051 today)  
-  Exports structured developer skills from `.claude` directories — a proto-standard for portable agent capabilities.
-
-- **[firecrawl](https://github.com/firecrawl/firecrawl)** — ⭐ 136,930 (+736 today)  
-  Web scraping API purpose-built for AI agents to search, scrape, and interact with web content at scale.
-
-- **[garrytan/gstack](https://github.com/garrytan/gstack)** — ⭐ ? (+649 today)  
-  Opinionated Claude Code setup with 23 tools mirroring a full startup team — CEO, Designer, Eng Manager, etc.
-
-- **[ollama](https://github.com/ollama/ollama)** — ⭐ 174,729  
-  The go-to local model runner, now supporting Kimi-K2.6, GLM-5.1, MiniMax, DeepSeek, and Qwen.
-
-- **[vllm-project/vllm](https://github.com/vllm-project/vllm)** — ⭐ 83,559  
-  High-throughput LLM inference engine — production backbone for most agent deployments.
-
----
+- **[firecrawl/firecrawl](https://github.com/firecrawl/firecrawl)** — ⭐137.8K (+615 today) — The de facto API for web data extraction for AI agents, now integrating with agent workflows at scale.
+- **[ollama/ollama](https://github.com/ollama/ollama)** — ⭐174.8K — Local LLM runner now supporting Kimi-K2.6, GLM-5.1, and other frontier models; the go-to for on-device inference.
+- **[vllm-project/vllm](https://github.com/vllm-project/vllm)** — ⭐83.6K — High-throughput LLM inference engine, essential for production deployments.
+- **[huggingface/transformers](https://github.com/huggingface/transformers)** — ⭐161.8K — The universal model-definition framework; continues to be the bedrock of open-source AI.
+- **[DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)** — ⭐1.2K (+1,185 today) — High-performance MCP server that indexes codebases into persistent knowledge graphs; 158 languages, sub-ms queries, zero dependencies — a standout for developer tooling.
+- **[zilliztech/claude-context](https://github.com/zilliztech/claude-context)** — ⭐11.9K — Code search MCP for Claude Code, making entire codebase context available to coding agents.
+- **[ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)** ⭐100 (+100 today) — Demonstrates the emerging pattern of using AI coding agents for website cloning with a single command.
 
 ### 🤖 AI Agents / Workflows
 
-- **[deer-flow](https://github.com/bytedance/deer-flow)** — ⭐ 73,091 (+736 today)  
-  ByteDance's long-horizon SuperAgent harness with sandboxes, memories, tools, skill libraries, and subagents — handles multi-hour tasks.
-
-- **[NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)** — ⭐ 199,771  
-  "The agent that grows with you" — a flexible, extensible agent framework with massive community adoption.
-
-- **[HKUDS/nanobot](https://github.com/HKUDS/nanobot)** — ⭐ 44,574  
-  Lightweight, open-source AI agent for tools, chats, and workflows — designed for minimal overhead.
-
-- **[zhayujie/CowAgent](https://github.com/zhayujie/CowAgent)** — ⭐ 45,554  
-  Super AI assistant and agent harness with planning, tool execution, self-evolution, and multi-model support.
-
-- **[Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)** — ⭐ 185,077  
-  The original autonomous agent project — still the most-starred agent framework, now with expanded skill system.
-
-- **[shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)** — ⭐ 67,870  
-  Minimalist agent harness built from zero — "Bash is all you need" philosophy for learning agent internals.
-
-- **[jackwener/OpenCLI](https://github.com/jackwener/OpenCLI)** — ⭐ 24,989  
-  Transforms any website into a CLI tool — enabling agents to interact with web services directly.
-
----
+- **[bytedance/deer-flow](https://github.com/bytedance/deer-flow)** — ⭐73.6K (+738 today) — An open-source long-horizon SuperAgent harness that researches, codes, and creates using sandboxes, memories, tools, subagents, and message gateways — handles minute-to-hour tasks.
+- **[CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit)** — ⭐35.4K — Frontend stack for agents & Generative UI supporting React, Angular, Mobile, and Slack; makers of the AG-UI Protocol.
+- **[browser-use/browser-use](https://github.com/browser-use/browser-use)** — ⭐100.2K — Makes websites accessible for AI agents; the standard for browser-based task automation.
+- **[OpenHands/OpenHands](https://github.com/OpenHands/OpenHands)** — ⭐78.1K — AI-driven development platform; established leader for autonomous software engineering agents.
+- **[Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT)** — ⭐185.1K — The original accessible AI agent vision; continues to evolve with new capabilities.
+- **[zhayujie/CowAgent](https://github.com/zhayujie/CowAgent)** — ⭐45.6K — Open-source super AI assistant & agent harness with plans, tools, skills, and self-evolving memory — lightweight and extensible.
+- **[shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code)** — ⭐68.0K — A nano "agent harness" built from scratch; essential educational resource for understanding agent internals.
+- **[CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio)** — ⭐47.7K — AI productivity studio with smart chat, autonomous agents, and 300+ assistants — unified access to frontier LLMs.
 
 ### 📦 AI Applications (Vertical Solutions)
 
-- **[OpenMontage](https://github.com/calesthio/OpenMontage)** — ⭐ ? (+2,935 today)  
-  World's first open-source agentic video production system — 12 pipelines, 52 tools, 500+ agent skills. Turn coding assistants into studios.
-
-- **[palmier-pro](https://github.com/palmier-io/palmier-pro)** — ⭐ ? (+2,462 today)  
-  macOS video editor built entirely for AI — designed for agent-driven video editing workflows.
-
-- **[jamiepine/voicebox](https://github.com/jamiepine/voicebox)** — ⭐ ? (+508 today)  
-  Open-source AI voice studio with voice cloning, dictation, and multi-voice creation — targeting content creators.
-
-- **[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)** — ⭐ 45,656 (+1,560 today)  
-  LLM-powered multi-market stock analysis with real-time news, decision dashboards, and automated push notifications.
-
-- **[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)** — ⭐ ? (+369 today)  
-  Write HTML, render video — built specifically for AI agents to generate video content from structured data.
-
-- **[mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)** — ⭐ ? (+957 today)  
-  817 structured cybersecurity skills mapped to 6 frameworks (MITRE ATT&CK, NIST CSF 2.0, etc.) — works with Claude Code, Copilot, Cursor, Gemini CLI, and 20+ platforms.
-
-- **[santifer/career-ops](https://github.com/santifer/career-ops)** — ⭐ 55,189  
-  AI-powered job search system built on Claude Code — 14 skill modes, Go dashboard, PDF generation.
-
----
+- **[calesthio/OpenMontage](https://github.com/calesthio/OpenMontage)** — ⭐2.9K (+2,938 today) — World's first open-source agentic video production system: 12 pipelines, 52 tools, 500+ agent skills — turns AI coding assistants into full video production studios. **Today's most explosive growth.**
+- **[palmier-io/palmier-pro](https://github.com/palmier-io/palmier-pro)** — ⭐2.5K (+2,463 today) — macOS video editor built for AI; complements the video-generation surge.
+- **[heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)** — ⭐395 (+395 today) — Write HTML, render video — built specifically for agents; signals a new paradigm for programmatic video generation.
+- **[ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)** — ⭐46.4K (+1,557 today) — LLM-powered multi-market stock analysis system with real-time news, decision dashboards, and automated notifications — zero-cost scheduled runs.
+- **[TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)** — ⭐88.1K — Multi-agent LLM financial trading framework; one of the highest-starred finance-AI projects.
+- **[jamiepine/voicebox](https://github.com/jamiepine/voicebox)** — ⭐0.5K (+529 today) — Open-source AI voice studio: clone, dictate, and create — tapping into the voice AI wave.
+- **[mukul975/Anthropic-Cybersecurity-Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills)** — ⭐1.0K (+956 today) — 817 structured cybersecurity skills for AI agents mapped to 6 frameworks — works with 20+ platforms.
+- **[OpenBB-finance/OpenBB](https://github.com/OpenBB-finance/OpenBB)** — ⭐69.6K — Financial data platform for analysts, quants, and AI agents — the infrastructure layer for AI trading.
 
 ### 🧠 LLMs / Training
 
-- **[huggingface/transformers](https://github.com/huggingface/transformers)** — ⭐ 161,805  
-  The foundational model framework — supports text, vision, audio, and multimodal models.
+- **[airllm](https://github.com/lyogavin/airllm)** — ⭐193 (+193 today) — 70B model inference on a single 4GB GPU; democratizes LLM access for resource-constrained setups.
+- **[huggingface/transformers](https://github.com/huggingface/transformers)** — ⭐161.8K — Also the primary training and inference framework for the entire open-source LLM ecosystem.
+- **[NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)** — ⭐200.4K — "The agent that grows with you" — among the highest-starred agent + model projects.
+- **[open-compass/opencompass](https://github.com/open-compass/opencompass)** — ⭐7.1K — LLM evaluation platform supporting 100+ datasets and all major model families — critical for model benchmarking.
+- **[Eigenwise/atomic-agents](https://github.com/Eigenwise/atomic-agents)** — ⭐6.0K — Building AI agents, atomically — a modular approach to agent construction.
 
-- **[huggingface/transformers](https://github.com/huggingface/transformers)** — *included above*  
-  *(Acknowledged as category leader; no duplicate link needed per report convention)*
+### 🔍 RAG / Knowledge (Vector Databases, Retrieval, Knowledge Management)
 
-- **[tensorflow/tensorflow](https://github.com/tensorflow/tensorflow)** — ⭐ 195,824  
-  Production ML framework — still dominant for deployed AI systems.
-
-- **[pytorch/pytorch](https://github.com/pytorch/pytorch)** — ⭐ 100,957  
-  The research-to-production standard for deep learning.
-
-- **[open-compass/opencompass](https://github.com/open-compass/opencompass)** — ⭐ 7,112  
-  LLM evaluation platform supporting 100+ datasets across major models — critical for model selection.
-
-- **[galilai-group/stable-pretraining](https://github.com/galilai-group/stable-pretraining)** — ⭐ 266  
-  Minimalist, scalable library for pretraining foundation and world models — notable for reliability focus.
-
-- **[zjunlp/LightThinker](https://github.com/zjunlp/LightThinker)** — ⭐ 164  
-  "Step-by-step thinking compression" — EMNLP 2025 paper implementation for efficient chain-of-thought.
-
----
-
-### 🔍 RAG / Knowledge (Vector Databases & Retrieval)
-
-- **[mem0ai/mem0](https://github.com/mem0ai/mem0)** — ⭐ 59,135  
-  Universal memory layer for AI agents — persists agent context across sessions.
-
-- **[infiniflow/ragflow](https://github.com/infiniflow/ragflow)** — ⭐ 83,361  
-  Leading open-source RAG engine combining cutting-edge retrieval with agent capabilities.
-
-- **[thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)** — ⭐ 83,731  
-  Persistent context across sessions for every agent — compresses session data and injects relevant context into future sessions.
-
-- **[safishamsi/graphify](https://github.com/safishamsi/graphify)** — ⭐ 70,619  
-  AI coding assistant skill that turns code, schemas, docs, images, and videos into queryable knowledge graphs.
-
-- **[milvus-io/milvus](https://github.com/milvus-io/milvus)** — ⭐ 44,890  
-  Cloud-native vector database — the standard for scalable ANN search in production RAG systems.
-
-- **[qaran-io/qdrant](https://github.com/qdrant/qdrant)** — ⭐ 32,557  
-  High-performance vector database for next-gen AI applications — also available as managed cloud service.
-
-- **[StarTrail-org/LEANN](https://github.com/StarTrail-org/LEANN)** — ⭐ 12,503  
-  [MLsys2026] RAG on Everything with 97% storage savings — runs fast, accurate, and 100% private RAG on personal devices.
-
-- **[headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)** — ⭐ 46,640  
-  Compresses tool outputs, logs, files, and RAG chunks before reaching the LLM — 60-95% fewer tokens.
-
----
+- **[mem0ai/mem0](https://github.com/mem0ai/mem0)** — ⭐59.2K — Universal memory layer for AI agents; the leading solution for persistent agent context.
+- **[infiniflow/ragflow](https://github.com/infiniflow/ragflow)** — ⭐83.4K — Open-source RAG engine fusing retrieval-augmented generation with Agent capabilities — a leading context layer for LLMs.
+- **[Mintplex-Labs/anything-llm](https://github.com/Mintplex-Labs/anything-llm)** — ⭐62.0K — Local-first agent experience with full RAG capabilities — "stop renting your intelligence."
+- **[milvus-io/milvus](https://github.com/milvus-io/milvus)** — ⭐44.9K — High-performance cloud-native vector database for scalable ANN search; the industry standard.
+- **[qdrant/qdrant](https://github.com/qdrant/qdrant)** — ⭐32.6K — High-performance, massive-scale vector database; also available as a cloud service.
+- **[PaddlePaddle/PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)** — ⭐83.4K — Turns any PDF or image into structured data for AI — bridges images/PDFs and LLMs with 100+ language support.
+- **[safishamsi/graphify](https://github.com/safishamsi/graphify)** — ⭐70.9K — AI coding assistant skill that turns folders of code, schemas, scripts, docs, and images into queryable knowledge graphs.
+- **[headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)** — ⭐47.7K — Compresses tool outputs, logs, files, and RAG chunks by 60-95% before reaching the LLM — a novel token optimization approach.
 
 ## 3. Trend Signal Analysis
 
-The most explosive community attention today centers on **agentic video production** — a genuinely new application category that, until this week, had no open-source representative. **OpenMontage** (+2,935) and **palmier-pro** (+2,462) are effectively creating a new vertical: "AI coding assistant as video production studio." This is not about diffusion video generation (Sora, Stable Video Diffusion) but about orchestrating traditional video pipelines (pipelines, tools, editing) through agentic coordination. **hyperframes** (+369) complements this by making HTML the intermediary format between agents and video output — a promising abstraction.
+**Agent Harnesses Are Going Mainstream.** The single most explosive trend visible today is the rise of **structured, shareable agent configurations** — what the community is calling "agent harnesses" or "agent skills." Projects like `deer-flow`, `shareAI-lab/learn-claude-code`, `mattpocock/skills`, and `garrytan/gstack` represent a paradigm shift: instead of building agents from scratch, developers are now importing opinionated, production-tested setups that include tool definitions, memory configurations, subagent topologies, and skill libraries. The `.claude` directory is becoming a new standard for sharing agent expertise, akin to how `.github` workflows standardized CI/CD.
 
-A second major signal is **skills export / agent portability**. The massive star counts for **mattpocock/skills** (+2,051) and **Anthropic-Cybersecurity-Skills** (+957) indicate the community is demanding structured, reusable agent capabilities that work across Claude Code, Copilot, Codex CLI, Cursor, Gemini CLI, and 20+ other platforms. This "skills standard" movement (agentskills.io) could become as foundational as Dockerfiles were for container portability.
+**Long-Horizon Autonomy Is the New Frontier.** ByteDance's `deer-flow` and the `Anthropic-Cybersecurity-Skills` repo (817 structured skills) signal that the community is moving beyond single-turn prompting and simple tool-calling toward **persistent, multi-hour agentic tasks**. The combination of sandboxed execution, persistent memory graphs, subagent delegation, and skill libraries creates a new category of "SuperAgent" capable of research, coding, and creative production. This aligns with the industry-wide push toward agentic workflows that can plan, execute, and self-correct over extended periods.
 
-Third, **MCP (Model Context Protocol) servers** are maturing fast. **codebase-memory-mcp** (+1,186) achieves sub-millisecond codebase queries with 99% fewer tokens — this is the kind of infrastructure that makes agentic coding genuinely practical. Similarly **claude-mem** (83,731 stars) and **cognee** (19,235) point to persistent memory as a core agent infrastructure layer.
+**MCP Protocol Maturation.** The appearance of multiple high-quality MCP (Model Context Protocol) servers — `codebase-memory-mcp`, `claude-context`, and `headroom` — confirms that MCP is becoming the standard interface for connecting LLMs to external data sources. Codebase-memory-mcp's claim of "99% fewer tokens" through indexed knowledge graphs is particularly noteworthy, addressing the fundamental cost and context-window challenges of agent-based development.
 
-The emergence of **deer-flow** from ByteDance (+736) confirms that major tech companies are investing heavily in long-horizon agent harnesses — not just for coding, but for research, creation, and complex workflow automation. Its sandbox + memory + subagent architecture likely sets a template for enterprise agent systems.
+**Video Generation Meets Agentic Pipelines.** `OpenMontage`'s explosive debut (+2,938 stars in one day) and `hyperframes`' "Write HTML. Render video. Built for agents" approach signal a new vertical: **agentic video production**. Rather than using standalone AI video tools, developers are now wiring LLM agents into multi-tool video creation pipelines — a pattern likely to spread to other creative domains.
 
-**Financial AI** continues its remarkable run. **daily_stock_analysis** (+1,560) and **TradingAgents** (87,978) show that LLM-powered stock analysis and multi-agent trading frameworks are no longer niche — they are mainstream open-source categories with voracious community uptake.
-
----
+**The Agent Skills Economy.** The rapid adoption of `skills` directories (mattpocock's 2K+ stars, the cybersecurity skills repo, career-ops with 55K stars) points to an emerging **agent skills marketplace**. Developers are packaging domain expertise (cybersecurity, career ops, finance) as reusable agent skill sets, mapped to industry frameworks. This could evolve into a decentralized skill registry, similar to npm packages but for agent capabilities.
 
 ## 4. Community Hot Spots
 
-- **Agentic Video Production** — **OpenMontage** and **palmier-pro** lead a new category combining LLM agents with traditional video editing pipelines. Worth watching for how this converges with diffusion-based video generation.
-
-- **Portable Agent Skills** — **mattpocock/skills** and **Anthropic-Cybersecurity-Skills** represent the emerging agentskills.io standard. If adopted broadly, this will fundamentally change how agents acquire and share capabilities across platforms.
-
-- **Long-horizon Agent Architectures** — **deer-flow** (ByteDance) sets a new bar for multi-hour autonomous task execution. Its sandboxed, memory-rich subagent design is worth studying for any serious agent infrastructure work.
-
-- **Code Intelligence MCP Servers** — **codebase-memory-mcp** is the fastest code intelligence server in the open-source space, with production-ready performance. Essential infrastructure for agentic coding.
-
-- **Context Compression for Agents** — **headroom** (46,640 stars) provides 60-95% token reduction for tool outputs and RAG chunks. As agents consume more context, compression layers become critical cost and latency sinks.
+- 🔥 **Long-Horizon Agent Harnesses** — ByteDance's [`deer-flow`](https://github.com/bytedance/deer-flow) and the agent harness movement (`shareAI-lab/learn-claude-code`, `zhayujie/CowAgent`) — the most active area for developers building production agent systems that handle minute-to-hour tasks.
+- 🔥 **Code Intelligence MCP Servers** — [`codebase-memory-mcp`](https://github.com/DeusData/codebase-memory-mcp) and [`zilliztech/claude-context`](https://github.com/zilliztech/claude-context) — solving the "codebase context" problem for coding agents; performance and token efficiency are the key differentiators.
+- 🔥 **Agent Skills / .claude Ecosystem** — [`mattpocock/skills`](https://github.com/mattpocock/skills), [`garrytan/gstack`](https://github.com/garrytan/gstack), and [`mukul975/Anthropic-Cybersecurity-Skills`](https://github.com/mukul975/Anthropic-Cybersecurity-Skills) — the emerging standard for sharing opinionated agent configurations; watch for registry/template systems.
+- 🔥 **Agentic Video Production** — [`OpenMontage`](https://github.com/calesthio/OpenMontage) and [`hyperframes`](https://github.com/heygen-com/hyperframes) — the intersection of AI agents and creative tooling; video is just the first vertical.
+- 🔥 **Persistent Agent Memory** — [`mem0ai/mem0`](https://github.com/mem0ai/mem0) and [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) — solving the "session reset" problem with AI-driven compression and context injection; critical for all agentic workflows.
 
 ---
 *This digest is auto-generated by [agents-radar](https://github.com/ivo-eu/agents-radar).*
