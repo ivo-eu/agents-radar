@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "OpenAI Codex 发布 7 个 Rust alpha 版本",
+      "GitHub Copilot CLI v1.0.64 正式版发布",
+      "Gemini CLI 单日 48 个 Issue、19 个 PR",
+      "Claude Code v2.1.187 发布，Bug 多发",
+      "OpenCode CPU 占用和权限绕过问题成焦点",
+      "Pi v0.80.2 新版本兼容性讨论热烈"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.10 发布，引入对话快速模式",
+      "PR 积压 454 条，维护者需加速审阅",
+      "Anthropic Vertex 路由变更致纯文本响应不可见",
+      "Lossless-Claw 引擎因插件机制初始化失败",
+      "内存向量存储静默迁移至新路径",
+      "社区热议 MCP 工具注入与跨通道消息丢失"
+    ],
+    "ai-trending": [
+      "hermes-agent 总量突破 20 万星",
+      "字节跳动 deer-flow 单日新增 739 星",
+      "OpenMontage 开源视频系统暴增 3592 星",
+      "codebase-memory-mcp 日增 1300 星",
+      "Claude 插件生态工具链加速成熟",
+      "vllm 高吞吐推理引擎获 83,704 星"
+    ],
+    "ai-web": [
+      "Anthropic 发布协作产品 Claude Tag",
+      "Claude Tag 可在 Slack 中 @ 调用",
+      "内部 65% 代码由 Claude Tag 生成",
+      "定位为 AI as a Teammate 团队协作者",
+      "OpenAI 今日无任何新增内容",
+      "未来计划扩展到更多工作场所"
+    ],
+    "ai-hn": [
+      "Grok Build 0.1 性能与价格分析引热议",
+      "Mythos 模型发现美国政府系统漏洞",
+      "RLM 本地 Agent 调试器填补可观测空白",
+      "AWS Lambda 推出 MicroVM 隔离沙箱",
+      "加州 AB 2047 法案限制 3D 打印引争议",
+      "Anthropic Claude 服务波动与隐私条款更新"
+    ],
+    "ai-ph": [
+      "NeuralAgent 3.0 285ms 内自主 UI 操作",
+      "Buddy AI Note 将笔记转化为可执行计划",
+      "Latitude 获 349 票，监控 AI Agent 故障",
+      "Chat-to-Video 概念被进一步深化",
+      "本地化开源开发者工具受社区重视",
+      "产品聚焦 AI 智能体规模化与工业化"
+    ],
+    "ai-arxiv": [
+      "Grad Detect 基于梯度检测 LLM 幻觉",
+      "研究指出扩大规模无法避免塑性损失",
+      "蒸馏缩放定律量化教师/学生模型关系",
+      "OpenThoughts-Agent 公开训练数据配方",
+      "后验细化实现任意位置迭代生成",
+      "量子纠错码 LLM 辅助发现新探索"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro 周赞 5000+ 登顶",
+      "nvidia LocateAnything-3B 获 2329 赞",
+      "Qwen3.6 系列 2179 赞表现亮眼",
+      "GLM-5.2 以 2264 赞引中文社区热议",
+      "微软 FastContext-1.0-4B 长上下文模型",
+      "poolside Laguna-M.1 面向软件工程 7B"
+    ],
+    "ai-community": [
+      "AI 代码 80/20 规则：最后 20% 耗时 80%",
+      "开源 LLM 可视性工具替代商业方案",
+      "Agent 权限绕过实战敲响安全警钟",
+      "先写 Eval 再写代码的最佳实践",
+      "GitHub Copilot 转 token 计费引发反思",
+      "MCP 协议一周年设计反思提供方法论"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.187 released",
+      "OpenAI Codex: 7 alpha releases today",
+      "Security hardening dominates discussions",
+      "Duplicate bug reports on rate limiting",
+      "Hallucinated user messages reported",
+      "Context compaction issues across tools"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.10 auto fast mode",
+      "500 PRs updated in last 24 hours",
+      "Model routing with Zai improvements",
+      "Vertex routing regression introduced",
+      "Memory store relocation causes bugs",
+      "Groq transcription feature broken"
+    ],
+    "ai-trending": [
+      "Agent-harness tooling explodes in stars",
+      "NVIDIA ECC and Hermes exceed 200K stars",
+      "MCP servers for code intelligence rise",
+      "vllm hits 83,704 total stars",
+      "Codebase-memory-mcp gains 1,300 today",
+      "Learn-claude-code reaches 68,206 stars"
+    ],
+    "ai-web": [
+      "Claude Tag for Slack launched",
+      "65% of Anthropic code generated internally",
+      "@Claude delegates tasks in channels",
+      "Proactive collaboration paradigm shift",
+      "No new OpenAI content today",
+      "Persistent context listening added"
+    ],
+    "ai-hn": [
+      "Claude Tag sparks debate (252 points)",
+      "Grok Build 0.1 benchmark analyzed",
+      "Mythos finds US govt vulnerabilities",
+      "AB 2047 criticized for stifling innovation",
+      "Vibe coding frustration grows on HN",
+      "Agent security becomes hot topic"
+    ],
+    "ai-ph": [
+      "Bluerails Discovery leads with 590 votes",
+      "NeuralAgent 3.0: sub-300ms UI actions",
+      "Latitude debugging agents gets 349 votes",
+      "OpenArt Director scores 405 votes",
+      "Cotypist productivity tool at 375 votes",
+      "Open-source infrastructure trend strong"
+    ],
+    "ai-arxiv": [
+      "InSight enables autonomous VLA skill learning",
+      "SHERLOC advances repository-level code repair",
+      "FLUX3D pushes text-to-3D quality",
+      "Plasticity loss not fixed by scale alone",
+      "Scaling laws for LLM distillation derived",
+      "Grad Detect uses gradients for hallucination"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro: 5,036 weekly likes",
+      "NVIDIA LocateAnything-3B visual grounding",
+      "zai-org/GLM-5.2 MoE-DSA architecture",
+      "Gemma-4-12B-coder GGUF variant popular",
+      "DiffusionGemma-26B gets 1,059 likes",
+      "Qwen3.6 family shows multiple variants"
+    ],
+    "ai-community": [
+      "80/20 rule: last 20% takes 80% time",
+      "Copilot token billing sparks cost debate",
+      "Open-source LLM observability alternative",
+      "Agent hacked its own permissions",
+      "Prompt injection equated to role confusion",
+      "Hetzner price hikes raise concerns"
+    ]
+  }
+}
