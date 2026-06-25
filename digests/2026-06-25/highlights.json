@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code安全误报问题突出",
+      "OpenAI Codex配额异常频发",
+      "Gemini CLI子代理状态误报",
+      "GitHub Copilot会话恢复认证丢失",
+      "OpenCode Windows段错误崩溃",
+      "Qwen Code流式超时问题"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.6.11-beta.1",
+      "消息泄漏与会话稳定性成P1问题",
+      "PR合并效率仅98/500条",
+      "代理恢复机制改进修复会话",
+      "Cron任务删除bug已修正",
+      "频道控制能力增强支持Slack"
+    ],
+    "ai-trending": [
+      "OpenMontage单日获3719星",
+      "hermes-agent增长1178星",
+      "Google DESIGN.md规范发布",
+      "stablyai/orca并行Agent开发环境",
+      "revfactory/harness元技能系统",
+      "AutoGPT引入子代理和文档解析"
+    ],
+    "ai-web": [
+      "Anthropic与NNSA开发核安全分类器",
+      "81K人调研揭示AI经济学",
+      "OpenAI与博通发布推理芯片Jalapeño",
+      "OpenAI推出智能体改造工作",
+      "Anthropic安全能力产品化部署",
+      "OpenAI加速AI基础设施自研"
+    ],
+    "ai-hn": [
+      "Anthropic与Alibaba模型窃取争议433分",
+      "OpenAI与Broadcom推理芯片707分",
+      "NSA因争端失去AI工具访问权",
+      "Reid Hoffman尖锐批评马斯克AI",
+      "Codex浪费SSD写入数百万美元",
+      "LLM安全神经元层新发现"
+    ],
+    "ai-ph": [
+      "腾讯EdgeOne Makers以546票登顶",
+      "Crewdle AI统一订阅模式受追捧",
+      "Buy by Agentcard在Claude中下单",
+      "Customer Relationship Agents管理客户",
+      "Swimio AI游泳教练垂直应用",
+      "Liner Developer Platform开发工具"
+    ],
+    "ai-arxiv": [
+      "Facet-Probe审计多模态顺序敏感性",
+      "SpeechEQ评估语音情商不足",
+      "AI翻译读者更偏好人工翻译",
+      "on-policy自蒸馏降低输出多样性",
+      "Model Forensics区分恶意与困惑",
+      "Natural Ungrokking预训练规则遗忘"
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro周点赞5054",
+      "GLM-5.2获2400点赞排名第二",
+      "nvidia LocateAnything-3B零样本定位",
+      "Kimi-K2.7-Code代码视觉模型",
+      "Qwen3.6量化版下载超800万",
+      "MiniMax-M3多模态通用视觉语言"
+    ],
+    "ai-community": [
+      "Claude Tag信任层缺失讨论",
+      "AI编码代理需要项目记忆",
+      "自动化红队测试清零漏洞",
+      "LLM只提供特征不直接分类",
+      "6个功能2个吃预算案例",
+      "Agentic Loop工程实践指南"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code sees 20+ false positives in 24h.",
+      "Codex users face systemic quota failures.",
+      "Multi-agent orchestration reliability eroding trust.",
+      "OpenCode v1.17.10 breaks Windows support.",
+      "DeepSeek TUI fixes environment inheritance bugs.",
+      "MCP integration becomes de facto extensibility standard."
+    ],
+    "ai-agents": [
+      "OpenClaw: 305 issues, 500 PRs in 24h.",
+      "New release v2026.6.11-beta.1 available.",
+      "Message leaks and silent agent bugs remain critical.",
+      "Nearly 100 PRs merged today.",
+      "Slack relay mode and Mattermost /oc_queue added.",
+      "Per-DM model overrides now supported."
+    ],
+    "ai-trending": [
+      "OpenMontage gains 3,719 stars as agentic video system.",
+      "hermes-agent grows with 1,178 stars today.",
+      "daily_stock_analysis shows LLM-powered finance demand.",
+      "Meta-agent frameworks revfactory/harness and orca emerge.",
+      "RAG/vector-DB projects like ragflow, milvus remain top.",
+      "Ollama adds support for Kimi-K2.6 and GLM-5.1."
+    ],
+    "ai-web": [
+      "Anthropic partners with NNSA on nuclear classifier, 96% accuracy.",
+      "Claude user survey of 81,000 maps productivity and job fears.",
+      "OpenAI publishes on agentic workflows.",
+      "OpenAI announces custom inference chip with Broadcom.",
+      "Nuclear safeguards deployed on live Claude traffic.",
+      "Economic survey provides rare empirical labor data."
+    ],
+    "ai-hn": [
+      "OpenAI chip with Broadcom sparks debate on GPU dependency.",
+      "Anthropic accuses Alibaba of extracting Claude capabilities.",
+      "NSA loses access to Anthropic's Mythos tool.",
+      "Reid Hoffman delivers blunt critique of xAI.",
+      "Ask HN explores future of programming.",
+      "LLM code style analysis shows token cost optimization."
+    ],
+    "ai-ph": [
+      "Tencent EdgeOne Makers lets anyone ship AI agents.",
+      "Propane automates customer context for agents.",
+      "Agent infrastructure launches dominate Product Hunt.",
+      "Swimio: AI swim coach app gains traction.",
+      "Ruby call assistant automates phone support.",
+      "Open-source FUTO Swipe signals transparency shift."
+    ],
+    "ai-arxiv": [
+      "Unfireable Safety Kernel places guardrails outside agent runtime.",
+      "Cross-embodiment robot learning decouples action priors.",
+      "Voice AI fails to integrate paralinguistic cues.",
+      "Natural ungrokking: models spontaneously lose learned rules.",
+      "Forensic method distinguishes misalignment from confusion.",
+      "FORCE fine-tuning overcomes imitation ceiling in RL."
+    ],
+    "ai-hf": [
+      "DeepSeek-V4-Pro tops Hugging Face with 5,054 likes.",
+      "GLM-5.2 MoE-DSA model trends with 2,400 likes.",
+      "Gemma-4-12B variants widely finetuned and quantized.",
+      "NVIDIA LocateAnything-3B gains 2,354 likes.",
+      "MiniMax-M3 showcases vision-language capabilities.",
+      "GGUF and NVFP4 formats enable local deployment."
+    ],
+    "ai-community": [
+      "Claude Tag lacks essential trust layer, warns developer.",
+      "AI coding agents need persistent project memory.",
+      "Red teaming reduces agent breaches from 6 to 0.",
+      "Flaky evals and AWS costs plague agent deployments.",
+      "New compiler stacks TIRx and Event Tensor emerge.",
+      "VibeThinker-3B pushes small-model reasoning."
+    ]
+  }
+}
