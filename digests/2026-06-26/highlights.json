@@ -1,0 +1,134 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.193发布，安全漏洞#71564引关注",
+      "OpenAI Codex配额异常引社区焦虑",
+      "Qwen Code提出团队协作与后台自动化功能",
+      "Pi与Kimi Code修复连接可靠性与性能问题",
+      "DeepSeek TUI品牌重塑为CodeWhale，社区活跃",
+      "安全与权限控制精细化成跨工具通用痛点"
+    ],
+    "ai-agents": [
+      "OpenClaw日更154 issues、500 PRs，活跃度极高",
+      "会话锁争用#86538成为首要性能瓶颈",
+      "多代理编排稳定性问题#43367需紧急修复",
+      "安全边界事件#72418漏洞报告引发讨论",
+      "PR积压438条待合并，审查带宽吃紧",
+      "QQ机器人WebSocket重连修复消息投递丢失"
+    ],
+    "ai-trending": [
+      "OpenMontage获3434星，开源视频生产系统",
+      "Google labs推出design.md统一AI设计系统",
+      "ai-berkshire将价值投资方法融入Claude Code",
+      "claude-mem解决Agent跨会话记忆刚需",
+      "CopilotKit定义AG-UI协议，前端Agent化",
+      "vllm以84k星成为LLM推理事实标准"
+    ],
+    "ai-hn": [
+      "OpenKnowledge开源替代Obsidian获284分登顶",
+      "OpenAI应政府要求延迟发布GPT-5.6",
+      "LLM成本不可持续性文章引发百条评论",
+      "Anthropic公开指控阿里大规模模型蒸馏",
+      "BrowserAct浏览器自动化Agent获高度关注",
+      "DeepSeek Flash纯文本Agent反转经济模型"
+    ],
+    "ai-ph": [
+      "BrowserAct 522票，让AI代理操控浏览器",
+      "Oxlo.ai 486票实现低成本跨模型调用",
+      "ClickUp Brain²企业级全知AI助手发布",
+      "Zaro无代码构建上下文Agent获439票",
+      "Polygraph帮助Agent跨仓库维持会话记忆",
+      "Tough Tongue AI销售实时协作工具亮相"
+    ],
+    "ai-arxiv": [
+      "RiVER框架无需真实答案强化学习LLM",
+      "意图感知训练AIMS数据集提升安全分类",
+      "BINEVAL用二元问题解释性评估LLM",
+      "多模型组合存在共失效天花板理论限制",
+      "序列概率与正确性关系揭示假设边界",
+      "GUI Agent通过事后经验提升任务规划"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE-DSA架构获2535赞领跑周榜",
+      "Kimi-K2.7-Code下载54万，代码专用模型",
+      "Qwen-AgentWorld-35B-A3B专为Agent优化",
+      "Microsoft FastContext-1.0-4B-SFT小巧高效",
+      "baidu Unlimited-OCR通用文字识别下载13万",
+      "nvidia LocateAnything-3B定位模型受关注"
+    ],
+    "ai-community": [
+      "AI Agent编排从demo转向工程化落地",
+      "Blinding Llama漏洞重审本地模型隐私陷阱",
+      "Prompt工程进化至结构化任务契约",
+      "LiteLLM与OpenRouter现实对比引痛点",
+      "本地LLM并非绝对隐私引讨论",
+      "AI生成代码\"功能正确但逻辑错误\"警示"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code and Codex face token and rate-limit issues.",
+      "MCP integration spreads across all AI CLI tools.",
+      "Enterprise demands for secrets management and permissions.",
+      "Subagent architectures cause hangs and silent failures.",
+      "Gemini CLI and Qwen Code push new collaboration features.",
+      "OpenCode struggles with runaway token consumption."
+    ],
+    "ai-agents": [
+      "OpenClaw: 154 issues, 500 PRs, high activity.",
+      "No new releases; 62 PRs merged today.",
+      "Session write-lock timeouts block workflows.",
+      "Multi-agent orchestration instability persists.",
+      "PR #96978 fixes Together AI memory bug.",
+      "Security regressions remain a concern."
+    ],
+    "ai-trending": [
+      "OpenMontage gains 3,434 stars for video production.",
+      "gstack packages Claude Code tools for executives.",
+      "design.md gives agents persistent design understanding.",
+      "MinerU gains 644 stars for document processing.",
+      "Cybersecurity skills mapped to 6 frameworks.",
+      "ollama and vllm lead AI infrastructure."
+    ],
+    "ai-hn": [
+      "Trump asks OpenAI to stagger GPT-5.6 release.",
+      "OpenAI ads on paid tiers anger users.",
+      "OpenKnowledge open-source note-taking surges.",
+      "Chinese AI models close gap with West.",
+      "Anthropic accuses Alibaba of distillation attack.",
+      "Sustainability of LLM costs debated (143 comments)."
+    ],
+    "ai-ph": [
+      "BrowserAct (522 votes) automates browsers for agents.",
+      "Oxlo.ai (486 votes) cuts multi-model costs.",
+      "Zaro (439 votes) builds agents from one prompt.",
+      "Brain² by ClickUp embeds AI in workflows.",
+      "Heron uses eBPF for agent observability.",
+      "Polygraph provides session memory for agents."
+    ],
+    "ai-arxiv": [
+      "RiVER extends RL to tasks without ground truth.",
+      "Co-failure ceiling limits multi-model accuracy.",
+      "Corrigible surrogates detect and fix errors.",
+      "Prompt injection risks in hiring pipelines.",
+      "Hallucination in world models at scale.",
+      "Interpretability-first evaluation frameworks emerge."
+    ],
+    "ai-hf": [
+      "GLM-5.2 leads with 2.5K likes and 83K downloads.",
+      "gemma-4-12B-it is trending multimodal model.",
+      "MiniMax-M3 sees heavy downloads.",
+      "nvidia/LocateAnything-3B for practical vision.",
+      "baidu/Unlimited-OCR for OCR tasks.",
+      "VibeThinker-3B fine-tuned for math reasoning."
+    ],
+    "ai-community": [
+      "Multi-agent handoffs are the hardest part.",
+      "Splitting planner and executor catches flaws.",
+      "Hidden LLM API costs dominate discussions.",
+      "Warning: thin wrappers are fragile.",
+      "Historical parallels to AI winters noted.",
+      "Local model setups and cost tips gain traction."
+    ]
+  }
+}
