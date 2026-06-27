@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.195发布，成本控制成焦点",
+      "OpenAI Codex rust-v0.142.3发布，Windows兼容性受关注",
+      "GitHub Copilot CLI v1.0.66-1发布，复制粘贴被吐槽",
+      "Qwen Code发布夜间版及cua-driver，跨设备同步呼声高",
+      "Gemini CLI聚焦Agent行为可靠性与安全护栏",
+      "Kimi Code CLI Plan Mode状态不一致Bug待修复"
+    ],
+    "ai-agents": [
+      "OpenClaw今日213 Issues、500 PRs，社区活跃",
+      "内部文本泄露和会话状态丢失成用户最大痛点",
+      "PR#68936引入Claude Agent SDK自动修复管道",
+      "PR#97223修复doctor命令优先级逻辑错误",
+      "QQ机器人断线重连修复PR#89038在复审",
+      "仅27条PR合并关闭，审核严格"
+    ],
+    "ai-trending": [
+      "ollama达174,967 stars，新增Kimi-K2.6支持",
+      "google-labs-code/design.md单日+2,407 stars",
+      "garrytan/gstack创建23个Claude Code工具",
+      "aws/agent-toolkit-for-aws首发，Native调用AWS",
+      "browser-use达100,901 stars，浏览器自动化标准",
+      "dify新增多Agent并行推理功能"
+    ],
+    "ai-web": [
+      "Claude Mythos Preview实现零日漏洞全链利用",
+      "Project Glasswing利用模型加固全球关键软件",
+      "Claude Tag产品让AI成为主动团队成员",
+      "Mythos网络安全能力评估报告发布",
+      "逆向CVE-2026-2796利用代码深度复盘",
+      "Anthropic单日发布18篇新内容创纪录"
+    ],
+    "ai-hn": [
+      "OpenAI发布GPT-5.6 Sol预览引热议",
+      "Anthropic Mythos仅向信任美国组织开放",
+      "开源权重模型与闭源差距缩小，效率仍短板",
+      "Smart model router可降低API成本",
+      "白宫要求OpenAI缓释模型，监管升级",
+      "NYT起诉微软侵犯版权，AI版权争议再起"
+    ],
+    "ai-ph": [
+      "Agent Arena获338票，首个AI竞技场",
+      "Gemini Spark获322票，24/7个人代理",
+      "note.md将笔记转为本地LLM长期记忆",
+      "SquidHub支持多人+多AI协同获118票",
+      "Cewsco集成多模态与实时市场数据",
+      "Excel仪表盘AI工具低门槛提升生产力"
+    ],
+    "ai-arxiv": [
+      "RiVER框架实现无监督强化学习对齐",
+      "论文证明多模型系统精度受限于共失败率",
+      "世界模型幻觉可通过状态覆盖率检测预防",
+      "GUI Agent自主探索提升小型MLLM规划",
+      "LLM序列概率与正确性关系研究揭示条件",
+      "AIMS数据集将用户意图纳入安全分类"
+    ],
+    "ai-hf": [
+      "GLM-5.2周获2,624赞，MoE+稀疏注意力",
+      "NVIDIA Qwen3.6量化版下载突破502万",
+      "Microsoft FastContext-1.0-4B专为Agent优化",
+      "Unsloth发布GLM-5.2-GGUF量化版",
+      "WeiboAI VibeThinker-3B轻量数学推理模型",
+      "多款‘去对齐’社区微调模型涌现"
+    ],
+    "ai-community": [
+      "AI Agent运行时遥测比提交频率更关键",
+      "本地AI部署热潮，Mac mini M4指南受关注",
+      "Vibe Coding被指不是软件开发，引发反思",
+      "LLM输出格式控制工程技巧成刚需",
+      "Playwright+GitHub Actions自动抢票实例",
+      "AI历史周期回顾及对数学影响讨论"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.195 released today",
+      "Issue #38335 has 788+ comments",
+      "Gemini CLI emphasizes agent safety",
+      "Qwen Code shows rapid iteration",
+      "MCP compliance emerging across tools",
+      "Ecosystem moves to multi-agent orchestration"
+    ],
+    "ai-agents": [
+      "213 issues, 500 PRs in 24h",
+      "No new releases on 2026-06-27",
+      "203 issues awaiting maintainer review",
+      "Diamond lobster severity bugs top list",
+      "PR #68936 adds autofix pipeline",
+      "Maintainer bandwidth becoming bottleneck"
+    ],
+    "ai-trending": [
+      "OpenMontage gains 1200+ stars today",
+      "ai-berkshire investment framework also 1200+",
+      "Agent-Reach enables zero-API internet reading",
+      "AWS agent-toolkit-for-aws trending with 243 stars",
+      "ollama reaches 174,967 stars",
+      "gstack Claude Code setup gains 950 stars"
+    ],
+    "ai-web": [
+      "Anthropic published 18 articles today",
+      "Claude Tag: proactive Slack integration",
+      "65% of Anthropic code via internal Claude Tag",
+      "Red team reports on Mythos exploit capabilities",
+      "Partnerships with DXC, TCS, Gates Foundation",
+      "OpenAI previews GPT-5.6 Sol (metadata only)"
+    ],
+    "ai-hn": [
+      "Government vetting for GPT-5.6 users (991 pts)",
+      "Anthropic Mythos released to trusted organizations",
+      "Gap between open/closed LLMs debated (200 pts)",
+      "Enterprises pulling back due to mounting costs",
+      "NYT copyright case against Microsoft/OpenAI",
+      "Community skeptical of state control of models"
+    ],
+    "ai-ph": [
+      "Agent Arena launches first public agent arena",
+      "Gemini Spark: 24/7 personal AI agent",
+      "note.md adds local LLM memory layer",
+      "DMV namespace registry for agent tooling",
+      "ModuleX, Basedash enable no-code AI",
+      "No MLOps products in top 13 launches"
+    ],
+    "ai-arxiv": [
+      "RiVER enables RL without ground-truth answers",
+      "Co-failure ceiling limits multi-model accuracy",
+      "Sequence probability correlates conditionally",
+      "Test-time scaling for robotics agents",
+      "New safety classification benchmark introduced",
+      "Harmful video understanding benchmark"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE tops with 2,624 likes",
+      "NVIDIA LocateAnything-3B specialist vision",
+      "Gemma-4-12B coder fine-tune 536k downloads",
+      "Qwen3.6 uncensored variant 3.3M downloads",
+      "GGUF quantized models dominate downloads",
+      "Baidu Unlimited-OCR and Krea-2 Turbo"
+    ],
+    "ai-community": [
+      "Playwright tutorial for lottery automation",
+      "Testing webhooks pattern for AI pipelines",
+      "AI reviewer scored 23/25 but missed point",
+      "Lobste.rs discusses historical AI roots",
+      "Risks of unvalidated LLM-as-judge evaluations",
+      "Agent reliability concerns across communities"
+    ]
+  }
+}
