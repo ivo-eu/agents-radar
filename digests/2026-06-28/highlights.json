@@ -1,0 +1,118 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code Bash截断问题获27赞",
+      "OpenAI Codex SQLite写入巨量获400赞",
+      "Gemini CLI焦点丢失与Shell卡死",
+      "Kimi Code内存泄漏3月未修复",
+      "Pi 自动滚屏问题34条评论",
+      "Qwen Code模型切换致资金损失"
+    ],
+    "ai-agents": [
+      "OpenClaw修复自定义网关SSE包装问题",
+      "CLI凭证解析bug修复减少错误日志",
+      "Matrix投票组件重复答案Bug修复",
+      "新增PR审查自动修复流水线",
+      "Control UI增加会话类型过滤",
+      "消息丢失问题成社区焦点"
+    ],
+    "ai-trending": [
+      "design.md：定义AI原生开发规范",
+      "opencode热度上升，开源编码代理",
+      "cognee：智能体记忆平台获780星",
+      "ai-berkshire：多智能体投资框架",
+      "gstack：封装23个Claude Code工具",
+      "Qwen-AgentWorld-35B面向Agent世界"
+    ],
+    "ai-hn": [
+      "亚洲初创推出对标Mythos模型",
+      "Anthropic指控阿里盗取Claude能力",
+      "中国网络安全能力对齐Anthropic",
+      "AMD Strix Halo RDMA集群搭建指南",
+      "Wayfinder Router路由管理工具",
+      "GPU短缺下开源替代方案受关注"
+    ],
+    "ai-ph": [
+      "Folio AI：AI版PowerPoint获最高票",
+      "QApilot：移动端测试提效3倍",
+      "AgentGrade：网站AI可读性评分",
+      "OpenBot：标签化Agent管理",
+      "Cloud World Model模拟云环境",
+      "当日8个AI产品聚焦开发者效率"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE模型最受关注",
+      "Qwythos-9B融合微调下载5.2万",
+      "Qwen-AgentWorld面向Agent世界",
+      "Uncensored版Qwen3.6下载量冠军",
+      "Fable5微调Gemma4 Agent变体",
+      "Ornith-1.0-397B最大参数量模型"
+    ],
+    "ai-community": [
+      "AI项目因人事混乱崩盘教训",
+      "自建AI API网关实战分享",
+      "向量数据库选型对比分析",
+      "OpenAI定制推理芯片Jalapeño解析",
+      "AI Agent五大核心模块拆解",
+      "批判盲目扩展Context Window"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "OpenAI Codex had three alpha releases today",
+      "DeepSeek TUI submitted 15 PRs in 24 hours",
+      "OpenCode background task management system",
+      "Claude Code protect-mcp plugin for safety",
+      "Gemini CLI uses Cedar policy gate for audit",
+      "Windows stability issues across all tools"
+    ],
+    "ai-agents": [
+      "OpenClaw had 500 PRs in 24 hours",
+      "140 open issues, 365 PRs in progress",
+      "135 pull requests merged or closed today",
+      "Session-state integrity is a high-severity issue",
+      "Message delivery and security bugs persist",
+      "No new releases for OpenClaw today"
+    ],
+    "ai-trending": [
+      "OpenCode new open-source coding agent trending",
+      "GStack curated Claude Code toolset gaining stars",
+      "Cognee knowledge graph memory for agents",
+      "OpenSpec spec-driven development for AI coding",
+      "AI Berkshire value investing research agent",
+      "Vibe-Trading personal trading agent trending"
+    ],
+    "ai-hn": [
+      "Asian startups race to launch Mythos-like models",
+      "Farmer arrested over data center time limit",
+      "AI risk narrative shifts to serving the powerful",
+      "China cybersecurity rivals Anthropic's",
+      "Fable 5 model returning soon from Anthropic",
+      "Debate on open-source vs AI sovereignty"
+    ],
+    "ai-ph": [
+      "Folio AI: Claude for PPT with 311 votes",
+      "QApilot CoWork claims 3x mobile testing speed",
+      "OpenBot lets you tag agents like friends",
+      "Velocity 2.0 one-click prompt enhancement",
+      "Cloud World Model simulates major cloud providers",
+      "A.S.S.H.O.L.E. satire product with brutal honesty"
+    ],
+    "ai-hf": [
+      "Qwen3.6 uncensored MoE surpasses 3.2M downloads",
+      "Gemma-4-12B-coder gains 2.4K weekly likes",
+      "Baidu Unlimited-OCR for scalable vision OCR",
+      "NVIDIA LocateAnything-3B with 2.4K likes",
+      "Ornith-1.0 models range 9B to 397B parameters",
+      "GLM-5.2 MoE most liked model this week"
+    ],
+    "ai-community": [
+      "AI agents dominate Dev.to and Lobste.rs",
+      "Cory Doctorow critiques big tech AI narrative",
+      "OpenAI and Broadcom develop Jalapeño ASIC",
+      "Prompt injection is role confusion, not injection",
+      "Local-first tools for voice and NotebookLM",
+      "AI agents can enable adaptive computer worms"
+    ]
+  }
+}
