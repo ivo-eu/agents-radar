@@ -6,7 +6,235 @@
     <description>AI 开源生态每日简报 · Daily AI ecosystem digest</description>
     <language>zh-CN</language>
     <atom:link href="https://ivo-eu.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 28 Jun 2026 10:16:05 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 14:00:33 +0000</lastBuildDate>
+    <item>
+      <title>AI 工具生态周报 2026-06-29</title>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-29/ai-weekly</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-29/ai-weekly</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <description>AI 工具生态周报 2026-W27 覆盖日期: 2026-06-21 ~ 2026-06-28 | 生成时间: 2026-06-29 13:59 UTC AI 工具生态周报（2026-W27） 覆盖时间：2026年6月21日 – 6月28日数据来源：AI CLI 社区日报、OpenClaw 生态日报、GitHub Trending、Hacker News、官方内容追踪 1. 本周要闻 6月23日 | GLM-5.2 本地运行引爆社区：GLM-5.2 在 HN 获得 412+ 分，用户实测性能接近 GPT-5.5，且可本地部署，标志国产开源模型首次在智能体知识工作基准上超越闭源对手。 6月24日 | Anthropic 发布 Claude Tag：将 AI 作为“团队成员”集成到 Slack，支持频道内 @Claude 委派任务、自主上下文构建和未来任务规划，正式开启“AI as a Teammate”时代。 6月25日 | OpenAI 与 Broadcom 推出定制推理芯片“Jalapeño”：专为 LLM 推理优化，被视为降低推理成本、打破 NVIDIA 垄断的关键一步。同日，A...</description>
+      <content:encoded><![CDATA[<h1>AI 工具生态周报 2026-W27</h1>
+<blockquote>
+<p>覆盖日期: 2026-06-21 ~ 2026-06-28 | 生成时间: 2026-06-29 13:59 UTC</p>
+</blockquote>
+<hr>
+<h1>AI 工具生态周报（2026-W27）</h1>
+<p><strong>覆盖时间：2026年6月21日 – 6月28日</strong><br><strong>数据来源：AI CLI 社区日报、OpenClaw 生态日报、GitHub Trending、Hacker News、官方内容追踪</strong></p>
+<hr>
+<h2>1. 本周要闻</h2>
+<ul>
+<li><strong>6月23日 | GLM-5.2 本地运行引爆社区</strong>：GLM-5.2 在 HN 获得 412+ 分，用户实测性能接近 GPT-5.5，且可本地部署，标志国产开源模型首次在智能体知识工作基准上超越闭源对手。</li>
+<li><strong>6月24日 | Anthropic 发布 Claude Tag</strong>：将 AI 作为“团队成员”集成到 Slack，支持频道内 <code>@Claude</code> 委派任务、自主上下文构建和未来任务规划，正式开启“AI as a Teammate”时代。</li>
+<li><strong>6月25日 | OpenAI 与 Broadcom 推出定制推理芯片“Jalapeño”</strong>：专为 LLM 推理优化，被视为降低推理成本、打破 NVIDIA 垄断的关键一步。同日，Anthropic 公开指控阿里巴巴利用 2.5 万个账户大规模蒸馏 Claude，地缘冲突升级。</li>
+<li><strong>6月26日 | OpenMontage 开源 Agent 视频制作系统爆火</strong>：单日获 3,400+ 星，集成 12 条流水线、52 个工具、500+ Agent 技能，成为本周 GitHub 增长最快的项目。</li>
+<li><strong>6月27日 | OpenAI 预览 GPT-5.6 Sol，但需美国政府审查用户</strong>：白宫要求 OpenAI 分阶段发布，仅限政府批准用户先行体验，引发社区对“AI 许可证制度”的恐慌。同日，Anthropic 的 Mythos 仅向受信任美国企业开放。</li>
+<li><strong>6月28日 | 亚洲 AI 初创推出 Mythos-like 模型</strong>：在 Anthropic 出口禁令延续背景下，多家亚洲公司发布对标 Mythos 的开源/半开源模型，地缘政治正深度重塑模型供应格局。</li>
+<li><strong>贯穿全周 | CLI 工具 Token 成本失控成为最大痛点</strong>：OpenAI Codex 单价暴涨 10 倍、Claude Code 消耗异常、DeepSeek TUI 缓存命中率低等问题持续发酵，开发者对“钱花在哪”的焦虑达到顶峰。</li>
+</ul>
+<hr>
+<h2>2. CLI 工具进展</h2>
+<p>本周各主流 AI CLI 工具仍处于快速迭代期，但核心矛盾高度一致：</p>
+<ul>
+<li><strong>Claude Code</strong>：发布 v2.1.186~v2.1.195，修复 Bash 截断、Windows 认证回归、Agent Teams 指针错误等问题。社区对安全误报（ClAudit）和子代理内存泄漏的关注度持续上升。</li>
+<li><strong>OpenAI Codex</strong>：密集发布 Rust alpha 版本（v0.142.x），重点修复 SQLite 写入巨量、SSD 过度写入（被公开报道可能一年内杀盘）、速率限制异常等。但成本暴涨（6月16日后每 token 成本升 10 倍）引发付费用户强烈不满。</li>
+<li><strong>Gemini CLI</strong>：Nightly v0.51 更新，聚焦焦点丢失、Shell 卡死、子代理状态误报等行为可靠性问题。Agent 安全护栏（路径遍历修复、Auto Memory 脱敏）取得进展。</li>
+<li><strong>GitHub Copilot CLI</strong>：v1.0.64~1.0.66，MCP 启动回归、Ubuntu keychain、SLSA 凭证热刷新等成关注焦点。插件作用域和 BYOK 支持本周得到增强。</li>
+<li><strong>OpenCode</strong>：v1.17.11 发布，修复 Windows Bun 段错误、IME 输入崩溃。MCP 资源模板、子代理团队模式成为社区讨论热点。</li>
+<li><strong>Pi</strong>：v0.80.2 发布，Amazon Bedrock Mantle 支持、编排器引入。自动滚屏、vLLM 兼容性问题修复。</li>
+<li><strong>Qwen Code</strong>：v0.19.0~v0.19.3 密集发布，新增语音听写、团队协作、上下文压缩网关。跨设备同步与 Agent 进程管理呼声高。</li>
+<li><strong>DeepSeek TUI（CodeWhale）</strong>：品牌重塑（从 CodeWhale 到 DeepSeek TUI），v0.8.65 即将发布。Moraine 内存后端集成、多模型路由是最大亮点。</li>
+</ul>
+<p><strong>共性趋势</strong>：成本透明化、Windows 兼容性、Agent 行为可控性、MCP 协议稳定性成为跨工具共同攻坚方向。社区已从“能否完成功能”转向“能否可靠、安全、经济地完成”。</p>
+<hr>
+<h2>3. AI Agent 生态</h2>
+<p><strong>OpenClaw 核心进展</strong>  </p>
+<ul>
+<li>本周发布 v2026.6.9 和 v2026.6.10-beta.1，带来对话快速模式、更可靠模型路由、Telegram 富文本增强。但伴随内存存储静默迁移、Anthropic Vertex 纯文本响应不可见等回归问题。</li>
+<li>社区热点：消息泄漏（#25592，32条评论）、会话写锁超时（#86538，15条评论）、多代理编排不稳定（#43367，13条评论）。安全边界事件（#72418 漏洞报告）也引发高度关注。</li>
+<li>项目整体活跃度极高（日均 150+ Issue、500+ PR），但 PR 积压严重（单日 438 条待合并），维护者审查带宽与社区贡献速度之间的差距需尽快缓解。</li>
+</ul>
+<p><strong>同赛道项目</strong>  </p>
+<ul>
+<li><strong>Hermes Agent</strong>（NousResearch）：总量突破 20 万星，本周持续领跑 Agent 框架，强调“与你共同成长”的自适应能力。</li>
+<li><strong>Deer Flow</strong>（字节跳动）：长周期 SuperAgent 框架，本周获 700+ 新增星，内置沙箱、记忆、子代理。</li>
+<li><strong>技能包标准化</strong>：Anthropic Cybersecurity Skills（817 个结构化网络安全技能）、mattpocock/skills（23 种角色工具）、gstack（CEO/设计师/工程经理工作流）等大量涌现，Agent 技能可复用性成为新议题。</li>
+</ul>
+<hr>
+<h2>4. 开源趋势</h2>
+<p>本周 GitHub Trending 与 AI 搜索数据指向三大方向：</p>
+<ul>
+<li><strong>AI 编码代理与全栈自动化</strong>：<code>opencode</code>、<code>gstack</code>、<code>design.md</code> 等将设计规范、CEO 决策、发布管理编码为 Agent 技能，开发工作从“辅助编码”迈向“流程自动化”。<code>garrytan/gstack</code> 单日获 950+ 星。</li>
+<li><strong>Agent 记忆层成为基础设施刚需</strong>：<code>cognee</code>（图数据库知识图谱引擎）、<code>mem0</code>（长期记忆）、<code>codebase-memory-mcp</code>（代码知识图谱，毫秒级查询、减少 99% token 消耗）获社区热捧，解决 Agent“金鱼脑”痛点。</li>
+<li><strong>多模态内容生成爆发</strong>：<code>OpenMontage</code>（Agent 视频制作系统）、<code>palmier-pro</code>（AI 原生 macOS 视频编辑器）、<code>ai-website-cloner-template</code> 等将 Agent 能力延伸到视频、网页克隆等垂直场景。<code>headroom</code>（Token 压缩工具，减少 60-95% token）作为成本优化利器单日获 3,795 星。</li>
+</ul>
+<p><strong>其他高频项目</strong>：<code>ollama</code>、<code>vllm</code>、<code>langchain</code>、<code>AutoGPT</code>、<code>Dify</code>、<code>browser-use</code>、<code>TradingAgents</code> 等继续保持高活跃度。</p>
+<hr>
+<h2>5. HN 社区热议</h2>
+<p>本周 Hacker News AI 讨论呈现鲜明的“监管焦虑 + 开源亢奋”双轨格局：</p>
+<ul>
+<li><strong>模型发布与政府介入</strong>：GPT-5.6 需美国政府审查（991+ 分，1065 条评论）、Anthropic Mythos 仅限受信任组织（423+ 分）、Five Eyes 警告“AI 模型数月内可推翻政府”。社区对 AI 权力集中化的担忧达到高峰。</li>
+<li><strong>地缘政治争端</strong>：Anthropic 指控阿里大规模蒸馏 Claude（232+ 分）、中国网络安全能力对齐 Anthropic（WSJ 报道）引发激烈辩论。亚洲初创推出 Mythos-like 模型被视为供应链重组的标志事件。</li>
+<li><strong>工具可靠性事故</strong>：OpenAI Codex SSD 写入 bug 被低估（notebookcheck 报道），Martin Fowler 发表《构建可靠 Agentic AI 系统》获 110 分，社区强调从“演示”到“生产”需系统化工程实践。</li>
+<li><strong>人才流动</strong>：AlphaFold 核心科学家 John Jumper 从 DeepMind 跳槽 Anthropic，引发对 AI 人才争夺战的讨论。</li>
+<li><strong>开源乐观</strong>：GLM-5.2 本地运行（412 分）、DeepSeek Flash 极低成本 Agent（8 分但方向新颖）、AMD Strix Halo RDMA 集群指南（141 分）等让社区看到闭源高成本之外的可能。</li>
+</ul>
+<hr>
+<h2>6. 官方动态</h2>
+<ul>
+<li><p><strong>Anthropic</strong>（新增内容：22 篇）</p>
+<ul>
+<li><strong>产品</strong>：Claude Tag（6月23日）——在 Slack 内 <code>@Claude</code> 委派任务，支持未来规划与自主上下文。</li>
+<li><strong>安全</strong>：与美国 NNSA 合作开发核相关对话分类器（准确率 96%）；发布 Mythos 网络安全能力评估、CVE 利用链研究、AI 攻击威胁映射（800+ 封禁账户分析）。</li>
+<li><strong>经济</strong>：基于 81,000 名用户调研发布 AI 经济学报告，揭示“AI 增强而非替代”模式；基于 40 万次 Claude Code 会话分析证明领域专业知识回报率持续增加。</li>
+<li><strong>整体信号</strong>：Anthropic 正从“模型能力”重心转向“产品化+安全护城河+经济影响力”三重叙事，引领“AI as a Teammate”与“AI 安全国家化”议题。</li>
+</ul>
+</li>
+<li><p><strong>OpenAI</strong>（新增内容：4 篇）</p>
+<ul>
+<li>6月27日：<strong>GPT-5.6 Sol 预览</strong>，强调推理、多模态、长上下文跃升，但宣布与美国政府合作审查用户资格。</li>
+<li>6月25日：<strong>Jalapeño 推理芯片</strong>与 Broadcom 合作发布；<strong>DayBreak 安全倡议</strong>（GPT-5.5-Cyber）——面向网络安全场景的模型版本。</li>
+<li>6月24日/23日：少量博客更新（智能体改造工作），无突破性产品发布。</li>
+<li><strong>整体信号</strong>：OpenAI 进入重大发布前的静默期，但通过与政府深度绑定、自研芯片等动作，展现“掌控基础设施”的决心。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>7. 下周信号</h2>
+<ol>
+<li><strong>Agent 技能包标准化加速</strong>：随着 <code>gstack</code>、<code>mattpocock/skills</code>、<code>Anthropic Cybersecurity Skills</code> 等涌现，社区可能催生社区驱动的 Agent 技能市场，MCP 协议有望成为互操作标准。</li>
+<li><strong>Token 成本控制工具爆发</strong>：<code>headroom</code>、<code>codebase-memory-mcp</code> 等本周爆火，下周可能看到更多“压缩 + 路由 + 缓存”组合方案，LLM 使用成本优化成为新基础设施赛道。</li>
+<li><strong>亚洲开源模型反击战</strong>：GLM-5.2 超越 GPT-5.5 的评测、多家亚洲初创对标 Mythos，中美 AI 模型差距缩小的叙事可能在下周持续发酵，推高开源模型社区活跃度。</li>
+<li><strong>视频生成 Agent 生态成型</strong>：<code>OpenMontage</code> 之后，预计将有更多类似“AI 视频制作流水线”项目登场，Agent 从“写代码”向“制作内容”迁移。</li>
+<li><strong>CLI 工具 Windows 兼容性竞赛</strong>：本周 Windows 崩溃、输入卡顿、OAuth 过期等问题集中爆发，预计各厂商下周将密集发布 Windows 专项修复，成为差异化竞争点。</li>
+<li><strong>地缘政治风险继续升级</strong>：美国政府审查 GPT-5.6 用户、Anthropic 与阿里诉讼走向、五眼警告等，都可能在下周引出新的限制政策或出口管制细则，直接影响开发者和企业采购决策。</li>
+</ol>
+<hr>
+<p><em>本日报由 <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a> 自动生成。</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AI Tools Weekly Digest 2026-06-29</title>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-06-29/ai-weekly-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-29/ai-weekly-en</guid>
+      <pubDate>Mon, 29 Jun 2026 00:00:00 +0000</pubDate>
+      <description>AI Tools Ecosystem Weekly Report 2026-W27 Coverage: 2026-06-21 ~ 2026-06-28 | Generated: 2026-06-29 13:59 UTC 好的，作为一名专注于 AI 开源生态的技术分析师，我已审阅了 2026-W27 周的每日摘要。以下是为您生成的综合周度回顾报告。 AI Tools Ecosystem Weekly Report: W27 2026 (June 21 – June 28) 1. Week&amp;#39;s Top Stories Anthropic vs. Alibaba Model Distillation Conflict (Jun 25-28): Anthropic publicly accused Alibaba of using 25,000 accounts to illicitly extract capabilities from Claude, sparking heated debate on HN and in the broader community about AI...</description>
+      <content:encoded><![CDATA[<h1>AI Tools Ecosystem Weekly Report 2026-W27</h1>
+<blockquote>
+<p>Coverage: 2026-06-21 ~ 2026-06-28 | Generated: 2026-06-29 13:59 UTC</p>
+</blockquote>
+<hr>
+<p>好的，作为一名专注于 AI 开源生态的技术分析师，我已审阅了 2026-W27 周的每日摘要。以下是为您生成的综合周度回顾报告。</p>
+<hr>
+<h2>AI Tools Ecosystem Weekly Report: W27 2026 (June 21 – June 28)</h2>
+<h3>1. Week&#39;s Top Stories</h3>
+<ol>
+<li><p><strong>Anthropic vs. Alibaba Model Distillation Conflict</strong> (Jun 25-28): Anthropic publicly accused Alibaba of using 25,000 accounts to illicitly extract capabilities from Claude, sparking heated debate on HN and in the broader community about AI espionage, security, and geopolitical competition. This story dominated headlines for several days.</p>
+</li>
+<li><p><strong>Anthropic Launches &quot;Claude Tag&quot; – AI as a Teammate</strong> (Jun 23): Anthropic introduced <code>Claude Tag</code>, a new product allowing teams to @-mention Claude in Slack as a full team member. It represents a strategic shift from a coding assistant (<code>Claude Code</code>) to a proactive, context-aware collaborator capable of long-term task planning, marking a major product evolution.</p>
+</li>
+<li><p><strong>OpenAI Previews GPT-5.6 &quot;Sol&quot; Under Government Scrutiny</strong> (Jun 26-27): OpenAI previewed its next-generation model, GPT-5.6 Sol, but announced it would only be released under the vetting of the U.S. government. This decision, along with the White House asking OpenAI to slow its release, ignited intense debate on HN regarding AI regulation, freedom of access, and the start of an &quot;AI licensing&quot; era.</p>
+</li>
+<li><p><strong>OpenAI and Broadcom Unveil Custom LLM Inference Chip &quot;Jalapeño&quot;</strong> (Jun 24): OpenAI announced its first custom inference chip, built in partnership with Broadcom. The chip is specifically optimized for LLM workloads, signaling a major step in supply chain vertical integration and challenging Nvidia&#39;s dominance in the AI hardware market.</p>
+</li>
+<li><p><strong>OpenAI Codex Reports 10x Cost Spike</strong> (Jun 21-26): The community erupted over a dramatic increase in token costs for OpenAI Codex (GPT-5.5). Issue #28879 on GitHub became a central point of complaint, with developers expressing frustration and actively exploring alternatives like Claude Code and open-source options, highlighting the critical issue of <strong>cost transparency and control</strong>.</p>
+</li>
+<li><p><strong>OpenAI Codex SSD Killer Bug</strong> (Jun 23-25): Reports surfaced that a bug in OpenAI Codex was causing excessive and unnecessary write operations to SSDs, costing users millions in potential hardware wear and tear. This was widely shared on HN and in the developer community as a critical software reliability issue.</p>
+</li>
+<li><p><strong>Anthropic Research: Codex Persistently Returns to Expertise</strong> (Jun 22): A landmark economic study from Anthropic, based on 400,000 <code>Claude Code</code> sessions, provided empirical evidence that human domain expertise is the primary driver of success with AI coding tools. This reframes the AI narrative from &quot;replacement&quot; to &quot;augmentation of skilled professionals.&quot;</p>
+</li>
+</ol>
+<h3>2. CLI Tools Progress</h3>
+<p>The CLI ecosystem was in a state of <strong>high-velocity iteration mixed with growing pains</strong>, particularly around cost, stability, and reliability.</p>
+<ul>
+<li><p><strong>Claude Code:</strong> Maintained top-tier activity, releasing multiple versions (v2.1.185+). The community was highly vocal about a major security misclassification issue (#30519), and the need for better cost visibility. MCP protocol and Git Connector compatibility were areas of intense focus and development.</p>
+</li>
+<li><p><strong>OpenAI Codex:</strong> The week&#39;s most reactive project due to the <strong>cost crisis</strong> and <strong>SSD bug</strong>. Despite high user frustration, the team was extremely active, merging a high volume of PRs (including Rust alpha versions) to address the SQLite write-heavy performance issue, MCP stability, and Windows sandbox bugs. The core narrative was &quot;trust recovery.&quot;</p>
+</li>
+<li><p><strong>Gemini CLI:</strong> The project showed consistent, high-quality iteration. No new versions were released, but community feedback centered on improving Agent behavior predictability, fixing agent status reporting errors, and enhancing security. The focus was on stability and control.</p>
+</li>
+<li><p><strong>GitHub Copilot CLI:</strong> Was relatively quieter than its peers, with a focus on platform compatibility and authentication issues. New versions (v1.0.64+) introduced features like plugin scoping and MCP support, but community sentiment was mixed, with significant requests for better privilege control and cost dashboards.</p>
+</li>
+<li><p><strong>Kimi Code CLI:</strong> Had the lowest activity of the major tools. The project remains in a quieter phase, addressing specific bugs like memory leaks and minimal MCP features, but was not a major source of community discussion.</p>
+</li>
+<li><p><strong>OpenCode:</strong> Emerged as a strong open-source contender. The project was intensely active, merging major features like MCP OAuth, sub-agent teams, and terminal compatibility fixes. Its main challenge was a significant Windows crash bug, but overall it showed a very positive growth trajectory.</p>
+</li>
+<li><p><strong>Pi:</strong> Continued its niche as a TUI-focused tool. The main technical challenge was a connection freeze bug with OpenAI&#39;s backend, and a broader push to support more providers (e.g., Amazon Bedrock Mantle). Community discussions were constructive.</p>
+</li>
+<li><p><strong>Qwen Code:</strong> Was highly active, releasing nightly and stable versions. The community pushed for features like voice dictation, team collaboration, and agent process management. The biggest controversy was a model auto-switch bug (#5819) that led to unexpected financial losses for users.</p>
+</li>
+<li><p><strong>DeepSeek TUI (CodeWhale):</strong> Underwent a brand transition, but remained active. Key development focus areas included the Moraine memory backend and Fleet model routing. A major community topic was a low cache hit rate (#1177).</p>
+</li>
+</ul>
+<h3>3. AI Agent Ecosystem</h3>
+<p>The broader Agent ecosystem, particularly the <strong>OpenClaw</strong> project and its peers, was in a state of <strong>intense development and scaling challenges</strong>.</p>
+<ul>
+<li><p><strong>OpenClaw Core Stability Issues:</strong> The community&#39;s most pressing concerns were centered on core reliability. <strong>Message leaks</strong> to external channels (e.g., Slack, iMessage) and <strong>session state loss/corruption</strong> were the highest priority bugs (P1/Diamond Lobster). These issues highlight the difficulty of building a robust, multi-channel message routing system.</p>
+</li>
+<li><p><strong>High Volume of PRs, Low Merge Rate:</strong> Projects like OpenClaw received a massive number of PRs (500+/day), but the merge rate was low (e.g., 46/500 on Jun 24). This suggests a significant bottleneck in core maintainer review capacity, which, if unaddressed, could stifle community contribution.</p>
+</li>
+<li><p><strong>Version Releases &amp; Regressions:</strong> OpenClaw released <code>v2026.6.10-beta.1</code> and <code>v2026.6.9</code>. The <code>v2026.6.9</code> release caused a significant regression by <strong>silently migrating memory storage paths</strong>, causing user data reconstruction and highlighting a need for better migration tooling.</p>
+</li>
+<li><p><strong>MCP Ecosystem Deepening:</strong> The integration of MCP (Model Context Protocol) became a standard expectation across all projects (OpenClaw, peer projects, CLI tools). The focus has shifted from basic support to advanced features like OAuth, resource templates, and reliable injection.</p>
+</li>
+<li><p><strong>Memory Management:</strong> The community is actively exploring long-term memory solutions. <code>cognee</code> (knowledge graph memory) and <code>pmb</code> (local MCP memory) were trending projects on GitHub, reflecting a consensus that memory is the next critical frontier for persistent agent behavior.</p>
+</li>
+</ul>
+<h3>4. Open Source Trends</h3>
+<ul>
+<li><p><strong>&quot;Agentic Video Production&quot; Takes Off:</strong> The project <strong>OpenMontage</strong> was the undisputed star of the week, amassing thousands of stars (+3,719 in one day on Jun 25). It&#39;s a system of 12 pipelines, 52 tools, and 500+ skills, transforming an AI coding agent into a full video production studio.</p>
+</li>
+<li><p><strong>AI Memory &amp; Context is the New Infrastructure:</strong> The community is actively building the &quot;memory layer&quot; for AI agents. Projects like <strong>cognee</strong> (graph memory), <strong>codebase-memory-mcp</strong> (code knowledge graph), and <strong>headroom</strong> (context compression) all saw explosive growth, indicating a shift from &quot;function call&quot; to &quot;persistent memory&quot; as a core need.</p>
+</li>
+<li><p><strong>Skill Standardization Surfaces:</strong></p>
+<ul>
+<li><strong>design.md</strong>: Google Labs proposed a <code>.md</code> format to give AI coding agents a structured, persistent understanding of a visual design system. This is an attempt to standardize how agents handle brand/design contexts.</li>
+<li><strong>gstack</strong>: Garry Tan&#39;s collection of 23 Claude Code skills (for roles like CEO, designer) became a &quot;best practice&quot; template for personal AI workflows, showing how to operationalize agent skill sets.</li>
+</ul>
+</li>
+<li><p><strong>Rust Ecosystem for AI Grows:</strong> OpenAI Codex&#39;s move towards Rust alpha binaries and the continued growth of projects like <code>rig</code> (a Rust-native LLM framework) confirm that Rust is becoming a serious language for building the high-performance, safe infrastructure of the AI ecosystem.</p>
+</li>
+<li><p><strong>Quant Finance Agents Emerge:</strong> Projects like <strong>ai-berkshire</strong> (multi-agent value investing) and <strong>TradingAgents</strong> (multi-agent financial trading) show a growing interest in using multi-agent systems for complex, high-stakes financial analysis and decision-making.</p>
+</li>
+</ul>
+<h3>5. HN Community Highlights</h3>
+<p>The Hacker News community this week was defined by a <strong>dichotomy of technical optimism and deep regulatory fear</strong>.</p>
+<ul>
+<li><p><strong>Anthropic vs. Alibaba &amp; AI Espionage (Jun 25-28):</strong> The top threads were dominated by the announcement of industrial espionage, with a massive 755-comment thread. It wasn&#39;t just about a single event; it was a proxy for a broader conversation about the future of AI, trust between nations, and the security of model weights.</p>
+</li>
+<li><p><strong>OpenAI&#39;s Government Scruntiny &amp; &quot;AI Licensing&quot; (Jun 26-27):</strong> The news of GPT-5.6 Sol being released only to &quot;trusted&quot; users and the government mandating a staggered release was met with skepticism. The community sentiment is shifting from &quot;will AI be safe?&quot; to &quot;<strong>who gets to decide who has access to safe AI?</strong> &quot; This is a more political and complex concern.</p>
+</li>
+<li><p><strong>Cost Anxiety is Real (Jun 21-28):</strong> The 10x cost spike for Codex and the ongoing discussion around token consumption (&quot;where did my money go?&quot;) was a persistent, high-emotion topic. It&#39;s turning from technical feedback into a full-blown user revolt against the billing models of proprietary AI tools.</p>
+</li>
+<li><p><strong>The &quot;Good Old Engineer&quot; Narrative (Jun 22):</strong> The warm reception of Martin Fowler&#39;s article on building reliable agentic systems (scores of 110) and Anthropic&#39;s research that &quot;expertise persists&quot; shows a silent majority who believe AI is a tool that <strong>amplifies</strong> human skill, not replaces it. This is a counter-narrative to the &quot;AGI is imminent&quot; hype.</p>
+</li>
+</ul>
+<h3>6. Official Announcements</h3>
+<p><strong>Anthropic</strong> released a burst of high-impact content this week, shifting focus from &quot;model power&quot; to &quot;product utility and safety.&quot;</p>
+<ul>
+<li><strong>Research: Anthropic Economic Index (Jun 22):</strong> A study of 400K sessions proving &quot;persistent returns to expertise.&quot;</li>
+<li><strong>Research: AI to Defend Critical Infrastructure (Jun 27):</strong> A security-focused piece on using AI for defensive cybersec operations.</li>
+<li><strong>News: Introducing Claude Tag (Jun 24):</strong> A new product that redefines the product-market fit of AI assistants in the workplace.</li>
+<li><strong>Research: Developing Nuclear Safeguards (Jun 25):</strong> Demonstrated collaboration with the U.S. government to build a nuclear threat classifier with 96% accuracy, solidifying their security-first brand.</li>
+</ul>
+<p><strong>OpenAI</strong> published less but with higher strategic impact.</p>
+<ul>
+<li><strong>News: Previewing GPT-5.6 Sol (Jun 26):</strong> A major model announcement, though overshadowed by the government oversight context.</li>
+<li><strong>News: OpenAI &amp; Broadcom unveil &quot;Jalapeño&quot; chip (Jun 25):</strong> A hardware play, signaling long-term vertical integration.</li>
+<li><strong>News: DayBreak Security Initiative (Jun 23):</strong> A safety standards announcement, though met with some skepticism by the HN community.</li>
+</ul>
+<h3>7. Next Week&#39;s Signals</h3>
+<ol>
+<li><strong>Cost Crisis Escalation:</strong> Expect the backlash against OpenAI Codex&#39;s pricing to continue. This could lead to a mass exodus to Claude Code or open-source alternatives (OpenCode). Watch for any official pricing corrections from OpenAI.</li>
+<li><strong>The &quot;National AI&quot; Debate Heats Up:</strong> The Anthropic/Alibaba and GPT-5.6 government control stories will likely be debated by policymakers. Expect more commentary from think tanks and journalists.</li>
+<li><strong>Agent Ecosystem Maturation:</strong> The high number of open PRs in the OpenClaw ecosystem suggests many features are &quot;almost ready.&quot; Next week might see a wave of merges, improving stability. The agent memory layer (cognee, headroom) will continue to be a hotbed for new projects.</li>
+<li><strong>Anthropic&#39;s &quot;Claude Tag&quot; Adoption:</strong> Keep an eye on social media and developer platforms for the first wave of real-world reviews and case studies of <code>Claude Tag</code> in enterprise settings.</li>
+<li><strong>OpenMontage as a New Category:</strong> The explosive growth of <code>OpenMontage</code> suggests it’s not a flash in the pan. Watch for the emergence of similar &quot;Agent-first video production&quot; tools.</li>
+<li><strong>Regulation as a Product Feature:</strong> The &quot;safety&quot; narrative is becoming commercial. Anthropic&#39;s nuclear safeguards and government partnerships are a competitive advantage. Watch for other vendors to unveil similar compliance-oriented features.</li>
+</ol>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>AI CLI 工具社区动态日报 2026-06-28</title>
       <link>https://ivo-eu.github.io/agents-radar/#2026-06-28/ai-cli</link>
@@ -13988,207 +14216,6 @@ Compares simulation-based inference with MCMC for epidemiological model calibrat
 <li><p><strong>&quot;Error-Conditioned Neural Solvers&quot;</strong> (<a href="http://arxiv.org/abs/2606.27354v1">http://arxiv.org/abs/2606.27354v1</a>) — Bridging neural surrogates with error-correction mechanisms tackles a critical bottleneck in scientific ML: extrapolation beyond training data. The approach of having models detect and correct their own violations represents a promising direction for trustworthy neural PDE solvers.</p>
 </li>
 </ol>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hugging Face 热门模型日报 2026-06-27</title>
-      <link>https://ivo-eu.github.io/agents-radar/#2026-06-27/ai-hf</link>
-      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-27/ai-hf</guid>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
-      <description>Hugging Face 热门模型日报 2026-06-27 数据来源: Hugging Face Hub | 共 30 个模型 | 生成时间: 2026-06-27 09:15 UTC Hugging Face 热门模型日报（2026-06-27） 今日速览 本周 Hugging Face 榜单由 GLM-5.2（周赞 2,624）和 Gemma-4-12B-Coder 系列（周赞 2,412）领跑，反映出大型 MoE 架构与代码专用模型的热度。多模态模型成为绝对主力：超过半数上榜模型支持图像‑文本交互，其中 MiniMax-M3、Qwen3.6-35B-A3B-Uncensored 和 NVIDIA LocateAnything-3B 均获高赞。量化部署活动空前活跃，NVFP4 与 GGUF 格式持续扩散，NVIDIA 发布的 Qwen3.6 量化版单周下载量突破 500 万。此外，“无审查”“去对齐”（abliterated）等社区微调模型大量涌现，个性化定制需求强劲。 热门模型 🧠 语言模型（LLM、对话、指令微调） zai-org/GLM-5.2作者: zai-org | ...</description>
-      <content:encoded><![CDATA[<h1>Hugging Face 热门模型日报 2026-06-27</h1>
-<blockquote>
-<p>数据来源: <a href="https://huggingface.co/">Hugging Face Hub</a> | 共 30 个模型 | 生成时间: 2026-06-27 09:15 UTC</p>
-</blockquote>
-<hr>
-<h1>Hugging Face 热门模型日报（2026-06-27）</h1>
-<h2>今日速览</h2>
-<p>本周 Hugging Face 榜单由 <strong>GLM-5.2</strong>（周赞 2,624）和 <strong>Gemma-4-12B-Coder</strong> 系列（周赞 2,412）领跑，反映出大型 MoE 架构与代码专用模型的热度。多模态模型成为绝对主力：超过半数上榜模型支持图像‑文本交互，其中 <strong>MiniMax-M3</strong>、<strong>Qwen3.6-35B-A3B-Uncensored</strong> 和 <strong>NVIDIA LocateAnything-3B</strong> 均获高赞。量化部署活动空前活跃，<strong>NVFP4</strong> 与 <strong>GGUF</strong> 格式持续扩散，NVIDIA 发布的 Qwen3.6 量化版单周下载量突破 500 万。此外，“无审查”“去对齐”（abliterated）等社区微调模型大量涌现，个性化定制需求强劲。</p>
-<h2>热门模型</h2>
-<h3>🧠 语言模型（LLM、对话、指令微调）</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/zai-org/GLM-5.2">zai-org/GLM-5.2</a></strong><br>作者: zai-org | 点赞: 2,624 | 下载: 98,994<br>开源 MoE 大语言模型，融合 DSA 稀疏注意力技术，本周点赞数最高。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF">yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF</a></strong><br>作者: yuxinlu1 | 点赞: 699 | 下载: 206,828<br>面向 agent 任务微调的 Gemma-4-12B 量化版，强调终端与编码能力。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/WeiboAI/VibeThinker-3B">WeiboAI/VibeThinker-3B</a></strong><br>作者: WeiboAI | 点赞: 736 | 下载: 57,521<br>基于 Qwen2 的 3B 数学推理模型，轻量级专用 LLM，适合数学场景。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/unsloth/GLM-5.2-GGUF">unsloth/GLM-5.2-GGUF</a></strong><br>作者: unsloth | 点赞: 420 | 下载: 125,230<br>GLM-5.2 的 GGUF 量化版，由 Unsloth 社区提供，便于本地部署。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/microsoft/FastContext-1.0-4B-SFT">microsoft/FastContext-1.0-4B-SFT</a></strong><br>作者: microsoft | 点赞: 359 | 下载: 6,447<br>基于 Qwen3 的 4B 指令微调模型，专为 Explorer SubAgent 场景优化。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/Qwen3.6-35B-A3B-NVFP4">nvidia/Qwen3.6-35B-A3B-NVFP4</a></strong><br>作者: nvidia | 点赞: 363 | 下载: 5,022,254<br>Qwen3.6-35B 的 NVIDIA FP4 量化版，以极高下载量成为最热门推理格式。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/LiquidAI/LFM2.5-230M">LiquidAI/LFM2.5-230M</a></strong><br>作者: LiquidAI | 点赞: 120 | 下载: 9,791<br>Liquid AI 推出的 230M 参数高效语言模型，面向边缘部署。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Chunjiang-Intelligence/DeepSeek-v4-Fable">Chunjiang-Intelligence/DeepSeek-v4-Fable</a></strong><br>作者: Chunjiang-Intelligence | 点赞: 108 | 下载: 1,328<br>DeepSeek v4 的微调版本，专注于网络安全领域。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/GLM-5.2-NVFP4">nvidia/GLM-5.2-NVFP4</a></strong><br>作者: nvidia | 点赞: 98 | 下载: 6,464<br>GLM-5.2 的 NVIDIA FP4 量化版，利用 ModelOpt 实现高效推理。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">deepreinforce-ai/Ornith-1.0-35B-GGUF</a></strong><br>作者: deepreinforce-ai | 点赞: 258 | 下载: 20,266<br>Ornith-1.0-35B 的 GGUF 量化版，采用 MIT 协议，兼容多种推理框架。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B-GGUF">deepreinforce-ai/Ornith-1.0-9B-GGUF</a></strong><br>作者: deepreinforce-ai | 点赞: 178 | 下载: 11,034<br>Ornith-1.0-9B 的 GGUF 量化版，轻量级多模态备选（纯文本质询版）。</p>
-</li>
-</ul>
-<hr>
-<h3>🎨 多模态与生成（图像、视频、音频、文本到X）</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/baidu/Unlimited-OCR">baidu/Unlimited-OCR</a></strong><br>作者: baidu | 点赞: 1,077 | 下载: 212,760<br>百度推出的通用 OCR 模型，支持不限场景的文字识别，下载量极高。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF">empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF</a></strong><br>作者: empero-ai | 点赞: 622 | 下载: 712,627<br>基于 Qwen3.5 的 9B 视觉‑语言模型 GGUF 版，融合 Claude‑Mythos 风格，推理类应用热门。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M">empero-ai/Qwythos-9B-Claude-Mythos-5-1M</a></strong><br>作者: empero-ai | 点赞: 458 | 下载: 30,298<br>Qwythos 的原始 Safetensors 版本，支持图像‑文本输入输出。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B">Qwen/Qwen-AgentWorld-35B-A3B</a></strong><br>作者: Qwen | 点赞: 333 | 下载: 18,872<br>通义千问 AgentWorld 系列，35B MoE 架构，面向智能体应用的多模态模型。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/krea/Krea-2-Turbo">krea/Krea-2-Turbo</a></strong><br>作者: krea | 点赞: 294 | 下载: 17,445<br>Krea-2 的 Turbo 变体，高性能文生图模型，基于 Diffusers 框架。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/krea/Krea-2-Raw">krea/Krea-2-Raw</a></strong><br>作者: krea | 点赞: 207 | 下载: 17,748<br>Krea-2 的基础版本，提供原始文生图能力，作为 Turbo 的底座模型。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive">HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive</a></strong><br>作者: HauhauCS | 点赞: 2,268 | 下载: 3,331,475<br>去除审查的 Qwen3.6-35B MoE 多模态模型，采用激进风格，社区极受欢迎。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/LocateAnything-3B">nvidia/LocateAnything-3B</a></strong><br>作者: nvidia | 点赞: 2,391 | 下载: 570,466<br>NVIDIA 推出的 3B 视觉定位模型，可在图像中定位任意目标，技术突破性高。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B">deepreinforce-ai/Ornith-1.0-35B</a></strong><br>作者: deepreinforce-ai | 点赞: 133 | 下载: 7,571<br>Ornith 系列 35B 全精度版，支持图像‑文本多模态推理。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B">deepreinforce-ai/Ornith-1.0-9B</a></strong><br>作者: deepreinforce-ai | 点赞: 130 | 下载: 1,501<br>Ornith-1.0-9B 全精度版，轻量多模态选项。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-397B">deepreinforce-ai/Ornith-1.0-397B</a></strong><br>作者: deepreinforce-ai | 点赞: 111 | 下载: 463<br>超大规模 MoE 多模态模型（397B），参数规模最大。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/huihui-ai/Huihui-gemma-4-12B-coder-fable5-composer2.5-v1-abliterated">huihui-ai/Huihui-gemma-4-12B-coder-fable5-composer2.5-v1-abliterated</a></strong><br>作者: huihui-ai | 点赞: 136 | 下载: 6,250<br>Gemma-4-12B 的“去对齐”微调版，移除安全限制，保留多模态编码能力。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/MiniMaxAI/MiniMax-M3">MiniMaxAI/MiniMax-M3</a></strong><br>作者: MiniMaxAI | 点赞: 1,248 | 下载: 182,714<br>MiniMax 第三代多模态大模型，支持图像‑文本深度交互，性能强劲。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/datalab-to/lift">datalab-to/lift</a></strong><br>作者: datalab-to | 点赞: 159 | 下载: 6,676<br>基于 Qwen3.5 的多模态模型，专为 PDF 文档理解优化。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF">Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF</a></strong><br>作者: Jackrong | 点赞: 95 | 下载: 49,935<br>Qwen3.6-27B 的代码兼容版 GGUF，支持视觉输入与 MTP 推理。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced">HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced</a></strong><br>作者: HauhauCS | 点赞: 93 | 下载: 32,222<br>Gemma-4-12B 的 QAT 量化且无审查版，强调平衡性与多模态。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b">nvidia/nemotron-3.5-asr-streaming-0.6b</a></strong><br>作者: nvidia | 点赞: 712 | 下载: 61,857<br>NVIDIA 的流式语音识别模型（0.6B），适用于实时 ASR 场景。</p>
-</li>
-</ul>
-<hr>
-<h3>🔧 专用模型（代码、数学、医疗、嵌入等）</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF">yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF</a></strong><br>作者: yuxinlu1 | 点赞: 2,412 | 下载: 536,130<br>Gemma-4-12B 代码专用微调版 GGUF，专注代码生成与推理，下载极高。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF">yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF</a></strong><br>作者: yuxinlu1 | 点赞: 699 | 下载: 206,828<br>面向 Agent 的 Gemma-4 微调量化版，强化编码与终端交互能力。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/WeiboAI/VibeThinker-3B">WeiboAI/VibeThinker-3B</a></strong>（已在语言模型中列出，为保持唯一性，此处不再重复，或可归入）
-注：VibeThinker-3B 亦可归入数学专用模型，已在语言模型部分列出。</p>
-</li>
-</ul>
-<hr>
-<h2>生态信号</h2>
-<p><strong>模型家族</strong>：本周 <strong>GLM-5.2</strong>（MoE + DSA）、<strong>Gemma-4-12B</strong>（代码/Agent 微调）、<strong>Qwen 3.5/3.6</strong>（多模态 + MoE）和 <strong>Ornith</strong> 系列构成主力阵营。<strong>DeepSeek v4</strong> 和 <strong>MiniMax-M3</strong> 也展现出强势潜力。<strong>开源权重</strong>继续主导，几乎所有热门模型均开放完整权重（部分通过 GGUF/NVFP4 量化发布）。<strong>量化与微调</strong>成为社区主要动能：NVIDIA 的 NVFP4 格式（Qwen3.6、GLM-5.2）下载量惊人，社区定制（abliterated、uncensored、fable5）层出不穷，反映出用户对可控性、高效率部署和个性化需求的强烈追求。<strong>多模态化</strong>是不可逆趋势，超过半数榜单模型支持图像输入。</p>
-<h2>值得探索</h2>
-<ol>
-<li><p><strong><a href="https://huggingface.co/nvidia/LocateAnything-3B">nvidia/LocateAnything-3B</a></strong> (2,391 赞)<br>— 视觉定位领域的突破性模型，参数量仅 3B 即可实现开放词汇目标定位，适合研究图像‑语言对齐与 grounding 技术。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/MiniMaxAI/MiniMax-M3">MiniMaxAI/MiniMax-M3</a></strong> (1,248 赞)<br>— 国产新一代多模态大模型，在图像理解与生成任务上表现优异，代表闭源转开源的重要尝试。</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/zai-org/GLM-5.2">zai-org/GLM-5.2</a></strong> (2,624 赞)<br>— 最新 MoE 架构 + DSA 稀疏注意力，周赞最高，值得深入测试其推理效率与多轮对话能力。</p>
-</li>
-</ol>
-<hr>
-<p><em>本日报由 <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a> 自动生成。</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hugging Face Trending Models Digest 2026-06-27</title>
-      <link>https://ivo-eu.github.io/agents-radar/#2026-06-27/ai-hf-en</link>
-      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-06-27/ai-hf-en</guid>
-      <pubDate>Sat, 27 Jun 2026 00:00:00 +0000</pubDate>
-      <description>Hugging Face Trending Models Digest 2026-06-27 Source: Hugging Face Hub | 30 models | Generated: 2026-06-27 09:15 UTC 🤗 Hugging Face Trending Models Digest — 2026-06-27 1. Today’s Highlights This week’s trend is dominated by two forces: MoE‑based architectures and aggressive quantization. The top‑liked model is zai-org/GLM-5.2 (2,624 likes), a MoE language model from Baidu’s GLM family, while NVIDIA’s LocateAnything‑3B (2,391 likes) proves that specialist vision models can compete with generali...</description>
-      <content:encoded><![CDATA[<h1>Hugging Face Trending Models Digest 2026-06-27</h1>
-<blockquote>
-<p>Source: <a href="https://huggingface.co/">Hugging Face Hub</a> | 30 models | Generated: 2026-06-27 09:15 UTC</p>
-</blockquote>
-<hr>
-<h1>🤗 Hugging Face Trending Models Digest — 2026-06-27</h1>
-<h2>1. Today’s Highlights</h2>
-<p>This week’s trend is dominated by two forces: <strong>MoE‑based architectures</strong> and <strong>aggressive quantization</strong>. The top‑liked model is zai-org/GLM-5.2 (2,624 likes), a MoE language model from Baidu’s GLM family, while NVIDIA’s LocateAnything‑3B (2,391 likes) proves that specialist vision models can compete with generalist LLMs. Community fine‑tunes of Gemma‑4‑12B and Qwen3.6 continue to surge, with HauhauCS’s uncensored Qwen3.6 variant amassing over 3.3M downloads. GGUF quantized versions of almost every major release are equally popular, reflecting a strong preference for local deployment. Finally, Baidu’s Unlimited‑OCR, Krea‑2 Turbo (text‑to‑image), and the LiquidAI 230M parameter model show that the ecosystem values both extreme specialization and extreme efficiency.</p>
-<h2>2. Trending Models by Category</h2>
-<h3>🧠 Language Models</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/zai-org/GLM-5.2">zai-org/GLM-5.2</a></strong> — zai-org · 2,624 likes · 98,994 downloads<br>The week’s most‑liked model, a 5.2B‑scale MoE transformer optimized for conversational and instruction‑following tasks.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF">yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF</a></strong> — yuxinlu1 · 2,412 likes · 536,130 downloads<br>A GGUF‑quantized Gemma‑4‑12B fine‑tune focused on code generation and reasoning, one of the highest‑downloaded models this week.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/WeiboAI/VibeThinker-3B">WeiboAI/VibeThinker-3B</a></strong> — WeiboAI · 736 likes · 57,521 downloads<br>A compact 3B‑parameter model specialized for math reasoning, built on Qwen2 and drawing attention for its strong inference‑to‑size ratio.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive">HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive</a></strong> — HauhauCS · 2,268 likes · 3,331,475 downloads<br>An uncensored, “aggressive” fine‑tune of Qwen3.6‑35B‑A3B (MoE), extremely popular for its minimal safety filtering and vision capabilities.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">deepreinforce-ai/Ornith-1.0-35B-GGUF</a></strong> — deepreinforce‑ai · 258 likes · 20,266 downloads<br>A GGUF version of the Qwen3.5‑based Ornith model, part of a family ranging from 9B to 397B parameters, all trending under the same author.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/microsoft/FastContext-1.0-4B-SFT">microsoft/FastContext-1.0-4B-SFT</a></strong> — microsoft · 359 likes · 6,447 downloads<br>A 4B‑parameter model built on Qwen3 and designed for ultra‑long context processing (up to ~1M tokens), notable for its “Explorer SubAgent” architecture.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/LiquidAI/LFM2.5-230M">LiquidAI/LFM2.5-230M</a></strong> — LiquidAI · 120 likes · 9,791 downloads<br>A <strong>230M</strong>‑parameter language model from Liquid AI, proving that small models can still capture the community’s curiosity for local deployment.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Chunjiang-Intelligence/DeepSeek-v4-Fable">Chunjiang-Intelligence/DeepSeek-v4-Fable</a></strong> — Chunjiang‑Intelligence · 108 likes · 1,328 downloads<br>A cybersecurity‑focused decoder based on DeepSeek v4, reflecting growing demand for domain‑specific safety models.</p>
-</li>
-</ul>
-<h3>🎨 Multimodal &amp; Generation</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/baidu/Unlimited-OCR">baidu/Unlimited-OCR</a></strong> — baidu · 1,077 likes · 212,760 downloads<br>A powerful image‑to‑text OCR model released by Baidu, trending for its ability to handle diverse and complex document layouts.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/krea/Krea-2-Turbo">krea/Krea-2-Turbo</a></strong> — krea · 294 likes · 17,445 downloads<br>A text‑to‑image diffusion model that promises faster inference over its predecessor (Krea‑2‑Raw), with a focus on high‑quality generation.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/LocateAnything-3B">nvidia/LocateAnything-3B</a></strong> — nvidia · 2,391 likes · 570,466 downloads<br>A 3B‑parameter vision model that can locate arbitrary objects in images without predefined class lists — a major step in open‑world image grounding.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/MiniMaxAI/MiniMax-M3">MiniMaxAI/MiniMax-M3</a></strong> — MiniMaxAI · 1,248 likes · 182,714 downloads<br>A multimodal VL model (M3) that handles both image and text inputs, gaining traction for its strong cross‑modal understanding.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/datalab-to/lift">datalab-to/lift</a></strong> — datalab‑to · 159 likes · 6,676 downloads<br>A Qwen3.5‑based model specialized in PDF understanding and document extraction, filling a niche business need.</p>
-</li>
-</ul>
-<h3>🔧 Specialized Models</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b">nvidia/nemotron-3.5-asr-streaming-0.6b</a></strong> — nvidia · 712 likes · 61,857 downloads<br>A streaming automatic speech recognition model with only 0.6B parameters, optimized for low‑latency real‑time transcription.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/Qwen3.6-35B-A3B-NVFP4">nvidia/Qwen3.6-35B-A3B-NVFP4</a></strong> — nvidia · 363 likes · 5,022,254 downloads<br>An NVFP4‑quantized version of Qwen3.6 MoE, achieving huge download numbers thanks to NVIDIA’s hardware‑aware optimization.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced">HauhauCS/Gemma4-12B-QAT-Uncensored-HauhauCS-Balanced</a></strong> — HauhauCS · 93 likes · 32,222 downloads<br>An uncensored, QAT‑quantized (quantization‑aware training) Gemma‑4‑12B variant, catering to users who prefer minimal content filtering.</p>
-</li>
-</ul>
-<h3>📦 Fine‑tunes &amp; Quantizations</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF">empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF</a></strong> — empero‑ai · 622 likes · 712,627 downloads<br>A GGUF‑quantized variant of the Qwythos‑9B model (image‑text‑to‑text), among the most downloaded GGUF files this week.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/unsloth/GLM-5.2-GGUF">unsloth/GLM-5.2-GGUF</a></strong> — unsloth · 420 likes · 125,230 downloads<br>The official GGUF conversion of GLM‑5.2 by unsloth, making the popular MoE model accessible on consumer hardware.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF">yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF</a></strong> — yuxinlu1 · 699 likes · 206,828 downloads<br>Another Gemma‑4‑12B GGUF, this time tuned for “agentic” and terminal‑based coding workflows.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF">Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF</a></strong> — Jackrong · 95 likes · 49,935 downloads<br>A GGUF of a Qwen3.6‑based 27B coder model with multi‑token prediction (MTP) support, valued for its compatibility with llama.cpp.</p>
-</li>
-</ul>
-<h2>3. Ecosystem Signal</h2>
-<p>Several macro trends are shaping the Hugging Face ecosystem this week:</p>
-<ul>
-<li><p><strong>MoE is mainstream</strong>: Models like GLM‑5.2, Qwen3.6‑35B‑A3B, and Ornith‑1.0‑397B all use Mixture‑of‑Experts architectures, allowing large effective parameter counts while keeping inference costs manageable. The community is voting with downloads, especially when combined with quantization.</p>
-</li>
-<li><p><strong>Open‑weight dominance continues</strong>: Almost every trending model (GLM, Qwen, Gemma) has open weights; no proprietary API‑only model appears in the top 30. This signals strong preference for self‑hosted and fine‑tunable solutions.</p>
-</li>
-<li><p><strong>GGUF and NVFP4 quantization wars</strong>: GGUF remains the most popular format for local inference (13 of 30 models are GGUF), but NVIDIA’s NVFP4 is gaining traction with hardware‑tuned quantizations (e.g., Qwen3.6‑NVFP4, GLM‑5.2‑NVFP4). The community is clearly optimizing for speed and memory on both CPU/Apple Silicon (GGUF) and NVIDIA GPUs (NVFP4).</p>
-</li>
-<li><p><strong>Uncensored and “abliterated” fine‑tunes</strong>: Many high‑download models explicitly remove safety filters (HauhauCS, huihui‑ai), reflecting a sub‑community that prioritizes maximal freedom and research use over alignment. This is a persistent and growing niche.</p>
-</li>
-<li><p><strong>Specialist models (OCR, ASR, object grounding) see strong engagement</strong>: Baidu’s Unlimited‑OCR and NVIDIA’s LocateAnything prove that task‑specific models can compete with general‑purpose LLMs in likes and downloads, especially when they solve a clear pain point (documents, computer vision).</p>
-</li>
-<li><p><strong>Small models are not neglected</strong>: The 230M LiquidAI LFM2.5 and the 0.6B Nemotron ASR show that ultra‑efficient models still attract attention, likely because they run on edge devices or serve as building blocks in larger pipelines.</p>
-</li>
-</ul>
-<h2>4. Worth Exploring</h2>
-<ul>
-<li><p><strong><a href="https://huggingface.co/nvidia/LocateAnything-3B">nvidia/LocateAnything-3B</a></strong> — A breakthrough in open‑world object localization: given any text description, it can point to regions in an image without requiring class labels. With nearly 2.4k likes and 570k downloads in a single week, it’s a must‑try for anyone working on vision‑language tasks.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/MiniMaxAI/MiniMax-M3">MiniMaxAI/MiniMax-M3</a></strong> — A versatile multimodal VL model that handles both images and text in a unified transformer. With 1,248 likes and steady downloads, it’s an excellent choice for those exploring image captioning, VQA, or document understanding outside the OCR niche.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/microsoft/FastContext-1.0-4B-SFT">microsoft/FastContext-1.0-4B-SFT</a></strong> — A 4B‑parameter model that pushes context windows to about 1M tokens without quadratic memory blowups. If you work on long document analysis, codebases, or multi‑turn conversational memory, this model is worth studying both as a practical tool and as a research artifact.</p>
-</li>
-</ul>
 <hr>
 <p><em>This digest is auto-generated by <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a>.</em></p>
 ]]></content:encoded>
