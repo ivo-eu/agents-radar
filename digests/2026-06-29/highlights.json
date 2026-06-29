@@ -1,0 +1,22 @@
+{
+  "zh": {
+    "ai-weekly": [
+      "GLM-5.2本地运行性能接近GPT-5.5，国产开源首超闭源",
+      "Anthropic发布Claude Tag：AI作为团队成员集成Slack",
+      "OpenAI与Broadcom推出定制推理芯片Jalapeño，打破垄断",
+      "OpenMontage开源Agent视频制作系统，单日获3400+星",
+      "GPT-5.6 Sol预览需美国政府审查，引发AI许可证恐慌",
+      "CLI工具Token成本失控：OpenAI Codex单价暴涨10倍"
+    ]
+  },
+  "en": {
+    "ai-weekly": [
+      "Anthropic accuses Alibaba of model distillation.",
+      "Anthropic launches Claude Tag as Slack teammate.",
+      "OpenAI previews GPT-5.6 Sol under US government review.",
+      "OpenAI and Broadcom unveil custom inference chip Jalapeño.",
+      "OpenAI Codex token costs spike 10x, developers protest.",
+      "White House requests OpenAI slow GPT-5.6 release."
+    ]
+  }
+}
