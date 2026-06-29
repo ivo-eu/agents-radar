@@ -1,22 +1,134 @@
 {
   "zh": {
-    "ai-weekly": [
-      "GLM-5.2本地运行性能接近GPT-5.5，国产开源首超闭源",
-      "Anthropic发布Claude Tag：AI作为团队成员集成Slack",
-      "OpenAI与Broadcom推出定制推理芯片Jalapeño，打破垄断",
-      "OpenMontage开源Agent视频制作系统，单日获3400+星",
-      "GPT-5.6 Sol预览需美国政府审查，引发AI许可证恐慌",
-      "CLI工具Token成本失控：OpenAI Codex单价暴涨10倍"
+    "ai-cli": [
+      "OpenAI Codex 发布 v0.142.4 版本更新",
+      "Gemini CLI 发布 v0.51.0-nightly 开发版",
+      "Kimi Code 社区活跃度最低，仅2个 Issue",
+      "OpenCode V2 架构引发大量讨论与贡献",
+      "DeepSeek TUI 冲刺 v0.8.66 版本",
+      "Claude Code 连接稳定性问题成社区焦点"
+    ],
+    "ai-agents": [
+      "OpenClaw 今日处理82个 Issue和500个 PR",
+      "发布 v2026.6.11-beta.2 版本",
+      "新增 Slack 中继模式与 Mattermost 支持",
+      "记忆系统修复 PR #80916 已就绪",
+      "回复指令安全修复 PR #96938 待审查",
+      "Mattermost 预览问题修复 PR #87449"
+    ],
+    "ai-trending": [
+      "agency-agents 获1221星，一键部署完整AI代理",
+      "ai-berkshire 获1397星，价值投资框架",
+      "council-of-high-intelligence 18角色多轮议决",
+      "VulnClaw 自动渗透测试 Agent 获105星",
+      "cupy GPU 加速库今日新增352星",
+      "vllm 以84,797星领跑推理引擎"
+    ],
+    "ai-web": [
+      "OpenAI 发布与惠普战略合作公告",
+      "Anthropic 今日官网无任何内容更新",
+      "OpenAI 加速构建硬件触达渠道",
+      "合作可能涉及AI PC与企业办公集成",
+      "企业级生态拓展迈出重要一步",
+      "HP 的庞大客户群助力 OpenAI 落地"
+    ],
+    "ai-hn": [
+      "GLM 5.2 在网络安全基准击败 Claude 获987分",
+      "用户用 Claude Code 分析个人MRI案例引热议",
+      "Tidal 发布AI内容政策限制曲库使用",
+      "NanoEuler 纯C/CUDA实现 GPT-2 训练",
+      "ScreenMind 实时分析全量截图保护隐私",
+      "PCB-Bench 评估LLM在电子设计自动化能力"
+    ],
+    "ai-ph": [
+      "discode.ai 以365票领跑多模型聚合平台",
+      "Persona.js 279票实现前端AI聊天集成",
+      "Lyto 176票跨浏览器工具消息的AI Agent",
+      "Wirable 测试AI Agent与产品交互能力",
+      "开源项目在开发者社区互动率更高",
+      "隐私优先PDF工具获细分领域关注"
+    ],
+    "ai-hf": [
+      "GLM-5.2 获2891赞，下载超13万次",
+      "Qwen-AgentWorld-35B-A3B 探索Agent+世界模型",
+      "Ornith-1.0 系列推出9B/35B/397B版本",
+      "微软 FastContext-1.0-4B 专注长上下文",
+      "DeepSeek-V4-Pro-DSpark 登上热门",
+      "无审查微调版本持续高热，下载数百万"
+    ],
+    "ai-community": [
+      "AI代码审查工具构建中需防数据泄露",
+      "MCP服务器初始化消耗5万+token需优化",
+      "动态凭证注入方案防止Agent泄露秘密",
+      "新JSON压缩算法显著提升Agent响应速度",
+      "模型降价趋势影响开发者生态格局",
+      "经理强制使用AI被指扼杀开发乐趣"
     ]
   },
   "en": {
-    "ai-weekly": [
-      "Anthropic accuses Alibaba of model distillation.",
-      "Anthropic launches Claude Tag as Slack teammate.",
-      "OpenAI previews GPT-5.6 Sol under US government review.",
-      "OpenAI and Broadcom unveil custom inference chip Jalapeño.",
-      "OpenAI Codex token costs spike 10x, developers protest.",
-      "White House requests OpenAI slow GPT-5.6 release."
+    "ai-cli": [
+      "OpenAI Codex rate-limit cost shock 10-20x",
+      "Session-recovery fixes in Gemini CLI",
+      "MCP authentication friction across tools",
+      "Deferred MCP loading becoming standard",
+      "Cost-aware compaction features emerging",
+      "Inline model switching gaining traction"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.11-beta.2 released",
+      "82 issues and 500 PRs in 24h",
+      "Slack relay mode and Mattermost commands",
+      "Per-DM model overrides added",
+      "Memory pressure and routing fixes",
+      "Community engagement very high"
+    ],
+    "ai-trending": [
+      "Multi-agent systems dominate trending",
+      "hermes-agent reaches 205k stars",
+      "cupy gains 352 stars in a day",
+      "vllm: high-throughput LLM inference",
+      "ollama runs local models easily",
+      "MCP becomes standard for AI workflows"
+    ],
+    "ai-web": [
+      "OpenAI announces HP frontier partnership",
+      "Anthropic published zero new articles",
+      "Publishing cadence dropped significantly",
+      "Possible quiet period before announcement",
+      "Monitor next 2-3 crawl cycles",
+      "Only metadata entry, no article text"
+    ],
+    "ai-hn": [
+      "GLM 5.2 beats Claude in benchmarks",
+      "Claude Code used for MRI analysis",
+      "637 comments on medical AI discussion",
+      "Tidal's new AI policy for artists",
+      "Skepticism about AI investment exuberance",
+      "Shift toward efficiency over scale"
+    ],
+    "ai-ph": [
+      "discode.ai eco-friendly gateway to 100+ models",
+      "Persona.js embeds WebMCP-native AI chat",
+      "Lyto unifies AI across browser and tools",
+      "Wirable tests AI agents on products",
+      "Agent-testing and safety tools maturing",
+      "Low-friction AI integration trend"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE model most liked this week",
+      "DeepSeek-V4-Pro-DSpark released",
+      "LiquidAI tiny 230M model for edge",
+      "NVIDIA LocateAnything-3B for vision",
+      "Qwen AgentWorld-35B for agentic tasks",
+      "Microsoft FastContext-4B for long context"
+    ],
+    "ai-community": [
+      "OpenAI GPT-5.6 'Sol' launch discussed",
+      "Frustration with token waste in MCP",
+      "Danger of hardcoded secrets in agents",
+      "Cultural tension over mandated AI use",
+      "Cory Doctorow on AI and labor automation",
+      "Rise of local private AI setups"
     ]
   }
 }
