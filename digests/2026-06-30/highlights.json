@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.196 发布，更新密集",
+      "OpenAI Codex alpha.31 版本上线",
+      "Gemini CLI 发布 nightly 更新",
+      "OpenCode 社区讨论热度高，PR 密集",
+      "GitHub Copilot CLI v1.0.66-2 发布",
+      "DeepSeek TUI 冲刺 v0.8.66，修复活跃"
+    ],
+    "ai-agents": [
+      "OpenClaw 今日 PR 激增 500 条",
+      "严重 Bug：消息丢失、iOS 兼容问题",
+      "修复 Windows WebSocket 断连回归",
+      "新增内存压力监控可配置阈值",
+      "社区热议回复截断问题 (#84516)",
+      "无新版本，但修复性 PR 密集合并"
+    ],
+    "ai-trending": [
+      "agency-agents 今日 +1425 stars 领涨",
+      "council-of-high-intelligence 18 位 AI 名人辩论",
+      "ai-berkshire 投资大师多 agent 框架 +1386",
+      "browser-use/video-use 让 agent 操作视频",
+      "ollama 新增支持 Kimi、GLM、DeepSeek",
+      "多智能体爆发 + 垂直场景深耕"
+    ],
+    "ai-web": [
+      "Anthropic 更新 Frontier Red Team 研究成果",
+      "Project Fetch Phase Two 测试机器人操作",
+      "LLM 对 N-day 漏洞利用量化研究发布",
+      "构建 LLM ATT&CK Navigator 分类威胁",
+      "OpenAI 今日无任何内容更新",
+      "Anthropic 将安全叙事升级为战略部门"
+    ],
+    "ai-hn": [
+      "热议：不要复制粘贴错误到 Claude Code",
+      "Claude Code 被指嵌入遥测数据引发争议",
+      "Open Memory Protocol 统一多 AI 记忆",
+      "离线 AI 工具 run on Mac 获关注",
+      "CNBC：用户转向效率，OpenAI/Anthropic 承压",
+      "Anthropic 与加州政府合作引平衡讨论"
+    ],
+    "ai-ph": [
+      "Agent Mode by Receiptor AI 发票自动化 461 票",
+      "Spira 专为 PH 创作者设计的社媒增长智能体",
+      "ClinePass 在 Cline 中运行开源权重模型",
+      "面向 AI 时代的新 SEO 工具出现",
+      "开发者工具围绕 AI 编程记忆、模型调用",
+      "AI 智能体向垂直场景深度渗透"
+    ],
+    "ai-arxiv": [
+      "保守离线训练放大奖励黑客行为",
+      "35B Agents-A1 达到万亿参数性能",
+      "交叉样本一致性正则化改进 SAE",
+      "VLK 人形机器人全身操作技能",
+      "The Human Creativity Benchmark 评估创意",
+      "多轮 LLM 对话收敛到吸引子状态"
+    ],
+    "ai-hf": [
+      "GLM-5.2 周赞近 3K 登顶 MoE 架构",
+      "DeepSeek V4 系列扩展 Pro/Flash 分支",
+      "Qwen AgentWorld 35B 仅激活 3B 参数",
+      "NVIDIA LocateAnything-3B 黑马周赞 2.5K",
+      "社区量化活跃，unslooth/NVIDIA 工具链主流",
+      "Ornith 系列 9B/35B/397B 基座开放"
+    ],
+    "ai-community": [
+      "AI Engineer World’s Fair 2026 开幕讨论",
+      "“情景记忆”优于“模型记忆”深度文章",
+      "手把手用本地 LLM 生成 Git 提交信息",
+      "46 仓库上下文可语义搜索工程实战",
+      "AGENTS.md 配置文件让 Agent 理解项目",
+      "安全隐私：Git 提交泄露代码风险"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Ecosystem converging on MCP and daemon architectures.",
+      "Claude Code and OpenCode lead in engagement volume.",
+      "Bifurcation: generalist vs task-specific agents.",
+      "Reliability and governance overtake raw features.",
+      "Pi and DeepSeek TUI focus on terminal ergonomics.",
+      "All six major tools show convergent evolution."
+    ],
+    "ai-agents": [
+      "OpenClaw: 500 PRs, 33 merged, high activity.",
+      "No releases despite heavy development phase.",
+      "Core reliability issues: message loss, session corruption.",
+      "Plugin manifest resilience fixes merged by maintainers.",
+      "High-severity P1 issues remain unresolved.",
+      "SDK hardening against malformed metadata ongoing."
+    ],
+    "ai-trending": [
+      "agency-agents and council-of-high-intelligence surge past 300 stars.",
+      "VulnClaw applies AI to cybersecurity pen testing.",
+      "graphify and mem0 advance knowledge and memory layers.",
+      "browser-use/video-use extends agents to video editing.",
+      "ollama and transformers maintain massive star counts.",
+      "New wave of domain-specific AI agents emerging."
+    ],
+    "ai-web": [
+      "Anthropic launches Frontier Red Team official page.",
+      "Project Fetch Phase Two tests Claude in robotics.",
+      "Safety evaluation moving from digital to physical world.",
+      "Monthly research release cadence established.",
+      "OpenAI had no content updates today.",
+      "Research milestones include LLM-discovered 0-days."
+    ],
+    "ai-hn": [
+      "Claude Code copy-paste warning gets 34 points.",
+      "Allegation of spyware in Claude Code sparks debate.",
+      "Open Memory Protocol unifies memory across tools.",
+      "AI spending shift toward efficiency discussed.",
+      "California partners with Anthropic for AI.",
+      "Community focused on reliability and ROI."
+    ],
+    "ai-ph": [
+      "Agent Mode by Receiptor AI tops with 461 votes.",
+      "Spira automates social media growth for makers.",
+      "ClinePass enables running open-weight models locally.",
+      "PMB provides persistent project memory for developers.",
+      "VisibAI audits brand presence in AI answers.",
+      "Six developer tool launches today."
+    ],
+    "ai-arxiv": [
+      "Scaling interaction horizon matches trillion-parameter performance.",
+      "Self-evolving world model improves planning without human feedback.",
+      "New attack surfaces in multi-agent communication and memory.",
+      "Realistic code agent benchmarks SWE-Interact and TraceLab.",
+      "Attractor states emerge in multi-turn LLM conversations.",
+      "Hybrid attention models improve long-context efficiency."
+    ],
+    "ai-hf": [
+      "Qwen3.6-35B-A3B-NVFP4 hits 5.5M downloads.",
+      "GLM-5.2 MoE model leads likes this week.",
+      "Gemma-4-12B-coder GGUF popular for code tasks.",
+      "Uncensored Qwen3.6 variant gets 2.3K likes.",
+      "Multimodal models like Unlimited-OCR gain traction.",
+      "DeepSeek V4 with DSpark optimization released."
+    ],
+    "ai-community": [
+      "AI Engineer World's Fair covered on Dev.to.",
+      "Lobste.rs debates echoes of past AI winters.",
+      "AGENTS.md pattern for project-specific agent context.",
+      "\"The Model Does Not Need Memory\" reframes context.",
+      "Enterprise teams report surprise bills from LLM use.",
+      "Tension between agentic AI and governable outputs."
+    ]
+  }
+}
