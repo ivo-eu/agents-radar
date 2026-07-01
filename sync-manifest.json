@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-07-01T11:45:58.217Z",
+  "generated": "2026-07-01T11:57:05.487Z",
   "files": [
     {
       "path": "2026-02-23/ai-cli.md",
@@ -9574,8 +9574,8 @@
     },
     {
       "path": "2026-07-01/highlights.json",
-      "size": 6849,
-      "sha256": "2a4e7ee71d5ecfedea90955079219befd5f7e940e6d914c9601218dc6cde1c44"
+      "size": 7524,
+      "sha256": "00c839e5a4fb2c1b17eb3a8d35f60b4e4e29bf0d937adc9f9338c76fa8cf6ad8"
     },
     {
       "path": "monthly/2026-04-01/ai-monthly-en.md",
@@ -9606,6 +9606,16 @@
       "path": "monthly/2026-06-01/ai-monthly.md",
       "size": 18579,
       "sha256": "51110bc084fe69330ad65e4edbad45dbf222801b79c558cf3885dfcb3abb2a0b"
+    },
+    {
+      "path": "monthly/2026-07-01/ai-monthly-en.md",
+      "size": 15601,
+      "sha256": "69e6a3b0463e4a1a97e6fca17c9b7084728decb1c3909dd3a0292716746fb8ff"
+    },
+    {
+      "path": "monthly/2026-07-01/ai-monthly.md",
+      "size": 16474,
+      "sha256": "948fae44bc032ca04b36c35b007fa574bcf666d10e2628cfc21ced90fa37518e"
     },
     {
       "path": "web-state.json",
