@@ -71,6 +71,14 @@
       "你不需要前沿模型，小模型与精简方案受青睐",
       "Cory Doctorow论AI与劳动自动化引发批判反思",
       "Chain-of-Thought劫持与PII推理泄露成新风险"
+    ],
+    "ai-monthly": [
+      "Anthropic完成650亿H轮融资，估值9650亿",
+      "Claude Code出现1050美元超额计费争议",
+      "OpenAI Codex成本暴涨10倍引用户抗议",
+      "NVIDIA开源SkillSpector霸榜GitHub Trending",
+      "OpenAI秘密提交S-1启动IPO",
+      "Claude自主发现macOS内核漏洞CVE-2026-28952"
     ]
   },
   "en": {
@@ -145,6 +153,14 @@
       "Chain-of-thought hijacking raises security concerns.",
       "PII inference in LLMs gets serious attention.",
       "2026 is the year AI becomes infrastructure."
+    ],
+    "ai-monthly": [
+      "Anthropic Fable 5 blocked by export control",
+      "Anthropic raises $65B, nears $1T valuation",
+      "AI CLI cost crisis: token bills explode",
+      "Claude Tag: AI as Slack team member",
+      "OpenAI launches Jalapeño chip, files IPO",
+      "OpenMontage: open-source agent video system"
     ]
   }
 }
