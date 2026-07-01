@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.197发布，Sonnet 5驱动新标杆",
+      "Gemini CLI夜间版修复Agent挂起与SSRF",
+      "OpenAI Codex修复SQLite性能与额度消耗",
+      "OpenCode v1.17.12推出MCP OAuth重连",
+      "CodeWhale新增“宪法优先”设置防止过度干预",
+      "Pi v0.80.3接入Sonnet 5并修复WSL兼容"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.6.11修复版本，修复重连与卡顿",
+      "今日新增500个PR，修复压力陡增",
+      "P1级回归Bug：工具调用输出与会话初始化异常",
+      "Mattermost通道插件被外部化，需显式启用",
+      "memory_search默认行为变更为不强制同步",
+      "代理内存安全与持久化成社区讨论焦点"
+    ],
+    "ai-trending": [
+      "agency-agents单日暴涨1791星，AI代理机构爆火",
+      "OmniRoute免费AI网关接入231+模型供应商",
+      "Vibe-Trading自然语言驱动个人交易Agent",
+      "browser-use/video-use用Agent自动编辑视频",
+      "ollama持续霸榜，本地LLM部署首选",
+      "日本开源karukan，神经网络日文输入法"
+    ],
+    "ai-web": [
+      "Anthropic解禁Fable5，出口管制取消重新上线",
+      "Claude Sonnet5发布，最具Agent能力Sonnet",
+      "Claude Science面向科学家的AI工作台正式推出",
+      "Anthropic与政府协调Glasswing计划分发高端模型",
+      "OpenAI今日仅更新三个元数据页面",
+      "出口管制案例展示前沿AI的地缘政治风险"
+    ],
+    "ai-hn": [
+      "Claude Sonnet5获1154分，社区热议能力与安全",
+      "Fable5解禁获732分，地缘政治讨论激烈",
+      "Godot引擎拒绝AI代码贡献，引发信任危机",
+      "Claude Code聊天记录神秘丢失，稳定性受质疑",
+      "Simon Willison发布Sonnet5快速上手笔记",
+      "AI代码信任危机浮现，社区反思质量与责任"
+    ],
+    "ai-ph": [
+      "Cursor for iOS推出，移动端Vibe coding里程碑",
+      "Pluno宣称比Claude快10倍的浏览器Agent",
+      "Clade AI COO嵌入Slack自动分配任务",
+      "v0升级设计系统2.0，提升设计到代码效率",
+      "Dayflow开源晋升工具，AI管理团队成长",
+      "Meta智能眼镜加入速率限制与付费墙"
+    ],
+    "ai-arxiv": [
+      "元认知反馈训练让LLM表达真实不确定性",
+      "LLM表格引用错误被系统化测量与修复",
+      "自由形式偏好学习让机器人通过自然语言反馈学习",
+      "生成式技能组合增强LLM智能体复杂任务能力",
+      "TRIAGE引入角色类型化信用分配优化代理强化学习",
+      "自解释训练揭示模型解释是否反映真实决策"
+    ],
+    "ai-hf": [
+      "GLM-5.2获3108点赞，MoE架构引爆社区",
+      "Qwythos-9B百万级合成对话指令微调模型",
+      "Ornith系列9B到397B全MIT许可，覆盖全预算",
+      "Qwen-AgentWorld-35B专为Agent世界建模",
+      "DeepSeek-V4-Pro/Flash双版本正式登场",
+      "Gemma-4-12B Coder版GGUF成最热本地代码模型"
+    ],
+    "ai-community": [
+      "AI Engineer World’s Fair刷屏，Gemma沙箱争议",
+      "Agent循环工程从概念走向实践",
+      "The Log Is the Agent提出日志优先设计哲学",
+      "你不需要前沿模型，小模型与精简方案受青睐",
+      "Cory Doctorow论AI与劳动自动化引发批判反思",
+      "Chain-of-Thought劫持与PII推理泄露成新风险"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code and OpenAI Codex lead CLI tools.",
+      "Gemini CLI and Copilot CLI close feature gaps.",
+      "Community focuses on safety and cost control.",
+      "Cross-platform stability remains a pain point.",
+      "Pi and CodeWhale innovate on developer experience.",
+      "Workflow non-blocking features are top priority."
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.6.11 released with reliability fixes.",
+      "New release introduced P1 regressions under triage.",
+      "Community focuses on memory trust and session continuity.",
+      "OpenClaw sees 65 issues and 500 PRs in 24h.",
+      "Three enhancement issues have highest comment counts.",
+      "Post-release patch load indicates robust health."
+    ],
+    "ai-trending": [
+      "agency-agents tops trending with +1,791 stars.",
+      "Vibe-Trading and video-use bring agent automation.",
+      "FluidVoice offers local dictation with AI model.",
+      "OmniRoute provides free AI gateway with token compression.",
+      "ollama leads local LLM runner with 175k stars.",
+      "Dify powers visual agentic workflow development."
+    ],
+    "ai-web": [
+      "Claude Sonnet 5 released as most agentic model.",
+      "Claude Science launched for scientific researchers.",
+      "US lifts export controls on Claude Fable 5.",
+      "Fable 5 returns July 1 with usage credits.",
+      "Mythos 5 restored for approved US organizations.",
+      "OpenAI publishes Genebench Pro and Core Dump articles."
+    ],
+    "ai-hn": [
+      "Claude Sonnet 5 launch tops HN with 1154 points.",
+      "White House lifts export controls on Fable 5.",
+      "Godot game engine bans AI-authored code contributions.",
+      "Meta adds rate limits and paywall to AI glasses.",
+      "Simon Willison analyzed Claude Sonnet 5 features.",
+      "Community debates geopolitical implications of ban reversal."
+    ],
+    "ai-ph": [
+      "Cursor for iOS brings coding agent to mobile.",
+      "Skills Marketplace by Databox scores 400 votes.",
+      "Foresight offers prediction API for any app.",
+      "Pluno claims 10x faster browser agent than Claude.",
+      "v0 Design Systems 2.0 targets developers.",
+      "Today's launches favor developer productivity tools."
+    ],
+    "ai-arxiv": [
+      "Metacognitive RL elicits faithful uncertainty in LLMs.",
+      "Self-explanation training tracks behavioral change.",
+      "Credit assignment for long-horizon agentic tasks.",
+      "Test-time adaptation improves models after deployment.",
+      "Verifier-guided code repair loops for robustness.",
+      "Latent world models update at inference time."
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE model leads with 3,108 likes.",
+      "Qwen 3.6 MoE variants dominate trending.",
+      "Gemma-4-12B-coder GGUF reaches 2,541 likes.",
+      "Uncensored Qwen3.6-35B GGUF exceeds 3M downloads.",
+      "NVIDIA LocateAnything-3B for visual grounding.",
+      "Baidu Unlimited-OCR signals robust OCR interest."
+    ],
+    "ai-community": [
+      "AI Engineer World's Fair dominates Dev.to coverage.",
+      "Shift from prompt engineering to loop engineering.",
+      "Lobste.rs discusses parallels to previous AI winters.",
+      "Chain-of-thought hijacking raises security concerns.",
+      "PII inference in LLMs gets serious attention.",
+      "2026 is the year AI becomes infrastructure."
+    ]
+  }
+}
