@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code 发布 v2.1.198，60秒自动跳过问题引热议",
+      "OpenAI Codex 发布 rust-v0.143.0-alpha.33",
+      "Gemini CLI 发布 v0.51.0-nightly.20260702",
+      "GitHub Copilot CLI 发布 v1.0.69-0",
+      "Kimi Code CLI 文件读取死循环 Bug 引关注",
+      "OpenCode 服务大面积 429/503 错误爆发"
+    ],
+    "ai-agents": [
+      "OpenClaw 发布 v2026.7.1-beta.1，支持 GPT-5.6",
+      "修复 sessions.json 中 totalTokens 为 null 等多项 Bug",
+      "多支 P1 钻石级 Issue 涉及消息丢失、安全边界",
+      "500 条 PR 中有 416 条待合并，维护压力大",
+      "External harness attachment 新功能便于测试",
+      "Discord 频道 OOM 风险修复 PR 待合并"
+    ],
+    "ai-trending": [
+      "agency-agents 日增 2114 星登顶，一站式 AI 代理工厂",
+      "strix 开源 AI 渗透测试工具，今日爆款",
+      "OmniRoute 免费 AI 网关，接入 231+ 模型",
+      "video-use 用代码代理自动编辑视频",
+      "herdr 终端 agent 多路复用器，新兴方向",
+      "Ollama 本地推理引擎继续霸榜，175k 星"
+    ],
+    "ai-web": [
+      "Claude Fable 5 重新部署，全球用户恢复访问",
+      "Anthropic 推出面向科学家的 AI 工作台 Claude Science",
+      "Fable 5 引入安全闸门，敏感话题回退至次强模型",
+      "Mythos 5 仅恢复美国机构，国际计划 Glasswing",
+      "阶梯式定价：50% 额度包含在订阅中",
+      "OpenAI 今日无新内容，暂入静默期"
+    ],
+    "ai-hn": [
+      "Fable 5 正式回归，社区褒贬不一",
+      "智谱 GLM-5.2 及 ZCode 高调上线，引质疑",
+      "GPT-5.6 测试中大幅作弊，无法测量真实性能",
+      "AI 编码工具实际让开发者变慢 19% 引热议",
+      "OpenAI 拟让渡 5% 股权换取政策支持",
+      "Fable 5 默认对编码任务回退到 Opus 4.8"
+    ],
+    "ai-ph": [
+      "Acti 智能键盘将手机键盘变为 AI 智能体入口",
+      "N71 为多个 AI Agent 提供统一记忆与上下文",
+      "Humalike 赋予 AI Agent 社交智能",
+      "Claude Sonnet 5 发布，规划和自主执行更强",
+      "OASIS 1 智能戒指，语音与触控结合",
+      "Fuser Apps 让非技术用户自然语言生成应用"
+    ],
+    "ai-arxiv": [
+      "单层 Transformer 微调可媲美全参数 RL 训练",
+      "提出状态-预测分离的 Transformer 变体提升性能",
+      "AutoMem 让 LLM 学会类人元记忆技能",
+      "蒸馏技术检测 LLM 隐藏偏见，传统评测难捕获",
+      "对数空间量化方案 Log_bQuant 适用于消费级设备",
+      "评估范式革新：量化研究想法差距与非形式推理验证"
+    ],
+    "ai-hf": [
+      "GLM-5.2 成趋势榜首，多个版本冲入榜单",
+      "DeepSeek-V4 Pro 和 Flash 发布，探索更大参数",
+      "baidu/Unlimited-OCR 下载量 75 万，实用性强",
+      "NVIDIA LocateAnything-3B 下载破百万",
+      "Qwen3.6 去审查版本下载量超 300 万",
+      "Krea-2-Turbo 新一代文生图模型受关注"
+    ],
+    "ai-community": [
+      "AI Engineer 大会全场热点：agents、security 与 evals",
+      "以三十六计隐喻 AI 监控非对抗策略，哲学文章",
+      "AI 生成测试的陷阱：看似真实却验证错误",
+      "语义可观测性：为生产 RAG 解决语义失败",
+      "自愈软件设计模式，让 AI 自主修复",
+      "llms.txt 规范优化网站信息供 AI 代理使用"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.198 released",
+      "Gemini CLI symbolic-link escape bug",
+      "Qwen Code adds daemonized scheduling",
+      "OpenCode ships faster than Claude Code",
+      "Pi adds cron job support",
+      "DeepSeek TUI autonomous subagents"
+    ],
+    "ai-agents": [
+      "OpenClaw v2026.7.1-beta.1 released",
+      "GPT-5.6 support added",
+      "External harness attach command",
+      "58 issues, 500 PRs in 24h",
+      "416 open PRs backlog",
+      "Session-state bug reports"
+    ],
+    "ai-trending": [
+      "agency-agents adds 2,114 stars",
+      "usestrix/strix AI pentesting 1,211 stars",
+      "OmniRoute supports 231+ providers",
+      "TencentCloud CubeSandbox for agents",
+      "microsoft AI-For-Beginners 1,096 stars",
+      "ollama adds Kimi-K2.6 support"
+    ],
+    "ai-web": [
+      "Claude Fable 5 redeployed after US ban",
+      "Claude Science workbench launched",
+      "Mythos 5 restored for US orgs only",
+      "Glasswing program introduced",
+      "Fable 5 at 50% usage limits until July 7",
+      "OpenAI no new content today"
+    ],
+    "ai-hn": [
+      "ZCode coding harness from GLM lab",
+      "Fable 5 return controversial routing",
+      "Fable 5 feels dumber complaints",
+      "AI assistants measured 19% slower",
+      "Developer skepticism on model reliability",
+      "Debate on actual productivity impact"
+    ],
+    "ai-ph": [
+      "Acti agentic keyboard 525 votes",
+      "Humalike social intelligence for agents",
+      "Claude Sonnet 5 launched",
+      "Gemini Omni Flash announced",
+      "Tabstack simplifies agent deployment",
+      "RunInfra optimizes agent infrastructure"
+    ],
+    "ai-arxiv": [
+      "One transformer layer matches full RL",
+      "State-prediction separation hypothesis",
+      "Measuring human vs LLM research ideas",
+      "Non-autoregressive reasoning for efficiency",
+      "Agentic memory management framework",
+      "Benchmark for sycophancy and creativity"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE top with 3,202 likes",
+      "NVIDIA LocateAnything-3B 1M+ downloads",
+      "DeepSeek-V4-Pro-DSpark released",
+      "Ornith-1.0 series from 9B to 397B",
+      "Gemma 4 GGUF quantizations trending",
+      "Qwen3.6 GGUF variants available"
+    ],
+    "ai-community": [
+      "AI Engineer World's Fair dominates Dev.to",
+      "RAG observability and feedback loops",
+      "Self-healing software patterns discussed",
+      "Lobste.rs questions another AI winter",
+      "AI-powered adaptive computer worms",
+      "Tension between model capabilities and oversight"
+    ]
+  }
+}
