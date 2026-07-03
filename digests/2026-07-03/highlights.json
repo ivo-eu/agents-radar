@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code 发布 v2.1.199",
+      "OpenAI Codex 发布 Rust Alpha x2",
+      "Gemini CLI 发布 Nightly 版本",
+      "GitHub Copilot CLI 最新 v1.0.69-0",
+      "Qwen Code 发布 v0.19.5 + Nightly",
+      "跨平台兼容性成所有工具共同挑战"
+    ],
+    "ai-agents": [
+      "OpenClaw 24h 内 72 个 Issue 更新",
+      "OpenClaw 500 个 PR，待合并 420",
+      "修复 iOS contacts.add 崩溃 (PR #99475)",
+      "修复会话初始化冲突导致消息丢失",
+      "修复 Feishu 会话竞态条件",
+      "修复网关文件描述符泄漏"
+    ],
+    "ai-trending": [
+      "caveman 单日涨星 926（Token 压缩）",
+      "ECC 涨 486（Agent 性能优化）",
+      "strix 单日 2137⭐（AI 渗透测试）",
+      "Vibe-Trading 获 939⭐（智能交易）",
+      "Chrome DevTools MCP 登榜",
+      "OpenAI Codex Plugin for Claude Code"
+    ],
+    "ai-web": [
+      "Claude Sonnet 5 发布，代理能力大幅提升",
+      "Anthropic 提出 AI 越狱严重性分级框架",
+      "Sonnet 5 性能逼近 Opus 4.8 成本更低",
+      "Fable 5 安全分类器详细清单公布",
+      "Sonnet 5 不良行为率更低",
+      "产品策略：缩小 Sonnet 与 Opus 差距"
+    ],
+    "ai-hn": [
+      "OpenAI 提议出让 5% 股份给美国政府",
+      "阿里因后门风险禁用 Claude Code",
+      "Claude Code 被指控嵌入间谍软件",
+      "claude-real-video 获 136 分关注",
+      "Manufact (YC S25) MCP Cloud 获 108 分",
+      "LMDB 1.0 正式版发布"
+    ],
+    "ai-ph": [
+      "Needle 主动 GTM Agent 获 286 票",
+      "Flowly 个人 AI Agent 获 111 票",
+      "adsideō 环境 AI 层获 59 票",
+      "Context.dev 数据提取 API 获 729 票",
+      "Macro 共享记忆工作空间发布",
+      "Retrace AI Agent 调试工具推出"
+    ],
+    "ai-arxiv": [
+      "Online Safety Monitoring for LLMs",
+      "LACUNA 遗忘测试平台发布",
+      "DRIFTLENS 记忆漂移研究",
+      "分布式攻击威胁自主编码安全",
+      "推理努力比工具访问更提升首步成功率",
+      "ReContext 递归证据回放提升长上下文推理"
+    ],
+    "ai-hf": [
+      "GLM-5.2 获 3295 赞登顶",
+      "NVIDIA LocateAnything-3B 获 2583 赞",
+      "gemma-4-12B-coder GGUF 获 2573 赞",
+      "DeepSeek-V4-Pro-DSpark 发布",
+      "百度 Unlimited-OCR 下载 88.5 万",
+      "Ornith 系列多模态模型（397B/35B/9B）"
+    ],
+    "ai-community": [
+      "AI Engineer World's Fair 系列报道",
+      "LLM 防止提示注入实战指南",
+      "AI 生成代码安全责任风险讨论",
+      "本地 AI 性能追赶趋势",
+      "Agent 多人协作架构优于单机",
+      "为 AI Agent 记忆构建信任防火墙"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code v2.1.199 released",
+      "OpenAI Codex ships fast-follower features",
+      "Gemini CLI adds agent orchestration",
+      "Pi and Kimi Code fix cross-platform bugs",
+      "MCP protocol adoption across tools",
+      "API timeouts and hallucinations plague tools"
+    ],
+    "ai-agents": [
+      "OpenClaw: 500 PRs, 72 issues",
+      "80 PRs merged in 24 hours",
+      "Fix for tool output empty regression",
+      "iOS contacts.add crash fix merged",
+      "Session management stability issues",
+      "Maintainer bandwidth bottleneck"
+    ],
+    "ai-trending": [
+      "agency-agents +3,032 stars today",
+      "strix AI penetration testing trends",
+      "caveman skill cuts tokens 65%",
+      "headroom compresses tool outputs",
+      "pytorch still foundational framework",
+      "vllm high-throughput LLM inference"
+    ],
+    "ai-web": [
+      "Anthropic launches Claude Sonnet 5",
+      "Sonnet 5 most agentic model yet",
+      "Fable 5 cyber safeguards proposed",
+      "OpenAI zero new articles today",
+      "Anthropic pairs capability with safety",
+      "Sonnet 5 narrows gap with Opus"
+    ],
+    "ai-hn": [
+      "OpenAI offers US govt 5% stake",
+      "Anthropic spyware accusations in Claude Code",
+      "Alibaba bans Claude Code over backdoor",
+      "Claude-real-video lets LLMs watch video",
+      "Manufact launches MCP Cloud",
+      "Deterministic replacement for LLM-as-judge"
+    ],
+    "ai-ph": [
+      "Context.dev tops with 729 votes",
+      "Needle proactive GTM agent in Slack",
+      "Macro unifies work with shared memory",
+      "Solaris and Basedash for enterprise",
+      "scritty and Retrace for agent debugging",
+      "PieterPost MCP physical-world connectors"
+    ],
+    "ai-arxiv": [
+      "Distributed attacks on persistent AI agents",
+      "Online safety monitoring for LLMs",
+      "Tool access doesn't improve agents",
+      "SOAP/Muon optimizers for scientific ML",
+      "DemoPSD improves reasoning without teachers",
+      "LACUNA benchmark for LLM unlearning"
+    ],
+    "ai-hf": [
+      "DeepSeek V4 Pro/Flash open-weight MoE",
+      "GLM-5.2 with 3.3k likes",
+      "Qwen3.5 uncensored fine-tunes",
+      "LocateAnything-3B zero-shot localization",
+      "Unlimited-OCR for enterprise OCR",
+      "GGUF quantization dominates downloads"
+    ],
+    "ai-community": [
+      "AI Engineer World's Fair dominates Dev.to",
+      "Cory Doctorow on labor automation",
+      "AI-powered adaptive worms debate",
+      "Stop wasting tokens on Claude",
+      "Vibe coding vs infrastructure knowledge",
+      "MCP as memory layer for agents"
+    ]
+  }
+}

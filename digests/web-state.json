@@ -1,6 +1,6 @@
 {
   "anthropic": {
-    "lastChecked": "2026-07-02T10:18:11.357Z",
+    "lastChecked": "2026-07-03T10:12:42.536Z",
     "seenUrls": {
       "https://www.anthropic.com/news/responsible-scaling-policy-v3": "2026-02-25T23:57:06.000Z",
       "https://www.anthropic.com/research/deprecation-updates-opus-3": "2026-02-25T20:58:11.000Z",
@@ -407,12 +407,13 @@
       "https://www.anthropic.com/news/introducing-claude-tag": "2026-06-26T12:23:43.000Z",
       "https://www.anthropic.com/research/economic-index-june-2026-report": "2026-06-26T23:50:17.000Z",
       "https://www.anthropic.com/news/redeploying-fable-5": "2026-07-01T19:40:52.000Z",
-      "https://www.anthropic.com/news/claude-sonnet-5": "2026-06-30T21:20:30.000Z",
-      "https://www.anthropic.com/news/claude-science-ai-workbench": "2026-07-01T17:37:46.000Z"
+      "https://www.anthropic.com/news/claude-sonnet-5": "2026-07-03T01:20:09.000Z",
+      "https://www.anthropic.com/news/claude-science-ai-workbench": "2026-07-01T17:37:46.000Z",
+      "https://www.anthropic.com/news/fable-safeguards-jailbreak-framework": "2026-07-03T00:07:08.000Z"
     }
   },
   "openai": {
-    "lastChecked": "2026-07-02T10:18:00.984Z",
+    "lastChecked": "2026-07-03T10:12:40.421Z",
     "seenUrls": {
       "https://openai.com/index/arvind-kc-chief-people-officer/": "2026-05-29T00:25:33.242Z",
       "https://openai.com/index/put-ai-to-work-for-your-product-team/": "2026-06-12T04:05:36.713Z",
@@ -1134,8 +1135,8 @@
       "https://openai.com/index/openai-broadcom-jalapeno-inference-chip/": "2026-07-02T06:28:47.433Z",
       "https://openai.com/index/previewing-gpt-5-6-sol/": "2026-07-01T23:15:29.963Z",
       "https://openai.com/index/hp-frontier-partnership/": "2026-07-01T23:23:03.958Z",
-      "https://openai.com/index/introducing-genebench-pro/": "2026-07-02T10:11:23.906Z",
-      "https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug/": "2026-07-02T08:57:34.367Z"
+      "https://openai.com/index/introducing-genebench-pro/": "2026-07-03T08:47:32.942Z",
+      "https://openai.com/index/core-dump-epidemiology-data-infrastructure-bug/": "2026-07-03T02:39:36.084Z"
     }
   }
 }
