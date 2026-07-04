@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code v2.1.200/201发布，转向手动模式",
+      "OpenAI Codex安全加固，修复高频Bug",
+      "Gemini CLI Nightly修复Agent核心Bug",
+      "GitHub Copilot CLI修复进展缓慢",
+      "OpenCode大量PR待合并，社区反馈积极",
+      "Qwen Code发布两个版本，社区活跃"
+    ],
+    "ai-agents": [
+      "OpenClaw合并率仅17.6%，审核池承压",
+      "修复DeepSeek V4费用显示为零的Bug",
+      "Discord频道隐藏重复Wait卡片",
+      "Codex线程实现跨客户端共享",
+      "ClawRouter路由规范提供者模型",
+      "重构10+频道插件的重复State"
+    ],
+    "ai-trending": [
+      "caveman用原始人语言节省65% token",
+      "strix渗透测试工具单日+2803 stars",
+      "Chrome DevTools发布MCP服务器",
+      "minimind 2小时训练64M参数模型",
+      "mem0聚焦Agent长期记忆层",
+      "openai/codex-plugin-cc跨Agent桥接"
+    ],
+    "ai-web": [
+      "Claude 3.7 Sonnet推出扩展思考模式",
+      "Anthropic公开模型思维过程",
+      "负责任扩展政策重新发布强调",
+      "Fable 5安全分类器细节披露",
+      "Anthropic抢占安全标准话语权",
+      "OpenAI今日无新内容发布"
+    ],
+    "ai-hn": [
+      "AMD平台性能/美元加速提升获235分",
+      "Claude Mythos Preview严重漏洞99分",
+      "AI仅节省约3%工时引发争议",
+      "Meta追赶GPT-5宣言社区冷淡",
+      "字节跳动发现新缩放定律",
+      "社区对AI经济效益愈发审慎"
+    ],
+    "ai-ph": [
+      "Glaze by Raycast零代码创建Mac应用543票",
+      "nxt语音对话待办清单162票",
+      "Tamamon桌面宠物随Claude Code成长",
+      "Vox语音AI助手获关注",
+      "开发者工具平台型产品受热捧",
+      "Mac生态深耕趋势明显"
+    ],
+    "ai-arxiv": [
+      "实时监控框架应对LLM不安全输出",
+      "SOAP/Muon优化器超越Adam",
+      "推理努力是代码生成可靠性关键",
+      "Neuron-Aware实现无标注自蒸馏",
+      "分布式攻击持久化AI控制建模",
+      "ReContext递归证据重放提升推理"
+    ],
+    "ai-hf": [
+      "GLM-5.2获本周最高点赞3359",
+      "DeepSeek-V4-Pro-DSpark推理优化",
+      "NVIDIA Nemotron双塔MoE仅3B激活",
+      "百度Unlimited-OCR下载98万",
+      "Ornith系列基于Qwen3.5多模态",
+      "Agents-A1智能体专用模型"
+    ],
+    "ai-community": [
+      "对抗性测试指南实战模型鲁棒性",
+      "BPE Tokenizer交互沙箱理解拼写",
+      "Firecracker沙箱运行AI生成代码",
+      "结构化记忆机制替代上下文窗口",
+      "写链污点检查工具gate_taint_lint",
+      "AI编码Agent带来新攻击面"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code releases v2.1.200 and v2.1.201",
+      "OpenCode leads community activity and release cadence",
+      "Gemini CLI adds subagent visibility features",
+      "Claude Code and Codex focus on enterprise security",
+      "Ecosystem sees 200+ issues and 50+ PRs daily",
+      "Data-loss bugs and unreliable completions dominate"
+    ],
+    "ai-agents": [
+      "OpenClaw: 117 issues, 500 PRs in 24h",
+      "88 PRs merged/closed today",
+      "Priority P1/P2 bug fixes and feature requests",
+      "Fix for DeepSeek zero-spend display issue",
+      "Plugin state and doctor migration consolidated",
+      "No new releases, but dense development cycle"
+    ],
+    "ai-trending": [
+      "Agentic tooling surge: caveman cuts tokens 65%",
+      "Multi-agent orchestrators herdr and agency-agents",
+      "CubeSandbox for secure AI agent execution",
+      "Modular agent skills: obra/superpowers, agentskills",
+      "pytorch hits 101k stars (+293 today)",
+      "hermes-agent reaches 208k+ stars"
+    ],
+    "ai-web": [
+      "Anthropic publishes 3 new articles today",
+      "Fable 5 cyber safeguards detailed",
+      "Jailbreak severity framework proposed",
+      "Responsible Scaling Policy re-surfaced",
+      "Claude extended thinking post re-shared",
+      "OpenAI silent, no new content"
+    ],
+    "ai-hn": [
+      "AMD GLM-52 shows strong performance per dollar",
+      "Study: AI saves only 3% work hours",
+      "Claude Mythos linked to new vulnerabilities",
+      "Dan Luu analyzes agentic coding loops",
+      "Meeting room CO2 impacts cognition debate",
+      "Cost vs ROI skepticism dominates discussions"
+    ],
+    "ai-ph": [
+      "Glaze by Raycast: build Mac apps via chat",
+      "Tamamon: coding gamified with desktop pet",
+      "nxt: talk to your todo list",
+      "Vox: voice for GitHub Copilot",
+      "Financial Q&A and social media automation niches",
+      "Developer productivity tools dominate today"
+    ],
+    "ai-arxiv": [
+      "Distributed attacks in persistent-state AI agents",
+      "LACUNA benchmark for LLM unlearning precision",
+      "Online safety monitoring proposed for LLMs",
+      "Scaling paradigm questioned for simulation fidelity",
+      "Neuro-symbolic integration as active frontier",
+      "Refusal subspaces and neuron-aware selection"
+    ],
+    "ai-hf": [
+      "MoE and quantized GGUF models dominate trending",
+      "Ornith 9B, 35B, 397B from deepreinforce-ai",
+      "Qwen 3.5/3.6 uncensored variants popular",
+      "NVIDIA's LocateAnything-3B vision-language tool",
+      "Google's tabular foundation model released",
+      "Abliterated GLM-5.2 fine-tunes trending"
+    ],
+    "ai-community": [
+      "Agent security and LLM production pitfalls",
+      "Taint linting and sandboxed execution tools",
+      "Tokenizer awareness for cost optimization",
+      "Tiered model architectures become standard",
+      "Cory Doctorow on Big Tech AI framing",
+      "Practical optimization patterns converge"
+    ]
+  }
+}
