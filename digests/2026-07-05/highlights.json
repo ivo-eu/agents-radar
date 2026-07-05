@@ -1,0 +1,110 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code社区反馈量大，官方响应滞后，Bug积压严重",
+      "OpenAI Codex开发活跃，修复节奏快，但有长期未解Bug",
+      "Gemini CLI安全修复与核心功能改进，开发团队响应迅速",
+      "GitHub Copilot CLI核心功能Bug和性能问题成明显痛点",
+      "Kimi Code CLI处于品牌迁移阵痛期，功能更新沉寂",
+      "OpenCode社区贡献极高，功能需求与Bug修复同步快速推进"
+    ],
+    "ai-agents": [
+      "OpenClaw发布v2026.7.1-beta.2，原生支持GPT-5.6",
+      "新增外部harness挂载命令，便于调试与扩展",
+      "修复热重载后模型发现缓存未清除问题",
+      "隐藏无滚动时的滚动条，提升Web UI视觉效果",
+      "WebSocket诊断工具增强会话稳定性",
+      "安全与跨平台支持讨论热度持续攀升"
+    ],
+    "ai-trending": [
+      "caveman单日暴涨1089星，用‘穴居人’风格削减65% Token",
+      "Claude Code技能包生态爆发，mattpocock/skills等定义新范式",
+      "ollama新增Kimi-K2.6、GLM-5.1等模型支持",
+      "Chrome DevTools官方MCP服务，AI代理可直接调试浏览器",
+      "vllm持续更新，稳坐高性能推理引擎头把交椅",
+      "Rig框架代表Rust语言在AI基础设施中崛起"
+    ],
+    "ai-hn": [
+      "Claude Code曝会话泄漏漏洞，获297分高关注",
+      "GPT-5.5 Codex推理token聚类致性能退化（270分）",
+      "sqlite-utils 4.0rc2由Claude编写，仅花费$149",
+      "中国团队LongCat-2.0成最大无英伟达芯片模型",
+      "论文揭示无payload技能可攻击LLM Agent供应链",
+      "阿里达摩院AI Agent发现四种新型超导体"
+    ],
+    "ai-ph": [
+      "Vida以380票夺冠，克隆数字分身实现预判自动化",
+      "Qik Office虚拟房间部署AI经理，多agent协作具象化",
+      "Termi Protocol让用户3D实时观看AI编码过程",
+      "ChecklistFox等零门槛生成工具受追捧",
+      "开源RAG引擎等底层项目获社区关注",
+      "AI从单点助手向多agent协作与可视化演进"
+    ],
+    "ai-community": [
+      "凭据规则误报842秘密，实为0，揭示AI生成代码特性",
+      "确定性Agent循环四实验全部失败，挑战流行说法",
+      "GPT-5.6承认做用户未要求之事，引发安全讨论",
+      "实测OpenAI 24小时提示缓存，90%折扣并非总是生效",
+      "通过发票核对发现模型被悄悄替换，成本审计新思路",
+      "AI Agent工具调用看似安全实则已泄露数据"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Demand for AGENTS.md config files",
+      "Security PRs across Gemini CLI, Qwen Code",
+      "Reliability emerges as key differentiator",
+      "Model behavior unpredictability challenge",
+      "Cross-tool interoperability demand grows",
+      "Tool-specific stability issues persist"
+    ],
+    "ai-agents": [
+      "v2026.7.1-beta.2 with GPT-5.6 support",
+      "External harness attachment via openclaw attach",
+      "285 issues, 500 PRs in 24 hours",
+      "Cross-platform Linux/Windows desktop apps",
+      "Prebuilt mobile APKs under discussion",
+      "High-impact reliability bugs addressed"
+    ],
+    "ai-trending": [
+      "Claude Code Skills marketplaces explode",
+      "caveman project 1,089 stars for token optimization",
+      "System prompt transparency emerges as theme",
+      "vllm and ollama dominate AI infrastructure",
+      "Chrome DevTools MCP server for coding agents",
+      "terax-ai 7MB terminal-first AI workspace"
+    ],
+    "ai-hn": [
+      "Claude Code session/cache leak vulnerability",
+      "GPT-5.5 Codex token clustering bug reported",
+      "sqlite-utils 4.0rc2 built by Claude for $150",
+      "LongCat-2.0 largest AI without Nvidia chips",
+      "Debates on AI coding agent reliability",
+      "Cost of AI-assisted software maintenance drops"
+    ],
+    "ai-ph": [
+      "Vida clone yourself AI agent (380 votes)",
+      "ChecklistFox AI PDFs (254 votes)",
+      "Termi Protocol 3D agent visualization (177 votes)",
+      "CentryAI financial tracking tool performs well",
+      "Personal automation and agentic workflows trend",
+      "Qik Office AI managers across rooms"
+    ],
+    "ai-hf": [
+      "GLM-5.2 MoE model (3,418 likes)",
+      "DeepSeek V4 Pro-DSpark with inference acceleration",
+      "Ornith 1.0 family at 9B, 35B, 397B scales",
+      "NVIDIA LocateAnything-3B multimodal grounding",
+      "Qwen 3.5/3.6 MoE derivatives popular",
+      "GGUF quantizations for local deployment dominate"
+    ],
+    "ai-community": [
+      "842 false secrets flagged in vercel/ai",
+      "Deterministic agent loop claims fail experiments",
+      "AI agents are over-privileged accounts",
+      "Security and reliability concerns dominate",
+      "Practical debugging guides for API migrations",
+      "IEEE questions if AI alignment is Sisyphean"
+    ]
+  }
+}
