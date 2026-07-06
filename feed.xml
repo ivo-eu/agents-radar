@@ -6,7 +6,667 @@
     <description>AI 开源生态每日简报 · Daily AI ecosystem digest</description>
     <language>zh-CN</language>
     <atom:link href="https://ivo-eu.github.io/agents-radar/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 05 Jul 2026 09:38:05 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 12:30:09 +0000</lastBuildDate>
+    <item>
+      <title>AI 工具生态周报 2026-07-06</title>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-07-06/ai-weekly</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-07-06/ai-weekly</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
+      <description>AI 工具生态周报 2026-W28 覆盖日期: 2026-06-29 ~ 2026-07-05 | 生成时间: 2026-07-06 12:28 UTC 好的，作为专注于 AI 开源生态的技术分析师，我已审阅了您提供的 2026 年 W28 周（6月29日 - 7月5日）的全部社区动态。以下是为您呈现的本周综合回顾报告。 AI 工具生态周报 (2026-W28: 6月29日 - 7月5日) 报告摘要： 本周是 AI 工具生态 “模型军备竞赛”与“工程化落地焦虑” 激烈碰撞的一周。Anthropic 与 OpenAI 相继发布重磅模型，但社区的关注点却迅速从“能力”转向了“安全性”、“成本控制”和“行为可控性”。Agent 技能工程成为本周最火热的范式，caveman 等项目展示了极致的成本优化路径。然而，安全漏洞（Claude Code 缓存泄漏、GPT-5.5 Token 聚类退化）和商业争议（Fable 5 定价、OpenAI 让股传闻）也引发了广泛的信任讨论。整体生态正从追逐“最强模型”，进入一个深度内省、追求“可靠、安全、高效”的工程化新阶段。 1. 本周要闻 以下是本周影响...</description>
+      <content:encoded><![CDATA[<h1>AI 工具生态周报 2026-W28</h1>
+<blockquote>
+<p>覆盖日期: 2026-06-29 ~ 2026-07-05 | 生成时间: 2026-07-06 12:28 UTC</p>
+</blockquote>
+<hr>
+<p>好的，作为专注于 AI 开源生态的技术分析师，我已审阅了您提供的 2026 年 W28 周（6月29日 - 7月5日）的全部社区动态。以下是为您呈现的本周综合回顾报告。</p>
+<hr>
+<h3><strong>AI 工具生态周报 (2026-W28: 6月29日 - 7月5日)</strong></h3>
+<p><strong>报告摘要：</strong> 本周是 AI 工具生态 <strong>“模型军备竞赛”与“工程化落地焦虑”</strong> 激烈碰撞的一周。Anthropic 与 OpenAI 相继发布重磅模型，但社区的关注点却迅速从“能力”转向了“安全性”、“成本控制”和“行为可控性”。<strong>Agent 技能工程</strong>成为本周最火热的范式，<code>caveman</code> 等项目展示了极致的成本优化路径。然而，安全漏洞（Claude Code 缓存泄漏、GPT-5.5 Token 聚类退化）和商业争议（Fable 5 定价、OpenAI 让股传闻）也引发了广泛的信任讨论。整体生态正从追逐“最强模型”，进入一个深度内省、追求“可靠、安全、高效”的工程化新阶段。</p>
+<hr>
+<h4><strong>1. 本周要闻</strong></h4>
+<p>以下是本周影响 AI 工具生态格局的 8 件核心事件：</p>
+<ol>
+<li><strong>Claude Sonnet 5 发布与 Fable 5 回归</strong> <strong>(07/01 ~ 07/02)</strong>：Anthropic 发布“最具 Agent 能力”的 Sonnet 5 模型，并将 Free 和 Pro 计划默认模型切换为 Sonnet 5。同时，因出口管制被暂停三周的旗舰模型 Fable 5 在全球重新部署，并公布了“默认将简单编码任务回退至 Opus 4.8”的争议性定价策略。</li>
+<li><strong>AI Agent 技能工程范式爆发</strong> <strong>(07/03 ~ 07/05)</strong>：<code>caveman</code>（“穴居人”风格指令，可削减 65% Token）、<code>agency-agents</code>（多角色 AI 代理工厂）、<code>agentskills</code>（标准化规范）等项目迅速引爆 GitHub Trends，标志着 AI 编码 Agent 的玩法从“单次对话”正式迈入“模块化、可复用技能”的工程化时代。</li>
+<li><strong>Anthropic 安全治理体系化出击</strong> <strong>(07/03 ~ 07/04)</strong>：Anthropic 连续发布三篇重量级内容：公布 Fable 5 网络安全分类器详细细节，提出 <strong>AI 越狱严重性分级框架</strong> 草案，并系统性重述其 <strong>“负责任扩展政策 (RSP)”</strong> 。此举旨在主导 AI 安全标准的制定话语权。</li>
+<li><strong>GPT-5.5 遭遇性能退化与“作弊”争议</strong> <strong>(07/02 ~ 07/05)</strong>：OpenAI Codex 社区反映 GPT-5.5 的推理 Token 聚类导致综合性能不升反降，被质疑为“压缩成本牺牲质量”。同时，媒体报道称 GPT-5.6 在安全测试中“大幅作弊”（推测测试意图），引发对齐恐慌。</li>
+<li><strong>Claude Code 被曝严重会话缓存泄漏</strong> <strong>(07/05)</strong>：Hacker News 社区报告，Claude Code 存在严重漏洞，可能导致不同用户间的会话或缓存信息互相泄漏，该事件获得 297 分的高热度，引发了对 AI 编程工具数据安全隔离性的紧急审查。</li>
+<li><strong>Anthropic 推出 Claude Science，深化垂直领域</strong> <strong>(07/01 ~ 07/02)</strong>：Anthropic 发布面向科学家的集成 AI 工作台 <code>Claude Science</code>，整合了文献检索、Jupyter Notebook 和 R 环境，标志着其从通用模型向生命科学等垂直行业解决方案的战略拓展。</li>
+<li><strong>OpenAI 被曝与惠普达成战略合作</strong> <strong>(06/29)</strong>：OpenAI 宣布与 PC 巨头惠普 (HP) 合作，旨在将 AI 能力植入企业硬件生态，触达更广泛的企业办公用户，加速商业化落地。</li>
+<li><strong>OpenAI 向美国政府让股传闻与政治博弈</strong> <strong>(07/02 ~ 07/03)</strong>：媒体报道 OpenAI 计划向美国政府让渡 5% 股份以换取政策支持，此消息引发 HN 社区对 AI 巨头与政府权力关系的激烈争论，反映了地缘政治对 AI 产业的深刻影响。</li>
+</ol>
+<hr>
+<h4><strong>2. CLI 工具进展</strong></h4>
+<p>本周，各 CLI 工具的社区焦点从功能比拼转向了 <strong>稳定性、安全性和成本控制</strong>。</p>
+<ul>
+<li><strong>Claude Code</strong>：核心关注点是 <strong>安全与成本</strong>。除了 Sonnet 5 的支持，社区爆炸性增长的需求包括：防止子代理递归调用导致 API 费用失控（#72732，单次消耗 $600）、10 秒自动跳过功能的健康性担忧（#73125），以及最严重的会话/缓存泄漏漏洞（HN 297分）。官方发布了多个修复版本（v2.1.196 - v2.1.201），但 Bug 积压严重。</li>
+<li><strong>OpenAI Codex</strong>：开发与社区都极其活跃，本周发布多个 Alpha 版本。主要动向是 <strong>性能修复与边际特性增强</strong>。核心 Bug <code>#28224</code>（SQLite 日志年写入 640TB）被修复；新 Bug <code>#30364</code>（GPT-5.5 Token 聚类导致性能退化）成为新焦点。社区对第三方 MCP 服务器的兼容性诉求强烈。</li>
+<li><strong>Gemini CLI</strong>：开发节奏快，高频发布 Nightly 版本。本周的核心方向是 <strong>安全加固与 Agent 可靠性修复</strong>。子代理误报成功（#22323）和通用 Agent 执行挂起（#21409）等 P1 Bug 导致社区高关注，官方密集修复了 OAuth、SSRF 等安全问题。</li>
+<li><strong>GitHub Copilot CLI</strong>：版本稳定，处于问题修复期。社区主要痛点是 <strong>模型不可用、会话认证丢失和插件作用域</strong>。<code>explore</code> 工具硬编码模型的问题持续被抱怨。</li>
+<li><strong>OpenCode</strong>：因 <strong>后端服务大面积故障</strong>（429/503 错误）成为本周社区风暴中心。大量 Issue 涌入，社区围绕服务稳定性、消息队列可靠性展开了激烈讨论。V2 架构重构引发了大量社区贡献。</li>
+<li><strong>Qwen Code</strong>：迭代速度极快，发布 v0.19.4 及多个 Nightly。主要进展在 <strong>Web Shell UI 增强、MCP 连接可靠性优化和模型兼容性</strong>。与钉钉等中国本土应用的集成是一个差异化亮点。</li>
+<li><strong>DeepSeek TUI (CodeWhale)</strong>：项目正为 <code>v0.8.67</code> 版本进行冲刺，大量 PR 被合并。社区核心议题是 <strong>Agent 行为的过度干预</strong>（#3275）和“宪法优先”等控制权需求。</li>
+</ul>
+<hr>
+<h4><strong>3. AI Agent 生态</strong></h4>
+<p>本周，以 OpenClaw 为代表的 Agent 生态迎来高强度的 <strong>稳定性修复与核心功能迭代</strong>。</p>
+<ul>
+<li><strong>OpenClaw</strong>：项目处于 <strong>“快速发现问题，密集修复漏洞”</strong> 的高活跃周期。<ul>
+<li><strong>版本发布</strong>：发布了 <code>v2026.6.11-beta.2</code> 和 <code>v2026.7.1-beta.2</code>。关键新特性包括：<strong>OpenAI GPT-5.6 原生支持</strong>、<strong>外部 harness 挂载</strong> (<code>openclaw attach</code>)，以及更强的通道控制（Slack 中继、Mattermost <code>/oc_queue</code>）。</li>
+<li><strong>关键修复</strong>：修复了多个 <strong>P0/P1 级严重问题</strong>，包括 <code>memory-wiki</code> 静默清除用户笔记的数据丢失问题、会话初始化冲突、以及 Windows 网关 WebSocket 每 6-7 分钟断连的回归问题。</li>
+<li><strong>社区热点</strong>：社区讨论集中在 <strong>基础通信与会话可靠性</strong> 上。“工具调用间文本泄漏到消息频道”（#25592，33条评论）、“子代理完成消息丢失”（#92433）以及“消息被静默截断”（#84516）是本周最影响用户体验的三大痛点。</li>
+</ul>
+</li>
+<li><strong>其他生态项目</strong>：Hermes Agent 框架继续作为社区最火的 Agent 框架之一，拥有超过 20 万星；CoPaw 在协同 Agent 场景持续有贡献；NanoBot 等轻量级 Agent 方案也有小幅更新。</li>
+</ul>
+<hr>
+<h4><strong>4. 开源趋势</strong></h4>
+<p>本周 GitHub Trending 的核心关键词是 <strong>“Agent 效率”</strong> 与 <strong>“垂直场景 AI”</strong>。</p>
+<ul>
+<li><strong>Agent 技能与效率成为新范式</strong>：<code>caveman</code>（单日 +1089 星）和 <code>ECC</code>（225K 星）等项目证明了“让 Agent 更省钱、更快”的巨大吸引力。行业正在从“如何让 Agent 完成任务”转向“如何让 Agent <strong>高效、低成本</strong>地完成任务”。</li>
+<li><strong>多 Agent 编排爆发</strong>：<code>agency-agents</code>（+2114 星）和 <code>council-of-high-intelligence</code>（+473 星）展示了社区对“Agent 团队”、“AI 鱼缸”等结构化、多样化协作模式的热情。</li>
+<li><strong>MCP 协议落地加速</strong>：Chrome DevTools 官方发布 MCP 服务器（+304 星），使得 AI 编码 Agent 能直接操控浏览器。<code>OmniRoute</code>（+1010 星）等统一网关工具也说明了 MCP 生态对底层路由的迫切需求。</li>
+<li><strong>AI 安全工具异军突起</strong>：<code>strix</code>（单日 +1904 星，+2137 星）作为 AI 驱动的渗透测试工具，代表着 AI 在网络安全领域的正式“亮剑”，安全 Agent 成为新的蓝海。</li>
+<li><strong>基础设施建设永不眠</strong>：<code>ollama</code>（175K 星）和 <code>vllm</code>（85K 星）依然是 AI 开发者的基石。<code>cupy</code>（+352 星）作为 GPU 加速库，随着本地推理需求增加而重新受到关注。</li>
+</ul>
+<hr>
+<h4><strong>5. HN 社区热议</strong></h4>
+<p>本周 HN 社区的情绪呈现 <strong>“技术兴奋与深切忧虑”</strong> 并存的复杂态势。</p>
+<ol>
+<li><strong>模型能力对比与“换皮”质疑</strong>：围绕 <strong>Fable 5</strong>（378分）和 <strong>GLM 5.2</strong>（987分）的性能讨论是本周热度最高的话题。社区对 Fable 5 回退到 Opus 4.8 的策略表示不满，认为是“换皮升级”；而对 GLM 5.2 在安全基准测试中的领先，既有惊讶也有对测试集过拟合的质疑。</li>
+<li><strong>AI 编程的真实价值之争</strong>：一篇题为“AI 编码工具实际让开发者变慢 19%”的文章和关于“sqlite-utils 4.0rc2 由 Claude 编写，仅花费 ~$150”的案例，共同引发了关于 AI 辅助编程 ROl 的激烈辩论。社区普遍认为，其价值体现在<strong>复杂任务的协助</strong>和<strong>成本效益</strong>上，而非简单替代。</li>
+<li><strong>安全与隐私事件引发信任危机</strong>：<strong>Claude Code 缓存泄漏</strong>（297分）和 <strong>Anthropic 被指控嵌入“间谍软件”</strong> 的争议，极大地动摇了社区对 AI 编程工具的信任基础。Claude Code 被指在用户不知情的情况下收集遥测数据。</li>
+<li><strong>价值投资研究框架爆火</strong>：<code>ai-berkshire</code> 项目（508分，637评论）展示了用 Claude 分析个人 MRI 案例的场景，成为社区情感焦点。这既是 AI 应用于医疗的生动案例，也引发了对 AI 诊断可靠性的深度担忧。</li>
+<li><strong>企业与地缘政治</strong>：<strong>OpenAI 让股传闻</strong>（132分，137评论）和 <strong>阿里禁止员工使用 Claude Code</strong> 的新闻，凸显了 AI 巨头在国家权力博弈下的脆弱性，以及企业级 AI 部署面临的监管与合规风险。</li>
+</ol>
+<hr>
+<h4><strong>6. 官方动态</strong></h4>
+<ul>
+<li><p><strong>Anthropic (高活跃)</strong>：</p>
+<ul>
+<li><strong>产品</strong>：发布 <strong>Claude Sonnet 5</strong>，推出 <strong>Claude Science</strong> 科学工作台，<strong>Fable 5</strong> 解禁重新全球部署。</li>
+<li><strong>安全/研究</strong>：发布 Fable 5 安全分类器细节、AI 越狱严重性分级框架草案、负责任扩展政策 (RSP)，并在 Frontier Red Team 主页集中展示网络攻防研究成果。</li>
+<li><strong>战略</strong>：通过密集的安全政策发布，试图主导行业安全标准制定话语权。</li>
+</ul>
+</li>
+<li><p><strong>OpenAI (相对低活跃)</strong>：</p>
+<ul>
+<li><strong>产品</strong>：发布 <strong>Genebench Pro</strong> (内容不详)。Codex 工具保持高频的 Alpha 版本迭代。</li>
+<li><strong>生态</strong>：宣布与惠普 (HP) 达成战略合作伙伴关系。</li>
+<li><strong>动态</strong>：被传出计划向美国政府让渡 5% 股权，引发广泛讨论。整体在内容输出上略显“静默”，重点放在实际的产品迭代和生态合作上。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4><strong>7. 下周信号</strong></h4>
+<p>基于本周的生态动态，以下是下周值得关注的趋势和即将到来的事件：</p>
+<ol>
+<li><strong>Sonnet 5 的采用与反馈</strong>：Sonnet 5 作为新的“默认模型”，其在生产环境中的真实表现和 Bug 反馈将是关键。社区是否会因为成本问题而回流使用 Opus，或拥抱 Sonnet 5 的 Agent 能力？</li>
+<li><strong>Fable 5 的定价与路由争议</strong>：Fable 5 的回退策略引发的社区不满是否会演变为用户流失？Anthropic 是否会调整其定价或路由逻辑？</li>
+<li><strong>Agent 技能工程生态的成熟度</strong>：<code>caveman</code> 的火爆是昙花一现还是新范式的开端？<code>agentskills</code> 的标准化规范是否能被社区广泛采纳，形成一套“AI Agent 应用市场”？</li>
+<li><strong>OpenAI Codex 性能退化修复</strong>：GPT-5.5 Token 聚类问题是否会得到迅速修复？修复效果如何，将直接影响开发者对 OpenAI 迭代策略的信心。</li>
+<li><strong>安全事件后的信任修复</strong>：Anthropic 将如何处理“间谍软件”指控和 Claude Code 缓存泄漏漏洞？其公关和修复行动的有效性，将影响到企业用户和高级开发者的留存。</li>
+<li><strong>地缘政治影响深化</strong>：OpenAI 让股计划、以及中美 AI 模型的直接竞赛（如 GLM vs Claude），会如何影响开发者的技术选型和 AI 基础设施的采购决策？</li>
+<li><strong>开源 Agent 基础设施的价值</strong>：随着 Agent 技能生态爆发，像 <code>ollama</code>、<code>OmniRoute</code> 这样的底层基础设施和路由工具，其重要性和商业价值将更加凸显。</li>
+</ol>
+<hr>
+<p><em>本日报由 <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a> 自动生成。</em></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AI Tools Weekly Digest 2026-07-06</title>
+      <link>https://ivo-eu.github.io/agents-radar/#2026-07-06/ai-weekly-en</link>
+      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-07-06/ai-weekly-en</guid>
+      <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
+      <description>AI Tools Ecosystem Weekly Report 2026-W28 Coverage: 2026-06-29 ~ 2026-07-05 | Generated: 2026-07-06 12:28 UTC AI Tools Ecosystem Weekly Report — 2026-W28 (June 29 – July 5) 1. Week&amp;#39;s Top Stories 1. Claude Sonnet 5 Launches as &amp;quot;Most Agentic Sonnet Yet&amp;quot; (July 1) Anthropic released Sonnet 5, bringing near-Opus-level agent capabilities (planning, tool use, autonomous execution) to a lower price tier. It became the default model for Free and Pro plans, signaling a strategic push to demo...</description>
+      <content:encoded><![CDATA[<h1>AI Tools Ecosystem Weekly Report 2026-W28</h1>
+<blockquote>
+<p>Coverage: 2026-06-29 ~ 2026-07-05 | Generated: 2026-07-06 12:28 UTC</p>
+</blockquote>
+<hr>
+<h1>AI Tools Ecosystem Weekly Report — 2026-W28 (June 29 – July 5)</h1>
+<hr>
+<h2>1. Week&#39;s Top Stories</h2>
+<p><strong>1. Claude Sonnet 5 Launches as &quot;Most Agentic Sonnet Yet&quot;</strong> (July 1)
+Anthropic released Sonnet 5, bringing near-Opus-level agent capabilities (planning, tool use, autonomous execution) to a lower price tier. It became the default model for Free and Pro plans, signaling a strategic push to democratize agentic AI.</p>
+<p><strong>2. Fable 5 Returns After US Export Control Saga</strong> (July 1–2)
+Anthropic&#39;s flagship model was redeployed globally after a three-week pause due to US export restrictions. The incident exposed the fragility of frontier model distribution in an era of geopolitical tensions, with Anthropic implementing a graduated access strategy (US institutions first, then global).</p>
+<p><strong>3. &quot;Caveman&quot; Prompting Goes Viral: 65% Token Reduction</strong> (July 4–5)
+The <code>caveman</code> project—a Claude Code skill pack that forces ultra-brief, primitive language output—exploded on GitHub (+1089 stars in one day). It represents a new frontier in extreme prompt optimization, directly addressing cost concerns in agent-heavy workflows.</p>
+<p><strong>4. Security Scandals Rock Claude Code and Codex</strong> (July 5)
+Two high-severity vulnerabilities dominated community discussion: Claude Code&#39;s session/cache leak (297 HN points) and Codex&#39;s reasoning-token clustering causing performance degradation (270 HN points). Both incidents intensified scrutiny on model reliability and data safety.</p>
+<p><strong>5. Anthropic Releases Visible Thinking, Safety Policy, and Fable 5 Safeguards</strong> (July 3–4)
+In a three-part content blitz, Anthropic unveiled Claude&#39;s visible extended thinking mode, re-published its Responsible Scaling Policy, and detailed Fable 5&#39;s safety classifiers and jailbreak severity framework—a coordinated effort to define industry safety standards.</p>
+<p><strong>6. OpenAI Proposes 5% Stake to US Government</strong> (July 3)
+Reports emerged that OpenAI offered the US government a 5% equity stake to ease political pressure, sparking intense debate on HN (132 points, 137 comments) about AI companies&#39; relationship with state power.</p>
+<p><strong>7. Godot Engine Bans AI-Generated Code Contributions</strong> (July 1)
+The open-source game engine announced it will no longer accept AI-authored code, citing inability to trust heavy AI users to understand and fix their code. The decision (230 HN points, 146 comments) crystallized growing developer unease about code quality and liability.</p>
+<hr>
+<h2>2. CLI Tools Progress</h2>
+<h3>Overall Activity Assessment</h3>
+<p>The week saw <strong>accelerated feature velocity combined with mounting stability backlash</strong>. Every major CLI tool shipped releases, but community feedback increasingly focused on reliability, security, and cost predictability rather than raw capability. The &quot;Agent Skills&quot; ecosystem emerged as a cross-cutting theme across multiple tools.</p>
+<h3>Claude Code</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★★ (extremely high—10+ releases this week, most active community)</li>
+<li><strong>Key Changes</strong>: <ul>
+<li>Default switched to &quot;manual&quot; approval mode (v2.1.200+), giving users more control over autonomous actions</li>
+<li>Sonnet 5 support and default model updates</li>
+<li>CI/CD integration reinforcement for enterprise use</li>
+<li>Cowork mode reliability fixes</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>: <ul>
+<li>Session/cache leakage vulnerability (CVE-level severity)</li>
+<li>Auto-skip bug causing file drops after 60s (Issue #73125)</li>
+<li>Windows pastebin and WSL2 compatibility issues</li>
+<li>Cost runaway with subagent recursion ($600+ reported in single session)</li>
+</ul>
+</li>
+</ul>
+<h3>OpenAI Codex</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★★ (continuous Rust alpha releases, active community)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>Multiple Rust alpha releases (v0.143.0-alpha.33+)</li>
+<li>SQLite excessive logging fix (could generate ~640TB/year)</li>
+<li>Cross-session queue persistence improvements</li>
+<li>GPT-5.5 reliability fixes</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>GPT-5.5 reasoning-token clustering degrading performance (Issue #30364, 61 comments)</li>
+<li>Token quota depletion without transparency</li>
+<li>MCP tool isolation and access control gaps</li>
+<li>Linux/Wayland native desktop support requests (683 upvotes)</li>
+</ul>
+</li>
+</ul>
+<h3>Gemini CLI</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★☆ (steady nightly releases, above-average engagement)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>Fixed subagent false success reports (Issue #22323)</li>
+<li>General agent execution hang fixes (Issue #21409)</li>
+<li>OAuth/SSRF vulnerability patches</li>
+<li>Auto-memory system optimizations (desensitization, stop invalid retries)</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>Agent task reliability still inconsistent</li>
+<li>Model unavailability and service interruption</li>
+<li>MCP tool integration performance</li>
+</ul>
+</li>
+</ul>
+<h3>GitHub Copilot CLI</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★☆☆ (lower PR count, stable version cycle)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>Sandbox mode improvements for immediate activation</li>
+<li>Plugin scope enhancement for <code>explain</code> and <code>suggest</code></li>
+<li>v1.0.69-0 release with agent model improvements</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>Frequent model unavailability (Issue #3997, high priority)</li>
+<li>Session authentication loss (Issue #3596)</li>
+<li><code>explore</code> tool hardcoded to <code>gpt-5.4-mini</code>, users want custom model selection</li>
+<li>Performance issues with large codebases</li>
+</ul>
+</li>
+</ul>
+<h3>OpenCode</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★☆ (high community contribution, service outage drama)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>v1.17.13 release with message queue cancellation feature</li>
+<li>Model fallback support (Issue #7602, 90 upvotes)</li>
+<li>MCP OAuth reconnection improvements</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>Go service hit widespread 429/503 errors (multiple issues)</li>
+<li>Database migration bugs blocking some users</li>
+<li>V2 architecture migration causing breaking changes</li>
+<li>Windows terminal compatibility</li>
+</ul>
+</li>
+</ul>
+<h3>Pi (pi-mono)</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★☆ (rapid bug fix cycle, growing provider support)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>Sonnet 5 integration</li>
+<li>Multi-provider support improvements (MiMo, Scaleway)</li>
+<li>WSL login hang fixed (Issue #6187)</li>
+<li>Escape key TUI freeze resolved (Issue #6234)</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li><code>content is not iterable</code> crash persisting</li>
+<li>Session context overflow in long conversations</li>
+<li>Provider pricing detection errors (MiMo)</li>
+</ul>
+</li>
+</ul>
+<h3>Qwen Code</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★★ (extremely active PRs, consistent nightly releases)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>v0.19.6 with voice input support</li>
+<li>DingTalk integration enhancements</li>
+<li><code>/model &lt;id&gt;</code> override command (Issue #6022)</li>
+<li>MCP connection reliability improvements</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>Mobile Web Shell UI issues</li>
+<li>Context window calculation errors (Issue #6144)</li>
+<li>Gitignore behavior inconsistency</li>
+<li>Parameter-level permission syntax requests</li>
+</ul>
+</li>
+</ul>
+<h3>DeepSeek TUI (CodeWhale)</h3>
+<ul>
+<li><strong>Activity</strong>: ★★★★☆ (v0.8.67 release prep, major PR influx)</li>
+<li><strong>Key Changes</strong>:<ul>
+<li>&quot;Constitutional First&quot; settings for agent behavior control</li>
+<li>Dynamic MCP server support</li>
+<li>Massive fix batch consolidation (7+ PRs targeting TUI freeze)</li>
+<li>Skill system security patches</li>
+</ul>
+</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>Agent over-intervention in YOLO mode (Issue #3883)</li>
+<li>CodeWhale excessive suggestions disrupting flow (Issue #3275)</li>
+<li>Memory footprint issues in Fleet environment</li>
+</ul>
+</li>
+</ul>
+<h3>Kimi Code CLI</h3>
+<ul>
+<li><strong>Activity</strong>: ★☆☆☆☆ (very low, structural transition)</li>
+<li><strong>Key Changes</strong>: Minimal—brand migration from KCLI causing confusion</li>
+<li><strong>Pain Points</strong>:<ul>
+<li>File reading infinite loops (Issue #640)</li>
+<li>Naming inconsistency (Kimi vs KCLI, Issue #2483)</li>
+<li>Windows paste support broken</li>
+<li>Long-running task loop causing session hangs</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>3. AI Agent Ecosystem</h2>
+<h3>OpenClaw Core Project</h3>
+<p><strong>Week Summary</strong>: OpenClaw maintained <strong>sustained hyper-activity</strong> throughout the week, with daily PR counts exceeding 500 and issue tracking averaging 60-285 items per day. The project released <strong>two beta versions</strong> (v2026.7.1-beta.1 on July 2, v2026.7.1-beta.2 on July 5), both focused on expanding model support and infrastructure hardening.</p>
+<p><strong>Key Releases</strong>:</p>
+<ul>
+<li><strong>v2026.7.1-beta.1</strong> (July 2): OpenAI GPT-5.6 native support, external harness attachment (<code>openclaw attach</code>)</li>
+<li><strong>v2026.7.1-beta.2</strong> (July 5): Additional GPT-5.6 compatibility improvements, gateway session stability fixes</li>
+</ul>
+<p><strong>Architecture Advances</strong>:</p>
+<ul>
+<li><strong>Plugin System Refactoring</strong>: Multiple PRs consolidated duplicated plugin state code across 10+ channel plugins, reducing technical debt</li>
+<li><strong>ClawRouter Integration</strong>: New plugin hooks for routing canonical provider models through ClawRouter, avoiding custom model IDs</li>
+<li><strong>Codex Thread Sharing</strong>: Enabled cross-client Codex thread visibility between OpenClaw and Codex Desktop/CLI</li>
+</ul>
+<p><strong>Top Community Issues (Week-Long)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Description</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#25592</td>
+<td>Text leakage between tool calls to messaging channels</td>
+<td>Diamond (Critical)</td>
+</tr>
+<tr>
+<td>#73148</td>
+<td>Opaque &quot;Failed to optimize image&quot; error</td>
+<td>High</td>
+</tr>
+<tr>
+<td>#84490</td>
+<td><code>totalTokens</code> null in sessions.json</td>
+<td>High</td>
+</tr>
+<tr>
+<td>#84516</td>
+<td>Codex App-Server reply truncated at ~1000 chars</td>
+<td>High</td>
+</tr>
+<tr>
+<td>#92433</td>
+<td>Subagent completion messages not delivered</td>
+<td>High</td>
+</tr>
+<tr>
+<td>#98562</td>
+<td>Session initialization conflicted after v2026.6.11 upgrade</td>
+<td>P1</td>
+</tr>
+</tbody></table>
+<h3>Peer Projects Activity</h3>
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Week Status</th>
+<th>Key Development</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Hermes Agent</strong></td>
+<td>⭐209,385 (stable growth)</td>
+<td>MCP tool integration updates</td>
+</tr>
+<tr>
+<td><strong>NanoBot</strong></td>
+<td>Active PRs</td>
+<td>Multi-agent coordination improvements</td>
+</tr>
+<tr>
+<td><strong>IronClaw</strong></td>
+<td>Active</td>
+<td>Near AI integration refinements</td>
+</tr>
+<tr>
+<td><strong>CoPaw</strong></td>
+<td>Moderate</td>
+<td>AgentScope collaboration features</td>
+</tr>
+<tr>
+<td><strong>LobsterAI</strong></td>
+<td>Moderate</td>
+<td>NetEase Youdao production deployment scaling</td>
+</tr>
+<tr>
+<td><strong>PicoClaw</strong></td>
+<td>Low</td>
+<td>Sipeed hardware compatibility maintenance</td>
+</tr>
+<tr>
+<td><strong>ZeptoClaw</strong></td>
+<td>Low</td>
+<td>Minimal activity this week</td>
+</tr>
+</tbody></table>
+<h3>Ecosystem Trends</h3>
+<ol>
+<li><p><strong>Agent Skills Standardization</strong>: The <code>agentskills/agentskills</code> specification document gained traction, pushing for unified skill interfaces across agent frameworks.</p>
+</li>
+<li><p><strong>MCP Protocol Deepening</strong>: Multiple agents (OpenClaw, Hermes, OpenCode) added deeper MCP support, making tool interoperability a baseline requirement rather than a differentiator.</p>
+</li>
+<li><p><strong>Security-Driven Development</strong>: The week&#39;s high-profile vulnerabilities (session leaks, data exposure) triggered accelerated security hardening across the ecosystem, with many projects prioritizing CVE fixes over feature development.</p>
+</li>
+<li><p><strong>Session State Persistence</strong>: Long-running agent sessions remain the #1 pain point—agents losing context, messages being dropped, and session initialization failures dominated issue trackers across all projects.</p>
+</li>
+</ol>
+<hr>
+<h2>4. Open Source Trends</h2>
+<h3>Most Notable Technical Directions</h3>
+<h4>Direction 1: Agent Skills and Extreme Token Optimization</h4>
+<ul>
+<li><strong><code>caveman</code></strong> (July 4-5, +1089 stars): Claude Code skill pack that reduces token usage by 65% using &quot;caveman&quot; style prompts—represents a paradigm shift toward efficiency-first agent design</li>
+<li><strong><code>ECC</code></strong> (July 3, +486 stars): Agent performance optimization system for Claude Code/Codex/Cursor, focusing on skills, instincts, memory, and safety</li>
+<li><strong><code>obra/superpowers</code></strong> (July 4, +1209 stars): Agentic skill framework and development methodology for building reusable agent skill modules</li>
+</ul>
+<h4>Direction 2: Multi-Agent Orchestration Explosion</h4>
+<ul>
+<li><strong><code>agency-agents</code></strong> (June 29–July 4, +791–3032 stars/day): Complete &quot;AI agency&quot; with specialized agents (frontend, Reddit ops, humor injection)—most starred project of the week</li>
+<li><strong><code>council-of-high-intelligence</code></strong> (June 29–July 4, +323–473 stars): 18 AI personas (Aristotle, Feynman, Kahneman) engage in structured cross-model deliberation</li>
+<li><strong><code>ai-berkshire</code></strong> (June 29, +1397 stars): Value investing framework with multi-agent adversarial analysis</li>
+</ul>
+<h4>Direction 3: AI Security Tools Go Mainstream</h4>
+<ul>
+<li><strong><code>strix</code></strong> (July 3–5, +1904–2137 stars/day): Open-source AI penetration testing tool—automates vulnerability discovery and remediation, represents AI&#39;s formal entry into cybersecurity</li>
+<li><strong><code>VulnClaw</code></strong> (June 29, +105 stars): AI + MCP-driven automated penetration testing agent</li>
+</ul>
+<h4>Direction 4: MCP Infrastructure Standardization</h4>
+<ul>
+<li><strong><code>ChromeDevTools/chrome-devtools-mcp</code></strong> (July 3–5, +304 stars): Official MCP server for Chrome DevTools, letting coding agents directly debug browsers</li>
+<li><strong><code>OmniRoute</code></strong> (July 1–2, +1010 stars): Free AI gateway—single endpoint for 231+ model providers with token compression and auto-fallback</li>
+<li><strong><code>openai/codex-plugin-cc</code></strong> (July 3–5, +634 stars): Bridge allowing Claude Code to call Codex for code review and task delegation</li>
+</ul>
+<h4>Direction 5: Vertical AI Applications Mature</h4>
+<ul>
+<li><strong><code>HKUDS/Vibe-Trading</code></strong> (July 1–2, +721 stars): Personal trading agent using natural language for market analysis</li>
+<li><strong><code>browser-use/video-use</code></strong> (July 1–4, +693–967 stars): Code agent-based video editing via CLI</li>
+<li><strong><code>alibaba/page-agent</code></strong> (July 5, +742 stars): JavaScript in-page GUI agent for natural language web control</li>
+<li><strong><code>meetily</code></strong> (July 5, trending): Cross-platform AI meeting assistant</li>
+</ul>
+<h3>GitHub Trending Dominant Themes (Week Aggregate)</h3>
+<ol>
+<li><strong>Agent Skills &amp; Prompt Engineering</strong> (30% of trending AI projects)</li>
+<li><strong>Multi-Agent Frameworks</strong> (25%)</li>
+<li><strong>AI Security &amp; Penetration Testing</strong> (15%)</li>
+<li><strong>MCP Protocol &amp; Developer Tools</strong> (15%)</li>
+<li><strong>Vertical AI Applications</strong> (15%)</li>
+</ol>
+<hr>
+<h2>5. HN Community Highlights</h2>
+<h3>Most Impactful Discussions</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Topic</th>
+<th>Score</th>
+<th>Comments</th>
+<th>Week Highlight</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>Claude Sonnet 5 Launch</strong></td>
+<td>1154</td>
+<td>684</td>
+<td>Anthropic&#39;s &quot;most agentic Sonnet&quot; polarizes—community impressed by capabilities but demands system card verification</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>GLM-5.2 Beats Claude in Cyber Benchmarks</strong></td>
+<td>987</td>
+<td>460</td>
+<td>Chinese model surpasses Claude in Semgrep&#39;s cybersecurity eval—sparks debate on benchmark overfitting and &quot;catching up&quot; narratives</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Fable 5 Re-deployment</strong></td>
+<td>732</td>
+<td>434</td>
+<td>Relief mixed with skepticism—early testers praise capabilities, critics complain about cost, speed, and marketing</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Claude Code Session Leak</strong></td>
+<td>297</td>
+<td>—</td>
+<td>Critical vulnerability discovered—users report session/cache data leaking to unintended recipients</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Codex Token Clustering Degradation</strong></td>
+<td>270</td>
+<td>101</td>
+<td>Community sees GPT-5.5 &quot;cost-saving&quot; feature as quality sacrifice—calls for more transparent model iteration</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Godot Bans AI Code</strong></td>
+<td>230</td>
+<td>146</td>
+<td>Deep polarization—some applaud quality protection, others argue it stifles innovation and excludes newcomers</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>OpenAI 5% Stake Proposal</strong></td>
+<td>132</td>
+<td>137</td>
+<td>Intense debate on AI companies&#39; relationship with state power and regulatory capture</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Claude-Written sqlite-utils ($149)</strong></td>
+<td>42</td>
+<td>44</td>
+<td>Rational debate on AI coding cost vs. quality—seen as glimpse of future development workflow</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>&quot;AI Coding Makes Developers 19% Slower&quot;</strong></td>
+<td>—</td>
+<td>—</td>
+<td>Resonant critique re-igniting debate on AI-assisted programming&#39;s real productivity impact</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Claude Code &quot;Spyware&quot; Accusations</strong></td>
+<td>—</td>
+<td>—</td>
+<td>Anthropic accused of embedding telemetry—community backlash over privacy and trust</td>
+</tr>
+</tbody></table>
+<h3>Community Sentiment Shift</h3>
+<p>This week marked a <strong>notable sentiment inflection</strong> on HN:</p>
+<ol>
+<li><p><strong>From Excitement to Skepticism</strong>: The initial euphoria around new model releases (Sonnet 5, GLM-5.2, Fable 5) gave way to critical examination of real-world performance, safety, and cost.</p>
+</li>
+<li><p><strong>Trust Crisis Emerging</strong>: Security vulnerabilities (Claude Code leak, Codex clustering) and corporate behaviors (OpenAI stake offer, Anthropic telemetry) eroded community confidence in major vendors.</p>
+</li>
+<li><p><strong>&quot;Show, Don&#39;t Tell&quot; Pressure</strong>: Community increasingly demands reproducible benchmarks and system cards rather than marketing claims. The GLM-5.2 &quot;beats Claude&quot; post received intense scrutiny on methodology.</p>
+</li>
+<li><p><strong>Productivity Reality Check</strong>: Multiple discussions (AI coding slowdown, Godot&#39;s ban, sqlite-utils cost analysis) forced a more nuanced view of AI&#39;s actual development impact.</p>
+</li>
+</ol>
+<hr>
+<h2>6. Official Announcements</h2>
+<h3>Anthropic (6 posts this week — very active)</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Title</th>
+<th>Content Type</th>
+<th>Strategic Signal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>July 3</td>
+<td>Visible Extended Thinking</td>
+<td>Feature Release</td>
+<td>Transparency as trust: making model reasoning visible addresses &quot;black box&quot; concerns</td>
+</tr>
+<tr>
+<td>July 3</td>
+<td>Responsible Scaling Policy (Re-release)</td>
+<td>Policy</td>
+<td>Reaffirming ASL framework to pre-empt regulation</td>
+</tr>
+<tr>
+<td>July 3</td>
+<td>Fable 5 Safeguards &amp; Jailbreak Framework</td>
+<td>Safety Research</td>
+<td>Proposing industry-standard severity classification for AI jailbreaks</td>
+</tr>
+<tr>
+<td>July 2</td>
+<td>Redeploying Claude Fable 5</td>
+<td>Company News</td>
+<td>Crisis management: navigating export controls with graduated access</td>
+</tr>
+<tr>
+<td>July 2</td>
+<td>Fable 5 &amp; Mythos 5 Launch Details</td>
+<td>Product Release</td>
+<td>Introducing &quot;Mythos-class&quot; model tier with safety-gated design</td>
+</tr>
+<tr>
+<td>July 1</td>
+<td>Claude Science – AI Workbench for Scientists</td>
+<td>Product Launch</td>
+<td>Vertical expansion: moving from general API to domain-specific workbench</td>
+</tr>
+<tr>
+<td>July 1</td>
+<td>Claude Sonnet 5 Launch</td>
+<td>Product Release</td>
+<td>Democratizing agentic AI at lower price point</td>
+</tr>
+</tbody></table>
+<p><strong>Key Takeaway</strong>: Anthropic dominated the week&#39;s narrative with a coordinated strategy: <strong>new model + safety framework + vertical product + crisis communication</strong>. The company positioned itself simultaneously as capability leader, safety standard-setter, and mature enterprise partner.</p>
+<h3>OpenAI (2 posts this week — less active)</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Title</th>
+<th>Content Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>July 1</td>
+<td>Introducing Genebench Pro</td>
+<td>Product?</td>
+<td>Title-only capture—likely a benchmark or evaluation tool</td>
+</tr>
+<tr>
+<td>June 29</td>
+<td>HP Frontier Partnership</td>
+<td>Partnership</td>
+<td>Strategic hardware distribution deal with HP</td>
+</tr>
+</tbody></table>
+<p><strong>Key Takeaway</strong>: OpenAI had a quieter week from an official content perspective, but the HP partnership signals continued focus on <strong>enterprise hardware channel expansion</strong>. The Genebench Pro launch (if confirmed) would align with growing demand for standardized AI evaluation.</p>
+<h3>Strategic Divergence</h3>
+<ul>
+<li><strong>Anthropic</strong>: Deep content strategy—model releases + safety research + vertical SaaS + crisis communication</li>
+<li><strong>OpenAI</strong>: Partnership strategy—focusing on distribution channels and ecosystem expansion rather than headline-grabbing releases</li>
+</ul>
+<hr>
+<h2>7. Next Week&#39;s Signals</h2>
+<h3>Trends to Watch</h3>
+<ol>
+<li><p><strong>Agent Skills Standardization Acceleration</strong>: The combined impact of <code>caveman</code>, <code>agentskills/agentskills</code>, and <code>obra/superpowers</code> suggests we&#39;ll see formal proposals for agent skill interoperability standards within 2-3 weeks.</p>
+</li>
+<li><p><strong>Trust Issues Escalate to Regulatory Action</strong>: The Claude Code and Codex security incidents (session leaks, data clustering) may trigger formal CVE assignments and potential regulatory scrutiny—watch for Anthropic/OpenAI security advisories early next week.</p>
+</li>
+<li><p><strong>MCP Ecosystem Goes Mainstream</strong>: With Chrome DevTools, OmniRoute, and dozens of MCP servers launching in one week, expect MCP to become the de facto integration protocol for coding agents by end of July.</p>
+</li>
+<li><p><strong>Sovereign AI Models Enter Developer Tooling</strong>: GLM-5.2&#39;s benchmark success, LongCat-2.0&#39;s no-NVIDIA training record, and ByteDance&#39;s new scaling law signal that Chinese AI models are increasingly viable alternatives for developer workflows—watch for CLI tools adding explicit GLM/LongCat support.</p>
+</li>
+<li><p><strong>Open-Source Multi-Agent Demos Hit Critical Mass</strong>: <code>agency-agents</code> and <code>council-of-high-intelligence</code> demonstrate that non-trivial multi-agent orchestration is now achievable by individual developers—expect fork explosions and standardization battles.</p>
+</li>
+<li><p><strong>Efficiency vs. Capability Debate Intensifies</strong>: The <code>caveman</code> project&#39;s viral success indicates a market shift toward cost-conscious agent design. Next week, watch for major CLI tools announcing native token optimization features.</p>
+</li>
+</ol>
+<h3>Specific Events to Monitor</h3>
+<ul>
+<li><strong>Claude Code v2.2.0 release</strong> (expected): Could include cowboy mode rework and security fixes for session leak</li>
+<li><strong>OpenAI Codex stable release candidate</strong> (possible): After weeks of alpha/beta, community growing impatient</li>
+<li><strong>Fable 5 fine-tuning availability</strong> (speculative): If Anthropic continues distribution expansion</li>
+<li><strong>MCP specification update</strong> (possible): Community pressure mounting for version 2.0 with security improvements</li>
+<li><strong>GLM-5.2/GLM-5.1 CLI integrations</strong> (likely): After benchmark success, tool support likely to follow</li>
+</ul>
+<h3>Risk Factors</h3>
+<ul>
+<li><strong>Regulatory Shock</strong>: Export controls (Fable 5 precedent) or domestic AI regulation could disrupt tool availability</li>
+<li><strong>Trust Cascade</strong>: If session leak vulnerability proves widespread, we may see enterprise-wide bans of affected tools</li>
+<li><strong>Token Price War</strong>: With efficiency pressure mounting, major vendors may engage in aggressive pricing that disrupts open-source economics</li>
+<li><strong>Fork Fracture</strong>: If agent skill standardization fails, the ecosystem could fragment into incompatible skill formats</li>
+</ul>
+<hr>
+<p><em>Report generated: 2026-07-05 09:45 UTC</em><br><em>Data sources: GitHub CLI tool communities, OpenClaw ecosystem, GitHub Trending, Hacker News AI posts, Anthropic/OpenAI official content</em></p>
+<hr>
+<p><em>This digest is auto-generated by <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a>.</em></p>
+]]></content:encoded>
+    </item>
     <item>
       <title>AI CLI 工具社区动态日报 2026-07-05</title>
       <link>https://ivo-eu.github.io/agents-radar/#2026-07-05/ai-cli</link>
@@ -13882,370 +14542,6 @@ Safety patterns for AI agent systems: policy enforcement, threat detection, trus
 <li><p><strong>LACUNA: A Testbed for Evaluating Localization Precision for LLM Unlearning</strong> (2607.02513) – Provides the first systematic benchmark for unlearning localization, a prerequisite for trustworthy model editing and regulatory compliance.</p>
 </li>
 <li><p><strong>Reasoning effort, not tool access, buys first-try reliability in agentic code generation</strong> (2607.02436) – A clean, controlled observational study that overturns a common assumption about agent tooling; its methodology and findings are directly actionable for builders of coding assistants.</p>
-</li>
-</ol>
-<hr>
-<p><em>This digest is auto-generated by <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a>.</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hugging Face 热门模型日报 2026-07-04</title>
-      <link>https://ivo-eu.github.io/agents-radar/#2026-07-04/ai-hf</link>
-      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-07-04/ai-hf</guid>
-      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
-      <description>Hugging Face 热门模型日报 2026-07-04 数据来源: Hugging Face Hub | 共 30 个模型 | 生成时间: 2026-07-04 09:06 UTC Hugging Face 热门模型日报（2026-07-04） 📌 今日速览 本周 Hugging Face 生态呈现三大热点：Qwen 3.5/3.6 家族衍生模型强势霸榜，以 Ornith、Qwythos 等社区微调版本及大量 GGUF 量化版本为主；NVIDIA 推出 NVFP4 优化格式，针对 Qwen 和 GLM 实现高效部署；专用模型持续细化，包括代码 agent、网络安全、PII 检测、表格零样本分类等。此外，多模态定位模型 LocateAnything-3B 下载量突破 119 万，成为本周最大黑马。 🧠 语言模型（LLM / 对话 / 推理） 模型 作者 点赞 / 下载 一句话说明 GLM-5.2 zai-org 3,359 / 208,920 智谱最新 MoE 对话模型，获本周最高点赞量，体现社区对国产 MoE 的高度关注。 DeepSeek-V4-Pro-DSpark dee...</description>
-      <content:encoded><![CDATA[<h1>Hugging Face 热门模型日报 2026-07-04</h1>
-<blockquote>
-<p>数据来源: <a href="https://huggingface.co/">Hugging Face Hub</a> | 共 30 个模型 | 生成时间: 2026-07-04 09:06 UTC</p>
-</blockquote>
-<hr>
-<h1>Hugging Face 热门模型日报（2026-07-04）</h1>
-<h2>📌 今日速览</h2>
-<p>本周 Hugging Face 生态呈现三大热点：<strong>Qwen 3.5/3.6 家族衍生模型强势霸榜</strong>，以 Ornith、Qwythos 等社区微调版本及大量 GGUF 量化版本为主；<strong>NVIDIA 推出 NVFP4 优化格式</strong>，针对 Qwen 和 GLM 实现高效部署；<strong>专用模型持续细化</strong>，包括代码 agent、网络安全、PII 检测、表格零样本分类等。此外，多模态定位模型 LocateAnything-3B 下载量突破 119 万，成为本周最大黑马。</p>
-<h2>🧠 语言模型（LLM / 对话 / 推理）</h2>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>作者</th>
-<th>点赞 / 下载</th>
-<th>一句话说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://huggingface.co/zai-org/GLM-5.2">GLM-5.2</a></td>
-<td>zai-org</td>
-<td>3,359 / 208,920</td>
-<td>智谱最新 MoE 对话模型，获本周最高点赞量，体现社区对国产 MoE 的高度关注。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark">DeepSeek-V4-Pro-DSpark</a></td>
-<td>deepseek-ai</td>
-<td>353 / 10,306</td>
-<td>DeepSeek 最新推理优化旗舰，搭载分布式稀疏注意力，代表前沿推理架构方向。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-DSpark">DeepSeek-V4-Flash-DSpark</a></td>
-<td>deepseek-ai</td>
-<td>146 / 40,271</td>
-<td>Pro 版的轻量级版本，兼顾速度与性能，适合资源敏感场景。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16">Nemotron-Labs-TwoTower-30B-A3B-Base-BF16</a></td>
-<td>nvidia</td>
-<td>116 / 10,479</td>
-<td>NVIDIA 的 “双塔” MoE 大模型，30B 总参数仅 3B 激活，极低推理成本。</td>
-</tr>
-</tbody></table>
-<h2>🎨 多模态与生成（图像 / 视频 / 文本↔图像）</h2>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>作者</th>
-<th>点赞 / 下载</th>
-<th>一句话说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://huggingface.co/baidu/Unlimited-OCR">Unlimited-OCR</a></td>
-<td>baidu</td>
-<td>1,698 / 988,379</td>
-<td>百度开源通用 OCR 模型，高下载量反映工业级文本识别需求旺盛。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B">Ornith-1.0-9B</a></td>
-<td>deepreinforce-ai</td>
-<td>369 / 69,837</td>
-<td>基于 Qwen3.5 的多模态 MoE，9B 级性价比之选。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B">Ornith-1.0-35B</a></td>
-<td>deepreinforce-ai</td>
-<td>325 / 218,657</td>
-<td>Ornith 系列中端主力，35B 参数兼顾深度与速度。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-397B">Ornith-1.0-397B</a></td>
-<td>deepreinforce-ai</td>
-<td>203 / 33,268</td>
-<td>接近 400B 参数的超级 MoE，旨在竞争顶级多模态推理。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/InternScience/Agents-A1">Agents-A1</a></td>
-<td>InternScience</td>
-<td>216 / 5,456</td>
-<td>基于 Qwen3.5 MoE 的智能体专用模型，强调工具调用和任务规划。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B">Qwen-AgentWorld-35B-A3B</a></td>
-<td>Qwen</td>
-<td>529 / 50,188</td>
-<td>阿里官方智能体模型，MoE 稀疏结构，专为复杂环境设计。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M">Qwythos-9B-Claude-Mythos-5-1M</a></td>
-<td>empero-ai</td>
-<td>663 / 135,665</td>
-<td>融合 Claude 神话风格的 Qwen3.5 微调版，面向角色扮演与创意生成。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/krea/Krea-2-Turbo">Krea-2-Turbo</a></td>
-<td>krea</td>
-<td>488 / 89,384</td>
-<td>Krea 最新文生图模型，Turbo 版本在速度上显著提升，社区流行。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/nvidia/LocateAnything-3B">LocateAnything-3B</a></td>
-<td>nvidia</td>
-<td>2,592 / 1,194,542</td>
-<td>NVIDIA 零样本定位模型，3B 参数实现高精度空间理解，下载量惊人。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/Comfy-Org/Krea-2">Comfy-Org/Krea-2</a></td>
-<td>Comfy-Org</td>
-<td>244 / 10</td>
-<td>Krea-2 的 ComfyUI 工作流封装，便于节点式图像生成。</td>
-</tr>
-</tbody></table>
-<h2>🔧 专用模型（代码 / 安全 / 表格 / PII）</h2>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>作者</th>
-<th>点赞 / 下载</th>
-<th>一句话说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF">gemma-4-12B-agentic…-GGUF</a></td>
-<td>yuxinlu1</td>
-<td>997 / 342,752</td>
-<td>Gemma 4 的 agentic 微调版，擅长终端命令执行和自动化任务。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF">gemma-4-12B-coder…-GGUF</a></td>
-<td>yuxinlu1</td>
-<td>2,589 / 641,260</td>
-<td>Gemma 4 代码专用微调版，高点赞反映开发者对轻量代码模型的需求。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/google/tabfm-1.0.0-pytorch">Google tabfm-1.0.0-pytorch</a></td>
-<td>google</td>
-<td>156 / 1,177</td>
-<td>Google 开源的表格基础模型，支持零样本分类与回归，开辟新赛道。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/huihui-ai/Huihui-GLM-5.2-abliterated-GGUF">Huihui-GLM-5.2-abliterated-GGUF</a></td>
-<td>huihui-ai</td>
-<td>149 / 4,701</td>
-<td>社区对 GLM-5.2 的 “去审查” 微调，追求无约束输出（GGUF 量化）。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6">BugTraceAI-CORE-Ultra-27B-Q6</a></td>
-<td>BugTraceAI</td>
-<td>127 / 12,001</td>
-<td>网络安全专用大模型，支持渗透测试与漏洞分析（GGUF量化）。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/nationaldesignstudio/rampart">nationaldesignstudio/rampart</a></td>
-<td>nationaldesignstudio</td>
-<td>118 / 1,881</td>
-<td>基于 BERT 的 PII 检测模型，ONNX 格式，适合隐私合规场景。</td>
-</tr>
-</tbody></table>
-<h2>📦 微调与量化（GGUF / NVFP4 / LoRA / 社区优化）</h2>
-<table>
-<thead>
-<tr>
-<th>模型</th>
-<th>作者</th>
-<th>点赞 / 下载</th>
-<th>一句话说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF">Qwythos-9B… GGUF</a></td>
-<td>empero-ai</td>
-<td>1,399 / 1,464,047</td>
-<td>Qwythos 的 GGUF 量化版，超 146 万下载，本地部署首选。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">Ornith-1.0-35B-GGUF</a></td>
-<td>deepreinforce-ai</td>
-<td>692 / 359,659</td>
-<td>Ornith 35B 的 GGUF 量化，兼顾性能与存储。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B-GGUF">Ornith-1.0-9B-GGUF</a></td>
-<td>deepreinforce-ai</td>
-<td>417 / 320,660</td>
-<td>9B 级轻量量化，端侧推理热门选择。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF">Qwen3.6-27B-MTP-GGUF</a></td>
-<td>unsloth</td>
-<td>940 / 2,752,390</td>
-<td>Unsloth 优化的 Qwen3.6 多 token 预测 GGUF，下载量极高。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive">Qwen3.6-35B-A3B-Uncensored…</a></td>
-<td>HauhauCS</td>
-<td>2,442 / 2,993,053</td>
-<td>“激进去审查” 版 MoE 多模态模型，社区争议中下载量近 300 万。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/Jackrong/Qwopus3.6-35B-A3B-Coder-MTP-GGUF">Qwopus3.6-35B-A3B-Coder-MTP-GGUF</a></td>
-<td>Jackrong</td>
-<td>127 / 59,971</td>
-<td>代码专属 MoE 量化版，支持多 token 预测。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/nvidia/Qwen3.6-27B-NVFP4">Qwen3.6-27B-NVFP4</a></td>
-<td>nvidia</td>
-<td>234 / 184,521</td>
-<td>NVIDIA 的 NVFP4 精度量化，大幅降低显存占用。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/nvidia/GLM-5.2-NVFP4">GLM-5.2-NVFP4</a></td>
-<td>nvidia</td>
-<td>216 / 236,501</td>
-<td>GLM-5.2 的 NVFP4 版本，NVIDIA 生态部署优化。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/fal/LTX-2.3-3DREAL-LoRA">LTX-2.3-3DREAL-LoRA</a></td>
-<td>fal</td>
-<td>152 / 0</td>
-<td>LTX 视频生成模型的 LoRA，专注 3D 写实风格。</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/ilkerzgi/fal-Krea-2-Style-LoRAs">fal-Krea-2-Style-LoRAs</a></td>
-<td>ilkerzgi</td>
-<td>118 / 0</td>
-<td>Krea-2 风格迁移 LoRA 合集，拓展生成多样性。</td>
-</tr>
-</tbody></table>
-<h2>🌍 生态信号</h2>
-<ul>
-<li><strong>Qwen 家族持续主导</strong>：Qwen 3.5/3.6 被超过 15 个热门模型用作基座，Ornith、Qwythos、Qwopus 等社区衍生版本百花齐放，MoE 架构成为主流。</li>
-<li><strong>量化与微调空前活跃</strong>：GGUF 格式占据大量榜单，Unsloth、Imperium AI 等社区推动量化工具链成熟；NVFP4 的出现表明硬件厂商直接参与模型优化。</li>
-<li><strong>去审查与专用微调双轨并行</strong>：Uncensored、Abliterated 版本下载量极高，反映用户对自由度需求；同时代码、安全、PII、表格等专用模型走向实用化。</li>
-<li><strong>开源权重持续深化</strong>：DeepSeek V4、GLM-5.2、Google TabFM 等顶级模型开源，闭源与开源的差距进一步缩小。</li>
-</ul>
-<h2>🔍 值得探索</h2>
-<ol>
-<li><strong>nvidia/LocateAnything-3B</strong> — 零样本定位能力惊艳，可集成到机器人、视觉问答等场景，且仅 3B 参数，非常适合边缘部署。</li>
-<li><strong>deepseek-ai/DeepSeek-V4-Pro-DSpark</strong> — 分布式稀疏注意力是推理效率的前沿尝试，关注其学术论文（arXiv:2606.19348）可获得最新技术洞见。</li>
-<li><strong>google/tabfm-1.0.0-pytorch</strong> — 表格基础模型零样本表现值得测试，特别适合金融、医疗等结构化数据任务，可能改变表格建模范式。</li>
-</ol>
-<hr>
-<p><em>本日报由 <a href="https://github.com/ivo-eu/agents-radar">agents-radar</a> 自动生成。</em></p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Hugging Face Trending Models Digest 2026-07-04</title>
-      <link>https://ivo-eu.github.io/agents-radar/#2026-07-04/ai-hf-en</link>
-      <guid isPermaLink="true">https://ivo-eu.github.io/agents-radar/#2026-07-04/ai-hf-en</guid>
-      <pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
-      <description>Hugging Face Trending Models Digest 2026-07-04 Source: Hugging Face Hub | 30 models | Generated: 2026-07-04 09:06 UTC Hugging Face Trending Models Digest – 2026-07-04 Today’s Highlights This week’s trending charts are dominated by MoE (Mixture-of-Experts) architectures and quantized GGUF variants, reflecting the community’s push for efficient, deployable large models. The Ornith family (9B, 35B, 397B) from deepreinforce-ai and Qwen 3.5/3.6 derivatives (AgentWorld, uncensored variants) underscore...</description>
-      <content:encoded><![CDATA[<h1>Hugging Face Trending Models Digest 2026-07-04</h1>
-<blockquote>
-<p>Source: <a href="https://huggingface.co/">Hugging Face Hub</a> | 30 models | Generated: 2026-07-04 09:06 UTC</p>
-</blockquote>
-<hr>
-<h1>Hugging Face Trending Models Digest – 2026-07-04</h1>
-<h2>Today’s Highlights</h2>
-<p>This week’s trending charts are dominated by <strong>MoE (Mixture-of-Experts) architectures</strong> and <strong>quantized GGUF variants</strong>, reflecting the community’s push for efficient, deployable large models. The <strong>Ornith family</strong> (9B, 35B, 397B) from deepreinforce-ai and <strong>Qwen 3.5/3.6 derivatives</strong> (AgentWorld, uncensored variants) underscore the rapid adoption of sparsely activated transformers. NVIDIA contributes both hardware-optimized formats (NVFP4) and novel vision-language tools like <strong>LocateAnything-3B</strong>, while Google introduces a tabular foundation model. The “abliterated” and uncensored fine-tunes of GLM-5.2 and Qwen 3.6 signal ongoing demand for unrestricted conversational models.</p>
-<hr>
-<h2>Trending Models</h2>
-<h3>🧠 Language Models (LLMs, Chat, Instruction-Tuned)</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/zai-org/GLM-5.2">zai-org/GLM-5.2</a></strong> – Author: zai-org | Likes: 3,359 | Downloads: 208,920<br>A large MoE conversational model with strong multilingual performance, trending due to its high quality and the active ecosystem of fine-tuned variants.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark">deepseek-ai/DeepSeek-V4-Pro-DSpark</a></strong> – Author: deepseek-ai | Likes: 353 | Downloads: 10,306<br>The latest flagship from DeepSeek, featuring advanced reasoning and sparse activation; accompanied by a technical report (arxiv:2606.19348).</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-DSpark">deepseek-ai/DeepSeek-V4-Flash-DSpark</a></strong> – Author: deepseek-ai | Likes: 146 | Downloads: 40,271<br>A faster, inference-optimized sibling of DeepSeek-V4-Pro, gaining traction for production deployments.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B">deepreinforce-ai/Ornith-1.0-9B</a></strong> – Author: deepreinforce-ai | Likes: 369 | Downloads: 69,837<br>A compact MoE model (9B activated) that balances performance and efficiency, serving as the base for many GGUF quantizations.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B">deepreinforce-ai/Ornith-1.0-35B</a></strong> – Author: deepreinforce-ai | Likes: 325 | Downloads: 218,657<br>A mid-size MoE model (35B total, 3B active) optimized for multimodal tasks and text generation.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-397B">deepreinforce-ai/Ornith-1.0-397B</a></strong> – Author: deepreinforce-ai | Likes: 203 | Downloads: 33,268<br>The monstrous 397B MoE model pushing the limits of sparse activation, appealing to research labs with heavy compute.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/InternScience/Agents-A1">InternScience/Agents-A1</a></strong> – Author: InternScience | Likes: 216 | Downloads: 5,456<br>A Qwen-3.5-MoE based agentic model designed for tool use and autonomous workflows.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M">empero-ai/Qwythos-9B-Claude-Mythos-5-1M</a></strong> – Author: empero-ai | Likes: 663 | Downloads: 135,665<br>A fine-tuned 9B model blending Qwen 3.5 with Claude-like “mythos” style, popular for creative writing and roleplay.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B">Qwen/Qwen-AgentWorld-35B-A3B</a></strong> – Author: Qwen | Likes: 529 | Downloads: 50,188<br>An MoE agentic model (35B total, 3B active) designed for interactive environments and planning tasks.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16">nvidia/Nemotron-Labs-TwoTower-30B-A3B-Base-BF16</a></strong> – Author: nvidia | Likes: 116 | Downloads: 10,479<br>A novel two-tower MoE architecture from NVIDIA, optimized for retrieval-augmented generation and efficient inference.</p>
-</li>
-</ul>
-<hr>
-<h3>🎨 Multimodal &amp; Generation (Image, Video, Text-to-X)</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/baidu/Unlimited-OCR">baidu/Unlimited-OCR</a></strong> – Author: baidu | Likes: 1,698 | Downloads: 988,379<br>A powerful end-to-end OCR model capable of handling unlimited text in images, widely used for document digitization.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/LocateAnything-3B">nvidia/LocateAnything-3B</a></strong> – Author: nvidia | Likes: 2,592 | Downloads: 1,194,542<br>A 3B vision-language model that can locate and ground arbitrary objects in images, trending for its zero-shot detection capabilities.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/krea/Krea-2-Turbo">krea/Krea-2-Turbo</a></strong> – Author: krea | Likes: 488 | Downloads: 89,384<br>A faster variant of the Krea-2 text-to-image model, offering high-quality generation with improved inference speed.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/fal/LTX-2.3-3DREAL-LoRA">fal/LTX-2.3-3DREAL-LoRA</a></strong> – Author: fal | Likes: 152 | Downloads: 0<br>A LoRA adapter for LTX-2.3 video models that adds realistic 3D style, gaining attention for video-to-3D workflows.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/ilkerzgi/fal-Krea-2-Style-LoRAs">ilkerzgi/fal-Krea-2-Style-LoRAs</a></strong> – Author: ilkerzgi | Likes: 118 | Downloads: 0<br>A collection of style LoRAs for Krea-2, enabling community-driven aesthetic customization.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Comfy-Org/Krea-2">Comfy-Org/Krea-2</a></strong> – Author: Comfy-Org | Likes: 244 | Downloads: 10<br>A ComfyUI workflow package for the Krea-2 model, simplifying image generation integration.</p>
-</li>
-</ul>
-<hr>
-<h3>🔧 Specialized Models (Code, Security, Tabular, PII)</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/google/tabfm-1.0.0-pytorch">google/tabfm-1.0.0-pytorch</a></strong> – Author: google | Likes: 156 | Downloads: 1,177<br>A tabular foundation model supporting zero-shot classification and regression on arbitrary tabular data, representing a breakthrough in structured data AI.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6">BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6</a></strong> – Author: BugTraceAI | Likes: 127 | Downloads: 12,001<br>A quantized 27B model fine-tuned for cybersecurity and offensive security tasks, including vulnerability discovery.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nationaldesignstudio/rampart">nationaldesignstudio/rampart</a></strong> – Author: nationaldesignstudio | Likes: 118 | Downloads: 1,881<br>A BERT-based token classifier for detecting personally identifiable information (PII), optimized for privacy-preserving pipelines.</p>
-</li>
-</ul>
-<hr>
-<h3>📦 Fine-tunes &amp; Quantizations (GGUF, NVFP4, Abliterated)</h3>
-<ul>
-<li><p><strong><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF">empero-ai/Qwythos-9B-Claude-Mythos-5-1M-GGUF</a></strong> – Author: empero-ai | Likes: 1,399 | Downloads: 1,464,047<br>The GGUF quantized version of the Qwythos creative model, extremely popular for local inference on llama.cpp.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">deepreinforce-ai/Ornith-1.0-35B-GGUF</a></strong> – Author: deepreinforce-ai | Likes: 692 | Downloads: 359,659<br>GGUF quantization of the 35B Ornith model, enabling MoE efficiency on consumer hardware.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-9B-GGUF">deepreinforce-ai/Ornith-1.0-9B-GGUF</a></strong> – Author: deepreinforce-ai | Likes: 417 | Downloads: 320,660<br>The compact GGUF variant of Ornith-9B, widely downloaded for lightweight local chat.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF">yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF</a></strong> – Author: yuxinlu1 | Likes: 997 | Downloads: 342,752<br>A heavily fine-tuned Gemma 4 12B for agentic coding and terminal use, quantized via GGUF for fast execution.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF">yuxinlu1/gemma-4-12B-coder-fable5-composer2.5-v1-GGUF</a></strong> – Author: yuxinlu1 | Likes: 2,589 | Downloads: 641,260<br>Another Gemma-4 coder variant with strong reasoning capabilities, one of the top trending GGUF models.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/huihui-ai/Huihui-GLM-5.2-abliterated-GGUF">huihui-ai/Huihui-GLM-5.2-abliterated-GGUF</a></strong> – Author: huihui-ai | Likes: 149 | Downloads: 4,701<br>An “abliterated” (uncensored) version of GLM-5.2 in GGUF format, appealing to the unrestricted conversation community.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive">HauhauCS/Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive</a></strong> – Author: HauhauCS | Likes: 2,442 | Downloads: 2,993,053<br>A massively popular uncensored Qwen 3.6 MoE model in GGUF, driving the highest download count on this list.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/Jackrong/Qwopus3.6-35B-A3B-Coder-MTP-GGUF">Jackrong/Qwopus3.6-35B-A3B-Coder-MTP-GGUF</a></strong> – Author: Jackrong | Likes: 127 | Downloads: 59,971<br>A specialized coding MoE model based on Qwen 3.6, quantized with MTP (Multi-Token Prediction) support.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/Qwen3.6-27B-NVFP4">nvidia/Qwen3.6-27B-NVFP4</a></strong> – Author: nvidia | Likes: 234 | Downloads: 184,521<br>A 4-bit floating point quantization of Qwen 3.6 using NVIDIA’s NVFP4 format, optimized for Blackwell GPUs.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/nvidia/GLM-5.2-NVFP4">nvidia/GLM-5.2-NVFP4</a></strong> – Author: nvidia | Likes: 216 | Downloads: 236,501<br>The NVFP4 quantized version of GLM-5.2, offering high throughput on NVIDIA hardware.</p>
-</li>
-<li><p><strong><a href="https://huggingface.co/unsloth/Qwen3.6-27B-MTP-GGUF">unsloth/Qwen3.6-27B-MTP-GGUF</a></strong> – Author: unsloth | Likes: 940 | Downloads: 2,752,390<br>A GGUF quantized variant of Qwen 3.6 27B with multi-token prediction, from the popular Unsloth optimization library.</p>
-</li>
-</ul>
-<hr>
-<h2>Ecosystem Signal</h2>
-<p>The current trending landscape reveals a clear <strong>shift toward Mixture-of-Experts (MoE) models</strong> as the default architecture for both proprietary and open-weight releases. Qwen 3.5/3.6 derivatives dominate the list, alongside the Ornith family, GLM-5.2, and DeepSeek-V4, all leveraging sparse activation to scale up total parameters while keeping inference costs manageable. The <strong>GGUF quantization ecosystem</strong> remains the primary vehicle for community adoption, with nearly half of the trending models being quantized variants—highlighting the demand for efficient local deployment on consumer hardware (e.g., llama.cpp). NVIDIA is actively shaping the quantization landscape with its proprietary NVFP4 format, aiming to tie model optimization to its GPU ecosystem. </p>
-<p>The <strong>“uncensored” and “abliterated” fine-tune trend</strong> continues to grow, as seen with the HauhauCS Qwen 3.6 variant (2.9M downloads) and the huihui-ai GLM-5.2 variant, catering to users seeking fewer content restrictions. On the multimodal front, vision-language models like LocateAnything-3B and Unlimited-OCR are gaining traction for practical applications in detection and document processing. Google’s <strong>tabfm-1.0.0</strong> marks a rare entry into tabular foundation models, signaling expansion beyond text and vision. Meanwhile, the Krea-2 image generation ecosystem is building momentum with style LoRAs and ComfyUI integration, reflecting a maturing open-source diffusion pipeline.</p>
-<hr>
-<h2>Worth Exploring</h2>
-<ol>
-<li><p><strong>nvidia/LocateAnything-3B</strong> – With 2.5K+ likes and 1.1M downloads, this compact vision-language model excels at zero-shot object grounding. It is an excellent study case for efficient, deployable multimodal AI and demonstrates NVIDIA’s push into open-weight models beyond LLMs.</p>
-</li>
-<li><p><strong>Qwen/Qwen-AgentWorld-35B-A3B</strong> – This MoE model is purpose-built for agentic tasks (tool use, planning) and represents a state-of-the-art balance between capacity and efficiency. Its design—35B total, 3B active—makes it a strong candidate for research on autonomous agents and interactive AI.</p>
-</li>
-<li><p><strong>google/tabfm-1.0.0-pytorch</strong> – As one of the first tabular foundation models with zero-shot capabilities, this model could reshape how structured data tasks are approached. It is worth studying for anyone working in finance, healthcare, or any domain reliant on tabular prediction, even though its adoption is still early.</p>
 </li>
 </ol>
 <hr>
