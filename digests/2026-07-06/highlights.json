@@ -1,0 +1,22 @@
+{
+  "zh": {
+    "ai-weekly": [
+      "Claude Sonnet 5发布，Free和Pro默认切换",
+      "Fable 5回归，简单编码回退至Opus 4.8",
+      "Agent技能工程爆发，caveman削减65% Token",
+      "Anthropic提出AI越狱严重性分级框架",
+      "GPT-5.5推理Token聚类导致性能退化",
+      "Claude Code被曝严重会话缓存泄漏"
+    ]
+  },
+  "en": {
+    "ai-weekly": [
+      "Claude Sonnet 5 launches with near-Opus agent capabilities",
+      "Fable 5 redeployed globally after 3-week export pause",
+      "Caveman project reduces tokens 65%, gains 1089 stars",
+      "Claude Code session leak & Codex reasoning-token bug",
+      "Anthropic unveils visible thinking mode and safety classifiers",
+      "OpenAI offers US government 5% ownership stake"
+    ]
+  }
+}
