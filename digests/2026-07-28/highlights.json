@@ -1,0 +1,134 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code社区热议计费故障与系统崩溃",
+      "OpenAI Codex Windows崩溃问题引发关注",
+      "Gemini CLI Agent挂起与上下文加载问题",
+      "Copilot CLI Plan模式回归功能修复",
+      "OpenCode修复Agent循环与模型兼容性",
+      "DeepSeek TUI大规模代码合并推进v0.9.2"
+    ],
+    "ai-agents": [
+      "OpenClaw修复--dry-run突变状态提升安全性",
+      "心跳重复唤醒Bug被修复，改善调度可靠性",
+      "修复会话积压计数指标失真问题",
+      "250条Issue更新，150条新开活跃",
+      "500条PR密集合并，227条已合并",
+      "无新版本但P0/P1问题仍悬而未决"
+    ],
+    "ai-trending": [
+      "阿里巴巴开源代码审查工具单日获979星",
+      "AutoGPT 185k星保持Agent领域标杆",
+      "ollama 177k星无缝支持Kimi、DeepSeek等",
+      "open-webui 146k星提供极简AI交互界面",
+      "DeepSeek-Reasonix优化前缀缓存提升效率",
+      "Kimi-K3多模态模型成今日最大热门"
+    ],
+    "ai-web": [
+      "Anthropic CEO反对全面禁止中国开源模型",
+      "Claude Opus 5发布，性能达新SOTA",
+      "Anthropic再捐2000万美元推动政策游说",
+      "Claude Mythos发现数千个高危软件漏洞",
+      "OpenAI拓展健康、新闻等垂直行业应用",
+      "新模型Sonnet 5与Agent Skills系统发布"
+    ],
+    "ai-hn": [
+      "Anthropic开放权重立场引发414条热评",
+      "所有主流LLM被曝偏向左派自由主义",
+      "TokenTown以游戏化教学LLM工作原理",
+      "编码代理成功重构75万行代码无需审查",
+      "Let's Seal自托管文档签名工具获59赞",
+      "Decispher新增支持Grok CLI功能"
+    ],
+    "ai-ph": [
+      "Athena电商全栈代理以407票夺冠",
+      "Openbase支持语音管理AI代理团队",
+      "Aymo AI团队协作平台获189票",
+      "BrainFeed实现个性化学习内容重定向",
+      "AppUFO用AI加速应用本地化翻译",
+      "Forgeon平台支持交互故事创作"
+    ],
+    "ai-hf": [
+      "Kimi-K3多模态模型获6046赞成今日最热",
+      "百度Unlimited-OCR下载量达264万",
+      "Qwen3.6-35B-A3B MoE变体受社区关注",
+      "poolside/Laguna-S-2.1代码推理新基准",
+      "GLM-5.2 MoE架构下载量超百万",
+      "微软Mage-Flow编辑模型引领图像编辑"
+    ],
+    "ai-community": [
+      "初级开发者管道被AI打破引84赞61评",
+      "Agent技能市场安全威胁模型类比npm",
+      "尖锐批评无限上下文是营销出的技术债",
+      "AgentForger展示ChatGPT内鬼植入漏洞",
+      "MCPRadar开源MCP生态安全扫描工具",
+      "Kimi K3 2.8T参数模型即将开源"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code leads with 10 issues today",
+      "OpenAI Codex shipped 2 alpha builds",
+      "Gemini CLI nightly release out",
+      "GitHub Copilot CLI v1.0.76-0",
+      "Cross-cutting pain points: billing, GPU",
+      "Community highest for Claude Code & Codex"
+    ],
+    "ai-agents": [
+      "OpenClaw: 250 issues, 500 PRs today",
+      "227 PRs merged/closed in 24h",
+      "P0 memory leak under investigation",
+      "Linux/Windows desktop apps requested",
+      "Maintainer backlog months old",
+      "Last release: 2026.7.2-beta.4"
+    ],
+    "ai-trending": [
+      "Kronos: financial foundation model trending",
+      "Alibaba open-code-review for deterministic code review",
+      "claude-video expands agent video ingestion",
+      "headroom cuts 60-95% tokens for JSON",
+      "ollama stars 177k, now supports Kimi-K2.6",
+      "Rig: Rust-native LLM framework 8k stars"
+    ],
+    "ai-web": [
+      "Anthropic CEO clarifies open-weights stance",
+      "Claude Opus 5 launched at half price",
+      "Cognizant partnership: 30k trained associates",
+      "Project Pilot tests drone-control capabilities",
+      "Bernanke joins Anthropic Long-Term Benefit Trust",
+      "OpenAI hinted GPT-5.6, Copilot integration"
+    ],
+    "ai-hn": [
+      "Anthropic open-weights post sparks 330-score debate",
+      "Claude Opus 5 outage and data exposure",
+      "Sam Altman declares 'we are in the singularity'",
+      "Nvidia in talks for $250B data center financing",
+      "LLMs lean lib-left, study claims",
+      "16 cards in 45 bit-queries challenge"
+    ],
+    "ai-ph": [
+      "Athena orchestrator agent for e-commerce (407 votes)",
+      "Openbase: voice-controlled AI agent team management",
+      "BrainFeed for scroll replacement learning",
+      "Forgeon interactive storytelling AI",
+      "Shift from chatbots to specialized assistants",
+      "12 AI products launched today on Product Hunt"
+    ],
+    "ai-hf": [
+      "Kimi-K3 tops trending with 6,046 likes",
+      "GLM-5.2 MoE model passes 1M downloads",
+      "Laguna-S-2.1 code model spawns quant variants",
+      "Solar-Open2-250B: 250B parameter open LLM",
+      "Nanbeige4.2-3B compact model for local inference",
+      "Extreme 1-bit quantization models gaining traction"
+    ],
+    "ai-community": [
+      "Agent security crisis dominates Dev.to",
+      "Junior developer pipeline broken by AI",
+      "Auditing agent skills as untrusted packages",
+      "'Unlimited context' is not a feature",
+      "Microsoft argues 'Open Weights for American AI'",
+      "Philosophical debate on limits of induction"
+    ]
+  }
+}
