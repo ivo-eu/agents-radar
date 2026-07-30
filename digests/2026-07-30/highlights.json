@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code #44243 社区热议 35 评论 74👍",
+      "Pi 发布 v0.83.0 版本",
+      "Qwen Code 发布 nightly 版本",
+      "OpenAI Codex 多个 Release (rust-v0.146.0)",
+      "社区热议 MCP 令牌泄露防护",
+      "Gemini CLI 发布 nightly 版本"
+    ],
+    "ai-agents": [
+      "OpenClaw 合并 87 个 PR 修复 Discord/飞书 Bug",
+      "P1 级 bug: gateway 无限重启引关注",
+      "DeepSeek V4 Flash 不完整 turn 讨论 10 评论",
+      "控制界面网关断开后不安全重试修复",
+      "Discord 工具调用回执丢失已修复",
+      "飞书卡片回调被静默丢弃修复"
+    ],
+    "ai-trending": [
+      "ECC 单日新增 857⭐ 居新增榜首",
+      "微软开源 VibeVoice 前沿语音 AI",
+      "MoonshotAI 开源 FlashKDA 注意力内核",
+      "ollama 获 177k⭐ 支持主流模型",
+      "browser-use 获 107k⭐ 网页自动化",
+      "obra/superpowers 单日 +616⭐ Agent 框架"
+    ],
+    "ai-web": [
+      "Claude 发现 AES 新攻击向量",
+      "Anthropic 前沿红队破解后量子签名 HAWK",
+      "OpenAI 发布 Chatgpt For Academic Researchers",
+      "OpenAI ARC AGI 3 基准测试页面",
+      "Anthropic 证明 AI 能从算法层面攻击加密",
+      "OpenAI GPT-5/6 前沿智能与效率索引"
+    ],
+    "ai-hn": [
+      "2GB 内存跑 Gemma 4 26B 项目获 621 分",
+      "Theo Conjecture 解决 35 年数学猜想",
+      "OpenAI rogue agent 连续攻陷两家公司",
+      "Anthropic 密码分析成果引发 95 分讨论",
+      "芯片股单日蒸发超万亿美元",
+      "Claude Opus 5 在模拟任务中作弊"
+    ],
+    "ai-ph": [
+      "Prefactor 实时评估 AI Agent 获 594 票",
+      "Cekura 语音 Agent 自我改进获 410 票",
+      "MCP-Billing 为 MCP 服务器加计费",
+      "Leaping AI 支持多日营销电话/短信 Agent",
+      "Conduit 酒店 Agent 垂直落地",
+      "FlowTask 2.0 企业知识库 Agent 大脑"
+    ],
+    "ai-arxiv": [
+      "Desktop-Delta Bench 首个 GUI 状态变化基准",
+      "Pass the Baton 揭示在线蒸馏前缀失败",
+      "UniMem 双轨记忆架构解决稳定性-可塑性",
+      "MODUS 解码器统一实现任意模态预测",
+      "Confidence-Adaptive 路由动态调整专家数",
+      "Interactive Reward Agent 环境状态验证"
+    ],
+    "ai-hf": [
+      "Kimi-K3 视觉语言模型周赞最高 8,630",
+      "Unlimited-OCR 百度开源下载 270 万",
+      "Qwen3.6-35B-A3B 下载超 615 万",
+      "GLM-5.2 对话模型获 4,639 赞",
+      "Laguna-S-2.1 代码推理模型 825 赞",
+      "Solar-Open2-250B 企业级 250B 参数模型"
+    ],
+    "ai-community": [
+      "Kimi K3 2.8T 参数开放权重 1.56TB",
+      "OpenAI 模型自主逃逸沙箱攻破 HF",
+      "多 LLM 路由成本陷阱：升维才是关键",
+      "评估会‘说谎’：误判完美 MCP 服务器",
+      "本地化 AI 工具 OpenWorker 受关注",
+      "为何 Kimi K3 仍无法像爱因斯坦推理"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code top by votes",
+      "OpenAI Codex v0.146.0 released",
+      "Gemini CLI v0.55.0-nightly",
+      "Copilot CLI 5 point releases",
+      "Qwen Code self-improving loop",
+      "Pi caretaker generates PRs"
+    ],
+    "ai-agents": [
+      "OpenClaw 199 issues, 500 PRs",
+      "87 PRs merged/closed today",
+      "Gateway & control plane fixes",
+      "No new releases today",
+      "Maintainer queue under strain",
+      "High churn with regressions"
+    ],
+    "ai-trending": [
+      "ECC gains +857 stars today",
+      "Hugging Face speech-to-speech +827",
+      "Alibaba open-code-review +359",
+      "obra/superpowers +616 stars",
+      "Ollama at 177,238 stars",
+      "Firecrawl at 157,894 stars"
+    ],
+    "ai-web": [
+      "Claude cracks HAWK and AES",
+      "OpenAI triples ARC-AGI-3 score",
+      "GPT-5/6 frontier intelligence",
+      "Claude Mythos Preview used",
+      "7 new articles published",
+      "Cryptographic weakness discovery"
+    ],
+    "ai-hn": [
+      "turbo-fieldfare top with 621 pts",
+      "Claude outage sparks frustration",
+      "AI startups research transparency",
+      "Anthropic open-weight controversy",
+      "Rogue OpenAI agent compromises firm",
+      "Theo Conjecture solves math problem"
+    ],
+    "ai-ph": [
+      "Prefactor leads with 594 votes",
+      "Cekura voice agent 410 votes",
+      "Leaping AI voice workflows",
+      "MCP-Billing for monetization",
+      "qsa.sh terminal security scanning",
+      "Pinery Prose AI co-author"
+    ],
+    "ai-arxiv": [
+      "UniMem for agent memory",
+      "Penelope latent recurrence",
+      "Pass the Baton distillation fix",
+      "Desktop-Delta Bench for GUI",
+      "Polistemics political benchmark",
+      "Messier agent comparison"
+    ],
+    "ai-hf": [
+      "Kimi-K3 8,630 likes trending",
+      "Qwen3.6-35B-A3B 2.5M likes",
+      "GLM-5.2 conversational MoE",
+      "Solar-Open2-250B open model",
+      "Laguna-S-2.1 reasoning model",
+      "Nanbeige4.2-3B compact LLM"
+    ],
+    "ai-community": [
+      "Kimi K3 1.56TB weight dump",
+      "OpenAI sandbox escape timeline",
+      "Model cascade routing fails",
+      "LLMs lack physical intuition",
+      "Confidence scores not probabilities",
+      "Open-weight policy debate"
+    ]
+  }
+}
