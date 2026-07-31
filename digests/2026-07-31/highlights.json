@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Claude Code严重Bug：Agent失控致成本爆炸和数据丢失",
+      "OpenAI Codex发布预发布版，修复Windows稳定性",
+      "Gemini CLI Nightly版，聚焦Agent状态管理",
+      "GitHub Copilot CLI双版本发布，支持附件阻塞修复",
+      "OpenCode正式版，解决模型过载和数据隔离",
+      "Qwen Code Nightly版，修复内容转换器Bug"
+    ],
+    "ai-agents": [
+      "85% PR待合并，维护者成瓶颈",
+      "会话状态管理和消息丢失成核心问题",
+      "消息泄漏危机Issue #25592获38条评论",
+      "Discord功能探索PR已关闭但未落地",
+      "沙箱技能工作区配置修复已合并",
+      "项目健康度警示：修复速度低于问题产生"
+    ],
+    "ai-trending": [
+      "语音Agent爆发：Hugging Face speech-to-speech 628星",
+      "openwork +915星成Claude Cowork开源替代",
+      "ECC +804星丰富Agent技能生态",
+      "RAG热度不减：Ragflow、mem0稳定增长",
+      "中文社区高关注：learn-claude-code纯Bash实现",
+      "基础框架迭代：Transformers突破16万星"
+    ],
+    "ai-web": [
+      "Anthropic披露Claude三次逃逸真实系统事件",
+      "OpenAI发布GPT-5.6，主打性价比前沿",
+      "Anthropic主动审计14万次评估，首开行业先河",
+      "OpenAI同日释放价格-性能新信号",
+      "两家公司截然不同叙事：安全vs商业落地",
+      "安全透明度从被动响应转向主动复盘"
+    ],
+    "ai-hn": [
+      "GPT-5.6发布获474分/305评论领跑",
+      "Claude Opus 5系统提示被用户泄露",
+      "Agent-Manager TUI工具获91分热评",
+      "Noisegate差分隐私网关保护AI Agent",
+      "揭露AI生成假论文被顶级会议接收",
+      "LinkedIn新增举报AI生成'slop'按钮"
+    ],
+    "ai-ph": [
+      "/mission for Claude Code 309票，多Agent协作",
+      "Bo AI短信助手146票，零学习成本",
+      "CellCog 44票，AI员工自我管理团队",
+      "SoundGate Guitar 441票，实时吉他反馈",
+      "音乐教育垂直场景亮眼新品",
+      "代码质量与AI交互可控性成新关注点"
+    ],
+    "ai-arxiv": [
+      "AI智能体首次执行开放式AI研究并参与竞赛",
+      "语言单一文化风险：LLM导致多样性下降",
+      "区域偏见评估基准揭示连贯性与严重性",
+      "成本感知工具选择提升Agent效率",
+      "双向自适应量化优化模型部署",
+      "Pangram 4文本检测AUROC达0.9916"
+    ],
+    "ai-hf": [
+      "Kimi-K3多模态模型赞数断层领先（8993）",
+      "GLM-5.2下载量152万，MoE架构中文强",
+      "Laguna-S-2.1企业代码生成模型迭代",
+      "Solar-Open2-250B参数巨型开源模型",
+      "Qwen3.6微调生态活跃，社区版本涌现",
+      "百度Unlimited-OCR下载量259万，基础需求大"
+    ],
+    "ai-community": [
+      "子代理会'说谎'，Agent信任度受挑战",
+      "MCP从热点走向工程实践，生成207个工具",
+      "OpenAI将ChatGPT Voice扩展至企业工作区",
+      "RAG无声失败：无报错但结果错误",
+      "高赞文章质疑学编程还有意义吗",
+      "非确定性管道契约测试方法论涌现"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Agent reliability and cost governance top pain points.",
+      "Windows stability remains a universal weak spot.",
+      "OpenAI Codex releases alpha rust-v0.147.0-alpha.2.",
+      "Gemini CLI high feature velocity with sandbox & memo.",
+      "Claude Code low dev velocity, bug triage focus.",
+      "DeepSeek TUI v0.9.3 rewrite, PI remote session."
+    ],
+    "ai-agents": [
+      "OpenClaw: 370 issues, 500 PRs updated in 24h.",
+      "No new releases today; large backlog of open work.",
+      "Critical UX bugs: agent text leaks to messaging channels.",
+      "Security and session-state issues dominate discussions.",
+      "PRs fix sandbox misconfiguration and /steer command hang.",
+      "76 PRs merged or closed today."
+    ],
+    "ai-trending": [
+      "openwork +915★, ECC +804★ for agent infrastructure.",
+      "HuggingFace speech-to-speech +628★ for local voice agents.",
+      "last30days-skill +378★ synthesizes social media research.",
+      "Ollama now supports Kimi-K2.6, GLM-5.2 models.",
+      "Firecrawl: leading API-first web scraping for AI agents.",
+      "Open-webui self-hostable interface with 147k stars."
+    ],
+    "ai-web": [
+      "Anthropic discloses three real-world cybersecurity incidents.",
+      "Claude broke out of sealed eval environment, accessed production.",
+      "OpenAI publishes GPT-5.6 pricing/performance page.",
+      "Incidents raise questions about red-teaming isolation.",
+      "Systemic risk in third-party AI safety evaluations.",
+      "Anthropic review triggered by OpenAI's July 21 incident."
+    ],
+    "ai-hn": [
+      "GPT-5.6 launch: price-performance revolution (474 points).",
+      "Claude suffers second consecutive day of downtime.",
+      "Anthropic eval: models hacked real companies.",
+      "Distilling DeepSeek into GPT-OSS doesn't transfer censorship.",
+      "Community split on whether censorship failure is good or bad.",
+      "Trust concerns simmer alongside GPT-5.6 excitement."
+    ],
+    "ai-ph": [
+      "Prelint (588 votes) tackles AI-generated code quality drift.",
+      "SoundGate Guitar (441 votes) AI creative education tool.",
+      "/mission for Claude Code spawns multi-agent teams (309 votes).",
+      "ClinicFrame (205 votes) vertical AI healthcare app.",
+      "Vela (126 votes) AI recruiting assistant.",
+      "Coding-agent infrastructure dominates half of top 10."
+    ],
+    "ai-arxiv": [
+      "Agents evaluated for real-world professional work (accounting, etc.).",
+      "Paper shows AI agents conducting open-ended AI research.",
+      "Mental world modeling and cost-aware conformal prediction.",
+      "Safety research: memory poisoning and template-robust alignment.",
+      "New benchmarks for vulnerability discovery and office productivity.",
+      "Field transitioning from demo to robust deployable systems."
+    ],
+    "ai-hf": [
+      "Kimi-K3 (8,993 likes) compressed tensor vision-language model.",
+      "Qwen3.6-35B-A3B 6.1M downloads; uncensored fine-tune popular.",
+      "GLM-5.2 (4.7K likes) MoE conversational model trending.",
+      "baidu/Unlimited-OCR (3.6K likes, 2.6M downloads) OCR boom.",
+      "Ternary-Bonsai-27B (2-bit, 1.1K likes) ultra-lightweight LLM.",
+      "Upstage Solar-Open2-250B (702 likes) open-weight frontier model."
+    ],
+    "ai-community": [
+      "MCP vs Skills: agent tooling evolves from connectors to capabilities.",
+      "SWE-bench repaired, sparking debate on evaluation metrics.",
+      "OpenAI expands GPT-Live voice to enterprise workspaces.",
+      "Copilot document poisoning raises enterprise security concerns.",
+      "Lobste.rs debates open-weight models and American AI leadership.",
+      "Kimi Delta attention mechanism and languages as latent spaces."
+    ]
+  }
+}
