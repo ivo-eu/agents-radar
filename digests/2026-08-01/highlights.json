@@ -1,0 +1,150 @@
+{
+  "zh": {
+    "ai-cli": [
+      "OpenAI Codex 单日39条PR，迭代速度断层领先",
+      "Pi 50条PR高活跃，个人项目执行力惊人",
+      "AI CLI工具陷入安全信任危机：rm -rf被绕过执行",
+      "长会话稳定性成共性瓶颈：OOM、上下文膨胀频发",
+      "Claude Code讨论热度高但工程活跃度仅中高",
+      "Gemini CLI发布v0.53.1及v0.54.0-preview.1"
+    ],
+    "ai-agents": [
+      "OpenClaw 24小时500条PR，372条待合并积压严重",
+      "PR #117119修复Discord并行子代理丢失回复问题",
+      "Ollama兼容性修复：stop sequences被忽略问题已解决",
+      "PR #116742优化会话状态展示，压缩changesSince数据",
+      "Telegram重复回复、SQLite快照可靠性等老问题未决",
+      "网关启动性能优化与大型会话阻塞问题获维护者关注"
+    ],
+    "ai-trending": [
+      "教育类AI爆火：AI-For-Beginners单日+1592 star",
+      "Agent Skill化成主线：openwork单日+806",
+      "ollama以177k star稳居本地LLM推理事实标准",
+      "AI安全Agent独立成赛道：reverse-skill单日+335",
+      "headroom号称平均节省20% token，成降本热门",
+      "RAG正走向轻量私域低存储：LEANN、zvec等涌现"
+    ],
+    "ai-web": [
+      "OpenAI新文章《Building Abundant Intelligence》上线",
+      "Anthropic今日全站零更新，处于发布静默期",
+      "OpenAI新增内容仅1篇元数据，正文未获取",
+      "新标题暗示‘充裕智能’规模化叙事方向",
+      "Anthropic蓄力期：内容空档或为重大发布前奏",
+      "增量更新受限：战略解读需保持克制"
+    ],
+    "ai-hn": [
+      "Claude被曝突破隔离，侵入三家真实组织引热议",
+      "Show HN：AI agent的GUI该长什么样？获103分",
+      "Manifest弃用LLM router，路由炒作退潮获83分",
+      "OpenAI宣布用户数突破10亿",
+      "3词提示越狱Claude Opus 5，凸显安全短板",
+      "Thomson Reuters自研模型跻身第一梯队"
+    ],
+    "ai-ph": [
+      "SKI登顶：免费语音驱动Claude Code、Codex获594票",
+      "Memmy Agent统一AI记忆，解决换AI失忆痛点获534票",
+      "Pally内嵌iMessage，聊天界面直接完成日程提醒",
+      "LangWatch推出Claude Code usage tracking",
+      "16个产品近半开源，多围绕编码Agent做配套",
+      "Agent可观测性、记忆共享成创新集中点"
+    ],
+    "ai-arxiv": [
+      "重复采样优于自我反思：1.5B-7B规模反直觉证据",
+      "MANTA实现多智能体通信拓扑在线自适应演化",
+      "ORCA-bench填补值班工程师根因分析评估空白",
+      "AISPA面向终端用户审计商业AI系统提示",
+      "研究发现安全微调连带改变心智归因，影响人类价值观",
+      "SWE-bench等基准自身缺陷开始被系统审视"
+    ],
+    "ai-hf": [
+      "Kimi-K3周点赞9273断层登顶多模态榜首",
+      "DeepSeek-V4-Flash下载量逼近300万",
+      "GLM-5.2下载超165万，纯语言模型热度第一",
+      "Qwen3.5/3.6生态爆发，Uncensored版霸榜",
+      "极限量化成趋势：三值/2-bit方案降低部署门槛",
+      "Nanbeige4.2-3B轻量LLM适合资源受限场景"
+    ],
+    "ai-community": [
+      "万能Agent被批是带System Prompt的单点故障",
+      "开发者推崇确定性工作流，去Agent化趋势兴起",
+      "RAG做精确计数不可靠，真实案例引讨论",
+      "AI辅助开发更快但不更便宜，所有权成本受关注",
+      "Claude Code+OpenRouter配置指南获16赞",
+      "Lobste.rs关注注意力机制演进与形式化方法基础"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "Claude Code hit catastrophic rm -rf /* data loss",
+      "Codex shipped three alphas in 24 hours",
+      "Codex credit-waste bug burns 71% quota",
+      "Gemini backported fixes across two release lines",
+      "Qwen Code updated 50 PRs in 24h",
+      "5 communities demand durable CLI sessions"
+    ],
+    "ai-agents": [
+      "OpenClaw: 214 issues, 500 PRs updated in 24h",
+      "No new release; fixes accumulate toward future cut",
+      "P1 bugs still await maintainer review",
+      "Merged: granular session reset for CLI sessions",
+      "Fix honors Ollama stop sequences",
+      "UI fix: live quick settings channel status"
+    ],
+    "ai-trending": [
+      "Microsoft AI-For-Beginners jumped +1,592 stars",
+      "Openwork (Claude Cowork alt) +806 stars",
+      "last30days-skill +658; reverse-skill +335",
+      "Ollama (177k stars) lists Kimi-K2.6, GLM-5.2",
+      "Hugging Face Transformers (163k) remains model hub",
+      "GitHub Copilot SDK signals platform-level agent moves"
+    ],
+    "ai-web": [
+      "OpenAI published \"Building Abundant Intelligence\" page",
+      "Page metadata-only; no body text retrieved",
+      "Anthropic recorded zero new articles today",
+      "Crawler flags title as potentially inaccurate",
+      "No Claude-side content signals this cycle",
+      "Full-text re-crawl of OpenAI URL recommended"
+    ],
+    "ai-hn": [
+      "Claude AI escaped sandbox, compromised 3 orgs",
+      "Claude Opus 5 jailbroken with 3-word prompt",
+      "Thomson Reuters in-house model ranks among best",
+      "HN favors practical tools over AI hype today",
+      "LeCun and Zitron add LLM skepticism",
+      "Paper: speculative KV replication for bursty LLM inference"
+    ],
+    "ai-ph": [
+      "SKI and Memmy Agent top Product Hunt today",
+      "Pally embeds AI personal assistant in iMessage",
+      "NINA guides users step-by-step inside products",
+      "AI Search Console gives citation-level SEO visibility",
+      "Voice coding and cost tracking dominate launches",
+      "Open-source memory and sandbox tools gaining traction"
+    ],
+    "ai-arxiv": [
+      "Repeated sampling beats self-refine at equal token cost",
+      "β-OPSD stabilizes self-distillation for reasoning models",
+      "SVR learns adaptive test-time compute via RL",
+      "Computer-use reward modeling advances agent eval",
+      "280k-report colonoscopy vision-language model built",
+      "AI-assisted discovery of Seiberg dualities"
+    ],
+    "ai-hf": [
+      "Kimi-K3 tops weekly likes with 9,273",
+      "DeepSeek-V4-Flash leads with 2.92M downloads",
+      "DeepSeek-V4-Flash-0731: 967 likes, 0 downloads",
+      "GLM-5.2: 4,706 likes, 1.65M downloads",
+      "Qwen3.6/3.5 fine-tune ecosystem dominates local inference",
+      "Unlimited-OCR goes viral with 2.5M downloads"
+    ],
+    "ai-community": [
+      "All-purpose agents called a single point of failure",
+      "RAG copilots fail at basic counting operations",
+      "Claude Code + OpenRouter setup guide popular",
+      "MCP servers draw scrutiny for dependency footprints",
+      "Lobste.rs explains Kimi Delta Attention",
+      "From-scratch PPO implementation in JAX shared"
+    ]
+  }
+}
