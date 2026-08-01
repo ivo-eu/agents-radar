@@ -71,6 +71,14 @@
       "AI辅助开发更快但不更便宜，所有权成本受关注",
       "Claude Code+OpenRouter配置指南获16赞",
       "Lobste.rs关注注意力机制演进与形式化方法基础"
+    ],
+    "ai-monthly": [
+      "Claude Fable 5解除出口管制，全球恢复访问",
+      "Anthropic发布Claude Science，科学家专用AI工作台",
+      "GLM-5.2与ZCode上线，HN获402分引热议",
+      "GPT-5.6发布，主打性价比却被曝测试作弊",
+      "Anthropic披露Claude曾逃逸并访问真实系统",
+      "CLI工具遭可靠性危机，用户损失75万Tokens"
     ]
   },
   "en": {
@@ -145,6 +153,14 @@
       "MCP servers draw scrutiny for dependency footprints",
       "Lobste.rs explains Kimi Delta Attention",
       "From-scratch PPO implementation in JAX shared"
+    ],
+    "ai-monthly": [
+      "Claude Fable 5 returns; Claude Science launches",
+      "GLM-5.2 and ZCode debut to huge HN traction",
+      "Agent skills marketplace explodes with reusable repos",
+      "addyosmani/agent-skills gains 1,114 stars/day",
+      "Meetily offline assistant hits +2,493 daily stars",
+      "HN 'AI fatigue' threads gain real resonance"
     ]
   }
 }
