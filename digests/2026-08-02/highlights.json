@@ -1,0 +1,126 @@
+{
+  "zh": {
+    "ai-cli": [
+      "Qwen Code 发 v0.21.3 正式版",
+      "Gemini CLI 发 v0.55.0-nightly",
+      "OpenCode 发 v1.18.11",
+      "Copilot CLI 更新至 v1.0.78-2",
+      "DeepSeek TUI 单日 34 个 PR",
+      "子代理假成功成 AI CLI 最大痛点"
+    ],
+    "ai-agents": [
+      "OpenClaw 发 v2026.7.2-beta.6",
+      "新增隔离存储，主库损坏数据不丢",
+      "SQLite 快照支持崩溃恢复",
+      "Schema 升级可拒绝数据丢失",
+      "单日 500 PR，103 个已合并",
+      "397 条 PR 待合并，治理承压"
+    ],
+    "ai-trending": [
+      "字节 deer-flow 等 Agent 中间件登榜",
+      "HuggingFace 语音项目双双进热榜",
+      "reverse-skill 日增 1320 登顶",
+      "ollama 已支持 Kimi-K2.6 等新模型",
+      "langchain 143k 星，仍是 Agent 底座",
+      "微软 AI 教育三件套持续霸榜"
+    ],
+    "ai-hn": [
+      "OpenAI 数学进展火：407 分 280 评",
+      "MIT：问对问题 AI 理财建议不错",
+      "YC 创始人纹身换面试引争议",
+      "Google 取消 AI Studio 引反思",
+      "Amazon 用 Claude 超支 860%",
+      "8GB 显卡即可跑 SFT/DPO/GRPO"
+    ],
+    "ai-ph": [
+      "MiniMax H3 373 票领跑 PH",
+      "Cleanlist AI 301 票，语言挖 B2B",
+      "Gemini Robotics 2：机器人 AI 大脑",
+      "TraceLLM 让 LLM 应用可观测",
+      "witr 150 票，开源进程/端口排查",
+      "Polygres：数据库变 AI 上下文窗口"
+    ],
+    "ai-hf": [
+      "Kimi-K3 登顶 HF，下载 56 万",
+      "DeepSeek-V4-Flash 下载 280 万",
+      "GLM-5.2 下载 168 万，MoE+动态稀疏",
+      "Qwen3.6 成微调量化核心底座",
+      "NVFP4、BitNet 低比特量化方案上位",
+      "百度 Unlimited-OCR 等垂直模型突出"
+    ],
+    "ai-community": [
+      "热议：Agent 评测比模型评测更难",
+      "AI 让 PR 变快，但直觉退化",
+      "GPT-Transcribe 用上下文提升 ASR",
+      "Lobste.rs 聚焦 Kimi Delta 注意力",
+      "MCP Server 权限边界成安全热点",
+      "Rust 重写 sklearn，Docker 缩 400 倍"
+    ]
+  },
+  "en": {
+    "ai-cli": [
+      "AI CLI ecosystem enters reliability consolidation phase",
+      "OpenCode and Qwen Code are the most active shippers",
+      "Gemini CLI nightly v0.55.0; Copilot CLI patch v1.0.78-2",
+      "Community focused on regressions, auth failures, unsafe agents",
+      "Top pain points: subagent observability, Windows packaging, cost",
+      "Users demand stable state, predictable spend, strong guardrails"
+    ],
+    "ai-agents": [
+      "OpenClaw shipped v2026.7.2-beta.6 with state-safety fixes",
+      "222 issues updated; 103 PRs merged in 24 hours",
+      "Quarantine store survives primary database damage",
+      "Crash-recoverable SQLite snapshots and durable filesystem publication",
+      "Hottest thread: DeepSeek V4 Flash silent reply failure (73 comments)",
+      "P1 reliability issues dominate: silent failures, crash-loop gaps"
+    ],
+    "ai-trending": [
+      "Agent infrastructure and skill ecosystems dominate trending",
+      "reverse-skill tops trending as AI security skill router",
+      "Memory layers crystallize: TencentDB-Agent-Memory, mem0, cognee",
+      "Hugging Face speech-to-speech and Microsoft TRELLIS.2 draw attention",
+      "github/copilot-sdk +142 stars, opening coding agents as platforms",
+      "Microsoft beginner AI curricula gain ~1,050 stars today"
+    ],
+    "ai-web": [
+      "OpenAI published 'Ten Advances In Mathematics' (metadata only)",
+      "Anthropic published zero new articles in this crawl",
+      "OpenAI returned exactly one new item since previous crawl",
+      "No product launches, safety frameworks, or model releases detected",
+      "Only strategic signal: math remains central to AI reasoning",
+      "Report captures cadence data rather than substantive content"
+    ],
+    "ai-hn": [
+      "OpenAI math post tops HN with 407 points, 280 comments",
+      "HN split between impressive claims and lack of verification",
+      "OpenAI hires Fields medalist Jacob Tsimerman",
+      "YC founder tattoo job-seeker story sparks outrage",
+      "Google cancels AI Studio after 800k preorders",
+      "Amazon overspends $1.8M on Claude for trivial task"
+    ],
+    "ai-ph": [
+      "MiniMax H3 leads Product Hunt with 373 votes",
+      "Cleanlist AI earns 301 votes for NL lead prospecting",
+      "Gemini Robotics 2 launches as Google's AI brain for robots",
+      "Developer tools witr, TraceLLM, Polygres, VulX Watch launch",
+      "Non-AI utility mectrics reaches #3",
+      "NexaLibre hints at AI-native hosting wave"
+    ],
+    "ai-hf": [
+      "Kimi-K3 leads week with 9.5K likes",
+      "DeepSeek-V4-Flash remains download champ at 2.8M",
+      "GLM-5.2 breaks out with 4.7K likes, 1.7M downloads",
+      "DeepSeek-V4-Flash-0731 snapshot draws attention",
+      "GGUF, NVFP4, ternary/2-bit, and MoE quantizations dominate",
+      "Local edge TTS and ASR audio models gaining traction"
+    ],
+    "ai-community": [
+      "Dev.to focuses on agent evaluation and MCP server security",
+      "Post: why agent evaluation is harder than model evaluation",
+      "Lobste.rs deep dive into Kimi Delta Attention",
+      "Formal-verification interview with Xavier Leroy",
+      "Experiment writing PHP VM in Rust with heavy AI help",
+      "Mood pragmatic: workflows, guardrails, evaluation loops matter"
+    ]
+  }
+}
